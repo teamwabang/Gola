@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 60초마다 설정 파일의 변경을 확인하여 변경 시 갱신 -->
+<configuration scan="true" scanPeriod="60 seconds">
+<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+	<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+	<encoder>
+		<pattern>
+			%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n
+		</pattern>
+	</encoder>
+</appender>
+
+<!-- 에러의 경우 파일에 로그 처리 -->
+<appender name="Error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<filter class="ch.qos.logback.classic.filter.LevelFilter">
+		<level>error</level>
+		<onMatch>ACCEPT</onMatch>
+		<onMismatch>DENY</onMismatch>
+	</filter>
+	
+	<file>${LOG_PATH}/${ERR_LOG_FILE_NAME}.log</file>
+	
+	<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+		<pattern>${LOG_PATTERN}</pattern>
+	</encoder>
+	
+	<!-- Rolling 정책 -->
+	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	
+		<!-- .gz,.zip 등을 넣으면 자동 일자별 로그파일 압축 -->
+		<fileNamePattern>${LOG_PATH}/${ERR_LOG_FILE_NAME}.%d{yyyy-MM-dd}_%i.log</fileNamePattern>
+		<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+		
+		<!-- 파일당 최고 용량 kb, mb, gb -->
+		<maxFileSize>10MB</maxFileSize>
+		</timeBasedFileNamingAndTriggeringPolicy>
+		
+		<!-- 일자별 로그파일 최대 보관주기(~일), 해당 설정일 이상된 파일은 자동으로 제거-->
+		<maxHistory>60</maxHistory>
+		
+	</rollingPolicy>
+</appender>
+
+
+	<!-- 
+		[[log4j level]]
+		TRACE : 추적
+		DEBUG : 디버깅
+		INFO : 정보
+		WARN : 경고
+		ERROR : 에러
+		FATAL : 치명적
+	-->
+	
+	<!-- Application Loggers -->
+	<logger name="com.recipe.gola">
+		<level value="info" />
+	</logger>
+	
+	<!-- 3rdparty Loggers -->
+	<logger name="org.springframework.core">
+		<level value="info" />
+	</logger>
+	
+	<logger name="org.springframework.beans">
+		<level value="info" />
+	</logger>
+	
+	<logger name="org.springframework.context">
+		<level value="info" />
+	</logger>
+	
+	<logger name="org.springframework.web">
+		<level value="info" />
+	</logger>
+	
+	<root level="info">
+	    <appender-ref ref="STDOUT" />
+	</root>
+	
+</configuration>

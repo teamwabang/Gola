@@ -1,0 +1,21 @@
+@import "reset.css";
+
+@import "index.css";
+
+/* @import "header.css";
+@import "footer.css"; */
+
+@import "join.css";
+
+/* @import "order.css";
+@import "review.css";
+
+@import "cart.css";
+
+@import "liked.css";
+
+@import "error.css"; */
+
+.main {
+  margin: 0px 20%;
+}

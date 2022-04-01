@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
+<title>Insert title here</title>
+
+	<!-- CSS -->
+    <!-- <link rel="stylesheet" href="/css/styles.css" /> -->
+    
+    <!-- JavaScript -->
+	<script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			
+		});
+	</script>
+
+</head>
+<body>
+
+    <div>
+    	<div style="color: black; font-size: 20px;">
+    	<table border="1">
+    		<thead>
+    		<tr>
+    			<td>아이디</td>
+    			<td>이름</td>
+    			<td>생일</td>
+    			<td>전화번호</td>
+    			<td>이메일</td>
+    			<td>주소</td>
+    			<td>가입일</td>
+    		</tr>
+    		</thead>
+    		<tbody>
+    		<tr th:each="dto : ${userlist}">
+    			<td th:text="${dto.userId }"></td>
+    			<td th:text="${dto.userName }"></td>
+    			<td th:text="${dto.userBirth }"></td>
+    			<td th:text="${dto.userPhone }"></td>
+    			<td th:text="${dto.userEmail }"></td>
+    			<td th:text="${dto.userAddress }"></td>
+    			<td th:text="${dto.regdate }"></td>
+    		</tr>
+    		</tbody>
+    	</table>
+    </div>
+    </div>
+    
+
+</body>
+</html>

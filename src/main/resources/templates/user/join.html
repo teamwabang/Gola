@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
+<title>회원가입 | 골라</title>
+
+	<!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css" />
+    
+    <!-- JavaScript -->
+    <script type="text/javascript" src="/js/chatbot.js"></script>
+	<script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript">
+		$('#selectEmail').change(function() {
+			$("#selectEmail option:selected").each(function() {
+				if($(this).val()== '1'){	// 직접입력일 경우
+					$("#userEmail").val('');	//값 초기화
+					$("#userEmail").attr("disabled", false);	// 활성화
+				} else {	//직접입력이 아닐경우
+					$("#userEmail").val($(this).text());	// 선택값 입력
+					$("#userEmail").attr("disabled", true);	// 비활성화
+				}
+			});
+		});
+	</script>
+
+</head>
+<body>
+
+	<!-- import header -->
+    <div th:replace="fragment/header :: fr_header"></div>
+    <!-- end of import header -->
+	
+	<div th:style="${'text-align: center;'}">
+    	<form th:action="@{/user/join}" method="post">
+	 	<h2 class="join1">회원가입</h2>
+	 	<span class="join2">(*) 표시는 필수입력 사항입니다.</span>
+	 	<div>
+	 		<label>* 아이디</label><br>
+	 		<input type="text" name="userId" id="userId" maxlength="10" placeholder="아이디" autofocus><br>
+	 		<span th:style="${'color: red; font-size:11px;'}" th:text="${valid_userId}"></span>
+	 	</div>
+	 	<br>
+	 	<div>
+	 		<label>* 비밀번호</label><br>
+	 		<input type="password" name="userPwd" id="userPwd" maxlength="20" placeholder="비밀번호"><br>
+	 		<span th:style="${'color: red; font-size:11px;'}" th:text="${valid_userPwd}"></span>
+	 	</div>
+	 	<br>
+	 	<div>
+	 		<label>* 비밀번호 확인</label><br>
+	 		<input type="password" name="confirm" id="confirm" maxlength="20" placeholder="비밀번호 확인"><br>
+	 	</div>
+	 	<br>
+	 	<div>
+	 		<label>* 이름</label><br>
+	 		<input type="text" name="userName" id="userName" maxlength="10" placeholder="이름"><br>
+	 		<span th:style="${'color: red; font-size:11px;'}" th:text="${valid_userName}"></span>
+	 	</div>
+	 	<br>
+	 	<div>
+	 		<label>생일</label><br>
+	 		<input type="text" name="userBirth" id="userBirth" maxlength="8" placeholder="생일"><br>
+	 	</div>
+	 	<br>
+	 	<div>
+	 		<label>* 전화번호</label><br>
+	 		<input type="text" name="userPhone" id="userPhone" maxlength="11" placeholder="전화번호"><br>
+	 		<span th:style="${'color: red; font-size:11px;'}" th:text="${valid_userPhone}"></span>
+	 	</div>
+	 	<br>
+	 	<div>
+	 		<label>* 이메일</label><br>
+	 		<input type="text" name="userEmail" id="userEmail" maxlength="50" placeholder="이메일">
+	 		<select style="width:100px;margin-right:10px" name="selectEmail" id="selectEmail">
+	 			<option value="1">직접입력</option>
+	 			<option value="naver.com" selected>naver.com</option>
+	 			<option value="gmail.com">gmail.com</option>
+	 			<option value="daum.net">daum.net</option>
+	 		</select>
+	 		<br>
+	 		<span th:style="${'color: red; font-size:11px;'}" th:text="${valid_userEmail}"></span>
+	 	</div>
+	 	<br>
+	 	<div>
+	 		<label>주소</label><br>
+	 		<input type="text" name="userAddress" id="userAddress" placeholder="주소"><br>
+	 	</div>
+	 	<br>
+	 		<button type="submit">회원가입</button>
+	 		<button type="reset">초기화</button>
+		</form>
+    </div>
+    
+    <!-- import footer -->
+    <div th:replace="fragment/footer :: fr_footer"></div>
+    <!-- end of import footer -->
+
+</body>
+</html>
