@@ -34,7 +34,7 @@
     <!-- end of import header -->
 	
 	<div th:style="${'text-align: center;'}">
-    	<form th:action="@{/user/join}" method="post">
+    	<form th:action="@{/join}" method="post">
 	 	<h2 class="join1">회원가입</h2>
 	 	<span class="join2">(*) 표시는 필수입력 사항입니다.</span>
 	 	<div>
@@ -55,20 +55,9 @@
 	 	</div>
 	 	<br>
 	 	<div>
-	 		<label>* 이름</label><br>
-	 		<input type="text" name="userName" id="userName" maxlength="10" placeholder="이름"><br>
+	 		<label>* 닉네임</label><br>
+	 		<input type="text" name="userName" id="userName" maxlength="10" placeholder="닉네임"><br>
 	 		<span th:style="${'color: red; font-size:11px;'}" th:text="${valid_userName}"></span>
-	 	</div>
-	 	<br>
-	 	<div>
-	 		<label>생일</label><br>
-	 		<input type="text" name="userBirth" id="userBirth" maxlength="8" placeholder="생일"><br>
-	 	</div>
-	 	<br>
-	 	<div>
-	 		<label>* 전화번호</label><br>
-	 		<input type="text" name="userPhone" id="userPhone" maxlength="11" placeholder="전화번호"><br>
-	 		<span th:style="${'color: red; font-size:11px;'}" th:text="${valid_userPhone}"></span>
 	 	</div>
 	 	<br>
 	 	<div>
@@ -82,11 +71,6 @@
 	 		</select>
 	 		<br>
 	 		<span th:style="${'color: red; font-size:11px;'}" th:text="${valid_userEmail}"></span>
-	 	</div>
-	 	<br>
-	 	<div>
-	 		<label>주소</label><br>
-	 		<input type="text" name="userAddress" id="userAddress" placeholder="주소"><br>
 	 	</div>
 	 	<br>
 	 		<button type="submit">회원가입</button>

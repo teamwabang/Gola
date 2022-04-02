@@ -26,23 +26,17 @@
     		<thead>
     		<tr>
     			<td>아이디</td>
-    			<td>이름</td>
-    			<td>생일</td>
-    			<td>전화번호</td>
+    			<td>닉네임</td>
     			<td>이메일</td>
-    			<td>주소</td>
     			<td>가입일</td>
     		</tr>
     		</thead>
     		<tbody>
     		<tr th:each="dto : ${userlist}">
-    			<td th:text="${dto.userId }"></td>
-    			<td th:text="${dto.userName }"></td>
-    			<td th:text="${dto.userBirth }"></td>
-    			<td th:text="${dto.userPhone }"></td>
-    			<td th:text="${dto.userEmail }"></td>
-    			<td th:text="${dto.userAddress }"></td>
-    			<td th:text="${dto.regdate }"></td>
+    			<td th:text="${dto.userId}"></td>
+    			<td th:text="${dto.userNickname}"></td>
+    			<td th:text="${dto.userEmail}"></td>
+    			<td th:text="${dto.regdate}"></td>
     		</tr>
     		</tbody>
     	</table>
