@@ -14,8 +14,8 @@
 	
 	<insert id="insertuser">
 	<![CDATA[
-		INSERT INTO wabang.user (userId, userPwd, userName, userBirth, userPhone, userEmail, userAddress, regdate)
-		VALUES(#{userId}, #{userPwd}, #{userName}, #{userBirth}, #{userPhone}, #{userEmail}, #{userAddress}, now())
+		INSERT INTO gola.user (userId, userPwd, userNickname, userEmail, regdate)
+		VALUES(#{userId}, #{userPwd}, #{userNickname}, #{userEmail}, now())
 	]]>
 	</insert>
 	
