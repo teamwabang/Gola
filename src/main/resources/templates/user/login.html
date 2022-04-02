@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
+<title>로그인 | 골라</title>
+
+	<!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css" />
+    
+    <!-- JavaScript -->
+    <script type="text/javascript" src="/js/chatbot.js"></script>
+	<script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript">
+	
+	</script>
+
+</head>
+<body>
+
+	<!-- import header -->
+    <div th:replace="fragment/fragment :: fr_header"></div>
+    <!-- end of import header -->
+	
+	<div th:style="${'text-align: center;'}">
+    	<form th:action="@{/login}" method="get">
+	 	<h2 class="join1">로그인</h2>
+          <input type="text" class="id" id="userId" name="userId" placeholder="아이디" autofocus /><br />
+          <input type="password" class="pw" id="userPwd" name="userPwd" placeholder="암호" /><br />
+          <br><br>
+          <button type="submit" class="login" id="btnLogin">로그인</button>
+	 	</form>
+	 	
+    </div>
+    
+    <!-- import footer -->
+    <div th:replace="fragment/fragment :: fr_footer"></div>
+    <!-- end of import footer -->
+
+</body>
+</html>

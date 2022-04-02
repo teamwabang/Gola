@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.recipe.gola.dto.UserDTO;
 import com.recipe.gola.service.UserService;
@@ -21,7 +20,6 @@ import lombok.Data;
 
 @Controller
 @Data
-@RequestMapping("user")
 public class UserController {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -64,4 +62,11 @@ public class UserController {
         userService.insertuser(dto);
         return "redirect:/";
     }
+	
+	// 02 - 로그인
+	@GetMapping("login")
+	public String login() {
+		logger.info("로그인");
+		return "user/login";
+	}
 }
