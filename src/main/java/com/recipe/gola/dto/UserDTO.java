@@ -16,11 +16,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class UserDTO implements UserDetails {
 
 	@NotBlank(message = "아이디를 입력해주세요.")
-	@Pattern(regexp = "[a-zA-Z0-9]{2,9}",
-    message = "아이디는 영문, 숫자로만 이루어진 2~10자리로 입력해주세요.")
+	@Pattern(regexp = "[a-zA-Z0-9]{2,19}",
+    message = "아이디는 영문, 숫자로만 이루어진 2~20자리로 입력해주세요.")
 	private String userId;
 	
 	@NotBlank(message = "비밀번호를 입력해주세요.")
@@ -29,7 +30,7 @@ public class UserDTO implements UserDetails {
 	private String userPwd;
 	
 	@NotBlank(message = "닉네임을 입력해주세요.")
-	@Pattern(regexp = "[ㄱ-ㅎ가-힣]{3,8}$", message = "닉네임은 특수문자를 제외한 3~10자리로 입력해주세요.")
+	@Pattern(regexp = "[가-힣a-zA-Z0-9]{3,19}$", message = "닉네임은 특수문자를 제외한 3~20자리로 입력해주세요.")
 	private String userNickname;
 	
 	@NotBlank(message = "이메일을 입력해주세요.")
