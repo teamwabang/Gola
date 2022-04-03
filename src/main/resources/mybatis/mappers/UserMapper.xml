@@ -12,11 +12,21 @@
 	]]>
 	</select>
 	
+	<!-- 회원가입 -->
 	<insert id="insertuser">
 	<![CDATA[
-		INSERT INTO gola.user (userId, userPwd, userNickname, userEmail, regdate)
-		VALUES(#{userId}, #{userPwd}, #{userNickname}, #{userEmail}, now())
+		INSERT INTO gola.user (userId, userPwd, userNickname, userEmail, userAuth, regdate)
+		VALUES(#{userId}, #{userPwd}, #{userNickname}, #{userEmail}, "USER", now())
 	]]>
 	</insert>
+	
+	<!-- 로그인 -->
+	<select id="findByUserId">
+	<![CDATA[
+		SELECT *
+		FROM user
+		WHERE userId=#{userId}
+	]]>
+	</select>
 	
 </mapper>
