@@ -28,6 +28,7 @@
     			<td>아이디</td>
     			<td>닉네임</td>
     			<td>이메일</td>
+    			<td>유저/관리자</td>
     			<td>가입일</td>
     		</tr>
     		</thead>
@@ -36,6 +37,7 @@
     			<td th:text="${dto.userId}"></td>
     			<td th:text="${dto.userNickname}"></td>
     			<td th:text="${dto.userEmail}"></td>
+    			<td th:text="${dto.userAuth}"></td>
     			<td th:text="${dto.regdate}"></td>
     		</tr>
     		</tbody>

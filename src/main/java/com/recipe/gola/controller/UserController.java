@@ -7,6 +7,8 @@ import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -23,8 +25,12 @@ import lombok.Data;
 public class UserController {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-			
+	
+	@Autowired
 	private final UserService userService;
+	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	// 회원목록
 	@GetMapping("list")
@@ -59,14 +65,16 @@ public class UserController {
         }
         
         logger.info("회원가입에 성공하였습니다.");
+        String rawPwd = dto.getUserPwd();
+        String encPwd = bCryptPasswordEncoder.encode(rawPwd);
+        dto.setUserPwd(encPwd);
         userService.insertuser(dto);
-        return "redirect:/";
+        return "redirect:/login";
     }
 	
 	// 02 - 로그인
 	@GetMapping("login")
 	public String login() {
-		logger.info("로그인");
 		return "user/login";
 	}
 }

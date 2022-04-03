@@ -6,9 +6,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
@@ -20,8 +18,9 @@ import lombok.Data;
 
 @Service
 @Data
-public class UserService implements UserDetailsService {
+public class UserService {
 
+	@Autowired
 	private final UserMapper userMapper;
 	
 	// 회원목록
@@ -33,9 +32,6 @@ public class UserService implements UserDetailsService {
 	public int insertuser(@Valid UserDTO dto) {
 		return userMapper.insertuser(dto);
 	}
-	
-	// 02 - 로그인
-	
 	
 	// 03 - 회원정보 수정
 	
@@ -62,11 +58,6 @@ public class UserService implements UserDetailsService {
         return validatorResult;
     }
 
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 

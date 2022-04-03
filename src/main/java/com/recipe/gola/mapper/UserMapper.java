@@ -17,4 +17,7 @@ public interface UserMapper {
 	// 01 - 회원가입
 	public int insertuser(@Valid UserDTO dto);
 	
+	// 02 - 로그인
+	public UserDTO findByUserId(String userId);
+	
 }

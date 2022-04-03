@@ -1,23 +1,14 @@
 package com.recipe.gola.dto;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
-public class UserDTO implements UserDetails {
+public class UserDTO {
 
 	@NotBlank(message = "아이디를 입력해주세요.")
 	@Pattern(regexp = "[a-zA-Z0-9]{2,19}",
@@ -38,50 +29,4 @@ public class UserDTO implements UserDetails {
 	private String userEmail;
 	private String userAuth;
 	private LocalDateTime regdate;
-	
-	// 사용자의 권한을 콜렉션 형태로 변환
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		Set<GrantedAuthority> roles = new HashSet<>();
-		for(String role : userAuth.split(",")) {
-			roles.add(new SimpleGrantedAuthority(role));
-		}
-		return roles;
-	}
-	
-	// 사용자의 password를 반환
-	@Override
-	public String getPassword() {
-		return userPwd;
-	}
-	
-	// 사용자의 id를 반환
-	@Override
-	public String getUsername() {
-		return userId;
-	}
-	
-	// 계정 만료 여부 반환
-	@Override
-	public boolean isAccountNonExpired() {
-		return true;
-	}
-	
-	// 계정 잠금 여부 반환
-	@Override
-	public boolean isAccountNonLocked() {
-		return true;
-	}
-	
-	// 패스워드 만료 여부 반환
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return true;
-	}
-	
-	// 계정 사용 가능 여부 반환
-	@Override
-	public boolean isEnabled() {
-		return true;
-	}
 }
