@@ -12,10 +12,15 @@
     align-items: flex-start;
 }
 
+.joinSection span {
+	width:400px;
+	line-height: 2;
+}
+
 .joinSection input {
     width: 400px;
     height: 50px;
-    margin-top: 5px;
+    margin: 7px 0px;
     padding-left: 10px;
     cursor: pointer;
 }
