@@ -4,14 +4,17 @@
 		<br>
 		<div th:style="@{text-align: center;}">
 		    <form th:action="@{/logout}" method="post">
-		    	<button sec:authorize="isAnonymous()" th:href="@{/login}" type="submit">로그인</button>
+		    	<button sec:authorize="isAnonymous()" type="submit">로그인</button>
 		        <button sec:authorize="isAuthenticated()" type="submit">로그아웃</button>
 		    </form>
+		    <form th:action="@{/join}" method="get">
+		        <button sec:authorize="isAnonymous()" type="submit">회원가입</button>
+		    </form>
 		    <form th:action="@{/mypage?={userId}}" method="get">
-		        <button sec:authorize="isAuthenticated()" th:href="@{/mypage}" type="submit">마이페이지</button>
+		        <button sec:authorize="isAuthenticated()" type="submit">마이페이지</button>
 		    </form>
 		    <form th:action="@{/list}" method="get">
-		        <button sec:authorize="isAuthenticated()" th:href="@{/list}" type="submit">전체 회원정보</button>
+		        <button sec:authorize="hasAuthority('ADMIN')" type="submit">전체 회원정보</button>
 		    </form>
 		    <br>
 		</div>
