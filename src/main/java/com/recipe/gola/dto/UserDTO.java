@@ -1,6 +1,7 @@
 package com.recipe.gola.dto;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -28,5 +29,5 @@ public class UserDTO {
 	@Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,6}$", message = "올바르지 않은 이메일 형식입니다.")
 	private String userEmail;
 	private UserAuth userAuth;
-	private LocalDateTime regdate;
+	private String regdate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 }
