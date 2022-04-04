@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.recipe.gola.dto.UserDTO;
+import com.recipe.gola.security.auth.PrincipalDetails;
 import com.recipe.gola.service.UserService;
 
 import lombok.Data;
@@ -31,15 +33,6 @@ public class UserController {
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
-	// 회원목록
-	@GetMapping("list")
-	public String userlist(Model model) {
-		logger.info("전체 회원목록을 출력합니다.");
-		List<UserDTO> userlist = userService.userlist();
-		model.addAttribute("userlist", userlist);
-		return "user/userlist";
-	}
 	
 	// 01 - 회원가입
 	@GetMapping("join")
@@ -81,5 +74,12 @@ public class UserController {
 	// 03 - 로그아웃
 	@GetMapping("logout")
 	public void logout() {
+	}
+	
+	// 마이페이지
+	@GetMapping("/mypage")
+	public String mypage(@AuthenticationPrincipal PrincipalDetails principaldetail, Model model) {
+		model.addAttribute("dto", principaldetail.getDto());
+		return "user/mypage";
 	}
 }

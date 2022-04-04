@@ -4,6 +4,7 @@
 
 <mapper namespace="com.recipe.gola.mapper.UserMapper">
 
+	<!-- 관리자 회원 전체리스트 출력 -->
 	<select id="userlist" resultType="UserDTO">
 	<![CDATA[
 		SELECT *
@@ -21,11 +22,20 @@
 	</insert>
 	
 	<!-- 로그인 -->
-	<select id="findByUsername" resultType="userDTO">
+	<select id="findByUsername" resultType="UserDTO">
 	<![CDATA[
 		SELECT *
 		FROM user
 		WHERE userId=#{userId}
+	]]>
+	</select>
+	
+	<!-- 마이페이지 정보조회 -->
+	<select id="infouser" resultType="UserDTO">
+	<![CDATA[
+		select *
+		from user
+		where userId=#{userId}
 	]]>
 	</select>
 	

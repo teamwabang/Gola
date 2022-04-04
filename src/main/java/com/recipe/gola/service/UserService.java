@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +33,10 @@ public class UserService {
 		return userMapper.insertuser(dto);
 	}
 	
-	// 03 - 회원정보 수정
+	// 03 - 마이페이지 정보조회
+	public UserDTO infouser(String userId) {
+		return userMapper.infouser(userId);
+	}
 	
 	
 	// 04 - 회원탈퇴

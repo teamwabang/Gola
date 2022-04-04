@@ -1,8 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<header th:fragment="fr_header">
-		<div>
-			Header
+		<br>
+		<div th:style="@{text-align: center;}">
+		    <form th:action="@{/logout}" method="post">
+		    	<button sec:authorize="isAnonymous()" th:href="@{/login}" type="submit">로그인</button>
+		        <button sec:authorize="isAuthenticated()" type="submit">로그아웃</button>
+		    </form>
+		    <form th:action="@{/mypage?={userId}}" method="get">
+		        <button sec:authorize="isAuthenticated()" th:href="@{/mypage}" type="submit">마이페이지</button>
+		    </form>
+		    <form th:action="@{/list}" method="get">
+		        <button sec:authorize="isAuthenticated()" th:href="@{/list}" type="submit">전체 회원정보</button>
+		    </form>
+		    <br>
 		</div>
 	</header>
 	

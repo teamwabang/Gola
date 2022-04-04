@@ -7,7 +7,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.recipe.gola.security.auth.PrincipalDetailsService;
@@ -29,9 +28,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-				.antMatchers("/", "/login", "/join", "/list").permitAll()	// 누구나 접근 허용
-				.antMatchers("/user").access("hasRole('USER') or hasRole('ADMIN')")	// USER, ADMIN만 접근 가능
-				.antMatchers("/admin").hasRole("ADMIN")	// ADMIN만 접근 가능
+				.antMatchers("/", "/login", "/join").permitAll()	// 누구나 접근 허용
+				.antMatchers("/user/**").access("hasRole('USER') or hasRole('ADMIN')")	// USER, ADMIN만 접근 가능
+				.antMatchers("/admin/**").hasRole("ADMIN")	// ADMIN만 접근 가능
 				.anyRequest().authenticated()	// 나머지 요청들을 권한의 종류에 상관 없이 권한이 있어야 접근 가능
 			.and()
 				.formLogin()
@@ -56,8 +55,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	
 	@Override
-	  public void configure(AuthenticationManagerBuilder auth) throws Exception { // 9
-	    auth.userDetailsService(principalService).passwordEncoder(new BCryptPasswordEncoder()); 
+	  public void configure(AuthenticationManagerBuilder auth) throws Exception {
+	    auth.userDetailsService(principalService).passwordEncoder(passwordEncoder); 
 	   }
 	
 }
