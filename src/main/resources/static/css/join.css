@@ -1,8 +1,39 @@
-.join1 {
-	font-size: 30px;
-	font-weight: 800;
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-.join2 {
-	font-size: 16px;
-	color: blue;
+
+.joinSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.joinSection input {
+    width: 400px;
+    height: 50px;
+    margin-top: 5px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.joinSection label {
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.joinSection label:first-child {
+    margin-top: 0px;
+}
+
+.joinFooterBtn {
+    background-color: black;
+    border: none;
+}
+
+.joinFooterBtn:hover {
+    background-color: rgba(0,0,0,0.5);
 }
