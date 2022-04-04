@@ -24,10 +24,10 @@
     <!-- end of import header -->
 	
 	<div th:style="${'text-align: center;'}">
-    	<form th:action="@{/login}" method="get">
+    	<form th:action="@{/login}" method="post">
 	 	<h2 class="join1">로그인</h2>
-          <input type="text" class="id" id="userId" name="userId" placeholder="아이디" autofocus /><br />
-          <input type="password" class="pw" id="userPwd" name="userPwd" placeholder="암호" /><br />
+          <input type="text" class="id" id="userId" name="username" placeholder="아이디" autofocus /><br>
+          <input type="password" class="pw" id="userPwd" name="password" placeholder="암호" /><br>
           <br><br>
           <button type="submit" class="login" id="btnLogin">로그인</button>
 	 	</form>

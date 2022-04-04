@@ -1,10 +1,16 @@
 package com.recipe.gola.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import com.recipe.gola.security.auth.PrincipalDetailsService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -13,18 +19,26 @@ import lombok.RequiredArgsConstructor;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private PrincipalDetailsService principalService;
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
 				.antMatchers("/", "/login", "/join", "/list").permitAll()	// 누구나 접근 허용
-				.antMatchers("/user").hasRole("USER")	// USER, ADMIN만 접근 가능
+				.antMatchers("/user").access("hasRole('USER') or hasRole('ADMIN')")	// USER, ADMIN만 접근 가능
 				.antMatchers("/admin").hasRole("ADMIN")	// ADMIN만 접근 가능
 				.anyRequest().authenticated()	// 나머지 요청들을 권한의 종류에 상관 없이 권한이 있어야 접근 가능
 			.and()
 				.formLogin()
 					.loginPage("/login")	// 로그인 페이지 링크
+					.loginProcessingUrl("/login")
 					.defaultSuccessUrl("/")	// 로그인 성공 후 리다이렉트 주소
+					.failureUrl("/login")
 			.and()
 				.logout()
 					.logoutSuccessUrl("/login")	// 로그아웃 성공시 리다이렉트 주소
@@ -40,5 +54,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) {
 		web.ignoring().antMatchers("/css/**", "/js/**", "/images/**");
 	}
+	
+	@Override
+	  public void configure(AuthenticationManagerBuilder auth) throws Exception { // 9
+	    auth.userDetailsService(principalService).passwordEncoder(new BCryptPasswordEncoder()); 
+	   }
 	
 }
