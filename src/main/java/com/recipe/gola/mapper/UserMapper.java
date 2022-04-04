@@ -20,4 +20,7 @@ public interface UserMapper {
 	// 02 - 로그인
 	public UserDTO findByUsername(String userId);
 	
+	// 03 - 마이페이지 정보조회
+	public UserDTO infouser(String userId);
+	
 }
