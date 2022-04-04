@@ -1,4 +1,4 @@
-package com.recipe.gola.security;
+package com.recipe.gola.security.auth;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,7 +15,7 @@ import lombok.Data;
 public class PrincipalDetails implements UserDetails {
 
 	@Autowired
-	private final UserDTO dto;
+	private UserDTO dto;
 	
 	public PrincipalDetails(UserDTO dto) {
 		this.dto = dto;
@@ -28,7 +28,7 @@ public class PrincipalDetails implements UserDetails {
 		collect.add(new GrantedAuthority() {
 			@Override
 			public String getAuthority() {
-				return dto.getUserAuth();
+				return dto.getUserAuth().toString();
 			}
 		});
 		return collect;

@@ -21,7 +21,7 @@
 	</insert>
 	
 	<!-- 로그인 -->
-	<select id="findByUserId">
+	<select id="findByUsername" resultType="userDTO">
 	<![CDATA[
 		SELECT *
 		FROM user

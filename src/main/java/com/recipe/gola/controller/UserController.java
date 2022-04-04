@@ -64,11 +64,11 @@ public class UserController {
             return "user/join";
         }
         
-        logger.info("회원가입에 성공하였습니다.");
         String rawPwd = dto.getUserPwd();
         String encPwd = bCryptPasswordEncoder.encode(rawPwd);
         dto.setUserPwd(encPwd);
         userService.insertuser(dto);
+        logger.info("회원가입에 성공하였습니다.");
         return "redirect:/login";
     }
 	
@@ -76,5 +76,10 @@ public class UserController {
 	@GetMapping("login")
 	public String login() {
 		return "user/login";
+	}
+	
+	// 03 - 로그아웃
+	@GetMapping("logout")
+	public void logout() {
 	}
 }
