@@ -14,7 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.recipe.gola.common.validate.Validate;
 import com.recipe.gola.dto.UserDTO;
 import com.recipe.gola.security.auth.PrincipalDetails;
 import com.recipe.gola.service.UserService;
@@ -31,9 +33,12 @@ public class UserController {
 	private final UserService userService;
 	
 	@Autowired
+	private final Validate validate;
+	
+	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
-	// 01 - 회원가입
+	// 회원가입
 	@GetMapping("/")
 	public String userjoin() {
 		logger.info("회원가입을 시도 중 입니다.");
@@ -47,7 +52,7 @@ public class UserController {
             model.addAttribute("insertuser", dto);
 
             // 유효성 통과 못한 필드와 메시지를 핸들링
-            Map<String, String> validatorResult = userService.validateHandling(errors);
+            Map<String, String> validatorResult = validate.validateHandling(errors);
             for (String key : validatorResult.keySet()) {
                 model.addAttribute(key, validatorResult.get(key));
             }
@@ -64,13 +69,13 @@ public class UserController {
         return "redirect:/login";
     }
 	
-	// 02 - 로그인
+	// 로그인
 	@GetMapping("login")
 	public String login() {
 		return "user/login";
 	}
 	
-	// 03 - 로그아웃
+	// 로그아웃
 	@GetMapping("logout")
 	public void logout() {
 	}
@@ -80,5 +85,15 @@ public class UserController {
 	public String mypage(@AuthenticationPrincipal PrincipalDetails principaldetail, Model model) {
 		model.addAttribute("dto", principaldetail.getDto());
 		return "user/mypage";
+	}
+	
+	// 마이페이지 회원정보 수정
+	@PostMapping("/mypage/update")
+	public ModelAndView updateresult(@Valid UserDTO dto) {
+		int result = userService.updateuser(dto);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("result", result);
+		mv.setViewName("mypage");
+		return mv;
 	}
 }
