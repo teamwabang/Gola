@@ -42,10 +42,10 @@ public class UserController {
 	@GetMapping("join")
 	public String userjoin() {
 		logger.info("회원가입을 시도 중 입니다.");
-		return "index";
+		return "user/join";
 	}
 	
-	@PostMapping("/")
+	@PostMapping("join")
 	public String userjoin(@Valid UserDTO dto, Errors errors, Model model) {
         if (errors.hasErrors()) {
             // 회원가입 실패시, 입력 데이터를 유지
@@ -58,7 +58,7 @@ public class UserController {
             }
 
             logger.error("회원가입에 실패하였습니다.");
-            return "index";
+            return "user/join";
         }
         
         String rawPwd = dto.getUserPwd();
@@ -71,12 +71,14 @@ public class UserController {
 	
 	// 로그인
 	@GetMapping("login")
-	public void login() {
+	public String login() {
+		return "index";
 	}
 	
 	// 로그아웃
 	@GetMapping("logout")
-	public void logout() {
+	public String logout() {
+		return "index";
 	}
 	
 	// 마이페이지
