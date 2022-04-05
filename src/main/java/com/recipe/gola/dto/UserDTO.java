@@ -28,6 +28,7 @@ public class UserDTO {
 	@NotBlank(message = "이메일을 입력해주세요.")
 	@Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,6}$", message = "올바르지 않은 이메일 형식입니다.")
 	private String userEmail;
+	private String emailConfirm;
 	private UserAuth userAuth;
 	private String regdate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 }
