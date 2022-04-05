@@ -66,13 +66,13 @@ public class UserController {
         dto.setUserPwd(encPwd);
         userService.insertuser(dto);
         logger.info("회원가입에 성공하였습니다.");
-        return "redirect:/login";
+        return "redirect:/";
     }
 	
 	// 로그인
 	@GetMapping("login")
 	public String login() {
-		return "user/login";
+		return "index";
 	}
 	
 	// 로그아웃

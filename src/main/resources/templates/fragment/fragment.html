@@ -5,12 +5,14 @@
 		<div th:style="@{text-align: center;}">
 			<a th:href="@{/}" th:style="@{font-size: 20px}">골라</a>
 		    <form th:action="@{/logout}" method="post">
-		    	<button sec:authorize="isAnonymous()" type="submit">로그인</button>
+			    <button sec:authorize="isAnonymous()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+					로그인
+				</button>
 		        <button sec:authorize="isAuthenticated()" type="submit">로그아웃</button>
 		    </form>
-		    <form th:action="@{/}" method="get">
-		        <button sec:authorize="isAnonymous()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-		        	회원가입
+		    <form th:action="@{/join}" method="get">
+		    	<button sec:authorize="isAnonymous()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#joinModal">
+					회원가입
 				</button>
 		    </form>
 		    <form th:action="@{/mypage?={userId}}" method="get">
@@ -22,8 +24,36 @@
 		    <br>
 		</div>
 		
-		<!-- Modal -->
-		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<!-- loginModal -->
+		<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">골라에 오신 것을 환영합니다.</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		        <div class="modal-body" th:style="${'text-align: center;'}">
+			    	<form th:action="@{/login}" method="post">		    	
+				    	<div class="loginSection">
+				    		<div class="loginLabel">
+					 			<h2>로그인</h2>
+					 		</div>
+				          	<input type="text" class="id" id="userId" name="username" placeholder="아이디" autofocus /><br>
+				          	<input type="password" class="pw" id="userPwd" name="password" placeholder="암호" /><br>
+				         	 <button type="submit" class="login btn btn-secondary loginFooterBtn" id="btnLogin">로그인</button>
+				         	 <div class="or">
+					         	 <button class="socialLogin">네이버/카카오 버튼뽑아서</button>
+					         	 <button class="socialLogin">넣어야하는데 이미지 깨짐 ㅜ</button>     			         	 
+				          </div>
+				          </div>		   
+				 	</form>	 	
+	    		</div>
+		    </div>
+		  </div>
+		</div>
+		
+		<!-- joinModal -->
+		<div class="modal fade" id="joinModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
