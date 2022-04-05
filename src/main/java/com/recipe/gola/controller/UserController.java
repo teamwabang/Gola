@@ -39,7 +39,7 @@ public class UserController {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	// 회원가입
-	@GetMapping("/")
+	@GetMapping("join")
 	public String userjoin() {
 		logger.info("회원가입을 시도 중 입니다.");
 		return "index";
@@ -71,8 +71,7 @@ public class UserController {
 	
 	// 로그인
 	@GetMapping("login")
-	public String login() {
-		return "index";
+	public void login() {
 	}
 	
 	// 로그아웃
@@ -81,14 +80,14 @@ public class UserController {
 	}
 	
 	// 마이페이지
-	@GetMapping("/mypage")
+	@GetMapping("mypage")
 	public String mypage(@AuthenticationPrincipal PrincipalDetails principaldetail, Model model) {
 		model.addAttribute("dto", principaldetail.getDto());
 		return "user/mypage";
 	}
 	
 	// 마이페이지 회원정보 수정
-	@PostMapping("/mypage/update")
+	@PostMapping("mypage/update")
 	public ModelAndView updateresult(@Valid UserDTO dto) {
 		int result = userService.updateuser(dto);
 		ModelAndView mv = new ModelAndView();
