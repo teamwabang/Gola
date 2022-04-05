@@ -34,13 +34,13 @@ public class UserController {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	// 01 - 회원가입
-	@GetMapping("join")
+	@GetMapping("/")
 	public String userjoin() {
 		logger.info("회원가입을 시도 중 입니다.");
-		return "user/join";
+		return "index";
 	}
 	
-	@PostMapping("join")
+	@PostMapping("/")
 	public String userjoin(@Valid UserDTO dto, Errors errors, Model model) {
         if (errors.hasErrors()) {
             // 회원가입 실패시, 입력 데이터를 유지
@@ -53,7 +53,7 @@ public class UserController {
             }
 
             logger.error("회원가입에 실패하였습니다.");
-            return "user/join";
+            return "index";
         }
         
         String rawPwd = dto.getUserPwd();
