@@ -14,9 +14,15 @@
     <script type="text/javascript" src="/js/chatbot.js"></script>
 	<script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function() {
-			
-		});
+		$(function() {
+    		$("#btnUpdate").click(function() {
+	    		if(confirm("회원정보를 수정하시겠습니까?")) {
+		    		// 폼 내부의 데이터를 전송할 주소
+		    		document.form1.action="${path}/team3/update";
+		    		document.form1.submit();	// 제출
+	    		}
+    		});
+    	});
 	</script>
 
 </head>
@@ -40,6 +46,8 @@
 		    	<br>
 		    	<label>이메일</label>
 		    	<input name="userEmail" th:value="${dto.getUserEmail() }" />
+		    	<br><br>
+		    	<button id="btnUpdate">회원정보 변경</button>
 		   	</form>
 	    </div>
 	</div>

@@ -39,4 +39,12 @@
 	]]>
 	</select>
 	
+	<!-- 마이페이지 회원정보 수정 -->
+	<update id="updateuser" parameterType="UserDTO">
+		update user
+		set
+		userPwd=#{userPwd}, userName=#{userNickname}, userEmail=#{userEmail}
+		where userId=#{userId}
+	</update>
+	
 </mapper>

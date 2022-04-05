@@ -1,15 +1,11 @@
 package com.recipe.gola.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.Errors;
-import org.springframework.validation.FieldError;
 
 import com.recipe.gola.dto.UserDTO;
 import com.recipe.gola.mapper.UserMapper;
@@ -28,18 +24,21 @@ public class UserService {
 		return userMapper.userlist();
 	}
 	
-	// 01 - 회원가입
+	// 회원가입
 	public int insertuser(@Valid UserDTO dto) {
 		return userMapper.insertuser(dto);
 	}
 	
-	// 03 - 마이페이지 정보조회
+	// 마이페이지 정보조회
 	public UserDTO infouser(String userId) {
 		return userMapper.infouser(userId);
 	}
 	
 	
-	// 04 - 회원탈퇴
+	// 마이페이지 회원정보 수정
+	public int updateuser(@Valid UserDTO dto) {
+		return userMapper.updateuser(dto);
+	}
 	
 	
 	//
@@ -49,17 +48,6 @@ public class UserService {
 	
 	
 	//
-	
-	public Map<String, String> validateHandling(Errors errors) {
-        Map<String, String> validatorResult = new HashMap<>();
-
-        for (FieldError error : errors.getFieldErrors()) {
-            String validKeyName = String.format("valid_%s", error.getField());
-            validatorResult.put(validKeyName, error.getDefaultMessage());
-        }
-
-        return validatorResult;
-    }
 
 
 
