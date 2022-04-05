@@ -1,0 +1,66 @@
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginLabel {
+	width:400px;
+	text-align: left;
+}
+
+.id, .pw, .login {
+    width: 400px;
+    height: 50px;
+    margin: 7px 0px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.loginSection h2 {
+	font-weight: 600;
+    margin-top: 5px;
+}
+
+
+.loginFooterBtn {
+    background-color: black;
+    border: none;
+}
+
+.loginFooterBtn:hover {
+    background-color: rgba(0,0,0,0.5);
+}
+
+.or {
+	display:flex;
+	flex-direction:column;
+	border-top:1px solid rgba(0,0,0,0.3);
+	margin-top:17px;
+	padding-top:17px;
+}
+
+.socialLogin {	
+	border-radius:12px;
+	color:white;
+	border:none;
+	width:400px;
+	height:50px;
+}
+
+.socialLogin:first-child {
+	background-color:#03C759;
+	margin-bottom:20px;
+}
+
+.socialLogin:last-child {
+	background-color:#FEE500;
+}
