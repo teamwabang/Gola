@@ -3,12 +3,15 @@
 	<header th:fragment="fr_header">
 		<br>
 		<div th:style="@{text-align: center;}">
+			<a th:href="@{/}" th:style="@{font-size: 20px}">골라</a>
 		    <form th:action="@{/logout}" method="post">
 		    	<button sec:authorize="isAnonymous()" type="submit">로그인</button>
 		        <button sec:authorize="isAuthenticated()" type="submit">로그아웃</button>
 		    </form>
-		    <form th:action="@{/join}" method="get">
-		        <button sec:authorize="isAnonymous()" type="submit">회원가입</button>
+		    <form th:action="@{/}" method="get">
+		        <button sec:authorize="isAnonymous()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+		        	회원가입
+				</button>
 		    </form>
 		    <form th:action="@{/mypage?={userId}}" method="get">
 		        <button sec:authorize="isAuthenticated()" type="submit">마이페이지</button>
@@ -18,10 +21,59 @@
 		    </form>
 		    <br>
 		</div>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">회원가입</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		        <form th:action="@{/}" th:object="${join}" method="post">
+		      <div class="modal-body">
+			<div class="joinSection">
+		 		<label>* 아이디</label>
+		 		<input type="text" name="userId" id="userId" maxlength="10" placeholder="아이디" autofocus>
+		 		<span th:style="${'color: red; font-size:11px;'}" th:text="${valid_userId}"></span>
+		 	</div>
+		 	<br>
+		 	<div class="joinSection">
+		 		<label>* 비밀번호</label>
+		 		<input type="password" name="userPwd" id="userPwd" maxlength="20" placeholder="비밀번호">
+		 		<span th:style="${'color: red; font-size:11px;'}" th:text="${valid_userPwd}"></span>
+		 	</div>
+		 	<br>
+		 	<div class="joinSection">
+		 		<label>* 비밀번호 확인</label>
+		 		<input type="password" name="confirm" id="confirm" maxlength="20" placeholder="비밀번호 확인">
+		 	</div>
+		 	<br>
+		 	<div class="joinSection">
+		 		<label>* 닉네임</label>
+		 		<input type="text" name="userNickname" id="userNickname" maxlength="10" placeholder="닉네임">
+		 		<span th:style="${'color: red; font-size:11px;'}" th:text="${valid_userNicname}"></span>
+		 	</div>
+		 	<br>
+		 	<div class="joinSection">
+		 		<label>* 이메일</label>
+		 		<input type="text" name="userEmail" id="userEmail" maxlength="50" placeholder="이메일">
+		 		<span th:style="${'color: red; font-size:11px;'}" th:text="${valid_userEmail}"></span>
+		 	</div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="submit" class="btn btn-secondary joinFooterBtn" data-bs-dismiss="modal">회원가입</button>
+		        <button type="reset" class="btn btn-secondary joinFooterBtn">초기화</button>
+		      </div>
+		      </form>
+		    </div>
+		  </div>
+		</div>
 	</header>
 	
 	<footer th:fragment="fr_footer">
-		<div>
+		<div th:style="@{text-align: center}">
+		<br>
 			Footer
 		</div>
 		
