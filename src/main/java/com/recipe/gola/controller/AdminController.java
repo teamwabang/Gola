@@ -9,10 +9,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.recipe.gola.dto.UserDTO;
-import com.recipe.gola.service.UserService;
+import com.recipe.gola.service.PrincipalDetialsService;
 
 import lombok.Data;
 
@@ -23,13 +22,13 @@ public class AdminController {
 private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
-	private final UserService userService;
+	private final PrincipalDetialsService userService;
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	// 회원목록
-	@GetMapping("list")
+	@GetMapping("admin/list")
 	public String userlist(Model model) {
 		logger.info("전체 회원목록을 출력합니다.");
 		List<UserDTO> userlist = userService.userlist();

@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.recipe.gola.security.auth.PrincipalDetailsService;
+import com.recipe.gola.service.PrincipalDetialsService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
-	private PrincipalDetailsService principalService;
+	private PrincipalDetialsService userService;
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 				.antMatchers("/", "/login", "/join").permitAll()	// 누구나 접근 허용
 				.antMatchers("/user/**").access("hasAuthority('USER') or hasAuthority('ADMIN')")	// USER, ADMIN만 접근 가능
-				.antMatchers("/list").hasAuthority("ADMIN")	// ADMIN만 접근 가능
+				.antMatchers("/admin/**").hasAuthority("ADMIN")	// ADMIN만 접근 가능
 				.anyRequest().authenticated()	// 나머지 요청들을 권한의 종류에 상관 없이 권한이 있어야 접근 가능
 			.and()
 				.formLogin()
@@ -55,8 +55,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	
 	@Override
-	  public void configure(AuthenticationManagerBuilder auth) throws Exception {
-	    auth.userDetailsService(principalService).passwordEncoder(passwordEncoder); 
-	   }
+	public void configure(AuthenticationManagerBuilder auth) throws Exception {
+	    auth.userDetailsService(userService).passwordEncoder(passwordEncoder);
+	}
 	
 }

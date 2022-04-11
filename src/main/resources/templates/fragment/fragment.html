@@ -31,7 +31,7 @@
 					</form>
 				</li>
 				<li sec:authorize="hasAuthority('ADMIN')" th:style="@{display:inline-block}">
-					<form th:action="@{/list}" method="get">
+					<form th:action="@{admin/list}" method="get">
 						<button class="btn btn-primary">전체 회원목록</button>
 					</form>
 				</li>

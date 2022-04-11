@@ -18,14 +18,12 @@ public interface UserMapper {
 	public int insertuser(@Valid UserDTO dto);
 	
 	// 로그인
-	public UserDTO findByUsername(String userId);
+	UserDTO findByUsername(String userId);
 	
 	// 마이페이지 정보조회
 	public UserDTO infouser(String userId);
 	
 	// 마이페이지 회원정보 수정
 	public int updateuser(@Valid UserDTO dto);
-	
-	
 	
 }
