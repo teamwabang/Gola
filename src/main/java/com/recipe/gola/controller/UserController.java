@@ -2,6 +2,7 @@ package com.recipe.gola.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -18,8 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.recipe.gola.common.validate.Validate;
 import com.recipe.gola.dto.UserDTO;
-import com.recipe.gola.security.auth.PrincipalDetails;
-import com.recipe.gola.service.UserService;
+import com.recipe.gola.service.PrincipalDetails;
+import com.recipe.gola.service.PrincipalDetialsService;
 
 import lombok.Data;
 
@@ -30,7 +31,7 @@ public class UserController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
-	private final UserService userService;
+	private final PrincipalDetialsService userService;
 	
 	@Autowired
 	private final Validate validate;
@@ -77,24 +78,31 @@ public class UserController {
 	
 	// 로그아웃
 	@GetMapping("logout")
-	public String logout() {
-		return "index";
+	public ModelAndView logout(HttpSession session) {
+		Object object = session.getAttribute("login");
+		
+		if(object != null) {
+			session.removeAttribute("login");
+			session.invalidate();
+		}
+		return new ModelAndView("redirect:/");
 	}
 	
 	// 마이페이지
 	@GetMapping("mypage")
 	public String mypage(@AuthenticationPrincipal PrincipalDetails principaldetail, Model model) {
+		logger.info("마이페이지로 이동합니다.");
+		logger.info("유저 아이디 : " + principaldetail.getUsername());
 		model.addAttribute("dto", principaldetail.getDto());
 		return "user/mypage";
 	}
 	
 	// 마이페이지 회원정보 수정
-	@PostMapping("mypage/update")
-	public ModelAndView updateresult(@Valid UserDTO dto) {
-		int result = userService.updateuser(dto);
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("result", result);
-		mv.setViewName("mypage");
-		return mv;
+	@PostMapping("mypage/edit/info")
+	public String infouser(@AuthenticationPrincipal PrincipalDetails principaldetail, Model model) {
+		logger.info(principaldetail.getUsername() + "님이 회원정보를 수정합니다.");
+		model.addAttribute("dto", principaldetail.getDto());
+		return "user/edit_info";
 	}
+		
 }
