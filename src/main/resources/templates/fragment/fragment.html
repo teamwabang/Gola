@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
+
 	<header th:fragment="fr_header">
+
 	  <div class="headertop">
     	<div class="headerlogo">
     	  <img src="" class="headerlogo">
@@ -52,10 +54,25 @@
 	</header>
 	
 	<footer th:fragment="fr_footer">
-		<div th:style="@{text-align: center}">
-		<br>
-			Footer
-		</div>
+		 <div class="footermain">
+    <div>
+      <ul class="footernav">
+        <li><a th:href="@{/}">HOME</a></li>
+        <li><a th:href="@{/}">ABOUT</a></li>
+        <li><a th:href="@{/}">TEAM</a></li>
+        <li><a th:href="@{/}">GitHub</a></li>
+      </ul>
+    </div>
+    <div class="footerinfo">
+      <span class="footername">@2022 DESIGN BY WABANG </span>
+
+      <span><a href="javascript:window.scrollTo(0,0);"><i class="fa-solid fa-circle-chevron-up"></i> TOP</a></span>
+    </div>
+  </div>
+
+  <div class="footerbottom">
+    ## 빈공간
+  </div>
 		
 	</footer>
 </body>

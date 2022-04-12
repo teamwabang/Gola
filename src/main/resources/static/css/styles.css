@@ -3,7 +3,7 @@
 @import "index.css";
 
 @import "header.css";
-/*@import "footer.css";*/
+@import "footer.css";
 
 @import "mypage.css";
 @import "login.css";
