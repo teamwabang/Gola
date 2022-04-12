@@ -35,7 +35,7 @@
       </div>
       <nav class="infoNav">
           <form th:action="@{mypage/update}" method="post">
-			    	<div th:text="${dto.getUserId() }" class="mainUserMainId"></div>
+			    	<input name="userId" th:value="${dto.getUserId() }" class="mainUserMainId" readonly><br>
 			    	<input type="password" name="userPwd" placeholder="비밀번호 입력"><br>
 			    	<input type="text" name="userNickname" placeholder="닉네임 입력"><br>
 			    	<input type="text" name="userEmail" placeholder="이메일 입력"><br>

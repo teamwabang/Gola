@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.recipe.gola.common.validate.Validate;
 import com.recipe.gola.config.auth.PrincipalDetails;
+import com.recipe.gola.dto.UserAuth;
 import com.recipe.gola.dto.UserDTO;
 import com.recipe.gola.service.UserService;
 
@@ -108,9 +109,13 @@ public class UserController {
 	@PostMapping("mypage/update")
 	public String updatePOST(@Valid UserDTO dto) {
 		logger.info("회원정보수정 입력페이지 POST");
-
+		
+		String rawPwd = dto.getUserPwd();
+        String encPwd = bCryptPasswordEncoder.encode(rawPwd);
+        dto.setUserPwd(encPwd);
+        dto.setUserAuth(UserAuth.USER);
 		userService.updateuser(dto);
-		return "redirect:/mypage";
+		return "redirect:/";
 	}
 	
 		
