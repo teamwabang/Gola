@@ -57,9 +57,9 @@
 
 .headertop {
     display: flex;
-    margin-top: 20px ;
-    display:inline-block;
+    margin: 20px auto ;
     text-align: center;
+    justify-content: center;
     
 }
 
