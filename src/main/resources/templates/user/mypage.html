@@ -8,30 +8,88 @@
 
 	<!-- CSS -->
     <link rel="stylesheet" href="/css/styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     
     <!-- JavaScript -->
     <script type="text/javascript" src="/js/chatbot.js"></script>
 	<script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function() {
-			
-		});
+		
 	</script>
+	
 
 </head>
 <body>
-	
 	<!-- import header -->
     <div th:replace="fragment/fragment :: fr_header"></div>
     <!-- end of import header -->
-	
-	<div>
-    	
+    <header class="shadow p-3 mb-5 bg-body rounded">
+      <div class="goIndex">
+        <h3>Gola Home</h3>
+      </div>
+      <div class="InfoContents">
+      <div class="userInfo">
+        <img class="userPic" src="#" />
+        <h2 th:text="${dto.getUserNickname() }" class="userName"></h2>
+        <h1 th:text="${dto.getUserEmail() }" class="userEmail"></h1>
+      </div>
+      <nav class="infoNav">
+          <form th:action="@{mypage/update}" method="post">
+			    	<div th:text="${dto.getUserId() }" class="mainUserMainId"></div>
+			    	<input type="password" name="userPwd" placeholder="비밀번호 입력"><br>
+			    	<input type="text" name="userNickname" placeholder="닉네임 입력"><br>
+			    	<input type="text" name="userEmail" placeholder="이메일 입력"><br>
+			    	<input type="submit" id="change-info-btn" value="회원정보 변경">
+			    </form>
+      </nav>
+      <nav class="infoFunction">
+        <ul>
+          <li class="infoLogout">로그아웃</li>
+        </ul>
+      </nav>
     </div>
-    
+    </header>
+
+    <main>
+      <div class="myPageMain">
+        <div class="mainUserInfo">
+          <div class="mainTitle"> 기본정보
+          </div>
+          <div class="mainUserMainInfo">
+            <img class="mainUserMainPic" src="#">
+          <div class="mainUserMainIdAndEmail">
+            <div th:text="${dto.getUserId() }" class="mainUserMainId"></div>
+            <div th:text="${dto.getUserEmail() }" class="mainUserMainId"></div>
+          </div>
+          </div>
+          <div th:text="${dto.getUserNickname() }" class="mainUserNickname"></div>
+        </div>  
+      </div>
+      <div class="myPageMain">
+        <div class="mainUserInfo">
+          <div class="mainTitle RecipeTitle"> 마이레시피 </div>        
+          <ul class="myRecipes">
+            <li class="myRecipe">1</li>
+            <li class="myRecipe">2</li>
+            <li class="myRecipe">3</li>
+            <li class="myRecipe">4</li>
+            <li class="myRecipe">5</li>
+            <li class="myRecipe">6</li>
+            <li class="myRecipe">7</li>
+            <li class="myRecipe">8</li>
+          </ul>
+        </div>    
+      </div>    
+    </main>
     <!-- import footer -->
-    <div th:replace="fragment/fragment :: _footer"></div>
+    <div th:replace="fragment/fragment :: fr_footer"></div>
     <!-- end of import footer -->
+    
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<!-- Option 2: Separate Popper and Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
 </body>
 </html>
