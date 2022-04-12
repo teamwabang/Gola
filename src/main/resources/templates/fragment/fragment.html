@@ -2,39 +2,48 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
 	<header th:fragment="fr_header">
-		<br>
-		<div th:style="@{text-align:center;}">
+	  <div class="headertop">
+    	<div class="headerlogo">
+    	  <img src="" class="headerlogo">
+  	    </div>
+	    <div class="headernav">
+		<div class="gnb">
+		   <a th:href="@{/}" data-link="골라"></a>
+	        <a th:href="@{/}" data-link="about"></a>
+	        <a th:href="@{/}" data-link="레시피보기"></a>
+	        <a th:href="@{/}" data-link="리뷰게시판"></a>
+	     </div>
+		<div class="gnb2">
 			<ul>
-				<li th:style="@{margin-bottom:20px}">
-					<a th:href="@{/}" th:style="@{font-size:30px}">골라</a>
-				</li>
-				<li sec:authorize="isAuthenticated()" th:style="@{display:inline-block}">
+				<li sec:authorize="isAuthenticated()">
 					<form th:action="@{/logout}" method="post">
-				        <button class="btn btn-primary">로그아웃</button>
+				        <button >로그아웃</button>
 				    </form>
 				</li>
-				<li sec:authorize="isAnonymous()" th:style="@{display:inline-block}">
-					<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+				<li sec:authorize="isAnonymous()" >
+					<button data-bs-toggle="modal" data-bs-target="#loginModal">
 						로그인
 					</button>
 				</li>
-				<li sec:authorize="isAnonymous()" th:style="@{display:inline-block}">
-					<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+				<li sec:authorize="isAnonymous()" >
+					<button data-bs-toggle="modal" data-bs-target="#staticBackdrop">
 						회원가입
 					</button>
 				</li>
-				<li sec:authorize="isAuthenticated()" th:style="@{display:inline-block}">
+				<li sec:authorize="isAuthenticated()" >
 					<form th:action="@{/mypage}" method="get">
-						<button class="btn btn-primary">마이페이지</button>
+						<button>마이페이지</button>
 					</form>
 				</li>
-				<li sec:authorize="hasAuthority('ADMIN')" th:style="@{display:inline-block}">
+				<li sec:authorize="hasAuthority('ADMIN')">
 					<form th:action="@{admin/list}" method="get">
-						<button class="btn btn-primary">전체 회원목록</button>
+						<button>전체 회원목록</button>
 					</form>
 				</li>
 			</ul>
 		</div>
+	    </div>
+	    </div>
 		
 		<div th:insert="fragment/loginModal :: fr_loginModal"></div>
 		
