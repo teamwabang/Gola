@@ -2,8 +2,6 @@ package com.recipe.gola.mapper;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.apache.ibatis.annotations.Mapper;
 
 import com.recipe.gola.dto.UserDTO;
@@ -15,7 +13,7 @@ public interface UserMapper {
 	public List<UserDTO> userlist();
 	
 	// 회원가입
-	public int insertuser(@Valid UserDTO dto);
+	public int insertuser(UserDTO dto);
 	
 	// 로그인
 	UserDTO findByUsername(String userId);
@@ -24,6 +22,6 @@ public interface UserMapper {
 	public UserDTO infouser(String userId);
 	
 	// 마이페이지 회원정보 수정
-	public int updateuser(@Valid UserDTO dto);
+	public void updateuser(UserDTO dto);
 	
 }

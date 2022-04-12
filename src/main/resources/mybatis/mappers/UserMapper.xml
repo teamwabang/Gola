@@ -40,11 +40,13 @@
 	</select>
 	
 	<!-- 마이페이지 회원정보 수정 -->
-	<update id="updateuser">
+	<update id="updateuser" parameterType="UserDTO">
+	<![CDATA[
 		update user
 		set
-		userNickname=#{userNickname}, userEmail=#{userEmail}
+		userPwd=#{userPwd}, userNickname=#{userNickname}, userEmail=#{userEmail}
 		where userId=#{userId}
+	]]>
 	</update>
 	
 	<!-- 비밀번호 변경 -->
@@ -59,7 +61,7 @@
 	<delete id="deleteuser">
 		delete
 		from user
-		where userId=#{userId}
+		where userId=#{userId} and userPwd=#{userPwd}
 	</delete>
 	
 	<!-- 비밀번호 체크 -->

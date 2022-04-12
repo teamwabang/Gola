@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.recipe.gola.dto.UserDTO;
-import com.recipe.gola.service.PrincipalDetialsService;
+import com.recipe.gola.service.UserService;
 
 import lombok.Data;
 
@@ -22,7 +22,7 @@ public class AdminController {
 private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
-	private final PrincipalDetialsService userService;
+	private final UserService userService;
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
