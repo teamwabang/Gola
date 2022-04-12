@@ -20,37 +20,67 @@
 
 </head>
 <body>
-	
 	<!-- import header -->
     <div th:replace="fragment/fragment :: fr_header"></div>
     <!-- end of import header -->
-	
-	<div>
-		<p th:style="@{text-align: center; font-size:20px;}">기본 회원정보</p>
-		<div th:style="@{text-align: center;}">
-				<label>아이디</label>
-		    	<strong th:text="${dto.getUserId() }"></strong><br>
-		    	<label>비밀번호</label>
-	    		<strong>********</strong><br>
-		    	<label>닉네임</label>
-		    	<strong th:text="${dto.getUserNickname() }"></strong><br>
-		    	<label>이메일</label>
-		    	<strong th:text="${dto.getUserEmail() }"></strong>
-		    	
-		    	<br>
-		    	<br>
-		    	<br>
-		    	
-		    	<form th:action="@{mypage/update}" method="post">
-			    	<input type="text" name="userId" placeholder="아이디 입력"><br>
+    <header class="shadow p-3 mb-5 bg-body rounded">
+      <div class="goIndex">
+        <h3>Gola Home</h3>
+      </div>
+      <div class="InfoContents">
+      <div class="userInfo">
+        <img class="userPic" src="#" />
+        <h2 th:text="${dto.getUserNickname() }" class="userName"></h2>
+        <h1 th:text="${dto.getUserEmail() }" class="userEmail"></h1>
+      </div>
+      <nav class="infoNav">
+          <form th:action="@{mypage/update}" method="post">
+			    	<div th:text="${dto.getUserId() }" class="mainUserMainId"></div>
 			    	<input type="password" name="userPwd" placeholder="비밀번호 입력"><br>
 			    	<input type="text" name="userNickname" placeholder="닉네임 입력"><br>
 			    	<input type="text" name="userEmail" placeholder="이메일 입력"><br>
 			    	<input type="submit" id="change-info-btn" value="회원정보 변경">
 			    </form>
-			</div>	
-		</div>
-    
+      </nav>
+      <nav class="infoFunction">
+        <ul>
+          <li class="infoLogout">로그아웃</li>
+        </ul>
+      </nav>
+    </div>
+    </header>
+
+    <main>
+      <div class="myPageMain">
+        <div class="mainUserInfo">
+          <div class="mainTitle"> 기본정보
+          </div>
+          <div class="mainUserMainInfo">
+            <img class="mainUserMainPic" src="#">
+          <div class="mainUserMainIdAndEmail">
+            <div th:text="${dto.getUserId() }" class="mainUserMainId"></div>
+            <div th:text="${dto.getUserEmail() }" class="mainUserMainId"></div>
+          </div>
+          </div>
+          <div th:text="${dto.getUserNickname() }" class="mainUserNickname"></div>
+        </div>  
+      </div>
+      <div class="myPageMain">
+        <div class="mainUserInfo">
+          <div class="mainTitle RecipeTitle"> 마이레시피 </div>        
+          <ul class="myRecipes">
+            <li class="myRecipe">1</li>
+            <li class="myRecipe">2</li>
+            <li class="myRecipe">3</li>
+            <li class="myRecipe">4</li>
+            <li class="myRecipe">5</li>
+            <li class="myRecipe">6</li>
+            <li class="myRecipe">7</li>
+            <li class="myRecipe">8</li>
+          </ul>
+        </div>    
+      </div>    
+    </main>
     <!-- import footer -->
     <div th:replace="fragment/fragment :: fr_footer"></div>
     <!-- end of import footer -->
