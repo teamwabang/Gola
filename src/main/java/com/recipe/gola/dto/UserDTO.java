@@ -12,19 +12,19 @@ import lombok.Data;
 public class UserDTO {
 
 	@NotBlank(message = "아이디를 입력해주세요.")
-	@Pattern(regexp = "[a-zA-Z0-9]{2,19}")
+	@Pattern(regexp = "[a-zA-Z0-9]{2,20}$")
 	private String userId;
 	
 	@NotBlank(message = "비밀번호를 입력해주세요.")
-	@Pattern(regexp = "^(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")
+	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^*()\\-_=+\\\\\\|\\[\\]{};:\\'\",.<>\\/?]).{8,16}$")
 	private String userPwd;
 	
 	@NotBlank(message = "닉네임을 입력해주세요.")
-	@Pattern(regexp = "[가-힣a-zA-Z0-9]{3,19}$")
+	@Pattern(regexp = "^[가-힣a-zA-Z0-9]{3,20}$")
 	private String userNickname;
 	
 	@NotBlank(message = "이메일을 입력해주세요.")
-	@Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,6}$")
+	@Pattern(regexp = "^[A-Za-z0-9_\\.\\-]+@[A-Za-z0-9\\-]+\\.[A-Za-z0-9\\-]+")
 	private String userEmail;
 	private String emailConfirm;
 	private UserAuth userAuth;
