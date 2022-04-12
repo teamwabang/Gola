@@ -44,7 +44,7 @@ public class UserController {
 	@GetMapping("join")
 	public String userjoin() {
 		logger.info("회원가입을 시도 중 입니다.");
-		return "user/join";
+		return "index";
 	}
 	
 	@PostMapping("join")
@@ -60,7 +60,7 @@ public class UserController {
             }
 
             logger.error("회원가입에 실패하였습니다.");
-            return "user/join";
+            return "redirect:/";
         }
         
         String rawPwd = dto.getUserPwd();
