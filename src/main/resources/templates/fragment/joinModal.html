@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+	<div th:fragment="fr_joinModal">
+	<!-- Modal -->
+	  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	    <div class="modal-dialog modal-dialog-centered">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <h5 class="modal-title" id="staticBackdropLabel">GOLA에 오신 걸 환영합니다.</h5>
+	          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	        </div>
+	        <div class="modal-body">
+	            <form th:action="@{/join}" method="post" class="joinForm">
+	                <div class="joinId">
+	                    <h2 class="joinTitle">아이디</h2>
+	                    <div class="joinIdInput">
+	                        <input type="text" name="userId" id="userId" maxlength="20" placeholder="아이디">
+	                        <input class="idCheck" type="button" value="아이디 중복확인">                  
+	                    </div>
+	                    <span id="userIdCheck"></span>
+	                    <span id="result"></span> 
+	                </div>
+	                <div class="joinPwd">
+	                    <h2 class="joinTitle">비밀번호</h2>
+	                    <div class="joinInput">
+	                        <input type="password" name="userPwd" id="userPwd" maxlength="16" placeholder="비밀번호">
+	                        <p id="userPwdCheck"></p>
+	                        <h2 class="joinTitle">비밀번호 확인</h2>
+	                        <input type="password" name="confirm" id="confirm" maxlength="16" placeholder="비밀번호 확인">
+	                        <p id="userPwdConfirmNo" style="display:none;">비밀번호가 일치하지 않습니다.</p>
+	                        <p id="userPwdConfirmYes" style="display:none;">비밀번호가 일치합니다.</p>
+	                    </div>
+	                </div>
+	                <div class="joinNickname">
+	                    <h2 class="joinTitle">닉네임</h2>
+	                    <div class="joinInput">
+	                        <input type="text" name="userNickname" id="userNickname" maxlength="20" placeholder="닉네임">
+	                        <p id="userNicknameCheck"></p>
+	                    </div>
+	                </div>
+	                <div class="joinEmail">
+	                    <h2 class="joinTitle">이메일</h2>
+	                    <div class="joinInput">
+	                        <input type="text" name="userEmail" id="userEmail" maxlength="50" placeholder="이메일">
+	                        <p id="userEmailCheck"></p>
+	                    </div>
+	                </div>
+	                <div class="modal-footer joinResetBtn">
+	                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal" id="joinSubmit" disabled>회원가입</button>
+	                    <button type="reset" class="btn btn-secondary">초기화</button>
+	                </div>      
+	            </form>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</body>
+</html>

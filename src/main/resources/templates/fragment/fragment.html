@@ -3,7 +3,7 @@
 <body>
 	<header th:fragment="fr_header">
 		<br>
-		<div th:style="@{text-align:center}">
+		<div th:style="@{text-align:center;}">
 			<ul>
 				<li th:style="@{margin-bottom:20px}">
 					<a th:href="@{/}" th:style="@{font-size:30px}">골라</a>
@@ -14,16 +14,14 @@
 				    </form>
 				</li>
 				<li sec:authorize="isAnonymous()" th:style="@{display:inline-block}">
-					<a>
-						<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
-							로그인
-						</button>
-					</a>
+					<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+						로그인
+					</button>
 				</li>
 				<li sec:authorize="isAnonymous()" th:style="@{display:inline-block}">
-					<form th:action="@{/join}" method="get">
-						<button class="btn btn-primary">회원가입</button>
-					</form>
+					<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+						회원가입
+					</button>
 				</li>
 				<li sec:authorize="isAuthenticated()" th:style="@{display:inline-block}">
 					<form th:action="@{/mypage}" method="get">
@@ -38,33 +36,10 @@
 			</ul>
 		</div>
 		
-		<!-- loginModal -->
-		<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-dialog-centered">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">골라에 오신 것을 환영합니다.</h5>
-		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		      </div>
-		        <div class="modal-body" th:style="${'text-align: center;'}">
-			    	<form th:action="@{/login}" method="post">		    	
-				    	<div class="loginSection">
-				    		<div class="loginLabel">
-					 			<h2>로그인</h2>
-					 		</div>
-				          	<input type="text" class="id" id="userId" name="username" placeholder="아이디" autofocus /><br>
-				          	<input type="password" class="pw" id="userPwd" name="password" placeholder="암호" /><br>
-				         	 <button type="submit" class="login btn btn-secondary loginFooterBtn" id="btnLogin">로그인</button>
-				         	 <div class="or">
-					         	 <button class="socialLogin">네이버/카카오 버튼뽑아서</button>
-					         	 <button class="socialLogin">넣어야하는데 이미지 깨짐 ㅜ</button>     			         	 
-				          </div>
-				          </div>		   
-				 	</form>	 	
-	    		</div>
-		    </div>
-		  </div>
-		</div>
+		<div th:replace="fragment/loginModal :: fr_loginModal"></div>
+		
+		
+		<div th:replace="fragment/joinModal :: fr_joinModal"></div>
 	</header>
 	
 	<footer th:fragment="fr_footer">

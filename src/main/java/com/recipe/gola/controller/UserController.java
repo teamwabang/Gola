@@ -16,6 +16,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.recipe.gola.common.validate.Validate;
 import com.recipe.gola.dto.UserDTO;
@@ -98,11 +99,20 @@ public class UserController {
 	}
 	
 	// 마이페이지 회원정보 수정
-	@PostMapping("mypage/edit/info")
-	public String infouser(@AuthenticationPrincipal PrincipalDetails principaldetail, Model model) {
-		logger.info(principaldetail.getUsername() + "님이 회원정보를 수정합니다.");
-		model.addAttribute("dto", principaldetail.getDto());
-		return "user/edit_info";
-	}
+//	@PostMapping("mypage/edit/info")
+//	public String infouser(@AuthenticationPrincipal PrincipalDetails principaldetail, Model model) {
+//		logger.info(principaldetail.getUsername() + "님이 회원정보를 수정합니다.");
+//		model.addAttribute("dto", principaldetail.getDto());
+//		return "user/edit_info";
+//	}
+	@PostMapping("update")
+    public String modify(UserDTO dto, RedirectAttributes rttr) {
+        logger.info("회원정보를 수정하였습니다.");
+        int result = userService.updateuser(dto);
+        if(result > 0) {
+            rttr.addFlashAttribute("result", "success");
+        }
+        return "redirect:/mypage";
+    }
 		
 }
