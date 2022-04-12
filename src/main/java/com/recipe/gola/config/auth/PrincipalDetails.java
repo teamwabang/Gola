@@ -1,4 +1,4 @@
-package com.recipe.gola.service;
+package com.recipe.gola.config.auth;
 
 import java.util.ArrayList;
 import java.util.Collection;

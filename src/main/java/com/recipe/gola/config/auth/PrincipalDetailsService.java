@@ -1,8 +1,6 @@
-package com.recipe.gola.service;
+package com.recipe.gola.config.auth;
 
 import java.util.List;
-
-import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +17,7 @@ import lombok.Data;
 
 @Service
 @Data
-public class PrincipalDetialsService implements UserDetailsService {
+public class PrincipalDetailsService implements UserDetailsService {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -32,8 +30,8 @@ public class PrincipalDetialsService implements UserDetailsService {
 	}
 	
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserDTO dto = userMapper.findByUsername(username);
+	public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
+		UserDTO dto = userMapper.findByUsername(userId);
 		if(dto != null) {
 			return new PrincipalDetails(dto);
 		}
@@ -41,7 +39,7 @@ public class PrincipalDetialsService implements UserDetailsService {
 	}
 	
 	// 회원가입
-	public int insertuser(@Valid UserDTO dto) {
+	public int insertuser(UserDTO dto) {
 		return userMapper.insertuser(dto);
 	}
 	
@@ -51,9 +49,9 @@ public class PrincipalDetialsService implements UserDetailsService {
 	}
 	
 	// 마이페이지 회원정보 수정
-	public int updateuser(@Valid UserDTO dto) {
+	public void updateuser(UserDTO dto) {
 		logger.info("수정된 회원정보 : " + dto);
-		return userMapper.updateuser(dto);
+		userMapper.updateuser(dto);
 	}
 
 

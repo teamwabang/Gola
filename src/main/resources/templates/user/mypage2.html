@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
+<title>마이페이지 | 골라</title>
+
+	<!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
+    <!-- JavaScript -->
+    <script type="text/javascript" src="/js/chatbot.js"></script>
+	<script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("#changeinfobtn").click(function() {
+	    		if(confirm("회원정보를 수정하시겠습니까?")) {
+		    		// 폼 내부의 데이터를 전송할 주소
+		    		document.form2.action="mypage/update";
+		    		document.form2.submit();	// 제출
+	    		}
+			});
+		});
+	
+		$(document).ready(function() {
+			$("#delete-info-btn").click(function() {
+				if(confirm("아이디를 정말 삭제하시겠습니까?")) {
+		    			document.form3.action="/mypage/leave";
+		    			document.form3.submit();	// 제출   
+				}
+			});
+		});
+		
+		$(document).ready(function() {
+			$("#change-password-area").css("display", "none");
+			$("#change-btn").click(function(e) {
+	            e.preventDefault();
+	            $("#password-area").css("display", "none");
+	            $("#change-password-area").css("display", "");
+	        });
+			
+			$("#cancel-password-btn").click(function(e) {
+				e.preventDefault();
+				$("#password-area").css("display", "");
+	            $("#change-password-area").css("display", "none");
+			})
+		});
+		
+		$(document).ready(function() {
+			$("#delete-info-area").css("display", "none");
+			$("#delete-btn").click(function(e) {
+	            e.preventDefault();
+	            $("#info-area").css("display", "none");
+	            $("#delete-info-area").css("display", "");
+	        });
+			
+			$("#cancel-info-btn").click(function(e) {
+				e.preventDefault();
+	            $("#delete-info-area").css("display", "none");
+	            $("#info-area").css("display", "");
+			})
+		});
+	</script>
+
+</head>
+<body>
+	
+	<!-- import header -->
+    <div th:replace="fragment/fragment :: fr_header"></div>
+    <!-- end of import header -->
+	
+	<div>
+		<p th:style="@{text-align: center; font-size:20px;}">기본 회원정보</p>
+		<div th:style="@{text-align: center;}">
+				<label>아이디</label>
+		    	<strong th:text="${dto.getUserId() }"></strong><br>
+		    	<label>비밀번호</label>
+		    	<div id="password-area">
+		    		<strong>********</strong><br>
+				    <button id="change-btn">비밀번호 변경</button>
+		    	</div>
+		    	<div id="change-password-area">
+		    	<form name="form1" method="post">
+			    	<label>비밀번호</label>
+			    	<input type="password" id="userPwd"><br>
+			    	<label>비밀번호 재 입력</label>
+			    	<input type="password" id="pwdConfirm"><br>
+				    <button id="cancel-password-btn">취소</button>
+				    <button id="change-password-btn">비밀번호 변경</button>
+			    </form>
+			    </div>
+			    
+			    <form name="form2" method="post">
+			    	<label>닉네임</label>
+			    	<strong th:text="${dto.getUserNickname() }"></strong><br>
+			    	<input name="userNickname" th:value="${dto.getUserNickname() }" placeholder="닉네임 입력"><br>
+			    	<label>이메일</label>
+			    	<strong th:text="${dto.getUserEmail() }"></strong><br>
+			    	<input type="button" id="changeinfobtn" value="회원정보 변경">
+		    	</form>
+			
+				<br>
+				
+				<p th:style="@{text-align: center; font-size:20px;}">나의 게시글 관리</p>
+				<a>작성한 게시글</a><br>
+				
+				<br>
+			
+			<div id="info-area">
+				<button id="delete-btn">회원탈퇴</button>
+			</div>
+			<div id="delete-info-area">
+				<p>정말로 회원탈퇴 하시겠습니까?</p>
+				<form name="form2" method="post">
+					<label>비밀번호</label>
+			    	<input type="password" id="userPwd"><br>
+			    	<label>비밀번호 재 입력</label>
+			    	<input type="password" id="pwdConfirm"><br>
+				    <button id="cancel-info-btn">취소</button>
+				    <button id="delete-info-btn">회원탈퇴</button>
+			   	</form>
+			</div>	
+		</div>
+	</div>
+    
+    <!-- import footer -->
+    <div th:replace="fragment/fragment :: fr_footer"></div>
+    <!-- end of import footer -->
+    
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<!-- Option 2: Separate Popper and Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+</body>
+</html>

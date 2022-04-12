@@ -16,12 +16,11 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.recipe.gola.common.validate.Validate;
+import com.recipe.gola.config.auth.PrincipalDetails;
 import com.recipe.gola.dto.UserDTO;
-import com.recipe.gola.service.PrincipalDetails;
-import com.recipe.gola.service.PrincipalDetialsService;
+import com.recipe.gola.service.UserService;
 
 import lombok.Data;
 
@@ -32,7 +31,7 @@ public class UserController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
-	private final PrincipalDetialsService userService;
+	private final UserService userService;
 	
 	@Autowired
 	private final Validate validate;
@@ -95,24 +94,24 @@ public class UserController {
 		logger.info("마이페이지로 이동합니다.");
 		logger.info("유저 아이디 : " + principaldetail.getUsername());
 		model.addAttribute("dto", principaldetail.getDto());
+		
 		return "user/mypage";
 	}
 	
-	// 마이페이지 회원정보 수정
-//	@PostMapping("mypage/edit/info")
-//	public String infouser(@AuthenticationPrincipal PrincipalDetails principaldetail, Model model) {
-//		logger.info(principaldetail.getUsername() + "님이 회원정보를 수정합니다.");
-//		model.addAttribute("dto", principaldetail.getDto());
-//		return "user/edit_info";
-//	}
-	@PostMapping("update")
-    public String modify(UserDTO dto, RedirectAttributes rttr) {
-        logger.info("회원정보를 수정하였습니다.");
-        int result = userService.updateuser(dto);
-        if(result > 0) {
-            rttr.addFlashAttribute("result", "success");
-        }
-        return "redirect:/mypage";
-    }
+//	@PutMapping("mypage/update")
+//    public String modify(@Valid UserDTO dto, RedirectAttributes rttr) {
+//        logger.info("회원정보를 수정하였습니다.");
+//        userService.updateuser(dto);
+//        return "redirect:/mypage";
+//    }
+
+	@PostMapping("mypage/update")
+	public String updatePOST(@Valid UserDTO dto) {
+		logger.info("회원정보수정 입력페이지 POST");
+
+		userService.updateuser(dto);
+		return "redirect:/mypage";
+	}
+	
 		
 }

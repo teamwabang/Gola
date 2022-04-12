@@ -14,55 +14,9 @@
     <script type="text/javascript" src="/js/chatbot.js"></script>
 	<script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript">
-		$(function() {
-			$("#changeinfobtn").click(function() {
-	    		if(confirm("회원정보를 수정하시겠습니까?")) {
-		    		// 폼 내부의 데이터를 전송할 주소
-		    		document.form2.action="mypage/update";
-		    		document.form2.submit();	// 제출
-	    		}
-			});
-		});
-	
-		$(document).ready(function() {
-			$("#delete-info-btn").click(function() {
-				if(confirm("아이디를 정말 삭제하시겠습니까?")) {
-		    			document.form3.action="/mypage/leave";
-		    			document.form3.submit();	// 제출   
-				}
-			});
-		});
 		
-		$(document).ready(function() {
-			$("#change-password-area").css("display", "none");
-			$("#change-btn").click(function(e) {
-	            e.preventDefault();
-	            $("#password-area").css("display", "none");
-	            $("#change-password-area").css("display", "");
-	        });
-			
-			$("#cancel-password-btn").click(function(e) {
-				e.preventDefault();
-				$("#password-area").css("display", "");
-	            $("#change-password-area").css("display", "none");
-			})
-		});
-		
-		$(document).ready(function() {
-			$("#delete-info-area").css("display", "none");
-			$("#delete-btn").click(function(e) {
-	            e.preventDefault();
-	            $("#info-area").css("display", "none");
-	            $("#delete-info-area").css("display", "");
-	        });
-			
-			$("#cancel-info-btn").click(function(e) {
-				e.preventDefault();
-	            $("#delete-info-area").css("display", "none");
-	            $("#info-area").css("display", "");
-			})
-		});
 	</script>
+	
 
 </head>
 <body>
@@ -77,53 +31,25 @@
 				<label>아이디</label>
 		    	<strong th:text="${dto.getUserId() }"></strong><br>
 		    	<label>비밀번호</label>
-		    	<div id="password-area">
-		    		<strong>********</strong><br>
-				    <button id="change-btn">비밀번호 변경</button>
-		    	</div>
-		    	<div id="change-password-area">
-		    	<form name="form1" method="post">
-			    	<label>비밀번호</label>
-			    	<input type="password" id="userPwd"><br>
-			    	<label>비밀번호 재 입력</label>
-			    	<input type="password" id="pwdConfirm"><br>
-				    <button id="cancel-password-btn">취소</button>
-				    <button id="change-password-btn">비밀번호 변경</button>
+	    		<strong>********</strong><br>
+		    	<label>닉네임</label>
+		    	<strong th:text="${dto.getUserNickname() }"></strong><br>
+		    	<label>이메일</label>
+		    	<strong th:text="${dto.getUserEmail() }"></strong>
+		    	
+		    	<br>
+		    	<br>
+		    	<br>
+		    	
+		    	<form th:action="@{mypage/update}" method="post">
+			    	<input type="text" name="userId" placeholder="아이디 입력"><br>
+			    	<input type="password" name="userPwd" placeholder="비밀번호 입력"><br>
+			    	<input type="text" name="userNickname" placeholder="닉네임 입력"><br>
+			    	<input type="text" name="userEmail" placeholder="이메일 입력"><br>
+			    	<input type="submit" id="change-info-btn" value="회원정보 변경">
 			    </form>
-			    </div>
-			    
-			    <form name="form2" method="post">
-			    	<label>닉네임</label>
-			    	<strong th:text="${dto.getUserNickname() }"></strong><br>
-			    	<input name="userNickname" th:value="${dto.getUserNickname() }" placeholder="닉네임 입력"><br>
-			    	<label>이메일</label>
-			    	<strong th:text="${dto.getUserEmail() }"></strong><br>
-			    	<input type="button" id="changeinfobtn" value="회원정보 변경">
-		    	</form>
-			
-				<br>
-				
-				<p th:style="@{text-align: center; font-size:20px;}">나의 게시글 관리</p>
-				<a>작성한 게시글</a><br>
-				
-				<br>
-			
-			<div id="info-area">
-				<button id="delete-btn">회원탈퇴</button>
-			</div>
-			<div id="delete-info-area">
-				<p>정말로 회원탈퇴 하시겠습니까?</p>
-				<form name="form2" method="post">
-					<label>비밀번호</label>
-			    	<input type="password" id="userPwd"><br>
-			    	<label>비밀번호 재 입력</label>
-			    	<input type="password" id="pwdConfirm"><br>
-				    <button id="cancel-info-btn">취소</button>
-				    <button id="delete-info-btn">회원탈퇴</button>
-			   	</form>
 			</div>	
 		</div>
-	</div>
     
     <!-- import footer -->
     <div th:replace="fragment/fragment :: fr_footer"></div>

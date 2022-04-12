@@ -1,4 +1,4 @@
-package com.recipe.gola.security;
+package com.recipe.gola.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -7,9 +7,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.recipe.gola.service.PrincipalDetialsService;
+import com.recipe.gola.config.auth.PrincipalDetailsService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,19 +19,20 @@ import lombok.RequiredArgsConstructor;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
-	private PasswordEncoder passwordEncoder;
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Autowired
-	private PrincipalDetialsService userService;
+	private PrincipalDetailsService principalService;
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
+			.csrf().disable()
 			.authorizeRequests()
 				.antMatchers("/", "/login", "/join").permitAll()	// 누구나 접근 허용
 				.antMatchers("/user/**").access("hasAuthority('USER') or hasAuthority('ADMIN')")	// USER, ADMIN만 접근 가능
 				.antMatchers("/admin/**").hasAuthority("ADMIN")	// ADMIN만 접근 가능
-				.anyRequest().authenticated()	// 나머지 요청들을 권한의 종류에 상관 없이 권한이 있어야 접근 가능
+				.anyRequest().permitAll()	// 나머지 요청들을 권한의 종류에 상관 없이 권한이 있어야 접근 가능
 			.and()
 				.formLogin()
 					.loginPage("/login")	// 로그인 페이지 링크
@@ -56,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-	    auth.userDetailsService(userService).passwordEncoder(passwordEncoder);
+	    auth.userDetailsService(principalService).passwordEncoder(bCryptPasswordEncoder);
 	}
 	
 }
