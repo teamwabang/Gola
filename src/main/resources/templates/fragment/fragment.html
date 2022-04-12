@@ -1,15 +1,53 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
 	<header th:fragment="fr_header">
-		<div>
-			Header
+		<br>
+		<div th:style="@{text-align:center;}">
+			<ul>
+				<li th:style="@{margin-bottom:20px}">
+					<a th:href="@{/}" th:style="@{font-size:30px}">골라</a>
+				</li>
+				<li sec:authorize="isAuthenticated()" th:style="@{display:inline-block}">
+					<form th:action="@{/logout}" method="post">
+				        <button class="btn btn-primary">로그아웃</button>
+				    </form>
+				</li>
+				<li sec:authorize="isAnonymous()" th:style="@{display:inline-block}">
+					<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+						로그인
+					</button>
+				</li>
+				<li sec:authorize="isAnonymous()" th:style="@{display:inline-block}">
+					<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+						회원가입
+					</button>
+				</li>
+				<li sec:authorize="isAuthenticated()" th:style="@{display:inline-block}">
+					<form th:action="@{/mypage}" method="get">
+						<button class="btn btn-primary">마이페이지</button>
+					</form>
+				</li>
+				<li sec:authorize="hasAuthority('ADMIN')" th:style="@{display:inline-block}">
+					<form th:action="@{admin/list}" method="get">
+						<button class="btn btn-primary">전체 회원목록</button>
+					</form>
+				</li>
+			</ul>
 		</div>
+		
+		<div th:insert="fragment/loginModal :: fr_loginModal"></div>
+		
+		
+		<div th:insert="fragment/joinModal :: fr_joinModal"></div>
 	</header>
 	
 	<footer th:fragment="fr_footer">
-		<div>
+		<div th:style="@{text-align: center}">
+		<br>
 			Footer
 		</div>
 		
 	</footer>
+</body>
 </html>

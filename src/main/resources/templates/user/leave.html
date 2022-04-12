@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
-<title>마이페이지 | 골라</title>
+<title>회원탈퇴 | 골라</title>
 
 	<!-- CSS -->
     <link rel="stylesheet" href="/css/styles.css" />
@@ -14,9 +14,27 @@
     <script type="text/javascript" src="/js/chatbot.js"></script>
 	<script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript">
-		
+		$(document).ready(function() {
+			$("#delete-btn").click(function() {
+				if(confirm("아이디를 정말 삭제하시겠습니까?")) {
+					if($("#userPwd").val() != $("#pwdConfirm").val()) {
+						alert("암호가 일치하지 않습니다.")
+					}
+					if($("#userPwd").val() == "") {
+						alert("암호를 입력해주세요.")
+					}
+					if($("#pwdConfirm").val() == "") {
+						alert("암호를 입력해주세요.")
+					}
+					if($("#userPwd").val() == $("#userPwd").val()) {
+						// 폼 내부의 데이터를 전송할 주소
+		    			document.form1.action="mypage/leave";
+		    			document.form1.submit();	// 제출   
+					}
+				}
+			});
+		});
 	</script>
-	
 
 </head>
 <body>
@@ -26,30 +44,24 @@
     <!-- end of import header -->
 	
 	<div>
-		<p th:style="@{text-align: center; font-size:20px;}">기본 회원정보</p>
+		<h1>회원탈퇴</h1>
+		<br>
+		
 		<div th:style="@{text-align: center;}">
+			<form name="form1" method="post">
 				<label>아이디</label>
-		    	<strong th:text="${dto.getUserId() }"></strong><br>
+		    	<strong th:text="${dto.getUserId() }"></strong>
+		    	<br>
 		    	<label>비밀번호</label>
-	    		<strong>********</strong><br>
-		    	<label>닉네임</label>
-		    	<strong th:text="${dto.getUserNickname() }"></strong><br>
-		    	<label>이메일</label>
-		    	<strong th:text="${dto.getUserEmail() }"></strong>
-		    	
+		    	<input type="password" name="userPwd" placeholder="비밀번호" />
 		    	<br>
-		    	<br>
-		    	<br>
-		    	
-		    	<form th:action="@{mypage/update}" method="post">
-			    	<input type="text" name="userId" placeholder="아이디 입력"><br>
-			    	<input type="password" name="userPwd" placeholder="비밀번호 입력"><br>
-			    	<input type="text" name="userNickname" placeholder="닉네임 입력"><br>
-			    	<input type="text" name="userEmail" placeholder="이메일 입력"><br>
-			    	<input type="submit" id="change-info-btn" value="회원정보 변경">
-			    </form>
-			</div>	
-		</div>
+		    	<label>비밀번호 확인</label>
+		    	<input type="password" name="pwdConfirm" placeholder="비밀번호 확인" />
+		    	<br><br>
+		    	<button id="delete-btn">회원탈퇴</button>
+		   	</form>
+	    </div>
+	</div>
     
     <!-- import footer -->
     <div th:replace="fragment/fragment :: fr_footer"></div>
