@@ -7,7 +7,7 @@ input[type=text], input[type=password] {
     height: 40px;
     margin: 10px 0;
     padding-left: 10px;
-
+	cursor:pointer;
 }
 
 .joinForm {

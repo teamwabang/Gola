@@ -1,5 +1,5 @@
-$('#userId').on('keyup' ,function(event) {
-  if (!/[a-zA-Z0-9]{2,20}$/g.test($('#userId').val())) {
+$('#userIdJoin').on('keyup' ,function(event) {
+  if (!/[a-zA-Z0-9]{2,20}$/g.test($('#userIdJoin').val())) {
     $('#userIdCheck').css({
       "color" : "red"
     });
@@ -14,8 +14,8 @@ $('#userId').on('keyup' ,function(event) {
   }
 });
 
-$('#userPwd').on('keyup' ,function(event) {
-  if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]).{8,16}$/g.test($('#userPwd').val())) {
+$('#userPwdJoin').on('keyup' ,function(event) {
+  if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]).{8,16}$/g.test($('#userPwdJoin').val())) {
     $('#userPwdCheck').css({
       "color" : "red"
     });
@@ -31,7 +31,7 @@ $('#userPwd').on('keyup' ,function(event) {
 });
 
 $('#confirm').on('keyup', function () {
-  let pwd1 = $("#userPwd").val();
+  let pwd1 = $("#userPwdJoin").val();
   let pwd2 = $("#confirm").val();
 
   if(pwd1 != pwd2) {
@@ -84,8 +84,8 @@ $('#userEmail').on('keyup' ,function(event) {
 
 //회원가입 버튼 비활성화 -> 활성화
 $(document).ready(function() {
-  $("#userId, #userPwd, #confirm, #userEmail, #userNickname").change(function() {
-    if( $("#userId").val() != "" && $("#userPwd").val() != "" && $('#confirm').val() != "" && $('#userEmail').val() != "" && $('#userNickname').val() != "") {
+  $("#userIdJoin, #userPwdJoin, #confirm, #userEmail, #userNickname").change(function() {
+    if( $("#userIdJoin").val() != "" && $("#userPwdJoin").val() != "" && $('#confirm').val() != "" && $('#userEmail').val() != "" && $('#userNickname').val() != "") {
       $('#joinSubmit').prop('disabled', false);
     } else {
       $('#joinSubmit').prop('disabeld', true);
