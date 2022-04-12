@@ -64,15 +64,14 @@ public class CommentController {
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<String>("WRT_ERR", HttpStatus.BAD_REQUEST);
-        }
-    }
-
-    // 지정된 댓글을 삭제하는 메서드
+     }
+    }// 지정된 댓글을 삭제하는 메서드
     @DeleteMapping("/comments/{cno}")  // DELETE /comments/1?bno=1085  <-- 삭제할 댓글 번호
     public ResponseEntity<String> remove(@PathVariable Integer cno, Integer bno, HttpSession session) {
         String commenter = (String)session.getAttribute("id");
 //        String commenter = "asdf";
 
+        	System.out.println("cno :"+cno+" bno :"+bno);
         try {
             int rowCnt = service.remove(cno, bno, commenter);
 

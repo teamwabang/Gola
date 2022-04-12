@@ -28,7 +28,7 @@ public interface BoardMapper {
     int searchResultCnt(SearchCondition sc) throws Exception;
     List<BoardDTO> searchSelectPage(SearchCondition sc) throws Exception;
 
-    int updateCommentCnt(Integer bno, int i);
+    int updateCommentCnt(Map<String, Object> paramMap);
     
 	int getCount() throws Exception;
 
