@@ -43,17 +43,37 @@ public class CommentService {
 
     @Transactional(rollbackFor = Exception.class)
     public int remove(Integer cno, Integer bno, String commenter) throws Exception {
-		int rowCnt = boardMapper.updateCommentCnt(bno, -1);
+    	
+    	Map<String, Object> paramMap = new HashMap<String, Object>();
+    	
+    	paramMap.put("bno", bno);
+    	paramMap.put("cnt", -1);
+    	
+		int rowCnt = boardMapper.updateCommentCnt(paramMap);
         System.out.println("updateCommentCnt - rowCnt = " + rowCnt);
 //        throw new Exception("test");
-        rowCnt = commentMapper.delete(cno, commenter);
+
+        
+    	Map<String, Object> commentParamMap = new HashMap<String, Object>();
+    	
+    	commentParamMap.put("cno", cno);
+    	commentParamMap.put("commenter", commenter);
+   
+    	System.out.println(" commentParamMap   :  "+commentParamMap.toString());
+        
+        rowCnt = commentMapper.delete(commentParamMap);
         System.out.println("rowCnt = " + rowCnt);
         return rowCnt;
     }
 
     @Transactional(rollbackFor = Exception.class)
     public int write(CommentDTO commentDto) throws Exception {
-    	boardMapper.updateCommentCnt(commentDto.getBno(), 1);
+
+    	Map<String, Object> paramMap = new HashMap<String, Object>();
+    	
+    	paramMap.put("bno", commentDto.getBno());
+    	paramMap.put("cnt", 1);
+    	boardMapper.updateCommentCnt(paramMap);
 //                throw new Exception("test");
         return commentMapper.insert(commentDto);
     }

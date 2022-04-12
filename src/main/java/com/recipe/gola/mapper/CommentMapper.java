@@ -1,6 +1,7 @@
 package com.recipe.gola.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +17,7 @@ public interface CommentMapper {
     int deleteAll(Integer bno) // int delete(String statement)
     ;
 
-    int delete(Integer cno, String commenter) throws Exception // int delete(String statement, Object parameter)
+    int delete(Map<String, Object> map) throws Exception // int delete(String statement, Object parameter)
     ;
 
     int insert(CommentDTO dto) throws Exception // int insert(String statement, Object parameter)
