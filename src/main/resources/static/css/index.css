@@ -8,7 +8,92 @@
   font-style: normal;
 }
 
-/* */
+
+/* intro */
+.introani {
+  line-height: 1.5em;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 100vh;
+  width:100vw;
+  animation: hideSplashScreen 0.4s ease-in-out forwards;
+  animation-delay: 0.8s;
+}
+
+.loading {
+  width: 8%;
+  height: 16%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.upline {
+  flex: 30%;
+  display: flex;
+  font-display: row;
+}
+
+
+.uplineleft {
+  flex: 50%;
+  width: 100%;
+  height: 100%;
+  color: rgb(253, 114, 0);
+  animation: fadein 0.8s linear forwards;
+
+}
+
+.uplineright {
+  flex: 50%;
+  color: rgb(110, 0, 253);
+  animation: fadein 0.8s 0.2s linear forwards;
+}
+
+.bottomline {
+  flex: 50%;
+  display: flex;
+  font-display: row;
+}
+
+
+.bottomlineleft {
+  flex: 50%;
+  color: rgb(0, 194, 253);
+  animation: fadein 0.8s 0.5s linear forwards;
+}
+
+.bottomlineright {
+  flex: 50%;
+  color: rgb(253, 0, 55);
+  animation: fadein 0.8s 0.4s linear forwards;
+}
+
+@keyframes fadein {
+  0% {
+    transform: scale(1)
+  }
+
+  100% {
+    transform: scale(0)
+  }
+}
+
+@keyframes  hideSplashScreen{
+  from {
+    opacity: 1;
+  } to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+
 .indexbody {
   font-family: 'Montserrat Alternates', sans-serif;
   margin: 0;
