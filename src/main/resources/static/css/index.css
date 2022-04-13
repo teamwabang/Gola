@@ -11,14 +11,20 @@
 /* intro */
 .introani {
   line-height: 1.5em;
-  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-
   animation: hideSplashScreen 0.4s ease-in-out forwards;
   animation-delay: 0.8s;
+  background-color:#f8f8f8;
+  position: absolute;
+  height: 100vh;
+  width:100vw;
+  top: 0;
+  animation: hideSplashScreen 0.4s ease-in-out forwards;
+  animation-delay: 0.3s;
+  z-index: 1;
 }
 
 .loading {
@@ -28,7 +34,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-
 }
 
 .upline {
@@ -44,7 +49,7 @@
   height: 100%;
   color: rgb(253, 114, 0);
   animation: fadein 0.8s linear forwards;
-
+  
 }
 
 .uplineright {
