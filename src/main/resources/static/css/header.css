@@ -4,7 +4,6 @@
 
 
 .gnb {
-    background-color: #fff;
     padding: 10px;
     margin-top: 40px;
     border-radius: 10px;
@@ -12,6 +11,7 @@
     height: 10%;
     font-size: 18px;
     font-weight: bold;
+    color:black;
 
 }
 
@@ -57,18 +57,18 @@
 
 .headertop {
     display: flex;
-    margin: 20px auto ;
+    margin: 20px 10% ;
     text-align: center;
     justify-content: center;
     
 }
 
 .headerlogo {
-    width: 100px;
+    width: 30px;
     text-align: center;
     margin: 10px 0px;
     padding-left: 100px;
-    padding-right: 200px;
+    padding-right: 40px;
     justify-content: center;
     text-align: center;
 }
