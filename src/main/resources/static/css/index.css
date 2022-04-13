@@ -59,7 +59,8 @@
   grid-template-columns: repeat(4, 1fr);
   column-gap: 40px;
   row-gap: 40px;
-}
+  cursor:pointer;
+ }
 
 .indexmain .items div {
   border-radius: 6px;
@@ -141,6 +142,7 @@
   margin-left: 45%;
   margin-bottom: 40px;
   margin-top: 40px;
+  cursor:pointer;
 }
 
 .indexmain .seemore:hover {
