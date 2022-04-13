@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Service;
 
 import com.recipe.gola.dto.UserDTO;
@@ -38,7 +39,6 @@ public class UserService {
 	
 	// 마이페이지 회원정보 수정
 	public void updateuser(UserDTO dto) {
-		logger.info("수정된 회원정보 : " + dto);
 		userMapper.updateuser(dto);
 	}
 

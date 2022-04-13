@@ -46,6 +46,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 				.exceptionHandling()	// 에러 처리
 				.accessDeniedPage("/error")	// 에러시 이동할 페이지
+			.and()
+				.sessionManagement()
+					.invalidSessionUrl("/")//세션이 유효하지 않을 때 이동 할 페이지
+	                .maximumSessions(1)	//세션 최대 허용 수 
+	                .maxSessionsPreventsLogin(false)	// false이면 중복 로그인하면 이전 로그인이 풀린다.
 		;
 	}
 	
