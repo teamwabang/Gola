@@ -26,7 +26,7 @@ public class IndexController {
 	
 	@GetMapping("/")
 	public String index() {
-		logger.info("냉장고 안의 남은 재료들로 | 골라");
+		logger.info("-----> 냉장고 안의 남은 재료들로 | 골라");
 		return "index";
 	}
 }
