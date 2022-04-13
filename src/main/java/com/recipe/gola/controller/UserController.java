@@ -112,5 +112,14 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	@GetMapping("mypage/leave")
+	public String leave(@AuthenticationPrincipal PrincipalDetails principaldetail, Model model) {
+		logger.info("-----> 마이페이지로 이동합니다.");
+		logger.info("유저 아이디 : " + principaldetail.getUsername());
+		model.addAttribute("dto", principaldetail.getDto());
+		
+		return "user/leave";
+	}
+	
 		
 }
