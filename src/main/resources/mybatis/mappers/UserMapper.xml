@@ -40,21 +40,13 @@
 	</select>
 	
 	<!-- 마이페이지 회원정보 수정 -->
-	<update id="updateuser" parameterType="UserDTO">
+	<update id="modify" parameterType="UserDTO">
 	<![CDATA[
 		update user
 		set
-		userPwd=#{userPwd}, userNickname=#{userNickname}, userEmail=#{userEmail}
+		userNickname=#{userNickname}, userEmail=#{userEmail}, modifiedDate=now()
 		where userId=#{userId}
 	]]>
-	</update>
-	
-	<!-- 비밀번호 변경 -->
-	<update id="updatepwd">
-		update user
-		set
-		userPwd=#{userPwd}
-		where userId=#{userId}
 	</update>
 	
 	<!-- 회원탈퇴 -->

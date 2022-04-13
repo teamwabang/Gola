@@ -2,10 +2,11 @@ package com.recipe.gola.service;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Service;
 
 import com.recipe.gola.dto.UserDTO;
@@ -38,8 +39,8 @@ public class UserService {
 	}
 	
 	// 마이페이지 회원정보 수정
-	public void updateuser(UserDTO dto) {
-		userMapper.updateuser(dto);
+	public void modify(UserDTO dto) {
+		userMapper.modify(dto);
 	}
 
 

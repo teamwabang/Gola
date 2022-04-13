@@ -22,6 +22,6 @@ public interface UserMapper {
 	public UserDTO infouser(String userId);
 	
 	// 마이페이지 회원정보 수정
-	public void updateuser(UserDTO dto);
+	public void modify(UserDTO dto);
 	
 }
