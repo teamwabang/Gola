@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.recipe.gola.common.validate.Validate;
 import com.recipe.gola.config.auth.PrincipalDetails;
+import com.recipe.gola.dto.UserAuth;
 import com.recipe.gola.dto.UserDTO;
 import com.recipe.gola.service.UserService;
 
@@ -42,7 +43,7 @@ public class UserController {
 	// 회원가입
 	@GetMapping("join")
 	public String userjoin() {
-		logger.info("회원가입을 시도 중 입니다.");
+		logger.info("-----> 회원가입을 시도 중 입니다.");
 		return "index";
 	}
 	
@@ -58,7 +59,7 @@ public class UserController {
                 model.addAttribute(key, validatorResult.get(key));
             }
 
-            logger.error("회원가입에 실패하였습니다.");
+            logger.error("-----> 회원가입에 실패하였습니다.");
             return "redirect:/";
         }
         
@@ -66,7 +67,7 @@ public class UserController {
         String encPwd = bCryptPasswordEncoder.encode(rawPwd);
         dto.setUserPwd(encPwd);
         userService.insertuser(dto);
-        logger.info("회원가입에 성공하였습니다.");
+        logger.info("-----> 회원가입에 성공하였습니다.");
         return "redirect:/";
     }
 	
@@ -91,26 +92,33 @@ public class UserController {
 	// 마이페이지
 	@GetMapping("mypage")
 	public String mypage(@AuthenticationPrincipal PrincipalDetails principaldetail, Model model) {
-		logger.info("마이페이지로 이동합니다.");
+		logger.info("-----> 마이페이지로 이동합니다.");
 		logger.info("유저 아이디 : " + principaldetail.getUsername());
 		model.addAttribute("dto", principaldetail.getDto());
 		
 		return "user/mypage";
 	}
+
+	@PostMapping("mypage/modify")
+	public String modify(@Valid UserDTO dto, @AuthenticationPrincipal PrincipalDetails principaldetail, HttpSession session) {
+		logger.info("-----> 회원정보를 수정하였습니다.");
+		logger.info("유저 아이디 : " + principaldetail.getUsername());
+		
+		dto.setUserAuth(UserAuth.USER);
+        
+        userService.modify(dto);
+
+        session.invalidate();
+		return "redirect:/";
+	}
 	
-//	@PutMapping("mypage/update")
-//    public String modify(@Valid UserDTO dto, RedirectAttributes rttr) {
-//        logger.info("회원정보를 수정하였습니다.");
-//        userService.updateuser(dto);
-//        return "redirect:/mypage";
-//    }
-
-	@PostMapping("mypage/update")
-	public String updatePOST(@Valid UserDTO dto) {
-		logger.info("회원정보수정 입력페이지 POST");
-
-		userService.updateuser(dto);
-		return "redirect:/mypage";
+	@GetMapping("mypage/leave")
+	public String leave(@AuthenticationPrincipal PrincipalDetails principaldetail, Model model) {
+		logger.info("-----> 마이페이지로 이동합니다.");
+		logger.info("유저 아이디 : " + principaldetail.getUsername());
+		model.addAttribute("dto", principaldetail.getDto());
+		
+		return "user/leave";
 	}
 	
 		
