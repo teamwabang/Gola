@@ -8,7 +8,6 @@
   font-style: normal;
 }
 
-
 /* intro */
 .introani {
   line-height: 1.5em;
@@ -16,12 +15,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   position: absolute;
   height: 100vh;
   width:100vw;
-  animation: hideSplashScreen 0.4s ease-in-out forwards;
-  animation-delay: 0.8s;
-}
+  height: 100vh;
+
 
 .loading {
   width: 8%;
