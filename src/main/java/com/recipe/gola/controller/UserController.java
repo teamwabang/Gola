@@ -107,14 +107,18 @@ public class UserController {
 //    }
 
 	@PostMapping("mypage/update")
-	public String updatePOST(@Valid UserDTO dto) {
-		logger.info("회원정보수정 입력페이지 POST");
+	public String updatePOST(@Valid UserDTO dto, @AuthenticationPrincipal PrincipalDetails principaldetail, HttpSession session) {
+		logger.info("회원정보를 수정하였습니다.");
+		logger.info("유저 아이디 : " + principaldetail.getUsername());
 		
 		String rawPwd = dto.getUserPwd();
         String encPwd = bCryptPasswordEncoder.encode(rawPwd);
         dto.setUserPwd(encPwd);
         dto.setUserAuth(UserAuth.USER);
-		userService.updateuser(dto);
+        
+        userService.updateuser(dto);
+
+        session.invalidate();
 		return "redirect:/";
 	}
 	
