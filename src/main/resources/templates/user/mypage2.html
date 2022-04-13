@@ -24,18 +24,10 @@
 			});
 		});
 	
-		$(document).ready(function() {
-			$("#delete-info-btn").click(function() {
-				if(confirm("아이디를 정말 삭제하시겠습니까?")) {
-		    			document.form3.action="/mypage/leave";
-		    			document.form3.submit();	// 제출   
-				}
-			});
-		});
-		
-		$(document).ready(function() {
+$(document).ready(function() {
+			
 			$("#change-password-area").css("display", "none");
-			$("#change-btn").click(function(e) {
+			$("#change-password-btn").click(function(e) {
 	            e.preventDefault();
 	            $("#password-area").css("display", "none");
 	            $("#change-password-area").css("display", "");
@@ -49,17 +41,32 @@
 		});
 		
 		$(document).ready(function() {
-			$("#delete-info-area").css("display", "none");
-			$("#delete-btn").click(function(e) {
+			$("#change-nickname-area").css("display", "none");
+			$("#change-nickname-btn").click(function(e) {
 	            e.preventDefault();
-	            $("#info-area").css("display", "none");
-	            $("#delete-info-area").css("display", "");
+	            $("#nickname-area").css("display", "none");
+	            $("#change-nickname-area").css("display", "");
 	        });
 			
-			$("#cancel-info-btn").click(function(e) {
+			$("#cancel-nickname-btn").click(function(e) {
 				e.preventDefault();
-	            $("#delete-info-area").css("display", "none");
-	            $("#info-area").css("display", "");
+	            $("#nickname-area").css("display", "");
+	            $("#change-nickname-area").css("display", "none");
+			})
+		});
+		
+		$(document).ready(function() {
+			$("#change-email-area").css("display", "none");
+			$("#change-email-btn").click(function(e) {
+	            e.preventDefault();
+	            $("#email-area").css("display", "none");
+	            $("#change-email-area").css("display", "");
+	        });
+			
+			$("#cancel-email-btn").click(function(e) {
+				e.preventDefault();
+	            $("#email-area").css("display", "");
+	            $("#change-email-area").css("display", "none");
 			})
 		});
 	</script>
@@ -74,54 +81,46 @@
 	<div>
 		<p th:style="@{text-align: center; font-size:20px;}">기본 회원정보</p>
 		<div th:style="@{text-align: center;}">
+			<form th:action="@{mypage/update1}" method="post">
 				<label>아이디</label>
-		    	<strong th:text="${dto.getUserId() }"></strong><br>
-		    	<label>비밀번호</label>
-		    	<div id="password-area">
-		    		<strong>********</strong><br>
-				    <button id="change-btn">비밀번호 변경</button>
+				<div id="id-area">
+					<input name="userId" th:value="${dto.getUserId() }" class="mainUserMainId" readonly>
+				</div>
+				
+				<label>비밀번호</label>
+				<div id="password-area">
+					<input name="userPwd" th:value="${dto.getUserPwd() }" class="mainUserMainId" readonly>
+					<button id="change-password-btn">비밀번호 변경</button>
+				</div>
+				<div id="change-password-area">
+					<input type="password" name="userPwd" placeholder="비밀번호 입력"><br>
+					<input type="password" name="pwdConfirm" placeholder="비밀번호 재 입력"><br>
+					<button id="cancel-password-btn">취소</button>
+					<button id="change-password-btn2">비밀번호 변경</button>
+				</div>
+			
+			    <label>닉네임</label>
+				<div id="nickname-area">
+			    	<input name="userNickname" th:value="${dto.getUserNickname() }" class="mainUserMainId" readonly>
+			    	<button id="change-nickname-btn">닉네임 변경</button>
 		    	</div>
-		    	<div id="change-password-area">
-		    	<form name="form1" method="post">
-			    	<label>비밀번호</label>
-			    	<input type="password" id="userPwd"><br>
-			    	<label>비밀번호 재 입력</label>
-			    	<input type="password" id="pwdConfirm"><br>
-				    <button id="cancel-password-btn">취소</button>
-				    <button id="change-password-btn">비밀번호 변경</button>
-			    </form>
-			    </div>
-			    
-			    <form name="form2" method="post">
-			    	<label>닉네임</label>
-			    	<strong th:text="${dto.getUserNickname() }"></strong><br>
-			    	<input name="userNickname" th:value="${dto.getUserNickname() }" placeholder="닉네임 입력"><br>
-			    	<label>이메일</label>
-			    	<strong th:text="${dto.getUserEmail() }"></strong><br>
-			    	<input type="button" id="changeinfobtn" value="회원정보 변경">
-		    	</form>
-			
-				<br>
-				
-				<p th:style="@{text-align: center; font-size:20px;}">나의 게시글 관리</p>
-				<a>작성한 게시글</a><br>
-				
-				<br>
-			
-			<div id="info-area">
-				<button id="delete-btn">회원탈퇴</button>
-			</div>
-			<div id="delete-info-area">
-				<p>정말로 회원탈퇴 하시겠습니까?</p>
-				<form name="form2" method="post">
-					<label>비밀번호</label>
-			    	<input type="password" id="userPwd"><br>
-			    	<label>비밀번호 재 입력</label>
-			    	<input type="password" id="pwdConfirm"><br>
-				    <button id="cancel-info-btn">취소</button>
-				    <button id="delete-info-btn">회원탈퇴</button>
-			   	</form>
-			</div>	
+		    	<div id="change-nickname-area">
+			    	<input type="text" name="userNickname" placeholder="닉네임 입력"><br>
+			    	<button id="cancel-nickname-btn">취소</button>
+					<button type="submit">닉네임 변경</button>
+		    	</div>
+		    	
+		    	<label>이메일</label>
+		    	<div id="email-area">
+		    		<input name="userEmail" th:value="${dto.getUserEmail() }" class="mainUserMainId" readonly>
+		    		<button id="change-email-btn">닉네임 변경</button>
+		    	</div>
+		    	<div id="change-email-area">
+		    		<input type="text" name="userEmail" placeholder="이메일 입력"><br>	  
+			    	<button id="cancel-email-btn">취소</button>
+					<button id="change-email-btn2">이메일 변경</button>
+		    	</div>
+		    </form>
 		</div>
 	</div>
     

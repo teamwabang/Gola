@@ -1,4 +1,4 @@
-body {
+.mypageBody {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -6,7 +6,7 @@ body {
   margin: 0px 20%;
 }
 
-header {
+.mypageHeader {
   box-sizing: border-box;
   width: 30%;
   height: 100%;

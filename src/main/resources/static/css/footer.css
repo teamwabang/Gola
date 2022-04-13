@@ -34,6 +34,9 @@ a {
 .footernav li a {
     font-size: 14px;
     position: relative;
+    text-decoration-line:none;
+    color:#000
+    
 }
 
 .footernav li a:before {
@@ -46,6 +49,7 @@ a {
     transition: 0.4s;
     left: 50%;
     transform: translateX(-50%);
+
 }
 
 .footernav li a:hover:before {
