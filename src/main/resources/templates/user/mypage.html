@@ -54,7 +54,7 @@
 <body class="mypageBody">
     <header class="mypageHeader shadow p-3 mb-5 bg-body rounded">
       <div class="goIndex">
-        <h3>Gola Home</h3>
+        <h3><a th:href="@{/}">Gola Home</a></h3>	<!-- 나중에 Gola Home 지우고 image로 대체 -->
       </div>
       <div class="InfoContents">
       <div class="userInfo">
@@ -84,7 +84,8 @@
       </nav>
       <nav class="infoFunction">
         <ul>
-          <li class="infoLogout">로그아웃</li>
+          <li class="infoLogout"><a th:href="@{logout}">로그아웃</a></li>
+          <li class="infoLogout"><a th:href="@{mypage/leave}">회원탈퇴</a></li>
         </ul>
       </nav>
     </div>
