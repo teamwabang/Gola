@@ -7,6 +7,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+import com.recipe.gola.config.auth.UserAuth;
+
 import lombok.Data;
 
 @Data

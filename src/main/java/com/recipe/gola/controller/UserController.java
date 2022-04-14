@@ -19,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.recipe.gola.common.validate.Validate;
 import com.recipe.gola.config.auth.PrincipalDetails;
-import com.recipe.gola.dto.UserAuth;
+import com.recipe.gola.config.auth.UserAuth;
 import com.recipe.gola.dto.UserDTO;
 import com.recipe.gola.service.UserService;
 
@@ -99,6 +99,7 @@ public class UserController {
 		return "user/mypage";
 	}
 
+	// 마이페이지 회원정보 변경
 	@PostMapping("mypage/modify")
 	public String modify(@Valid UserDTO dto, @AuthenticationPrincipal PrincipalDetails principaldetail, HttpSession session) {
 		logger.info("-----> 회원정보를 수정하였습니다.");
@@ -109,9 +110,10 @@ public class UserController {
         userService.modify(dto);
 
         session.invalidate();
-		return "redirect:/";
+		return "redirect:/mypage";
 	}
 	
+	// 회원탈퇴
 	@GetMapping("mypage/leave")
 	public String leave(@AuthenticationPrincipal PrincipalDetails principaldetail, Model model) {
 		logger.info("-----> 마이페이지로 이동합니다.");
@@ -119,6 +121,12 @@ public class UserController {
 		model.addAttribute("dto", principaldetail.getDto());
 		
 		return "user/leave";
+	}
+	
+	// 비밀번호 찾기
+	@GetMapping("find/password")
+	public String findPwd() {
+		return "user/find_password";
 	}
 	
 		
