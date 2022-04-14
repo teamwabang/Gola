@@ -19,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.recipe.gola.common.validate.Validate;
 import com.recipe.gola.config.auth.PrincipalDetails;
-import com.recipe.gola.dto.UserAuth;
+import com.recipe.gola.config.auth.UserAuth;
 import com.recipe.gola.dto.UserDTO;
 import com.recipe.gola.service.UserService;
 
