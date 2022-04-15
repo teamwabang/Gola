@@ -21,10 +21,9 @@
     <!-- JavaScript -->
     <script type="text/javascript" src="/js/chatbot.js"></script>
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript">
-
-    </script>
-
+	<!-- Featherlight.js -->
+	<script src="/js/featherlight.js"></script>
+	<link rel="stylesheet" href="/css/featherlight.css">
 </head>
 
 <body class="indexbody">
@@ -56,7 +55,8 @@
         </div>
         <div class="items">
             <div>
-                <a th:href="@{/}">
+                <a th:href="@{/index}" data-featherlight="iframe" >
+                  <a th:href="@{/index}" data-featherlight="iframe" >
                      <img src="images/test1.jpg"></a>
                 <i class="xi-plus-thin"></i>
                 <span> 난이도 '하'</span>
@@ -89,7 +89,7 @@
         </div>
         <br>
         <br>
-        <div>
+        <div class="seemorebox">
           <div classs="seemoreline">
 						<p class="seemore"> see more <i class="fa-solid fa-angles-right"></i></p>
 					</div>
@@ -132,16 +132,59 @@
         </div>
          <br>
         <br>
-        <div>
+        <div class="seemorebox">
           <div classs="seemoreline">
 						<p class="seemore"> see more <i class="fa-solid fa-angles-right"></i></p>
 					</div>
         </div>
         <br>
 		<br>
+		    <div class="indexh1">
+          <h1> <span>USER </span>REVIEW</h1>
+        </div>
+        <div class="items">
+          <div>
+            <a th:href="@{/}">
+              <img src="images/test5.jpg">
+            </a>
+            <i class="xi-plus-thin"></i>
+            <span> 0</span>
+          </div>
+          <div>
+            <a th:href="@{/}">
+              <img src="images/test6.jpg">
+            </a>
+            <i class="xi-plus-thin"></i>
+            <span> 06</span>
+          </div>
+          <div>
+            <a th:href="@{/}">
+              <img src="images/test7.jpg">
+            </a>
+            <i class="xi-plus-thin"></i>
+            <span> 07</span>
+          </div>
+          <div >
+            <a th:href="@{/}">
+              <img src="images/test8.jpg">
+            </a>
+            <i class="xi-plus-thin"></i>
+            <span> 난이도 '중' </span>
+            <p> 08</p>
+          </div>
+        </div>
+         <br>
+        <br>
+        <div class="seemorebox">
+          <div classs="seemoreline">
+						<p class="seemore"> see more <i class="fa-solid fa-angles-right"></i></p>
+		  </div>
+        </div>
+        <br>
+        <br>
+        
     </div>    
     </section>
-
 
     <!-- import footer -->
     <footer th:replace="layout/fragment :: fr_footer"></footer>

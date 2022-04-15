@@ -26,12 +26,18 @@
   height: 100%;
   width:100%;
   top: 0;
+
   left: 0;
+  right:0;
+  bottom:0;
+  visibility:inherit;
+  box-sizing:border-box;
+  overflow-y: hidden;
+  white-space: nowrap;
   animation: hideSplashScreen 0.4s ease-in-out forwards;
   animation-delay: 0.9s;
   background-color:#f8f8f8;   
-
-  z-index: 1;
+  z-index: 11;
 }
 
 .loading {
@@ -109,7 +115,7 @@
   margin: 0;
   color: #222;
   line-height: 1.6em;
-  height: 200vh;
+  height: 240vh;
   display: grid;
   justify-content: center;
   margin: 0 20%;
@@ -228,6 +234,9 @@
   bottom: 70px;
 }
 
+.seemorebox {
+  margin-bottom: 60px;
+}
 .indexmain .seemore {
   border: 1px solid #000;
   height: 40px;
@@ -235,7 +244,7 @@
   text-align: center;
   padding-top: 10px;
   margin-left: 45%;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
   margin-top: 40px;
   cursor:pointer;
 }
