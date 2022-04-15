@@ -2,23 +2,33 @@ package com.recipe.gola.config.auth;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import com.recipe.gola.dto.UserDTO;
 
 import lombok.Data;
 
 @Data
-public class PrincipalDetails implements UserDetails {
+public class PrincipalDetails implements UserDetails, OAuth2User {
 
 	@Autowired
 	private UserDTO dto;
 	
+	@Autowired
+	private Map<String, Object> attributes;
+	
 	public PrincipalDetails(UserDTO dto) {
 		this.dto = dto;
+	}
+	
+	public PrincipalDetails(UserDTO dto, Map<String, Object>attributes) {
+		this.dto = dto;
+		this.attributes = attributes;
 	}
 	
 	// 사용자의 권한을 콜렉션 형태로 변환
@@ -68,5 +78,16 @@ public class PrincipalDetails implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		return true;
+	}
+
+	// oauth2
+	@Override
+	public Map<String, Object> getAttributes() {
+		return attributes;
+	}
+
+	@Override
+	public String getName() {
+		return (String)this.attributes.get("name");
 	}
 }
