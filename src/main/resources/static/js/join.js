@@ -1,4 +1,4 @@
-$('#userIdJoin').on('keyup' ,function(event) {
+$('#userIdJoin').on('keyup' ,function() {
   if (!/[a-zA-Z0-9]{2,20}$/g.test($('#userIdJoin').val())) {
     $('#userIdCheck').css({
       "color" : "red"
@@ -14,7 +14,7 @@ $('#userIdJoin').on('keyup' ,function(event) {
   }
 });
 
-$('#userPwdJoin').on('keyup' ,function(event) {
+$('#userPwdJoin').on('keyup' ,function() {
   if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]).{8,16}$/g.test($('#userPwdJoin').val())) {
     $('#userPwdCheck').css({
       "color" : "red"
@@ -50,7 +50,7 @@ $('#confirm').on('keyup', function () {
 });
 
 
-$('#userNickname').on('keyup' ,function(event) {
+$('#userNickname').on('keyup' ,function() {
   if (!/^[가-힣a-zA-Z0-9]{3,20}$/g.test($('#userNickname').val())) {
     $('#userNicknameCheck').css({
       "color" : "red"
@@ -66,7 +66,7 @@ $('#userNickname').on('keyup' ,function(event) {
   }
 });
 
-$('#userEmail').on('keyup' ,function(event) {
+$('#userEmail').on('keyup' ,function() {
   if (!/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/g.test($('#userEmail').val())) {
     $('#userEmailCheck').css({
       "color" : "red"
@@ -88,11 +88,48 @@ $(document).ready(function() {
     if( $("#userIdJoin").val() != "" && $("#userPwdJoin").val() != "" && $('#confirm').val() != "" && $('#userEmail').val() != "" && $('#userNickname').val() != "") {
       $('#joinSubmit').prop('disabled', false);
     } else {
-      $('#joinSubmit').prop('disabeld', true);
+      $('#joinSubmit').prop('disabeld', true);      
     }
   })
 });
 
+$('#joinSubmit').on('click', function(event) {
+	event.preventDefault();
+	if (!/[a-zA-Z0-9]{2,20}$/g.test($('#userIdJoin').val())) {
+		swal({
+            title:'ID ERROR',
+            text:'아이디를 확인해주세요.',
+            icon:'error'
+        })
+	} else if(!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]).{8,16}$/g.test($('#userPwdJoin').val())) {
+		swal({
+            title:'PASSWORD ERROR',
+            text:'비밀번호를 확인해주세요.',
+            icon:'error'
+        })
+	} else if( $("#userPwdJoin").val() != $("#confirm").val()) {
+		swal({
+            title:'PASSWORD CEHCK ERROR',
+            text:'비밀번호가 일치하지 않습니다.',
+            icon:'error'
+        })	
+	} else if(!/^[가-힣a-zA-Z0-9]{3,20}$/g.test($('#userNickname').val())) {
+		swal({
+            title:'NICKNAME ERROR',
+            text:'닉네임을 확인해주세요.',
+            icon:'error'
+        })
+	} else if(!/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/g.test($('#userEmail').val())) {
+		swal({
+            title:'EMAIL ERROR',
+            text:'이메일을 확인해주세요.',
+            icon:'error'
+        })
+	} else {
+		$(this).unbind('click').click();
+		alert("회원가입");	
+	};
+});
 
 
 /* 아이디 중복 검사
