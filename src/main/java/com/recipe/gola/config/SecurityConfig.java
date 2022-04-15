@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.recipe.gola.config.auth.PrincipalDetailsService;
-import com.recipe.gola.config.oauth.PrincipalOAuth2UserService;
+import com.recipe.gola.config.oauth.PrincipalOAuth2Service;
 
 import lombok.RequiredArgsConstructor;
 
@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private PrincipalDetailsService principalService;
 	
 	@Autowired
-	private PrincipalOAuth2UserService principalOAuth2UserService;
+	private PrincipalOAuth2Service principalOAuth2Service;
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/user/**").access("hasAuthority('USER') or hasAuthority('ADMIN')")	// USER, ADMIN만 접근 가능
 				.antMatchers("/admin/**").hasAuthority("ADMIN")	// ADMIN만 접근 가능
 				.anyRequest().permitAll()	// 나머지 요청들을 권한의 종류에 상관 없이 모두 접근 가능
-//				.anyRequest().permitAll()	// 나머지 요청들을 권한의 종류에 상관 없이 권한이 있어야 접근 가능
+//				.anyRequest().authenticated()	// 나머지 요청들을 권한의 종류에 상관 없이 권한이 있어야 접근 가능
 			.and()
 				.formLogin()
 					.loginPage("/login")	// 로그인 페이지 링크
@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 					.loginPage("/login")
 					.defaultSuccessUrl("/")	// 로그인 성공 후 리다이렉트 주소
 					.userInfoEndpoint()
-					.userService(principalOAuth2UserService)
+					.userService(principalOAuth2Service)
 			.and()
 			.and()
 				.rememberMe()
