@@ -16,7 +16,7 @@ import com.recipe.gola.dto.UserDTO;
 import com.recipe.gola.mapper.UserMapper;
 
 @Service
-public class PrincipalOAuth2UserService extends DefaultOAuth2UserService {
+public class PrincipalOAuth2Service extends DefaultOAuth2UserService {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
