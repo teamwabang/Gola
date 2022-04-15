@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<!-- jQuery -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
+		<title>엄지혜 게시판</title>
+		<style>
+			body {
+			  padding-top: 70px;
+			  padding-bottom: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<article>
+			<div class="container" role="main">
+				<h2>글쓰기</h2>
+				<form name="form" id="form" role="form" method="" action="">
+					<input type="hidden" name="bno" id="bno" th:value="${bbs.bno}">
+					<div class="mb-3">
+						<label for="title">제목</label>
+						<input type="text" class="form-control" name="title" id="title" placeholder=""	readonly 	th:value="${bbs.title}">
+					</div>
+ 
+					<div class="mb-3">
+						<label for="reg_id">작성자</label>
+						<!-- 로그인기능 오류로 임시 강제값 지정 -->
+						<input type="text" class="form-control" name="writer" id="writer" placeholder="" value="" readonly	th:value="${bbs.writer}"> 
+					</div>
+ 
+					<div class="mb-3">
+						<label for="content">내용</label>
+						<textarea class="form-control" rows="5" name="content" id="content" placeholder="" 	readonly 	th:text="${bbs.content}"></textarea>
+					</div>
+<!--  
+					<div class="mb-3">
+						<label for="tag">TAG</label>
+						<input type="text" class="form-control" name="tag" id="tag" placeholder="태그를 입력해 주세요">
+					</div>
+  -->
+				</form>
+				<div >
+					<button type="button" class="btn btn-sm btn-primary" id="modBtn">수정</button>
+					<button type="button" class="btn btn-sm btn-primary" id="delBtn">삭제</button>
+					<button type="button" class="btn btn-sm btn-primary"  onclick="javascript:location.href='/bbs/list';">목록</button>
+				</div>
+			</div>
+		</article>
+	</body>
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			//게시판 수정버튼
+            $("#modBtn").on("click", function(){
+            	location.href = "/bbs/write?bno="+$('#bno').val();
+            });
+
+			//게시판 삭제버튼
+            $("#delBtn").on("click", function(){
+                let form = $("#form");
+                form.attr("action", "/bbs/deleteBbs");
+                form.attr("method", "post");
+             	form.submit();
+            });
+			
+		});
+
+	</script>
+</html>
