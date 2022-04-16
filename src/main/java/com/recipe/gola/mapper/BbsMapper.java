@@ -1,6 +1,7 @@
 package com.recipe.gola.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -23,5 +24,7 @@ public interface BbsMapper {
     
     //게시판 수정
     int updateBbs(BbsDTO bbsDTO) throws Exception;
+    
+    int updateCommentCnt(Map<String, Object> paramMap);
 
 }

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.recipe.gola.dto.*;
 import com.recipe.gola.mapper.BbsMapper;
-import com.recipe.gola.mapper.BoardMapper;
 import com.recipe.gola.mapper.CommentMapper;
 import com.recipe.gola.mapper.UserMapper;
 
