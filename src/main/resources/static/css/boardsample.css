@@ -1,0 +1,128 @@
+.boardBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boardMain {
+    display: flex;
+    width: 1200px;
+    height: 700px;
+}
+
+.boardPic {
+    height: inherit;
+    width: 60%;
+    border: 1px solid black;
+    background-color: tomato;
+}
+
+.boardPic img {
+    height: inherit;
+    width: 100%;
+}
+
+.boardContent {
+    height: inherit;
+    width: 40%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+.boardContent * {
+}
+
+.boardAuthor {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    height: 8%;
+}
+
+
+
+.authorContent {
+    padding: 20px;
+}
+
+/*댓글창 전체*/
+.boardCommentMain {
+    display: flex;
+    flex-direction: column;
+    height: 72%;
+    overflow-y: scroll;
+    white-space: nowrap;
+}
+
+/*댓글창 하나 요소*/
+.comment {
+    border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 10px;
+    white-space: normal;
+
+}
+
+.commentText {
+    display: flex;
+    flex-direction: row;
+}
+
+.commentAuthor {
+    border: 1px solid red;
+    margin-right: 10px;
+}
+
+.commentSubtance {
+    border: 1px solid red;
+}
+
+.updateDelete {
+}
+
+.boardContentInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 15%;
+}
+
+.like {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.day, .count {
+    margin-left: 10px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.count {
+    font-size: 10px;
+}
+
+.boardWrite {
+    height: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.boardWriteComment {
+    border: none;
+    height: 100%;
+    width: 90%;
+    padding-left: 10px;
+}
+
+#boardSubmit {
+    border: none;
+    background: none;
+    height: 90%;
+    font-weight: 600;
+    color: blue;
+    opacity: 0.3;
+}
