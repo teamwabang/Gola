@@ -7,7 +7,7 @@ import org.springframework.stereotype.*;
 import org.springframework.transaction.annotation.*;
 
 import com.recipe.gola.dto.*;
-import com.recipe.gola.mapper.BoardMapper;
+import com.recipe.gola.mapper.BbsMapper;
 import com.recipe.gola.mapper.CommentMapper;
 import com.recipe.gola.mapper.UserMapper;
 
@@ -29,11 +29,11 @@ public class CommentService {
 
 	@Autowired
 	private final CommentMapper commentMapper;
-	private final BoardMapper boardMapper;
+	private final BbsMapper bbsMapper;
 	
-	public CommentService(CommentMapper commentMapper, BoardMapper boardMapper) {
+	public CommentService(CommentMapper commentMapper, BbsMapper boardMapper) {
 		this.commentMapper = commentMapper;
-		this.boardMapper = boardMapper;
+		this.bbsMapper = boardMapper;
 	}
 
     public int getCount(Integer bno) throws Exception {
@@ -49,7 +49,7 @@ public class CommentService {
     	paramMap.put("bno", bno);
     	paramMap.put("cnt", -1);
     	
-		int rowCnt = boardMapper.updateCommentCnt(paramMap);
+		int rowCnt = bbsMapper.updateCommentCnt(paramMap);
         System.out.println("updateCommentCnt - rowCnt = " + rowCnt);
 //        throw new Exception("test");
 
@@ -73,7 +73,7 @@ public class CommentService {
     	
     	paramMap.put("bno", commentDto.getBno());
     	paramMap.put("cnt", 1);
-    	boardMapper.updateCommentCnt(paramMap);
+    	bbsMapper.updateCommentCnt(paramMap);
 //                throw new Exception("test");
         return commentMapper.insert(commentDto);
     }

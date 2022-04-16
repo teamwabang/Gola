@@ -1,9 +1,12 @@
 package com.recipe.gola.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.recipe.gola.dto.*;
@@ -13,8 +16,9 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-@RestController
+@RestController("/comment")
 public class CommentController {
+	
     @Autowired
     CommentService service;
 
@@ -23,6 +27,7 @@ public class CommentController {
 //            "comment" : "hihihi",
 //            "commenter" : "asdf"
 //    }
+    
     // 댓글을 수정하는 메서드
     @PatchMapping("/comments/{cno}")   // /comments/26  PATCH
     public ResponseEntity<String> modify(@PathVariable Integer cno, @RequestBody CommentDTO dto,HttpSession session) {
