@@ -43,4 +43,29 @@ public class BbsService {
         return bbsMapper.updateBbs(bbsDTO);
     }
 
+    //게시글번호 생성
+    public String selectBno() throws Exception{
+    	return bbsMapper.selectBno();
+    }
+    
+	//파일 저장
+    public int insertFiles(FilesDTO filesDto) throws Exception{
+    	return bbsMapper.insertFiles(filesDto);    	
+    }
+	
+    //파일 삭제
+    public int deleteFiles(String fno) throws Exception{
+    	return bbsMapper.deleteFiles(fno);    	    	
+    }
+    
+	//파일정보 목록조회
+    public List<FilesDTO> selectListFiles(String bno) throws Exception{
+    	return bbsMapper.selectListFiles(bno);    	    	
+    }
+	
+	//파일정보 상세조회
+    public FilesDTO selectDetailFiles(String fno) throws Exception{
+    	return bbsMapper. selectDetailFiles(fno);    	    	
+    }
+    
 }

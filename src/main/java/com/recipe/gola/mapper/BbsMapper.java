@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.recipe.gola.dto.BbsDTO;
+import com.recipe.gola.dto.FilesDTO;
 
 @Mapper
 public interface BbsMapper {
@@ -24,7 +25,24 @@ public interface BbsMapper {
     
     //게시판 수정
     int updateBbs(BbsDTO bbsDTO) throws Exception;
-    
-    int updateCommentCnt(Map<String, Object> paramMap);
 
+    //게시글번호 생성
+    String selectBno() throws Exception;
+    
+	//파일 저장
+	int insertFiles(FilesDTO filesDto) throws Exception;
+	
+    //파일 삭제
+    int deleteFiles(String fno) throws Exception;
+    
+	//파일정보 목록조회
+	List<FilesDTO> selectListFiles(String bno) throws Exception;
+	
+	//파일정보 상세조회
+	FilesDTO selectDetailFiles(String fno) throws Exception;
+	
+    int updateCommentCnt(Map<String, Object> paramMap);
+    
+    
+    
 }
