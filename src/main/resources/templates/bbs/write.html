@@ -14,78 +14,165 @@
            padding-top: 70px;
            padding-bottom: 30px;
          }
+		.custom-file-input ~ 
+		.custom-file-label::after {
+		    content: "사진찾기";
+		}
       </style>
    </head>
    <body>
       <article>
          <div class="container" role="main">
             <h2>글쓰기</h2>
-            <form name="form" id="form" role="form" method="post" action="">
-               <input type="hidden" name="bno" id="bno"   >
+            <form name="form" id="form" role="form" method="post" action="" enctype="multipart/form-data">
+               <input type="hidden" name="bno" id="bno" />
+               <input type="hidden" name="deleteFilesNo[]"/>
                <div class="mb-3">
                   <label for="title">제목</label>
                   <input type="text" class="form-control" name="title" id="title" placeholder="제목을 입력해 주세요">
                </div>
- 
+ <!-- 
                <div class="mb-3">
                   <label for="reg_id">작성자</label>
-                  <!-- 로그인기능 오류로 임시 강제값 지정 -->
                   <input type="text" class="form-control" name="writer" id="writer" placeholder="이름을 입력해 주세요" value="UJH" readonly> 
                </div>
- 
-               <div class="mb-3">
-                  <label for="content">내용</label>
-                  <textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요"></textarea>
-               </div>
-<!--  
-               <div class="mb-3">
-                  <label for="tag">TAG</label>
-                  <input type="text" class="form-control" name="tag" id="tag" placeholder="태그를 입력해 주세요">
-               </div>
-  -->
+--> 
+             	<div class="mb-3">
+              		<label for="content">내용</label>
+                  	<textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요"></textarea>
+             	</div>  
+				<div class="mb-3">
+					<label for="tag">난이도</label>
+			  		<select class="form-control" id="level"  name="level">
+				    	<option value="상" selected>상</option>
+				    	<option value="중">중</option>
+				    	<option value="하">하</option>
+				  	</select>
+				</div>
+				<div class="mb-3"	id="upFIleDiv1">
+					<div class="custom-file">
+					  	<input type="file" class="custom-file-input"	name="upFile" >
+					  	<label class="custom-file-label" for="customFileLang" id="upFileTxt1">사진업로드</label>
+				  	</div>
+				</div>
+				<div class="mb-3"	id="upFIleDiv2">
+					<div class="custom-file">
+					  	<input type="file" class="custom-file-input"	name="upFile" >
+					  	<label class="custom-file-label" for="customFileLang" id="upFileTxt2">사진업로드</label>
+				  	</div>
+				</div>
+				<div class="mb-3"	id="upFIleDiv3">
+					<div class="custom-file">
+					  	<input type="file" class="custom-file-input"	name="upFile" >
+					  	<label class="custom-file-label" for="customFileLang" id="upFileTxt3">사진업로드</label>
+				  	</div>
+				</div>
             </form>
             <div >
                <button type="button" class="btn btn-sm btn-primary" id="writeBtn">저장</button>
                <button type="button" class="btn btn-sm btn-primary"  onclick="javascript:location.href='/bbs/list';">목록</button>
             </div>
          </div>
-         <th:block th:if="${bbs != null}">
+         <th:block th:if="${bbs != null && bbs != ''}">
              <input type="hidden" id="getBno" th:value="${bbs.bno}"/>
              <input type="hidden" id="getTitle" th:value="${bbs.title}"/>
              <input type="hidden" id="getContent" th:value="${bbs.content}"/>
+             <input type="hidden" id="getLevel" th:value="${bbs.level}"/>
          </th:block>
       </article>
    </body>
 
-   <script type="text/javascript">
-      $(document).ready(function() {
-         
-         if($('#getBno').val() != ""){
-            $('#bno').val($('#getBno').val());
-         }
-         if($('#getTitle').val() != ""){
-            $('#title').val($('#getTitle').val());
-         }
-         if($('#getContent').val() != ""){
-            $('#content').text($('#getContent').val());
-         }
-         
-         //게시판 저장버튼
-            $("#writeBtn").on("click", function(){
-                let form = $("#form");
-            
-                //게시판번호가 있으면 기존수정모드 없으면 신규글쓰기모드.
-                  $('#bno').val() != "" ?   form.attr("action", "/bbs/updateBbs") :   form.attr("action", "/bbs/insertBbs")
-                form.attr("method", "post");
+	 <script th:inline="javascript">
+		
+	 	//컨트롤러에서 받은 타임리프 값을 javascript 변수에 넣는다.
+	    let fileList = [[${fileList}]];
+	 	console.log(fileList);
+	    
+		if(fileList != null){
+			fileList.forEach(function(v,i){
+				let cnt = i+1;
+				$('#upFileTxt'+cnt).text(v.fileName);
+				$('#upFIleDiv'+cnt).append('<button type="button" class="btn btn-sm btn-warning" id="deleteFileBtn'+cnt+'" onclick="javascript:fnDeleteFile('+v.fno+','+cnt+');">파일삭제</button>');
+			});		
+		}
+		
+	 	//파일삭제할 파일번호를 담는 배열
+		let deleteFiles = [];
+		
+		//파일삭제버튼
+		let fnDeleteFile = function(fno, cnt){
+			deleteFiles.push(fno);
+			$('#deleteFileBtn'+cnt).remove();
+			$('#upFileTxt'+cnt).text("사진업로드");
+			//선택한 삭제파일만큼 배열에 누적시킨다. 
+			$("input[name='deleteFilesNo[]']").val(deleteFiles);
+		}
+	 
+		//사진업로드 체인지 이벤트
+		$("input[name=upFile]").on('change',function(){
+
+			var ext = $(this).val().split('.').pop().toLowerCase();
+     		if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+	 			alert('gif, png, jpg, jpeg 파일만 업로드 할수 있습니다.');
+		 		return;
+      		}
+			
+			//수정페이지일때 파일삭제버튼이 달려있다면 먼저 삭제후 재등록 해야한다.
+			if($(this).parent('.custom-file').next().text() == "파일삭제"){
+				alert("기존파일을 먼저 삭제해주세요.");
+				return false;
+			}
+	    	//get the file name
+			var fileValue = $(this).val().split("\\");
+			var fileName = fileValue[fileValue.length-1]; // 파일명
+			console.log('fileName : '+fileName);
+	   		//replace the "Choose a file" label
+	  		$(this).next('.custom-file-label').html(fileName);
+		})   
+		
+		$(document).ready(function() {
+	   		
+			/* 수정모드일시 값 셋팅 */
+			if($.trim($('#getBno').val()) != ""){
+	        	$('#bno').val($('#getBno').val());
+	      	}
+	       	if($.trim($('#getTitle').val()) != ""){
+	       		$('#title').val($('#getTitle').val());
+	      	}
+	      	if($.trim($('#getContent').val()) != ""){
+	        	$('#content').text($('#getContent').val());
+	      	}
+	      	if($.trim($('#getLevel').val()) != ""){
+				$('#level').val($('#getLevel').val());
+			}
+	      	
+	        //게시판 저장버튼
+	       	$("#writeBtn").on("click", function(){
+	       		let flag = false;
+				$("[id^='upFileTxt']").each(function( i , e ){
+					if( $(this).text() != "사진업로드" ) {
+						flag = true;
+					}
+	          	});
+				if(!flag){
+					alert("최소 1장의 사진업로드를 해주세요.");
+					return false;
+				}
+
+	      		let form = $("#form");
+	          	//게시판번호가 있으면 기존수정모드 없으면 신규글쓰기모드.
+	         	$('#bno').val() != "" ?   form.attr("action", "/bbs/updateBbs") :   form.attr("action", "/bbs/insertBbs")
+          		form.attr("method", "post");
                 //게시판 유효성 체크
                 if(formCheck()){
                    form.submit();
                 }
-           });
+                
+	       	});
          
-      });
-
-      //게시판 입력폼 체크
+   		});
+	      
+      	//게시판 입력폼 체크
         let formCheck = function() {
             let form = document.getElementById("form");
             if(form.title.value=="") {
@@ -98,7 +185,8 @@
                 form.content.focus();
                 return false;
             }
+            
             return true;
         }
-   </script>
+	   </script>
 </html>
