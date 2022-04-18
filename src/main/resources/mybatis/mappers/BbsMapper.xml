@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.recipe.gola.mapper.BbsMapper">
+
+	<select id="selectBno" resultType="string">
+		/*com.recipe.gola.mapper.BbsMapper.selectBno*/
+   		SELECT 
+      		IFNULL(MAX(bno) + 1, 1) as bno	/*프라이머리키 1씩 증가시키기*/
+       	FROM board
+	</select>
+
+	<!-- 게시판 저장 -->
+    <insert id="insertBbs" parameterType="BbsDTO">
+		/*com.recipe.gola.mapper.BbsMapper.insertBbs*/
+		INSERT INTO board
+        (
+        	bno
+        	, title
+        	, content
+        	, writer
+        	, reg_date
+        	, level
+        )
+        VALUES
+      	(
+      		#{bno}				/*게시판 프라이머리 키*/
+        	, #{title}				/*게시판제목*/
+            , #{content}		/*게시판내용*/
+            , #{writer}			/*작성자*/
+            , now()				/*작성일*/
+            , #{level}			/*난이도*/
+      	)
+    </insert>
+
+	<!-- 게시판 목록조회 -->
+    <select id="selectListBbs" resultType="BbsDTO">
+
+		/*com.recipe.gola.mapper.BbsMapper.selectListBbs*/
+        SELECT 
+        	bno
+        	, title
+        	, content
+        	, writer
+        	, view_cnt
+        	, comment_cnt
+        	, date_format(reg_date, '%Y-%m-%d') as reg_date		/*등록일*/
+        	, level	/*난이도*/
+			, (
+				SELECT CONCAT('/upload/',MAX(file_savename)) AS img_src 
+				FROM files f 
+				WHERE b.bno = f.bno
+			) as img_src		/*이미지주소, 최상위 1건만*/
+        FROM board b
+        ORDER BY reg_date DESC, bno DESC
+        
+    </select>
+
+	<!-- 게시판상세조회 -->
+    <select id="selectDetailBbs" parameterType="BbsDTO" resultType="BbsDTO">
+		/*com.recipe.gola.mapper.BbsMapper.selectDetailBbs*/
+        SELECT 
+        	bno
+        	, title
+        	, content
+        	, writer
+        	, view_cnt
+        	, comment_cnt
+        	, date_format(reg_date, '%Y-%m-%d') as reg_date
+        	, level
+        FROM board
+        WHERE bno = #{bno}
+    </select>
+
+	<!-- 게시판 수정 -->
+    <update id="updateBbs" parameterType="BbsDTO">
+		/*com.recipe.gola.mapper.BbsMapper.updateBbs*/
+        UPDATE board
+        SET   
+        	title = #{title}
+          	, content = #{content}
+          	, up_date = now()
+          	, level = #{level}
+        WHERE bno = #{bno}
+    </update>
+
+	<!-- 게시판 삭제 -->
+    <delete id="deleteBbs" parameterType="BbsDTO">
+		/*com.recipe.gola.mapper.BbsMapper.deleteBbs*/
+   		DELETE FROM board 
+   		WHERE bno = #{bno} 
+    </delete>
+
+	<!-- 파일 저장 -->
+    <insert id="insertFiles" parameterType="FilesDTO">
+    	/*com.recipe.gola.mapper.FilesMapper.insertFiles*/
+	    <selectKey resultType="string" 	keyProperty="fno" order="BEFORE">
+	        SELECT 
+	        	IFNULL(MAX(fno) + 1, 1) as fno
+	        FROM files /*프라이머리키 1씩 증가시키기*/
+	    </selectKey> 
+		INSERT INTO files
+        (
+        	fno
+        	, bno
+        	, file_name
+        	, file_savename
+        	, file_size
+        	, file_path
+        )
+        VALUES
+      	(
+      		#{fno}				/*파일번호 프라이머리 키*/
+        	, #{bno}			/*게시판번호*/
+            , #{fileName}		/*파일명*/
+            , #{fileSavename}		/*파일저장명*/
+            , #{fileSize}		/*파일사이즈*/
+            , #{filePath}		/*파일경로*/
+      	)
+    </insert>
+
+	<!-- 현재 게시글번호 기준의 파일 목록조회 -->
+    <select id="selectListFiles" parameterType="string"  resultType="FilesDTO">
+    	/*com.recipe.gola.mapper.FilesMapper.selectListFiles*/
+        SELECT 
+        	fno						/*파일명*/
+        	, bno						/*게시글번호*/
+        	, file_name				/*파일원본이름*/
+        	, file_savename		/*저장이름*/
+        	, file_path				/*파일업로드 경로*/
+        	, CONCAT('/upload/',file_savename) AS img_src		/*이미지 주소*/
+        FROM files
+        WHERE bno = #{bno}
+        ORDER BY fno ASC
+    </select>
+
+	<!-- 파일정보 상세조회 -->
+    <select id="selectDetailFiles" parameterType="string" resultType="FilesDTO">
+    	/*com.recipe.gola.mapper.FilesMapper.selectDetailFiles*/
+   		SELECT 
+       		fno
+        	, bno
+        	, file_name
+        	, file_savename
+        	, file_path
+        FROM files
+        WHERE fno = #{fno}
+    </select>
+
+	<!-- 파일정보 삭제 -->
+    <delete id="deleteFiles" parameterType="string">
+    	/*com.recipe.gola.mapper.FilesMapper.deleteFiles*/
+   		DELETE FROM files 
+   		WHERE fno = #{fno} 
+    </delete>
+    
+     <update id="updateCommentCnt" parameterType="map">
+        UPDATE board
+        SET   comment_cnt = comment_cnt + #{cnt}
+        WHERE bno = #{bno}
+    </update>
+    
+</mapper>

@@ -2,8 +2,6 @@ package com.recipe.gola.service;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +31,11 @@ public class UserService {
 		return userMapper.insertuser(dto);
 	}
 	
+	// 아이디 중복확인
+	public int idCheck(String userId) {
+		return userMapper.idCheck(userId);
+	}
+	
 	// 마이페이지 정보조회
 	public UserDTO infouser(String userId) {
 		return userMapper.infouser(userId);
@@ -43,5 +46,9 @@ public class UserService {
 		userMapper.modify(dto);
 	}
 
+	// 회원탈퇴
+	public void remove(String userId) {
+		userMapper.remove(userId);
+	}
 
 }

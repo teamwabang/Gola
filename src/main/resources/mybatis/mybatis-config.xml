@@ -8,8 +8,8 @@
 	<typeAliases>
 		<typeAlias type="com.recipe.gola.dto.UserDTO" alias="UserDTO" />
 		<typeAlias type="com.recipe.gola.dto.CommentDTO" alias="CommentDTO" />
-		<typeAlias type="com.recipe.gola.dto.BoardDTO" alias="BoardDTO" />
-		<typeAlias type="com.recipe.gola.dto.SearchCondition" alias="SearchCondition" />
+		<typeAlias type="com.recipe.gola.dto.BbsDTO" alias="BbsDTO" />
+		<typeAlias type="com.recipe.gola.dto.FilesDTO" alias="FilesDTO" />
 	</typeAliases>
 	
 </configuration>

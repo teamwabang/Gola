@@ -114,6 +114,13 @@
 		    <artifactId>lombok</artifactId>
 		    <scope>provided</scope>
 		</dependency>
+		
+		      <!-- SQL 로그보기 -->
+      <dependency>
+          <groupId>org.bgee.log4jdbc-log4j2</groupId>
+          <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
+          <version>1.16</version>
+      </dependency>
         <!-- 추가 파일 끝 -->
 	</dependencies>
 
