@@ -21,6 +21,15 @@
 	]]>
 	</insert>
 	
+	<!-- 아이디 중복 체크 -->
+    <select id="idCheck" resultType="int">
+    <![CDATA[
+        SELECT COUNT(*)
+        FROM user
+        WHERE userId=#{userId}
+    ]]>
+    </select>
+	
 	<!-- 로그인 -->
 	<select id="findByUsername" resultType="UserDTO">
 	<![CDATA[
@@ -33,34 +42,29 @@
 	<!-- 마이페이지 정보조회 -->
 	<select id="infouser" resultType="UserDTO">
 	<![CDATA[
-		select *
-		from user
-		where userId=#{userId}
+		SELECT *
+		FROM user
+		WHERE userId=#{userId}
 	]]>
 	</select>
 	
 	<!-- 마이페이지 회원정보 수정 -->
 	<update id="modify" parameterType="UserDTO">
 	<![CDATA[
-		update user
-		set
+		UPDATE user
+		SET
 		userNickname=#{userNickname}, userEmail=#{userEmail}, modifiedDate=now()
-		where userId=#{userId}
+		WHERE userId=#{userId}
 	]]>
 	</update>
 	
-	<!-- 회원탈퇴 -->
-	<delete id="deleteuser">
-		delete
-		from user
-		where userId=#{userId} and userPwd=#{userPwd}
+	<!-- 회원정보 삭제 -->
+	<delete id="remove" parameterType="UserDTO">
+	<![CDATA[
+		DELETE
+		FROM user
+		WHERE userId=#{userId}
+	]]>
 	</delete>
-	
-	<!-- 비밀번호 체크 -->
-	<select id="checkpwd" resultType="String">
-		select userPwd
-		from user
-		where userId=#{userId}
-	</select>
 	
 </mapper>
