@@ -27,6 +27,8 @@
   width:100%;
   top: 0;
 
+  animation: hideSplashScreen 0.4s ease-in-out forwards;
+  animation-delay: 0.9s;
   left: 0;
   right:0;
   bottom:0;
@@ -34,10 +36,7 @@
   box-sizing:border-box;
   overflow-y: hidden;
   white-space: nowrap;
-  animation: hideSplashScreen 0.4s ease-in-out forwards;
-  animation-delay: 0.9s;
   background-color:#f8f8f8;   
-  z-index: 11;
 }
 
 .loading {
