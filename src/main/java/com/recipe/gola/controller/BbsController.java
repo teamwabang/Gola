@@ -83,7 +83,7 @@ public class BbsController {
     	//로그인 사용자 조회
     	
     	
-    	String writer = principaldetail.getUserNickname();
+    	String writer = principaldetail.getUsername();
     	
     	bbsDto.setWriter(writer);
     	

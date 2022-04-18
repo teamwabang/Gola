@@ -111,14 +111,12 @@
         <div class="mainUserInfo">
           <div class="mainTitle RecipeTitle"> 마이레시피 </div>        
           <ul class="myRecipes">
-            <li class="myRecipe">1</li>
-            <li class="myRecipe">2</li>
-            <li class="myRecipe">3</li>
-            <li class="myRecipe">4</li>
-            <li class="myRecipe">5</li>
-            <li class="myRecipe">6</li>
-            <li class="myRecipe">7</li>
-            <li class="myRecipe">8</li>
+            <li class="myRecipe" th:each="item : ${list}">
+            	<a th:href="@{/bbs/detail(bno = ${item.bno})}">
+            		<img th:src="${item.imgSrc}">
+					<span th:text="${item.title}"></span>
+				</a>
+            </li>
           </ul>
         </div>    
       </div>    

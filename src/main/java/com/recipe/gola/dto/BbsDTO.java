@@ -12,4 +12,5 @@ public class BbsDTO extends FilesDTO{
     private String  writer;
     private Date	regDate;
     private String level;
+    private String schTxt;
 }
