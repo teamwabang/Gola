@@ -24,7 +24,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.recipe.gola.common.validate.Validate;
 import com.recipe.gola.config.auth.PrincipalDetails;
 import com.recipe.gola.config.auth.UserAuth;
+import com.recipe.gola.dto.BbsDTO;
 import com.recipe.gola.dto.UserDTO;
+import com.recipe.gola.service.BbsService;
 import com.recipe.gola.service.UserService;
 
 import lombok.Data;
@@ -37,6 +39,9 @@ public class UserController {
 	
 	@Autowired
 	private final UserService userService;
+
+	@Autowired
+	private final BbsService bbsService;
 	
 	@Autowired
 	private final Validate validate;
@@ -95,12 +100,24 @@ public class UserController {
 	
 	// 마이페이지
 	@GetMapping("mypage")
-	public String mypage(@AuthenticationPrincipal PrincipalDetails principaldetail, Model model) {
+	public String mypage(@AuthenticationPrincipal PrincipalDetails principaldetail, Model model) throws Exception {
+		
 		logger.info("-----> 마이페이지로 이동합니다.");
+		
 		logger.info("유저 아이디 : " + principaldetail.getUsername());
+		
+		
 		model.addAttribute("dto", principaldetail.getDto());
 		
+	    BbsDTO bbsDto = new BbsDTO();
+	    
+	    bbsDto.setWriter(principaldetail.getUsername());
+		
+		model.addAttribute("list",bbsService.selectListBbs(bbsDto));
+		
+		
 		return "user/mypage";
+
 	}
 
 	// 마이페이지 회원정보 변경

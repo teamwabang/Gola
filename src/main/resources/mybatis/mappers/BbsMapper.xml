@@ -35,7 +35,7 @@
     </insert>
 
 	<!-- 게시판 목록조회 -->
-    <select id="selectListBbs" resultType="BbsDTO">
+    <select id="selectListBbs" resultType="BbsDTO" parameterType="BbsDTO" >
 
 		/*com.recipe.gola.mapper.BbsMapper.selectListBbs*/
         SELECT 
@@ -52,7 +52,15 @@
 				FROM files f 
 				WHERE b.bno = f.bno
 			) as img_src		/*이미지주소, 최상위 1건만*/
+        
         FROM board b
+        WHERE 1=1
+        <if test='writer != "" and writer != null '>
+			AND writer = #{writer}
+        </if>        
+        <if test='schTxt != "" and schTxt != null '>
+			AND title like CONCAT('%',#{schTxt},'%')
+        </if>   
         ORDER BY reg_date DESC, bno DESC
         
     </select>
