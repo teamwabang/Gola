@@ -37,7 +37,7 @@ public class CommentController {
     public ResponseEntity<String> modify(@PathVariable Integer cno, @RequestBody CommentDTO dto,HttpSession session, @AuthenticationPrincipal PrincipalDetails principaldetail) {
         String commenter = (String)session.getAttribute("userId");
 //        String commenter = "asdf";
-        dto.setCommenter(principaldetail.getUsername());
+        dto.setCommenter(principaldetail.getUserNickname());
         dto.setCno(cno);
         System.out.println("dto = " + dto);
 
@@ -59,12 +59,12 @@ public class CommentController {
     // 댓글을 등록하는 메서드
     @PostMapping("/comments")   // /ch4/comments?bno=1085  POST
     public ResponseEntity<String> write(@RequestBody CommentDTO dto, Integer bno, HttpSession session, @AuthenticationPrincipal PrincipalDetails principaldetail ) {
-        String commenter = (String)session.getAttribute("userId");
+        String commenter = (String)session.getAttribute("getUserNickname");
  //       String commenter = "asdf";
 
-        log.info(">>>>>>>>>>>>>>>>>>>>>>> principaldetail.getUsername()"+principaldetail.getUsername());
+        log.info(">>>>>>>>>>>>>>>>>>>>>>> principaldetail.getUserNickname()"+principaldetail.getUsername());
         
-        dto.setCommenter(principaldetail.getUsername());
+        dto.setCommenter(principaldetail.getUserNickname());
         dto.setBno(bno);
         System.out.println("dto = " + dto);
 
@@ -80,12 +80,12 @@ public class CommentController {
     }// 지정된 댓글을 삭제하는 메서드
     @DeleteMapping("/comments/{cno}")  // DELETE /comments/1?bno=1085  <-- 삭제할 댓글 번호
     public ResponseEntity<String> remove(@PathVariable Integer cno, Integer bno, HttpSession session, @AuthenticationPrincipal PrincipalDetails principaldetail) {
-        String commenter = (String)session.getAttribute("userId");
+        String commenter = (String)session.getAttribute("UserNickname");
 //        String commenter = "asdf";
 
         	System.out.println("cno :"+cno+" bno :"+bno);
         try {
-            int rowCnt = service.remove(cno, bno, principaldetail.getUsername());
+            int rowCnt = service.remove(cno, bno, principaldetail.getUserNickname());
 
             if(rowCnt!=1)
                 throw new Exception("Delete Failed");
