@@ -37,18 +37,13 @@
 		<div th:style="@{text-align: center;}">
 			<p th:style="@{font-size:26px;}">정말로 회원탈퇴 하시겠습니까?</p>
 			<p th:style="@{font-size:16px; color:red;}">
-				회원탈퇴를 하시면 계정을 복구할 수 없으며, 해당 아이디로 다시 계정을 생성할 수 없습니다.<br>
-				회원탈퇴를 원하시면 계정 비밀번호를 입력하고 회원탈퇴 버튼을 눌러주세요.
+				회원탈퇴를 하시면 계정을 복구할 수 없습니다.<br>
+				그래도 원하시면 회원탈퇴 버튼을 눌러주세요. 감사합니다.
 			</p>
-			<form name="form1" method="get">
+			<form name="form1" method="post">
 				<label>아이디</label>
-		    	<strong th:text="${dto.getUserId() }"></strong>
-		    	<br>
-		    	<label>비밀번호</label>
-		    	<input type="password" name="userPwd" placeholder="비밀번호" />
-		    	<br>
-		    	<label>비밀번호 확인</label>
-		    	<input type="password" name="pwdConfirm" placeholder="비밀번호 확인" />
+				<Strong th:text="${dto.getUserId() }"></Strong>
+		    	<input type="hidden" name="userId" th:value="${dto.getUserId() }">
 		    	<br><br>
 		    	<button id="delete-btn">회원탈퇴</button>
 		   	</form>

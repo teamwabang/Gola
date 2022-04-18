@@ -15,6 +15,9 @@ public interface UserMapper {
 	// 회원가입
 	public int insertuser(UserDTO dto);
 	
+	// 아이디 중복확인
+	public int idCheck(String userId);
+	
 	// 로그인
 	UserDTO findByUsername(String userId);
 	
@@ -23,5 +26,8 @@ public interface UserMapper {
 	
 	// 마이페이지 회원정보 수정
 	public void modify(UserDTO dto);
+
+	// 회원탈퇴
+	public void remove(String userId);
 	
 }

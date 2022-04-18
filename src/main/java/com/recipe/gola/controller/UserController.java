@@ -2,6 +2,8 @@ package com.recipe.gola.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -9,12 +11,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.recipe.gola.common.validate.Validate;
@@ -59,7 +63,7 @@ public class UserController {
                 model.addAttribute(key, validatorResult.get(key));
             }
 
-            logger.error("-----> 회원가입에 실패하였습니다.");
+            logger.error("=====> 회원가입에 실패하였습니다.");
             return "redirect:/";
         }
         
@@ -115,19 +119,26 @@ public class UserController {
 	
 	// 회원탈퇴
 	@GetMapping("mypage/leave")
-	public String leave(@AuthenticationPrincipal PrincipalDetails principaldetail, Model model) {
-		logger.info("-----> 마이페이지로 이동합니다.");
+	public String remove(@AuthenticationPrincipal PrincipalDetails principaldetail, Model model, HttpServletResponse response) {
+		logger.info("-----> 회원탈퇴 페이지로 이동합니다.");
 		logger.info("유저 아이디 : " + principaldetail.getUsername());
 		model.addAttribute("dto", principaldetail.getDto());
-		
 		return "user/leave";
 	}
 	
-	// 비밀번호 찾기
-	@GetMapping("find/password")
-	public String findPwd() {
-		return "user/find_password";
+	@PostMapping("mypage/leave")
+	public String remove(@AuthenticationPrincipal PrincipalDetails principaldetail, 
+			@RequestParam String userId, Model model, HttpSession session, HttpServletResponse response) {
+		logger.info("-----> 회원탈퇴가 정상적으로 완료되었습니다.");
+		
+//		Cookie cookie = new Cookie("remember-me", null);
+//		cookie.setMaxAge(0);
+//		response.addCookie(cookie);
+		
+		userService.remove(userId);
+		SecurityContextHolder.clearContext();
+		session.invalidate();
+		return "redirect:/";
 	}
 	
-		
 }
