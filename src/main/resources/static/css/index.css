@@ -37,6 +37,7 @@
   overflow-y: hidden;
   white-space: nowrap;
   background-color:#f8f8f8;   
+  z-index:11;
 }
 
 .loading {
