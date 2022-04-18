@@ -1,95 +1,72 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8">
+	<head>
+		<meta charset="UTF-8">
 		<!-- jQuery -->
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 		
-		<!-- Javascript -->
-		<script type="text/javascript" src="/js/chatbot.js"></script>
-		
+		    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-		<link rel="stylesheet" href="/css/styles.css" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
 		<title>게시판</title>
- </head>
-  <body class="boardBody">
-  <article>
-    <div class="boardMain">
-      <div class="boardPic">
-      <div id="wrapper">
-      <div id="slider-wrap">
-          <ul id="slider">
-             <li>
-      			<img th:alt="${item.fileName}" th:src="${item.imgSrc}" th:each="item : ${fileList}">
-       		</li>        
-             <li>
-                 <img th:alt="${item.fileName}" th:src="${item.imgSrc}" th:each="item : ${fileList}">
-             </li>    
-             <li>
-                 <img th:alt="${item.fileName}" th:src="${item.imgSrc}" th:each="item : ${fileList}">
-             </li>    
-          </ul>
-          
-           <!--controls-->
-          <div class="btns" id="next"><i class="fa fa-arrow-right"></i></div>
-          <div class="btns" id="previous"><i class="fa fa-arrow-left"></i></div>
-          <div id="counter"></div>       
-          <div id="pagination-wrap">
-            <ul>
-            </ul>
-          </div>
-          <!--controls-->  
-                 
-      </div>
-  
-   </div>
-      </div>
-      <div class="boardContent">
-        <div class="boardAuthor">     
-        <input type="hidden" name="bno" id="bno" th:value="${bbs.bno}">
-          <div th:text="${bbs.writer}" class="authorId"> </div>
-         <div th:text="${bbs.content}" class="authorContent"></div>
-        </div>
-        <div class="boardCommentMain">
-
-          <!--댓글-->
-          <div class="comment">
-            <div class="commentText">
-              <div class="commentAuthor"></div>
-              <div class="commentSubtance"></div>
-            </div>
-            <div class="updateDelete"> 
-            </div>
-            
-            <div id="commentList"></div>
+		<style>
+			body {
+			  padding-top: 70px;
+			  padding-bottom: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<article>
+			<div class="container" role="main">
+				<h2>글쓰기</h2>
+				<form name="form" id="form" role="form" method="" action="">
+					<input type="hidden" name="bno" id="bno" th:value="${bbs.bno}">
+					<div class="mb-3">
+						<label for="title">제목</label>
+						<input type="text" class="form-control" name="title" id="title" placeholder=""	readonly 	th:value="${bbs.title}">
+					</div>
+ 
+					<div class="mb-3">
+						<label for="reg_id">작성자</label>
+						<!-- 로그인기능 오류로 임시 강제값 지정 -->
+						<input type="text" class="form-control" name="writer" id="writer" placeholder="" value="" readonly	th:value="${bbs.writer}"> 
+					</div>
+ 
+					<div class="mb-3">
+						<label for="content">내용</label>
+						<textarea class="form-control" rows="5" name="content" id="content" placeholder="" 	readonly 	th:text="${bbs.content}"></textarea>
+					</div>
+					<div class="mb-3">
+						<label for="tag">난이도</label>
+						<input type="text" class="form-control" name="writer" id="writer" placeholder="" value="" readonly	th:value="${bbs.level}"> 						
+					</div>
+					<div class="mb-3">
+						<label for="content">사진</label><br/>
+						<img width="300px;" height="300px;" th:alt="${item.fileName}" th:src="${item.imgSrc}" th:each="item : ${fileList}">
+					</div>
+				</form>
+				<div >
+					<button type="button" class="btn btn-sm btn-primary" id="bbsModBtn">수정</button>
+					<button type="button" class="btn btn-sm btn-primary" id="delBtn">삭제</button>
+					<button type="button" class="btn btn-sm btn-primary"  onclick="javascript:location.href='/bbs/list';">목록</button>
+				</div>
+			</div>
+			<h2>commentList</h2>
+			comment: <input type="text" name="comment"><br>
+			<button id="sendBtn" type="button">SEND</button>
+			<button id="modBtn" type="button">수정</button>
+			
+			<div id="commentList"></div>
 			<div id="replyForm" style="display: none">
 			    <input type="text" name="replyComment">
-			    <button id="wrtRepBtn" class="delBtn" type="button">등록</button>
+			    <button id="wrtRepBtn" type="button">등록</button>
 			</div>
-          </div>        
-        </div>
-        <div class="boardContentInfo">		  
-		<div class="count" name="writer" id="writer"th:text="${bbs.level}"></div>
-          <div class="day">2022년 04월 18일</div>
-          <!--  
-          <button type="button" class="btn btn-sm btn-primary" id="bbsModBtn">수정</button>
-          <button type="button" class="btn btn-sm btn-primary" id="delBtn">삭제</button>
-          <button type="button" class="btn btn-sm btn-primary"  onclick="javascript:location.href='/bbs/list';">목록</button>
-          -->
-        </div>
-        <div class="boardWrite">
-          <input type="text" class="boardWriteComment" name="comment" placeholder="댓글달기">
-          <input type="button" id="sendBtn" class="sendMod" value="게시">
-          <input type="button" id="modBtn" class="sendMod" value="수정">
-        </div>
-      </div>
-    </div> 
-    </article>
-</body>
+
+		</article>
+	</body>
 	<script type="text/javascript">
 
 	let showList = function(bno) {
@@ -103,7 +80,12 @@
 	            alert("error")
 	        } // 에러가 발생했을 때, 호출될 함수
 	    });
-	}// $.ajax()	
+	}// $.ajax()
+	
+	
+
+	
+	
 	
 	$(document).ready(function() {
 		
@@ -209,7 +191,10 @@
 	                    alert("error")
 	                } // 에러가 발생했을 때, 호출될 함수
 	            });
-	        });    
+	        });
+	    
+	    
+	    
 		
 			//게시판 수정버튼
             $("#bbsModBtn").on("click", function(){
@@ -230,124 +215,21 @@
 	    let tmp = "<ul>";
 
 	    Array.from(comments).forEach(function (comment){
-		    tmp += '<li data-cno=' + comment.cno
-		    tmp += ' data-pcno=' + comment.pcno
-		    tmp += ' data-bno=' + comment.bno + '>'
-		if(comment.cno != comment.pcno)
-		    tmp += 'ㄴ'
-		    tmp += ' <span class="commentAuthor">' + comment.commenter +'</span>'
-		    tmp += ' <span class="commentSubtance">' + comment.comment +'</span>'
-		    tmp += '<button class= "delBtn">삭제</button>'
-		    tmp += '<button class= "modBtn">수정</button>'
-		    tmp += '<button class= "replyBtn">답글</button>'
-		    tmp += '</li>'
+	    tmp += '<li data-cno=' + comment.cno
+	    tmp += ' data-pcno=' + comment.pcno
+	    tmp += ' data-bno=' + comment.bno + '>'
+	if(comment.cno != comment.pcno)
+	    tmp += 'ㄴ'
+	    tmp += ' commenter=<span class="commenter">' + comment.commenter +'</span>'
+	    tmp += ' comment=<span class="comment">' + comment.comment +'</span>'
+	    tmp += ' up_date=' + comment.up_date
+	    tmp += '<button class= "delBtn">삭제</button>'
+	    tmp += '<button class= "modBtn">수정</button>'
+	    tmp += '<button class= "replyBtn">답글</button>'
+	    tmp += '</li>'
 	})
 	return tmp + "</ul>";
 	    }
 
 	</script>
-	<script type="text/javascript">
-	//current position
-	var pos = 0;
-	//number of slides
-	var totalSlides = $('#slider-wrap ul li').length;
-	//get the slide width
-	var sliderWidth = $('#slider-wrap').width();
-
-
-	$(document).ready(function(){
-	  
-	  
-	  /*****************
-	   BUILD THE SLIDER
-	  *****************/
-	  //set width to be 'x' times the number of slides
-	  $('#slider-wrap ul#slider').width(sliderWidth*totalSlides);
-	  
-	    //next slide  
-	  $('#next').click(function(){
-	    slideRight();
-	  });
-	  
-	  //previous slide
-	  $('#previous').click(function(){
-	    slideLeft();
-	  });
-	  
-	  
-	  
-	  /*************************
-	   //*> OPTIONAL SETTINGS
-	  ************************/
-	  //automatic slider
-	  var autoSlider = setInterval(slideRight, 3000);
-	  
-	  //for each slide 
-	  $.each($('#slider-wrap ul li'), function() { 
-
-	     //create a pagination
-	     var li = document.createElement('li');
-	     $('#pagination-wrap ul').append(li);    
-	  });
-	  
-	  //counter
-	  countSlides();
-	  
-	  //pagination
-	  pagination();
-	  
-	  //hide/show controls/btns when hover
-	  //pause automatic slide when hover
-	  $('#slider-wrap').hover(
-	    function(){ $(this).addClass('active'); clearInterval(autoSlider); }, 
-	    function(){ $(this).removeClass('active'); autoSlider = setInterval(slideRight, 3000); }
-	  );
-	  
-	  
-
-	});//DOCUMENT READY
-	  
-
-
-	/***********
-	 SLIDE LEFT
-	************/
-	function slideLeft(){
-	  pos--;
-	  if(pos==-1){ pos = totalSlides-1; }
-	  $('#slider-wrap ul#slider').css('left', -(sliderWidth*pos));  
-	  
-	  //*> optional
-	  countSlides();
-	  pagination();
-	}
-
-
-	/************
-	 SLIDE RIGHT
-	*************/
-	function slideRight(){
-	  pos++;
-	  if(pos==totalSlides){ pos = 0; }
-	  $('#slider-wrap ul#slider').css('left', -(sliderWidth*pos)); 
-	  
-	  //*> optional 
-	  countSlides();
-	  pagination();
-	}
-
-
-
-	  
-	/************************
-	 //*> OPTIONAL SETTINGS
-	************************/
-	function countSlides(){
-	  $('#counter').html(pos+1 + ' / ' + totalSlides);
-	}
-
-	function pagination(){
-	  $('#pagination-wrap ul li').removeClass('active');
-	  $('#pagination-wrap ul li:eq('+pos+')').addClass('active');
-	}</script>
-  </html>
+</html>
