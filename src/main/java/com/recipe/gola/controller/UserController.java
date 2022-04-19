@@ -19,6 +19,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.recipe.gola.common.validate.Validate;
@@ -57,28 +58,55 @@ public class UserController {
 	}
 	
 	@PostMapping("join")
-	public String userjoin(@Valid UserDTO dto, Errors errors, Model model) {
-        if (errors.hasErrors()) {
-            // 회원가입 실패시, 입력 데이터를 유지
-            model.addAttribute("insertuser", dto);
-
-            // 유효성 통과 못한 필드와 메시지를 핸들링
-            Map<String, String> validatorResult = validate.validateHandling(errors);
-            for (String key : validatorResult.keySet()) {
-                model.addAttribute(key, validatorResult.get(key));
-            }
-
-            logger.error("=====> 회원가입에 실패하였습니다.");
-            return "redirect:/";
-        }
-        
-        String rawPwd = dto.getUserPwd();
-        String encPwd = bCryptPasswordEncoder.encode(rawPwd);
-        dto.setUserPwd(encPwd);
-        userService.insertuser(dto);
-        logger.info("-----> 회원가입에 성공하였습니다.");
+	public String userjoin(@Valid UserDTO dto, String userId, String userEmail, Errors errors, Model model) {
+//        if (errors.hasErrors()) {
+//            // 회원가입 실패시, 입력 데이터를 유지
+//            model.addAttribute("insertuser", dto);
+//
+//            // 유효성 통과 못한 필드와 메시지를 핸들링
+//            Map<String, String> validatorResult = validate.validateHandling(errors);
+//            for (String key : validatorResult.keySet()) {
+//                model.addAttribute(key, validatorResult.get(key));
+//            }
+//
+//            logger.error("=====> 회원가입에 실패하였습니다.");
+//            return "redirect:/";
+//        }
+		int result = userService.idCheck(userId);
+		int result2 = userService.emailCheck(userEmail);
+		
+		try {
+			if(result == 1 || result2 == 1) {
+				logger.error("=====> 회원가입에 실패하였습니다.");
+				model.addAttribute("result", "fail");
+			} else if(result == 0 || result == 0) {
+				logger.info("-----> 회원가입에 성공하였습니다.");
+				String rawPwd = dto.getUserPwd();
+				String encPwd = bCryptPasswordEncoder.encode(rawPwd);
+				dto.setUserPwd(encPwd);
+				userService.insertuser(dto);
+			}			
+		} catch(Exception e) {
+			throw new RuntimeException();
+		}
         return "redirect:/";
     }
+	
+	// 아이디 중복확인
+	@PostMapping("/idCheck")
+	@ResponseBody
+	public int idCheck(String userId) {
+		int result = userService.idCheck(userId);
+		return result;
+	}
+	
+	// 이메일 중복확인
+	@PostMapping("/emailCheck")
+	@ResponseBody
+	public int emailCheck(String userEmail) {
+		int result = userService.emailCheck(userEmail);
+		return result;
+	}
 	
 	// 로그인
 	@GetMapping("login")
@@ -101,23 +129,15 @@ public class UserController {
 	// 마이페이지
 	@GetMapping("mypage")
 	public String mypage(@AuthenticationPrincipal PrincipalDetails principaldetail, Model model) throws Exception {
-		
 		logger.info("-----> 마이페이지로 이동합니다.");
-		
 		logger.info("유저 아이디 : " + principaldetail.getUsername());
 		
-		
 		model.addAttribute("dto", principaldetail.getDto());
-		
 	    BbsDTO bbsDto = new BbsDTO();
-	    
 	    bbsDto.setWriter(principaldetail.getUsername());
-		
 		model.addAttribute("list",bbsService.selectListBbs(bbsDto));
 		
-		
 		return "user/mypage";
-
 	}
 
 	// 마이페이지 회원정보 변경

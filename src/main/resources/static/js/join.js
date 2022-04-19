@@ -158,6 +158,38 @@ $('#idCheck').click(function() {
 });
 */
 
+function idCheck(){
+	$.ajax({
+		url : "/idCheck",
+		type : "post",
+		dataType : "json",
+		data : {"userId" : $("#userIdJoin").val()},
+		success : function(data) {
+			if(data == 1) {
+	          alert("이미 사용하고 있는 아이디입니다.");
+	        } else if(data == 0) {
+	          $("#idCheck").attr("value", "Y");
+	          alert("사용가능한 아이디입니다.");
+	        }
+	    }
+	})
+}
 
+function emailCheck(){
+	$.ajax({
+		url : "/emailCheck",
+		type : "post",
+		dataType : "json",
+		data : {"userEmail" : $("#userEmail").val()},
+		success : function(data) {
+			if(data == 1) {
+	          alert("이미 사용하고 있는 이메일입니다.");
+	        } else if(data == 0) {
+	          $("#emailCheck").attr("value", "Y");
+	          alert("사용가능한 이메일입니다.");
+	        }
+	    }
+	})
+}
 
 

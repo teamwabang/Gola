@@ -33,7 +33,14 @@ public class UserService {
 	
 	// 아이디 중복확인
 	public int idCheck(String userId) {
-		return userMapper.idCheck(userId);
+		int result = userMapper.idCheck(userId);
+		return result;
+	}
+	
+	// 아이디 중복확인
+	public int emailCheck(String userEmail) {
+		int result = userMapper.emailCheck(userEmail);
+		return result;
 	}
 	
 	// 마이페이지 정보조회
