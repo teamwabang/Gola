@@ -1,8 +1,78 @@
-.join1 {
-	font-size: 30px;
-	font-weight: 800;
+.joinBody {
+    display: flex;
+    justify-content: center;
 }
-.join2 {
-	font-size: 16px;
-	color: blue;
+
+input[type=text], input[type=password] {
+    height: 40px;
+    margin: 10px 0;
+    padding-left: 10px;
+	cursor:pointer;
 }
+
+.joinForm {
+	width:450px;
+}
+
+.container {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    margin-top: 5%;
+}
+
+.joinHeader {
+    padding: 25px 0px;
+    font-size: 25px;
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+}
+
+.joinTitle {
+	font-size: 20px;
+	font-weight:500;
+    padding: 10px 0px 0px 0px;
+}
+
+.joinInput {  
+    display: flex;
+    flex-direction: column;
+}
+
+.joinIdInput {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.joinIdInput input[type=text] {
+    width: 65%;
+}
+
+.idCheck {
+    height: 40px;
+    
+}
+
+.joinResetBtn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.joinResetBtn button {
+    margin: 10px 0px 30px 15px;
+    height: 40px;
+    border-radius: 7px;
+    border: 1px solid rgba(0,0,0,0.5);
+}
+
+.early {
+    display: flex;
+    justify-content: center;
+}
+
+#userPwdCheck {
+    line-height: 1.3;
+}
+

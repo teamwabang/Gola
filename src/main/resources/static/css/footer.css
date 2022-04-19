@@ -1,0 +1,77 @@
+/* Google Web Font */
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+/* Fontawesome 4.7 */
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+
+a {
+    text-decoration: none;
+    color: #222;
+}
+
+.footermain {
+    display: flex;
+    font-size: 13px;
+    margin: 10px auto;
+    justify-content: center;
+}
+
+.footernav {
+    list-style: none;
+    width: 700px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px 10px;
+    display: flex;
+}
+
+.footernav li {
+    flex: 1;
+    text-align: center;
+}
+
+.footernav li a {
+    font-size: 14px;
+    position: relative;
+    text-decoration-line:none;
+    color:#000
+    
+}
+
+.footernav li a:before {
+    content: '';
+    position: absolute;
+    background-color: dodgerblue;
+    height: 4px;
+    width: 0;
+    bottom: -6px;
+    transition: 0.4s;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+.footernav li a:hover:before {
+    width: 100%;
+}
+
+.footerinfo {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 500px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px 10px;
+    text-align: right;
+}
+
+.footername {
+    margin-right: 20px;
+}
+
+.footerbottom {
+    border: 1px solid #000;
+    height: 20px;
+    text-align: center;
+}

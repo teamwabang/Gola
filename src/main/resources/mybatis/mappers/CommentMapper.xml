@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.recipe.gola.mapper.CommentMapper">
+
+    <delete id="deleteAll" parameterType="int">
+        DELETE FROM comment
+        WHERE  bno = #{bno}
+    </delete>
+
+    <select id="count" parameterType="int" resultType="int">
+        SELECT count(*) FROM comment
+        WHERE  bno = #{bno}
+    </select>
+
+    <delete id="delete" parameterType="hashmap">
+        DELETE FROM comment WHERE cno = #{cno}
+    </delete>
+
+    <insert id="insert" parameterType="CommentDTO">
+        INSERT INTO comment
+            (bno, pcno, comment, commenter, reg_date, up_date)
+        VALUES
+            (#{bno}, #{pcno}, #{comment}, #{commenter}, now(), now())
+    </insert>
+
+    <select id="selectAll" parameterType="int" resultType="CommentDTO">
+        SELECT cno, bno, ifnull(pcno, cno) as pcno, comment, commenter, reg_date, up_date
+        FROM comment
+        WHERE bno = #{bno}
+        ORDER BY pcno ASC, cno ASC
+    </select>
+
+    <select id="select" parameterType="int" resultType="CommentDTO">
+        SELECT cno, bno, pcno, comment, commenter, reg_date, up_date
+        FROM comment
+        WHERE cno = #{cno}
+    </select>
+
+    <update id="update" parameterType="CommentDTO">
+        UPDATE comment
+        SET comment = #{comment}
+          , up_date = now()
+        WHERE cno = #{cno} and commenter = #{commenter}
+    </update>
+</mapper>

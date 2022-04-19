@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital@1&family=Nanum+Gothic&display=swap");
+@import url("http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css");
+@font-face {
+  font-family: 'SuncheonB';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/SuncheonB.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.indexsection {
+    font-family: 'Montserrat Alternates', sans-serif;
+    margin: 0;
+    color: #222;
+    line-height: 1.6em;
+    height: 160vh;
+    display: grid;
+    justify-content: center;
+    margin: 0 20%;
+}
+.indexmain {
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+}
+.indexh1 {
+margin-bottom: 40px;
+}
+
+.indexmain h1 {
+    font-family: 'Montserrat Alternates', sans-serif;
+    text-align: center;
+    font-weight: normal;
+    position: relative;
+    padding-bottom: 20px;
+    font-size: 30px;
+}
+
+.indexmain h1:before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 4px;
+    background-color: crimson;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.indexmain h1 span {
+    color: crimson;
+}
+
+.indexmain .items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 40px;
+    row-gap: 40px;
+  }
+  
+.reviewItems {
+  margin-bottom: 40px;
+}
+
+  .indexmain .items div {
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 0 9px rgba(54, 53, 53, 0.3);
+    position: relative;
+    cursor:pointer;
+  }
+  
+  .indexmain .items div a img {
+    width: 100%;
+    display: block;
+  }
+  
+  .indexmain .items div i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 0;
+    font-size: 40px;
+    color: #fff;
+  }
+  
+  .indexmain .items div span {
+    position: absolute;
+    bottom: -40px;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: 'Nanum Gothic', sans-serif;
+    color: white;
+  }
+  
+  .indexmain .items div p {
+    font-family: 'SuncheonB';
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  .indexmain .items div span,
+  .indexmain .items div i, .indexmain .items div:before {
+    transition: 0.2s;
+    pointer-events: all;
+  }
+  
+  .indexmain .items div:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.418);
+    opacity: 0;
+  }
+  
+  .indexmain .items div:hover:before {
+    opacity: 1;
+  }
+  
+  .indexmain .items div:hover i {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  
+  .indexmain .items div:hover span {
+    bottom: 70px;
+  }
+  
+  .indexmain .seemore {
+    border: 1px solid #000;
+    height: 40px;
+    width: 120px;
+    text-align: center;
+    padding-top: 10px;
+    margin-left: 45%;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    cursor:pointer;
+  }
+  
+  .indexmain .seemore:hover {
+    color: white;
+    background-color: crimson;
+    border: 1px solid crimson;
+  }
+  
+  /*tablet*/
+  @media (min-width: 768px) and (max-width: 1366px) {
+    .indexsection {
+      height: auto;
+    }
+    .indexmain h1 {
+      font-size: 40px;
+    }
+    .indexmain .items {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .indexmain .seemore {
+      margin-left: 39%;
+    }
+  }
+  
+  /*mobile*/
+  @media (max-width: 768px) {
+    .indexsection {
+      height: auto;
+    }
+    .indexmain h1 {
+      font-size: 40px;
+    }
+    .indexmain .items {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .indexmain .seemore {
+      margin-left: 34%;
+    }
+  }
+
+  /*paging*/
+  .reviewPaging {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 30px 0px 30px 0px;
+  }
+
+  .page-link {
+    color: black;
+  }
