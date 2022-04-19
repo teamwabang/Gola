@@ -23,15 +23,9 @@
       <div id="wrapper">
       <div id="slider-wrap">
           <ul id="slider">
-             <li>
-      			<img th:alt="${item.fileName}" th:src="${item.imgSrc}" th:each="item : ${fileList}">
-       		</li>        
-             <li>
-                 <img th:alt="${item.fileName}" th:src="${item.imgSrc}" th:each="item : ${fileList}">
-             </li>    
-             <li>
-                 <img th:alt="${item.fileName}" th:src="${item.imgSrc}" th:each="item : ${fileList}">
-             </li>    
+             <li th:each="item : ${fileList}">
+      			<img th:alt="${item.fileName}" th:src="${item.imgSrc}">
+       		</li>         
           </ul>
           
            <!--controls-->
@@ -51,8 +45,11 @@
       <div class="boardContent">
         <div class="boardAuthor">     
         <input type="hidden" name="bno" id="bno" th:value="${bbs.bno}">
-          <div th:text="${bbs.writer}" class="authorId"> </div>
-         <div th:text="${bbs.content}" class="authorContent"></div>
+          <div th:text="${bbs.userNickname}" class="authorId"> </div>
+         <div th:text="${bbs.title}" class="authorTitle"></div>
+             <button type="button" class="btn btn-sm btn-primary" id="bbsModBtn">수정</button>
+          <button type="button" class="btn btn-sm btn-primary" id="delBtn">삭제</button>
+          <button type="button" class="btn btn-sm btn-primary"  onclick="javascript:location.href='/bbs/review';">목록</button>
         </div>
         <div class="boardCommentMain">
 
@@ -74,12 +71,8 @@
         </div>
         <div class="boardContentInfo">		  
 		<div class="count" name="writer" id="writer"th:text="${bbs.level}"></div>
+		  <div th:text="${bbs.content}" class="authorContent"></div>
           <div th:text="${#dates.format(bbs.regDate, 'yyyy-MM-dd')}" class="day"></div>
-          <!--  
-          <button type="button" class="btn btn-sm btn-primary" id="bbsModBtn">수정</button>
-          <button type="button" class="btn btn-sm btn-primary" id="delBtn">삭제</button>
-          <button type="button" class="btn btn-sm btn-primary"  onclick="javascript:location.href='/bbs/list';">목록</button>
-          -->
         </div>
         <div class="boardWrite">
           <input type="text" class="boardWriteComment" name="comment" placeholder="댓글달기">

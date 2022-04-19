@@ -21,12 +21,21 @@
 	]]>
 	</insert>
 	
-	<!-- 아이디 중복 체크 -->
+	<!-- 아이디 중복확인 -->
     <select id="idCheck" resultType="int">
     <![CDATA[
         SELECT COUNT(*)
         FROM user
         WHERE userId=#{userId}
+    ]]>
+    </select>
+    
+    <!-- 이메일 중복확인 -->
+    <select id="emailCheck" resultType="int">
+    <![CDATA[
+        SELECT COUNT(*)
+        FROM user
+        WHERE userEmail=#{userEmail}
     ]]>
     </select>
 	
@@ -48,12 +57,32 @@
 	]]>
 	</select>
 	
-	<!-- 마이페이지 회원정보 수정 -->
-	<update id="modify" parameterType="UserDTO">
+	<!-- 마이페이지 회원정보 수정(비밀번호) -->
+	<update id="modifyPwd" parameterType="UserDTO">
 	<![CDATA[
 		UPDATE user
 		SET
-		userNickname=#{userNickname}, userEmail=#{userEmail}, modifiedDate=now()
+		userPwd=#{userPwd}, modifiedDate=now()
+		WHERE userId=#{userId}
+	]]>
+	</update>
+	
+	<!-- 마이페이지 회원정보 수정(닉네임) -->
+	<update id="modifyNickname" parameterType="UserDTO">
+	<![CDATA[
+		UPDATE user
+		SET
+		userNickname=#{userNickname}, modifiedDate=now()
+		WHERE userId=#{userId}
+	]]>
+	</update>
+	
+	<!-- 마이페이지 회원정보 수정(이메일) -->
+	<update id="modifyEmail" parameterType="UserDTO">
+	<![CDATA[
+		UPDATE user
+		SET
+		userEmail=#{userEmail}, modifiedDate=now()
 		WHERE userId=#{userId}
 	]]>
 	</update>

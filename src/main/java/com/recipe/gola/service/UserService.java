@@ -33,7 +33,14 @@ public class UserService {
 	
 	// 아이디 중복확인
 	public int idCheck(String userId) {
-		return userMapper.idCheck(userId);
+		int result = userMapper.idCheck(userId);
+		return result;
+	}
+	
+	// 아이디 중복확인
+	public int emailCheck(String userEmail) {
+		int result = userMapper.emailCheck(userEmail);
+		return result;
 	}
 	
 	// 마이페이지 정보조회
@@ -41,9 +48,19 @@ public class UserService {
 		return userMapper.infouser(userId);
 	}
 	
-	// 마이페이지 회원정보 수정
-	public void modify(UserDTO dto) {
-		userMapper.modify(dto);
+	// 마이페이지 회원정보 수정(닉네임)
+	public void modifyPwd(UserDTO dto) {
+		userMapper.modifyPwd(dto);
+	}
+	
+	// 마이페이지 회원정보 수정(닉네임)
+	public void modifyNickname(UserDTO dto) {
+		userMapper.modifyNickname(dto);
+	}
+	
+	// 마이페이지 회원정보 수정(이메일)
+	public void modifyEmail(UserDTO dto) {
+		userMapper.modifyEmail(dto);
 	}
 
 	// 회원탈퇴

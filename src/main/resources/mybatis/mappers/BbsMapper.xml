@@ -77,7 +77,8 @@
         	, comment_cnt
         	, date_format(reg_date, '%Y-%m-%d') as reg_date
         	, level
-        FROM board
+			, (SELECT userNickname FROM user u WHERE u.userId = b.writer) as userNickname
+        FROM board b     
         WHERE bno = #{bno}
     </select>
 

@@ -16,28 +16,77 @@
 	<script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript">
 		$(function() {
-			$("#change-info-btn").click(function() {
+			$("#change-password-btn").click(function() {
 	    		if(confirm("회원정보를 수정하시겠습니까?")) {
 		    		// 폼 내부의 데이터를 전송할 주소
-		    		document.form1.action="mypage/modify";
+		    		document.form1.action="mypage/modify/password";
 		    		document.form1.submit();	// 제출
 	    		}
-	    		alert("회원정보가 정상적으로 변경되었습니다.");
+			});
+		});
+	
+		$(function() {
+			$("#change-nickname-btn").click(function() {
+	    		if(confirm("회원정보를 수정하시겠습니까?")) {
+		    		// 폼 내부의 데이터를 전송할 주소
+		    		document.form2.action="mypage/modify/nickname";
+		    		document.form2.submit();	// 제출
+	    		}
+			});
+		});
+		
+		$(function() {
+			$("#change-email-btn").click(function() {
+	    		if(confirm("회원정보를 수정하시겠습니까?")) {
+		    		// 폼 내부의 데이터를 전송할 주소
+		    		document.form3.action="mypage/modify/email";
+		    		document.form3.submit();	// 제출
+	    		}
 			});
 		});
 		
 		$(document).ready(function() {
-			$("#change-info-area").css("display", "none");
-			$("#info-btn").click(function(e) {
+			$("#change-password-area").css("display", "none");
+			$("#password-btn").click(function(e) {
 	            e.preventDefault();
-	            $("#info-area").css("display", "none");
-	            $("#change-info-area").css("display", "");
+	            $("#password-area").css("display", "none");
+	            $("#change-password-area").css("display", "");
 	        });
 			
-			$("#cancel-info-btn").click(function(e) {
+			$("#cancel-password-btn").click(function(e) {
 				e.preventDefault();
-	            $("#info-area").css("display", "");
-	            $("#change-info-area").css("display", "none");
+	            $("#password-area").css("display", "");
+	            $("#change-password-area").css("display", "none");
+			})
+		});
+		
+		$(document).ready(function() {
+			$("#change-nickname-area").css("display", "none");
+			$("#nickname-btn").click(function(e) {
+	            e.preventDefault();
+	            $("#nickname-area").css("display", "none");
+	            $("#change-nickname-area").css("display", "");
+	        });
+			
+			$("#cancel-nickname-btn").click(function(e) {
+				e.preventDefault();
+	            $("#nickname-area").css("display", "");
+	            $("#change-nickname-area").css("display", "none");
+			})
+		});
+		
+		$(document).ready(function() {
+			$("#change-email-area").css("display", "none");
+			$("#email-btn").click(function(e) {
+	            e.preventDefault();
+	            $("#email-area").css("display", "none");
+	            $("#change-email-area").css("display", "");
+	        });
+			
+			$("#cancel-email-btn").click(function(e) {
+				e.preventDefault();
+	            $("#email-area").css("display", "");
+	            $("#change-email-area").css("display", "none");
 			})
 		});
 	</script>
@@ -64,50 +113,6 @@
         <h1 th:text="${dto.getUserEmail() }" class="userEmail"></h1>
       </div>
       <nav class="infoNav">
-<<<<<<< Updated upstream
-      	<div id="info-area">
-      		<input type="button" id="info-btn" value="회원정보 변경">
-      	</div>
-      	<div id="change-info-area">
-      	<form th:name="form1" method="post">
-      		<sec:csrfInput />
-      		<label>아이디</label>
-	    	<input name="userId" th:value="${dto.getUserId() }" class="mypage-input-btn" readonly><br>
-	    	<label>비밀번호</label>
-	    	<input type="password" name="userPwd" th:value="${dto.getUserPwd() }" class="mypage-input-btn" readonly><br>
-	    	<label>닉네임</label>
-	    	<input type="text" name="userNickname" placeholder="닉네임 입력" class="mypage-input-btn"><br>
-	    	<label>이메일</label>
-	    	<input type="text" name="userEmail" placeholder="이메일 입력" class="mypage-input-btn"><br>
-	    	<input type="button" id="cancel-info-btn" value="취소">
-	    	<input type="button" id="change-info-btn" value="회원정보 변경">
-		</form>
-		</div>
-	    	
-      </nav>
-      <nav class="infoFunction">
-        <ul>
-          <li class="infoLogout"><a th:href="@{logout}">로그아웃</a></li>
-          <li class="infoLogout"><a th:href="@{mypage/leave}">회원탈퇴</a></li>
-        </ul>
-      </nav>
-    </div>
-    </header>
-
-    <main>
-      <div class="myPageMain">
-        <div class="mainUserInfo">
-          <div class="mainTitle"> 기본정보
-          </div>
-          <div class="mainUserMainInfo">
-            <img class="mainUserMainPic" src="#">
-          <div class="mainUserMainIdAndEmail">
-            <div th:text="${dto.getUserId() }" class="mainUserMainId"></div>
-            <div th:text="${dto.getUserEmail() }" class="mainUserMainId"></div>
-          </div>
-          </div>
-          <div th:text="${dto.getUserNickname() }" class="mainUserNickname"></div>
-=======
       
 
       
@@ -188,7 +193,6 @@
 		<!-- 이메일 변경 끝 -->
 		
          
->>>>>>> Stashed changes
         </div>  
       </div>
       <div class="myPageMain">
