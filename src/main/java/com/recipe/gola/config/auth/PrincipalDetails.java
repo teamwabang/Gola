@@ -56,6 +56,11 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
 		return dto.getUserId();
 	}
 	
+	// 사용자의 id를 반환
+	public String getUserNickname() {
+		return dto.getUserNickname();
+	}
+	
 	// 계정 만료 여부 반환
 	@Override
 	public boolean isAccountNonExpired() {
@@ -90,4 +95,5 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
 	public String getName() {
 		return (String)this.attributes.get("name");
 	}
+
 }

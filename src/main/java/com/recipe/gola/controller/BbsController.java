@@ -146,7 +146,7 @@ public class BbsController {
 		    					file.transferTo(target);
 		    					
 		    					//컨트롤러에서 javascript dom을 생성하여 alert메세지를 호출후 location.href함수로 페이지를 이동합니다.
-		    					out.println("<script>alert('게시글을 작성하였습니다.');  location.href='/bbs/list';</script>");
+		    					out.println("<script>alert('게시글을 작성하였습니다.');  location.href='/bbs/review';</script>");
 		    					out.flush();		
 		    				}else {
 		    					out.println("<script>alert('게시글 작성에 실패하였습니다.');  location.href='/bbs/write';</script>");
@@ -157,7 +157,7 @@ public class BbsController {
 		    		}
 		    	}		
 				//컨트롤러에서 javascript dom을 생성하여 alert메세지를 호출후 location.href함수로 페이지를 이동합니다.
-				out.println("<script>alert('게시글을 작성하였습니다.');  location.href='/bbs/list';</script>");
+				out.println("<script>alert('게시글을 작성하였습니다.');  location.href='/bbs/review';</script>");
 				out.flush();					
 			}else {
 				out.println("<script>alert('작성에 실패하였습니다.');  location.href='/bbs/write';</script>");
@@ -213,7 +213,7 @@ public class BbsController {
 				
 				
 				//컨트롤러에서 javascript dom을 생성하여 alert메세지를 호출후 location.href함수로 페이지를 이동합니다.
-				out.println("<script>alert('게시글을 삭제하였습니다.');  location.href='/bbs/list';</script>");
+				out.println("<script>alert('게시글을 삭제하였습니다.');  location.href='/bbs/review';</script>");
 				out.flush();					
 			}else {
 				out.println("<script>alert('삭제를 실패하였습니다.');  location.href='/bbs/detail';</script>");
@@ -323,7 +323,7 @@ public class BbsController {
 								}
 		    					
 		    					//컨트롤러에서 javascript dom을 생성하여 alert메세지를 호출후 location.href함수로 페이지를 이동합니다.
-		    					out.println("<script>alert('게시글을 작성하였습니다.');  location.href='/bbs/list';</script>");
+		    					out.println("<script>alert('게시글을 작성하였습니다.');  location.href='/bbs/review';</script>");
 		    					out.flush();		
 		    				}else {
 		    					out.println("<script>alert('게시글 작성에 실패하였습니다.');  location.href='/bbs/write';</script>");
@@ -334,7 +334,7 @@ public class BbsController {
 		    		}
 		    	}		
 				//컨트롤러에서 javascript dom을 생성하여 alert메세지를 호출후 location.href함수로 페이지를 이동합니다.
-				out.println("<script>alert('게시글을 작성하였습니다.');  location.href='/bbs/list';</script>");
+				out.println("<script>alert('게시글을 작성하였습니다.');  location.href='/bbs/review';</script>");
 				out.flush();					
 			}else {
 				out.println("<script>alert('작성에 실패하였습니다.');  location.href='/bbs/write';</script>");
