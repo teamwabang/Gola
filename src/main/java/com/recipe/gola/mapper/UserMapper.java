@@ -27,8 +27,14 @@ public interface UserMapper {
 	// 마이페이지 정보조회
 	public UserDTO infouser(String userId);
 	
-	// 마이페이지 회원정보 수정
-	public void modify(UserDTO dto);
+	// 마이페이지 회원정보 수정(닉네임)
+	public void modifyPwd(UserDTO dto);
+	
+	// 마이페이지 회원정보 수정(닉네임)
+	public void modifyNickname(UserDTO dto);
+	
+	// 마이페이지 회원정보 수정(이메일)
+	public void modifyEmail(UserDTO dto);
 
 	// 회원탈퇴
 	public void remove(String userId);
