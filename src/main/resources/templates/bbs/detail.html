@@ -74,7 +74,7 @@
         </div>
         <div class="boardContentInfo">		  
 		<div class="count" name="writer" id="writer"th:text="${bbs.level}"></div>
-          <div class="day">2022년 04월 18일</div>
+          <div th:text="${#dates.format(bbs.regDate, 'yyyy-MM-dd')}" class="day"></div>
           <!--  
           <button type="button" class="btn btn-sm btn-primary" id="bbsModBtn">수정</button>
           <button type="button" class="btn btn-sm btn-primary" id="delBtn">삭제</button>
