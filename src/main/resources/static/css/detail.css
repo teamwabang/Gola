@@ -267,9 +267,9 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 15%;
+    height: auto;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
-    padding-left: 5px;
+    padding: 5px;
 }
 
 .like {
@@ -323,7 +323,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 }
 
 
-.sendMod {
+.sendMod, .bbsBtn {
     border: none;
     background: none;
     height: 90%;
@@ -339,4 +339,12 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 
 .sendMod:active {
     color: #0095F6;
+}
+
+.bbsModBtn, bbsDelBtn, .bbsListBtn {
+	margin-left: 5px;
+    font-size: 10px;
+    background: none;
+    border: none;
+    color: rgba(0, 0, 200, 0.3);
 }
