@@ -8,8 +8,9 @@
 
 	<!-- CSS -->
     <link rel="stylesheet" href="/css/styles.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+     <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/c21d7630fc.js" crossorigin="anonymous"></script>
     <!-- JavaScript -->
     <script type="text/javascript" src="/js/chatbot.js"></script>
 	<script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
@@ -103,32 +104,45 @@
 <body class="mypageBody">
     <header class="mypageHeader shadow p-3 mb-5 bg-body rounded">
       <div class="goIndex">
-        <h3><a th:href="@{/}">Gola Home</a></h3>	<!-- 나중에 Gola Home 지우고 image로 대체 -->
+        <h3><a th:href="@{/}">Home</a></h3>	<!-- 나중에 Gola Home 지우고 image로 대체 -->
       </div>
       <div class="InfoContents">
       <div class="userInfo">
-        <img class="userPic" src="#" />
-        <h2 th:text="${dto.getUserNickname() }" class="userName"></h2>
+        <img class="userPic" src="/images/012ad2a59bf14a55b1dddf1051e32e43.png" />
+        <h2 th:text="${dto.getUserId() }" class="userName"></h2>
         <h1 th:text="${dto.getUserEmail() }" class="userEmail"></h1>
       </div>
       <nav class="infoNav">
       
-     	<!-- 비밀번호 변경 시작 -->
-      	<div id="password-area">
-      		<input type="button" id="password-btn" value="비밀번호 변경">
-      	</div>
-      	<div id="change-password-area">
-      	<form th:name="form1" method="post">
-      		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-	    	<input type="hidden" name="userId" th:value="${dto.getUserId() }" readonly><br>
-	    	<input type="password" name="userPwd" placeholder="변경할 비밀번호를 입력하세요."><br>
-	    	<input type="button" id="cancel-password-btn" value="취소">
-	    	<input type="button" id="change-password-btn" value="변경">
-		</form>
-		</div>
-		<!-- 비밀번호 변경 끝 -->
+
       
-      	<!-- 닉네임 변경 시작 -->
+
+	    	
+      </nav>
+      <nav class="infoFunction">
+        <ul class="infologoutmenu">
+          <li class="infoLogout"><a class="infoLogout btn btn-light" th:href="@{logout}"> <i class="fa-solid fa-arrow-right-from-bracket"></i>  로그아웃</a></li>
+          <li class="infoLogout"><a class="infoLogout btn btn-light" th:href="@{mypage/leave}"><i class="fa-solid fa-person-hiking"></i>   회원탈퇴</a></li>
+        </ul>
+      </nav>
+    </div>
+    </header>
+
+    <main>
+      <div class="myPageMain">
+        <div class="mainUserInfo">
+          <div class="mainTitle"> 기본정보
+          </div>
+          <div class="mainUserMainInfo">
+            <img class="mainUserMainPic" src="/images/012ad2a59bf14a55b1dddf1051e32e43.png">
+          <div class="mainUserMainId">
+             <div th:text="${dto.getUserNickname() }" class="mainUserNickname"></div>
+            <!-- <div th:text="${dto.getUserEmail() }" class="mainUserMainId"></div> -->
+          </div>
+          </div>
+       
+       
+       	<!-- 닉네임 변경 시작 -->
       	<div id="nickname-area">
       		<input type="button" id="nickname-btn" value="닉네임 변경">
       	</div>
@@ -142,6 +156,26 @@
 		</form>
 		</div>
 		<!-- 닉네임 변경 끝 -->
+       
+        <!-- 비밀번호 변경 시작 -->
+       <div class="infoediter">
+       	<span class="infoicon"><i class="fa-solid fa-user" id="inputicon"></i></span>
+	      	<div id="password-area">
+	      		<input type="button" id="password-btn" value="비밀번호 변경">
+	      	</div>
+	      	<div id="change-password-area">
+	      	<form th:name="form1" method="post">
+	      		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		    	<input type="hidden" name="userId" th:value="${dto.getUserId() }" readonly><br>
+		    	<input type="password" name="userPwd" placeholder="변경할 비밀번호를 입력하세요."><br>
+		    	<input type="button" id="cancel-password-btn" value="취소">
+		    	<input type="button" id="change-password-btn" value="변경">
+			</form>
+			</div>
+		</div>
+		<!-- 비밀번호 변경 끝 -->
+		
+
 		
 		<!-- 이메일 변경 시작 -->
 		<div id="email-area">
@@ -157,30 +191,8 @@
 		</form>
 		</div>
 		<!-- 이메일 변경 끝 -->
-	    	
-      </nav>
-      <nav class="infoFunction">
-        <ul>
-          <li class="infoLogout"><a th:href="@{logout}">로그아웃</a></li>
-          <li class="infoLogout"><a th:href="@{mypage/leave}">회원탈퇴</a></li>
-        </ul>
-      </nav>
-    </div>
-    </header>
-
-    <main>
-      <div class="myPageMain">
-        <div class="mainUserInfo">
-          <div class="mainTitle"> 기본정보
-          </div>
-          <div class="mainUserMainInfo">
-            <img class="mainUserMainPic" src="#">
-          <div class="mainUserMainIdAndEmail">
-            <div th:text="${dto.getUserId() }" class="mainUserMainId"></div>
-            <div th:text="${dto.getUserEmail() }" class="mainUserMainId"></div>
-          </div>
-          </div>
-          <div th:text="${dto.getUserNickname() }" class="mainUserNickname"></div>
+		
+         
         </div>  
       </div>
       <div class="myPageMain">

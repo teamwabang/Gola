@@ -19,6 +19,7 @@
 	padding:0;
 	background-size: cover;
 }
+
 .introani {
   line-height: 1.5em;
   display: flex;
@@ -28,7 +29,6 @@
   height: 100%;
   width:100%;
   top: 0;
-
   animation: hideSplashScreen 0.4s ease-in-out forwards;
   animation-delay: 0.9s;
   left: 0;
@@ -120,9 +120,9 @@
   line-height: 1.6em;
   height: auto;
   display: grid;
-  justify-content: center;
   margin: 0 20%;
   text-align:center;
+  justify-content:center;
 }
 
 .indexmain {
@@ -130,7 +130,6 @@
   margin: 15px;
   display: flex;
   flex-direction: column;
-  text-align:center;
 }
 
 .indexh1 {
@@ -161,15 +160,14 @@
   color: crimson;
 }
 
-.indexmain .items {
+.items {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     column-gap: 40px;
     row-gap: 40px;
-    text-align:center;
 }
 
-.indexmain .items div {
+.items div {
     border-radius: 6px;
     overflow: hidden;
     box-shadow: 0 0 9px rgba(54, 53, 53, 0.3);
@@ -182,10 +180,10 @@
 .indexmain .items div a img {
     display: block;
   	width: 280px;
- 	 height: 330px;
+ 	height: 330px;
 }
 
-.indexmain .items div i{
+.items div i{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -195,10 +193,11 @@
     color: #fff;
 }
 
-.indexmain .items div span {
+.items div span {
     position: absolute;
     bottom: -40px;
-    width: 100%;
+    margin:auto;
+    width:100%;
     text-align: center;
     padding: 10px;
     color: #fff;
@@ -218,13 +217,13 @@
 }
 
 .indexmain .items div span,
-.xi-plus-thin,
-.indexmain .items div, .indexmain .seemore:before {
+.itmes div i,
+.indexmain .items div, .indexmain:before {
   transition: 0.2s;
   pointer-events: all;
 }
 
-.indexmain .items div:before {
+.items div:before {
     content: '';
     position: absolute;
     top: 0;
@@ -235,17 +234,17 @@
     opacity: 0;
 }
 
-.indexwmain .items div:hover:before {
+.items div:hover:before {
     opacity: 1;
 }
 
- .indexwmain .items div:hover i {
+.items div:hover i {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
 }
 
-.indexmain .items div:hover span {
-  bottom: 120px;
+.items div:hover span {
+  bottom: 70px;
 }
 
 .seemorebox {
@@ -270,6 +269,7 @@
   background-color: crimson;
   border: 1px solid crimson;
   font-weight :bold;
+ transition: 0.1s;
 }
 
 /*tablet*/

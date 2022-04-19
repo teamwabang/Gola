@@ -80,7 +80,7 @@
   }
   
   .reviewmain .items div span,
-  .reviewmain .items div i, .reviewmain .items div, .indexmain .seemore:before {
+  .reviewmain .items div i, .reviewmain .items div:before {
     transition: 0.2s;
     pointer-events: all;
   }
@@ -106,27 +106,7 @@
   }
   
   .reviewmain .items div:hover span {
-   bottom: 120px;
-  }
-  
-  .reviewmain .seemore {
-  border: 1px solid #000;
-  height: 40px;
-  width: 120px;
-  text-align: center;
-  padding-top: 8px;
-  margin-left: 45%;
-  margin-bottom: 60px;
-  margin-top: 40px;
-  cursor:pointer;
-  border-radius:6px;
-  }
-  
-  .reviewmain .seemore:hover {
-  color: white;
-  background-color: crimson;
-  border: 1px solid crimson;
-  font-weight :bold;
+   bottom: 90px;
   }
   
  
@@ -172,6 +152,7 @@
   color: white;
   border: none;
   font-size: 16px;
+  font-weight:bold;
   border: 0.3px solid white;
   border-radius: 8px;
   font-family: 'LeferiPoint-WhiteObliqueA';
