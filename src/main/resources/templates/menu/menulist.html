@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
+<title>Insert title here</title>
+
+	<!-- CSS -->
+    <!-- <link rel="stylesheet" href="/css/styles.css" /> -->
+    
+    <!-- JavaScript -->
+	<script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+
+    <div>
+    	<div style="color: black; font-size: 16px;">
+    	<table border="1">
+    		<thead>
+    		<tr>
+    			<td>번호</td>
+    			<td>메뉴명</td>
+    			<td>조리방법</td>
+    			<td>요리종류</td>
+    			<td>열량</td>
+    			<td>탄수화물</td>
+    			<td>단백질</td>
+    			<td>지방</td>
+    			<td>나트륨</td>
+    			<td>재료</td>
+    			<td>레시피1</td>
+    			<td>레시피2</td>
+    			<td>레시피3</td>
+    			<td>레시피4</td>
+    			<td>레시피5</td>
+    			<td>레시피6</td>
+    			<td>레시피7</td>
+    			<td>레시피8</td>
+    			<td>레시피9</td>
+    			<td>레시피10</td>
+    		</tr>
+    		</thead>
+    		<tbody>
+    		<tr th:each="menu : ${menulist}">
+    			<td th:text="${menu.no}"></td>
+    			<td th:text="${menu.menu}"></td>
+    			<td th:text="${menu.how}"></td>
+    			<td th:text="${menu.kind}"></td>
+    			<td th:text="${menu.kcal}"></td>
+    			<td th:text="${menu.carbohydrate}"></td>
+    			<td th:text="${menu.protein}"></td>
+    			<td th:text="${menu.fat}"></td>
+    			<td th:text="${menu.natrium}"></td>
+    			<td th:text="${menu.material}"></td>
+    			<td th:text="${menu.recipe1}"></td>
+    			<td th:text="${menu.recipe2}"></td>
+    			<td th:text="${menu.recipe3}"></td>
+    			<td th:text="${menu.recipe4}"></td>
+    			<td th:text="${menu.recipe5}"></td>
+    			<td th:text="${menu.recipe6}"></td>
+    			<td th:text="${menu.recipe7}"></td>
+    			<td th:text="${menu.recipe8}"></td>
+    			<td th:text="${menu.recipe9}"></td>
+    			<td th:text="${menu.recipe10}"></td>
+    		</tr>
+    		</tbody>
+    	</table>
+    </div>
+    </div>
+    
+
+</body>
+</html>
