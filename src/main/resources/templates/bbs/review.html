@@ -25,25 +25,30 @@
   
  
 	<!--main-->
-	<section class="indexsection">
-		<div class="indexmain">
-			<div class="indexh1">
-            	<h1> <span>USER </span> RECIPES  </h1>
-            	<div class="searchbar">
-            	<form id="form">
-            		<span>Find your recipe : </span> 
-            		<input type="text" name="schTxt" id="schTxt"><button type="button" id="schBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
-            	</form>
-            	</div>
-        	</div>
-		</div>
-				<div>
-					<button type="button" class="btn btn-sm btn-primary" onclick="javascript:location.href='/bbs/write';">글쓰기</button>
-				</div>    
+	<section class="reviewsection">
+		<div class="reviewmain">
+		         <div class="searchbar">
+            <form class = "searchform" id="form">
+              <span>Find your recipe : </span> 
+                <input type="text" name="schTxt" id="schTxt"><button type="button" id="schBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            	<button id ="writebutton"type="button" class="btn btn-sm btn-primary" onclick="javascript:location.href='/bbs/write';"><i class="fa-solid fa-pencil"></i>    글쓰기</button>
+            </form>
+          </div>
+		  <div class="reviewresult">
+           
+          </div>
+ 
+       	   
              <th:block th:if="${param != null && param != ''}">
              	<input type="hidden" id="getParam" name="getParam" th:value="${param.schTxt}"/>
          	</th:block>
+         	
+            	
+		</div>
+				
     </section>
+    
+    
     <!-- import footer -->
     <footer th:replace="layout/fragment :: fr_footer"></footer>
     <!-- end of import footer -->
@@ -135,10 +140,10 @@
 	                
 	 			}
 	 		}else {
-	 			result += '<div>레시피가 없습니다.</div>';
+	 			result += '<div class="noresult">등록된 레시피가 없습니다</div>';
 	 		}
 	 		console.log(result);
-	 		$('.indexmain').append(result);
+	 		$('.reviewresult').append(result);
 	 		
 	 	}
 	 	
