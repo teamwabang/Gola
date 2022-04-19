@@ -139,24 +139,56 @@ public class UserController {
 		
 		return "user/mypage";
 	}
-
-	// 마이페이지 회원정보 변경
-	@PostMapping("mypage/modify")
-	public String modify(@Valid UserDTO dto, @AuthenticationPrincipal PrincipalDetails principaldetail, HttpSession session) {
-		logger.info("-----> 회원정보를 수정하였습니다.");
-		logger.info("유저 아이디 : " + principaldetail.getUsername());
+	
+	// 마이페이지 회원정보 수정(비밀번호)
+	@PostMapping("mypage/modify/password")
+	public String modifyPwd(@AuthenticationPrincipal PrincipalDetails principaldetail, 
+			UserDTO dto, HttpSession session) {
+		logger.info("-----> 회원 " + principaldetail.getUsername() + "님이 비밀번호를 수정하였습니다.");
 		
 		dto.setUserAuth(UserAuth.USER);
         
-        userService.modify(dto);
+		String rawPwd = dto.getUserPwd();
+		String encPwd = bCryptPasswordEncoder.encode(rawPwd);
+		dto.setUserPwd(encPwd);
+        userService.modifyPwd(dto);
+
+        session.invalidate();
+		return "redirect:/mypage";
+	}
+
+	// 마이페이지 회원정보 수정(닉네임)
+	@PostMapping("mypage/modify/nickname")
+	public String modifyNickname(@AuthenticationPrincipal PrincipalDetails principaldetail, 
+			UserDTO dto, HttpSession session) {
+		logger.info("-----> 회원 " + principaldetail.getUsername() + "님이 닉네임을 수정하였습니다.");
+		
+		dto.setUserAuth(UserAuth.USER);
+        
+        userService.modifyNickname(dto);
 
         session.invalidate();
 		return "redirect:/mypage";
 	}
 	
+	// 마이페이지 회원정보 수정(이메일)
+		@PostMapping("mypage/modify/email")
+		public String modifyEmail(@AuthenticationPrincipal PrincipalDetails principaldetail, 
+				UserDTO dto, HttpSession session) {
+			logger.info("-----> 회원 " + principaldetail.getUsername() + "님이 이메일을 수정하였습니다.");
+			
+			dto.setUserAuth(UserAuth.USER);
+	        
+	        userService.modifyEmail(dto);
+
+	        session.invalidate();
+			return "redirect:/mypage";
+		}
+	
 	// 회원탈퇴
 	@GetMapping("mypage/leave")
-	public String remove(@AuthenticationPrincipal PrincipalDetails principaldetail, Model model, HttpServletResponse response) {
+	public String remove(@AuthenticationPrincipal PrincipalDetails principaldetail, 
+			Model model, HttpServletResponse response) {
 		logger.info("-----> 회원탈퇴 페이지로 이동합니다.");
 		logger.info("유저 아이디 : " + principaldetail.getUsername());
 		model.addAttribute("dto", principaldetail.getDto());
