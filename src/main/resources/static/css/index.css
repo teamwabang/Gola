@@ -122,12 +122,15 @@
   display: grid;
   justify-content: center;
   margin: 0 20%;
+  text-align:center;
 }
 
 .indexmain {
   height: auto;
+  margin: 15px;
   display: flex;
   flex-direction: column;
+  text-align:center;
 }
 
 .indexh1 {
@@ -135,23 +138,23 @@
 }
 
 .indexmain h1 {
-  font-family: 'Montserrat Alternates', sans-serif;
-  text-align: center;
-  font-weight: normal;
-  position: relative;
-  padding-bottom: 20px;
-  font-size: 30px;
+    font-family: 'Montserrat Alternates', sans-serif;
+    text-align: center;
+    font-weight: normal;
+    position: relative;
+    padding-bottom: 20px;
+    font-size: 30px;
 }
 
 .indexmain h1:before {
-  content: '';
-  position: absolute;
-  width: 100px;
-  height: 4px;
-  background-color: crimson;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 4px;
+    background-color: crimson;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .indexmain h1 span {
@@ -159,58 +162,59 @@
 }
 
 .indexmain .items {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 40px;
-  row-gap: 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 40px;
+    row-gap: 40px;
+    text-align:center;
 }
 
 .indexmain .items div {
-   border-radius: 6px;
-   overflow: hidden;
-   box-shadow: 0 0 9px rgba(54, 53, 53, 0.3);
-   position: relative;
-   cursor:pointer;
-   width: 280px;
-   height: 380px;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 0 9px rgba(54, 53, 53, 0.3);
+    position: relative;
+    cursor:pointer;
+    width: 280px;
+    height: 380px;
 }
 
 .indexmain .items div a img {
-	display: block;
-	width: 280px;
-	height: 330px;
+    display: block;
+  	width: 280px;
+ 	 height: 330px;
 }
 
-.xi-plus-thin {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.2);
-  opacity: 0;
-  font-size: 40px;
-  color: #fff;
+.indexmain .items div i{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 0;
+    font-size: 40px;
+    color: #fff;
 }
 
 .indexmain .items div span {
-  position: absolute;
-  bottom: -40px;
-  width: 100%;
-  text-align: center;
-  padding: 10px;
-  color: #fff;
-  font-weight: bold;
-  font-size: 30px;
-  font-family: 'LeferiPoint-WhiteObliqueA';
-  color: white;
+    position: absolute;
+    bottom: -40px;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: 'Nanum Gothic', sans-serif;
+    color: white;
 }
 
 .indexmain .items div p {
-  font-family: 'LeferiPoint-WhiteObliqueA';
-  color: rgb(85, 85, 85);
-  font-weight: 600;
-  font-size: 20px;
-  text-align: center;
-  margin-top: 20px;
+	font-family: 'LeferiPoint-WhiteObliqueA';
+	color: rgb(85, 85, 85);
+	font-weight: 600;
+	font-size: 20px;
+	text-align: center;
+	margin-top: 20px;
 }
 
 .indexmain .items div span,
@@ -231,10 +235,13 @@
     opacity: 0;
 }
 
+.indexwmain .items div:hover:before {
+    opacity: 1;
+}
 
  .indexwmain .items div:hover i {
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
 }
 
 .indexmain .items div:hover span {
@@ -254,9 +261,8 @@
   margin-left: 45%;
   margin-bottom: 60px;
   margin-top: 40px;
-  /*cursor:pointer;*/
-  border-radius:9px;
-
+  cursor:pointer;
+  border-radius:6px;
 }
 
 .indexmain .seemore:hover {
@@ -264,7 +270,6 @@
   background-color: crimson;
   border: 1px solid crimson;
   font-weight :bold;
-
 }
 
 /*tablet*/
@@ -279,6 +284,7 @@
 
   .indexmain .items {
     grid-template-columns: repeat(2, 1fr);
+ 	 margin : auto;
   }
 
   .indexmain .seemore {
@@ -298,6 +304,7 @@
 
   .indexmain .items {
     grid-template-columns: repeat(1, 1fr);
+    margin : auto;
   }
 
   .indexmain .seemore {

@@ -2,58 +2,33 @@
 @import url("http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css");
 
 .reviewsection {
-    font-family: 'Montserrat Alternates', sans-serif;
-    margin: 0;
-    color: #222;
-    line-height: 1.6em;
-    height: auto;
-    display: grid;
-    justify-content: center;
-    margin: 0 20%;
+  font-family: 'Montserrat Alternates', sans-serif;
+  margin: 0;
+  color: #222;
+  line-height: 1.6em;
+  height: auto;
+  display: grid;
+  justify-content: center;
+  margin: 100px 20%;
 }
 .reviewmain {
-    margin: 15px;
-    display: flex;
-    flex-direction: column;
-}
-.reviewh1 {
-margin-bottom: 40px;
+  height: auto;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
-.reviewmain h1 {
-    font-family: 'Montserrat Alternates', sans-serif;
-    text-align: center;
-    font-weight: normal;
-    position: relative;
-    padding-bottom: 20px;
-    font-size: 30px;
-}
-
-.reviewmain h1:before {
-    content: '';
-    position: absolute;
-    width: 100px;
-    height: 4px;
-    background-color: crimson;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.reviewmain h1 span {
-    color: crimson;
-}
 
 .reviewmain .items {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     column-gap: 40px;
     row-gap: 40px;
-  }
+ }
   
 .reviewItems {
   margin-bottom:40px;
-  width:1300px
+  width:auto;
 }
 
   .reviewmain .items div {
@@ -131,82 +106,41 @@ margin-bottom: 40px;
   }
   
   .reviewmain .items div:hover span {
-    bottom: 70px;
+   bottom: 120px;
   }
   
   .reviewmain .seemore {
-    border: 1px solid #000;
-    height: 40px;
-    width: 120px;
-    text-align: center;
-    padding-top: 10px;
-    margin-left: 45%;
-    margin-bottom: 40px;
-    margin-top: 40px;
-    cursor:pointer;
+  border: 1px solid #000;
+  height: 40px;
+  width: 120px;
+  text-align: center;
+  padding-top: 8px;
+  margin-left: 45%;
+  margin-bottom: 60px;
+  margin-top: 40px;
+  cursor:pointer;
+  border-radius:6px;
   }
   
   .reviewmain .seemore:hover {
-    color: white;
-    background-color: crimson;
-    border: 1px solid crimson;
+  color: white;
+  background-color: crimson;
+  border: 1px solid crimson;
+  font-weight :bold;
   }
   
-  /*tablet*/
-  @media (min-width: 768px) and (max-width: 1366px) {
-    .reviewsection {
-      height: auto;
-    }
-    .reviewmain h1 {
-      font-size: 40px;
-    }
-    .reviewmain .items {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .reviewmain .seemore {
-      margin-left: 39%;
-    }
-  }
-  
-  /*mobile*/
-  @media (max-width: 768px) {
-    .reviewsection {
-      height: auto;
-    }
-    .reviewmain h1 {
-      font-size: 40px;
-    }
-    .reviewmain .items {
-      grid-template-columns: repeat(1, 1fr);
-    }
-    .reviewmain .seemore {
-      margin-left: 34%;
-    }
-  }
-
-  /*paging*/
-  .reviewPaging {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 30px 0px 30px 0px;
-  }
-
-  .page-link {
-    color: black;
-  }
-  
+ 
  .searchbar {
-  width: 2000px !important;
   height: 80px;
   background-color: #000;
-  text-align: center;
   padding-top: 7px;
-  margin : 20px;
+  margin : 20px auto;
+  text-align: center;
 }
 
 .searchbar form {
 	display:block;
+	text-align: center;
 }
 
 .searchbar form input {
@@ -259,11 +193,49 @@ margin-bottom: 40px;
 	font-weight:bold;
 	color:crimson;
 }
-.reviewresult{
-	margin: 20px 15% !important;
-	margin-top : 50px !important;
 
-}
+ /*tablet*/
+  @media (min-width: 768px) and (max-width: 1366px) {
+    .reviewsection {
+      height: auto;
+    }
+    .reviewsection .reviewmain div{
+      grid-template-columns: repeat(2, 1fr);
+      margin : auto;
+    }
+    .searchbar{
+      width:1366;}
+  }
+  
+  /*mobile*/
+  @media (max-width: 768px) {
+    .reviewsection {
+      height: auto;
+    }
+    .reviewmain .items {
+      grid-template-columns: repeat(1, 1fr);
+      margin : auto;
+    }
+    .reviewmain .seemore {
+      margin-left: 34%;
+    }
+    .searchbar{
+    height: 130px;
+    }
+  }
+
+  /*paging*/
+  .reviewPaging {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 30px 0px 30px 0px;
+  }
+
+  .page-link {
+    color: black;
+  }
+  
 
 
  
