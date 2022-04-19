@@ -44,6 +44,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 					.loginProcessingUrl("/login")
 					.defaultSuccessUrl("/")	// 로그인 성공 후 리다이렉트 주소
 					.failureUrl("/login")
+					.usernameParameter("userId")
+					.passwordParameter("userPwd")
 			.and()
 				.oauth2Login()
 					.loginPage("/login")

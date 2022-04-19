@@ -18,6 +18,9 @@ public interface UserMapper {
 	// 아이디 중복확인
 	public int idCheck(String userId);
 	
+	// 이메일 중복확인
+	public int emailCheck(String userEmail);
+	
 	// 로그인
 	UserDTO findByUsername(String userId);
 	
