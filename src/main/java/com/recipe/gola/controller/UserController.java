@@ -1,5 +1,7 @@
 package com.recipe.gola.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -58,7 +60,8 @@ public class UserController {
 	}
 	
 	@PostMapping("join")
-	public String userjoin(@Valid UserDTO dto, String userId, String userEmail, Errors errors, Model model) {
+	public void userjoin(@Valid UserDTO dto, String userId, String userEmail, 
+			Errors errors, Model model, HttpServletResponse response) throws Exception {
 //        if (errors.hasErrors()) {
 //            // 회원가입 실패시, 입력 데이터를 유지
 //            model.addAttribute("insertuser", dto);
@@ -72,6 +75,10 @@ public class UserController {
 //            logger.error("=====> 회원가입에 실패하였습니다.");
 //            return "redirect:/";
 //        }
+		response.setContentType("text/html; charset=euc-kr");
+        PrintWriter out;
+        out = response.getWriter();
+        
 		int result = userService.idCheck(userId);
 		int result2 = userService.emailCheck(userEmail);
 		
@@ -79,17 +86,22 @@ public class UserController {
 			if(result == 1 || result2 == 1) {
 				logger.error("=====> 회원가입에 실패하였습니다.");
 				model.addAttribute("result", "fail");
+				
+				out.println("<script>alert('회원가입에 실패하였습니다.'); location.href='/';</script>");
+		        out.flush();
 			} else if(result == 0 || result == 0) {
 				logger.info("-----> 회원가입에 성공하였습니다.");
 				String rawPwd = dto.getUserPwd();
 				String encPwd = bCryptPasswordEncoder.encode(rawPwd);
 				dto.setUserPwd(encPwd);
 				userService.insertuser(dto);
+				
+				out.println("<script>alert('회원가입에 성공하였습니다.'); location.href='/';</script>");
+		        out.flush();
 			}			
 		} catch(Exception e) {
 			throw new RuntimeException();
 		}
-        return "redirect:/";
     }
 	
 	// 아이디 중복확인
@@ -142,8 +154,8 @@ public class UserController {
 	
 	// 마이페이지 회원정보 수정(비밀번호)
 	@PostMapping("mypage/modify/password")
-	public String modifyPwd(@AuthenticationPrincipal PrincipalDetails principaldetail, 
-			UserDTO dto, HttpSession session) {
+	public void modifyPwd(@AuthenticationPrincipal PrincipalDetails principaldetail, 
+			UserDTO dto, HttpSession session, HttpServletResponse response) throws Exception {
 		logger.info("-----> 회원 " + principaldetail.getUsername() + "님이 비밀번호를 수정하였습니다.");
 		
 		dto.setUserAuth(UserAuth.USER);
@@ -154,13 +166,18 @@ public class UserController {
         userService.modifyPwd(dto);
 
         session.invalidate();
-		return "redirect:/mypage";
+        
+        response.setContentType("text/html; charset=euc-kr");
+        PrintWriter out;
+        out = response.getWriter();
+        out.println("<script>alert('회원정보를 수정하여 재로그인이 필요합니다.'); location.href='/';</script>");
+        out.flush();
 	}
 
 	// 마이페이지 회원정보 수정(닉네임)
 	@PostMapping("mypage/modify/nickname")
-	public String modifyNickname(@AuthenticationPrincipal PrincipalDetails principaldetail, 
-			UserDTO dto, HttpSession session) {
+	public void modifyNickname(@AuthenticationPrincipal PrincipalDetails principaldetail, 
+			UserDTO dto, HttpSession session, HttpServletResponse response) throws Exception {
 		logger.info("-----> 회원 " + principaldetail.getUsername() + "님이 닉네임을 수정하였습니다.");
 		
 		dto.setUserAuth(UserAuth.USER);
@@ -168,13 +185,18 @@ public class UserController {
         userService.modifyNickname(dto);
 
         session.invalidate();
-		return "redirect:/mypage";
+		
+        response.setContentType("text/html; charset=euc-kr");
+        PrintWriter out;
+        out = response.getWriter();
+        out.println("<script>alert('회원정보를 수정하여 재로그인이 필요합니다.'); location.href='/';</script>");
+        out.flush();
 	}
 	
 	// 마이페이지 회원정보 수정(이메일)
 		@PostMapping("mypage/modify/email")
-		public String modifyEmail(@AuthenticationPrincipal PrincipalDetails principaldetail, 
-				UserDTO dto, HttpSession session) {
+		public void modifyEmail(@AuthenticationPrincipal PrincipalDetails principaldetail, 
+				UserDTO dto, HttpSession session, HttpServletResponse response) throws Exception {
 			logger.info("-----> 회원 " + principaldetail.getUsername() + "님이 이메일을 수정하였습니다.");
 			
 			dto.setUserAuth(UserAuth.USER);
@@ -182,7 +204,12 @@ public class UserController {
 	        userService.modifyEmail(dto);
 
 	        session.invalidate();
-			return "redirect:/mypage";
+			
+	        response.setContentType("text/html; charset=euc-kr");
+	        PrintWriter out;
+	        out = response.getWriter();
+	        out.println("<script>alert('회원정보를 수정하여 재로그인이 필요합니다.'); location.href='/';</script>");
+	        out.flush();
 		}
 	
 	// 회원탈퇴
@@ -196,8 +223,8 @@ public class UserController {
 	}
 	
 	@PostMapping("mypage/leave")
-	public String remove(@AuthenticationPrincipal PrincipalDetails principaldetail, 
-			@RequestParam String userId, Model model, HttpSession session, HttpServletResponse response) {
+	public void remove(@AuthenticationPrincipal PrincipalDetails principaldetail, 
+			@RequestParam String userId, Model model, HttpSession session, HttpServletResponse response) throws Exception {
 		logger.info("-----> 회원탈퇴가 정상적으로 완료되었습니다.");
 		
 //		Cookie cookie = new Cookie("remember-me", null);
@@ -207,7 +234,12 @@ public class UserController {
 		userService.remove(userId);
 		SecurityContextHolder.clearContext();
 		session.invalidate();
-		return "redirect:/";
+		
+		response.setContentType("text/html; charset=euc-kr");
+        PrintWriter out;
+        out = response.getWriter();
+        out.println("<script>alert('정상적으로 회원탈퇴 되었습니다. 감사합니다'); location.href='/';</script>");
+        out.flush();
 	}
 	
 }

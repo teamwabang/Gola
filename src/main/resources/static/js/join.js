@@ -127,7 +127,7 @@ $('#joinSubmit').on('click', function(event) {
         })
 	} else {
 		$(this).unbind('click').click();
-		alert("회원가입");	
+		/*alert("회원가입");*/	
 	};
 });
 
