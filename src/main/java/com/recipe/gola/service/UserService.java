@@ -37,7 +37,13 @@ public class UserService {
 		return result;
 	}
 	
-	// 아이디 중복확인
+	// 닉네임 중복확인
+	public int nicknameCheck(String userNickname) {
+		int result = userMapper.nicknameCheck(userNickname);
+		return result;
+	}
+	
+	// 이메일 중복확인
 	public int emailCheck(String userEmail) {
 		int result = userMapper.emailCheck(userEmail);
 		return result;

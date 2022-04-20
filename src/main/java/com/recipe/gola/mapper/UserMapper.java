@@ -18,6 +18,9 @@ public interface UserMapper {
 	// 아이디 중복확인
 	public int idCheck(String userId);
 	
+	// 닉네임 중복확인
+	public int nicknameCheck(String userNickname);
+	
 	// 이메일 중복확인
 	public int emailCheck(String userEmail);
 	

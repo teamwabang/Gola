@@ -4,13 +4,14 @@
 
 
 .gnb {
-    padding: 10px;
-    margin-top: 40px;
+	padding:10px;
+    margin-top: 10px;
     border-radius: 10px;
     padding-bottom: 10px;
     height: 10%;
     font-size: 18px;
     font-weight: bold;
+    
 
 }
 
@@ -57,12 +58,17 @@
     top: 0;
 }
 
+
+
 .headertop {
     display: flex;
-    margin: 20px 10% ;
+    margin-bottom:30px;
     text-align: center;
     justify-content: center;
-    font-family: 'LeferiPoint-WhiteObliqueA';   
+    font-family: 'LeferiPoint-WhiteObliqueA';
+    width:100%;
+    height:140px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .headerlogo {
@@ -84,7 +90,7 @@
     font-size: 14px;
     display: inline-block;
     text-align: right;
-    margin-top: 50px;
+    margin-top: 30px;
 
 }
 
@@ -99,6 +105,7 @@
 }
 .gnb2 li {
 	display:block;
+	width:930px;
 }
 
 .gnb2:hover button {
@@ -118,4 +125,8 @@
 
 .gnb2 button:hover:before {
     opacity: 1;
+}
+
+.indexmain{
+	margin-top: 300px;
 }
