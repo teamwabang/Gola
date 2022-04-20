@@ -18,8 +18,8 @@
 	      	<form th:name="form2" method="post">
 	      		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		    	<input type="hidden" name="userId" th:value="${dto.getUserId() }" readonly><br>
-		    	<input type="text" name="userNickname" placeholder="변경할 닉네임을 입력하세요."><br>
-		    
+		    	<input type="text" id="userNicknameedit" name="userNickname" placeholder="변경할 닉네임을 입력하세요."><br>
+		  		   <p id="userNicknameCheck"></p>
 		    	<input type="button" id="change-nickname-btn" value="변경">
 			</form>
 			</div>
@@ -31,9 +31,28 @@
 	</div>
 	
 		<script type="text/javascript">
+		
+		$('#userNicknameedit').on('keyup' ,function() {
+			  if (!/^[가-힣a-zA-Z0-9]{3,20}$/g.test($('#userNicknameedit').val())) {
+			    $('#userNicknameCheck').css({
+			      "color" : "red"
+			    });
+			    $('#userNicknameCheck').html("닉네임은 특수문자를 제외한 3~20자리로 입력해주세요.");
+			    $('#userNicknameCheck').show();
+			  } else {
+			    $('#userNicknameCheck').css({
+			      "color" : "blue"
+			    });
+			      $('#userNicknameCheck').html("사용 가능한 닉네임입니다.");
+			      $('#userNicknameCheck').show();
+			  }
+			});
+		
 		$(function() {
 			$("#change-nickname-btn").click(function() {
-	    		if(confirm("회원정보를 수정하시겠습니까?")) {
+				if(!/^[가-힣a-zA-Z0-9]{3,20}$/g.test($('#userNicknameedit').val())) {
+					confirm("알맞은 닉네임 형식으로 입력해주세요");
+				}else if(confirm("회원정보를 수정하시겠습니까?")) {
 		    		// 폼 내부의 데이터를 전송할 주소
 		    		document.form2.action="mypage/modify/nickname";
 		    		document.form2.submit();	// 제출
