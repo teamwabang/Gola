@@ -59,7 +59,7 @@ public class UserController {
 	}
 	
 	@PostMapping("join")
-	public void userjoin(@Valid UserDTO dto, String userId, String userEmail, 
+	public void userjoin(@Valid UserDTO dto, String userId, String userEmail, String userNickname, 
 			Errors errors, Model model, HttpServletResponse response) throws Exception {
 //        if (errors.hasErrors()) {
 //            // 회원가입 실패시, 입력 데이터를 유지
@@ -79,16 +79,17 @@ public class UserController {
         out = response.getWriter();
         
 		int result = userService.idCheck(userId);
-		int result2 = userService.emailCheck(userEmail);
+		int result2 = userService.nicknameCheck(userNickname);
+		int result3 = userService.emailCheck(userEmail);
 		
 		try {
-			if(result == 1 || result2 == 1) {
+			if(result == 1 || result2 == 1 || result3 == 1) {
 				logger.error("=====> 회원가입에 실패하였습니다.");
 				model.addAttribute("result", "fail");
 				
 				out.println("<script>alert('회원가입에 실패하였습니다.'); location.href='/';</script>");
 		        out.flush();
-			} else if(result == 0 || result2 == 0) {
+			} else if(result == 0 || result2 == 0 || result3 == 0) {
 				logger.info("-----> 회원가입에 성공하였습니다.");
 				String rawPwd = dto.getUserPwd();
 				String encPwd = bCryptPasswordEncoder.encode(rawPwd);
@@ -108,6 +109,14 @@ public class UserController {
 	@ResponseBody
 	public int idCheck(String userId) {
 		int result = userService.idCheck(userId);
+		return result;
+	}
+	
+	// 닉네임 중복확인
+	@PostMapping("/nicknameCheck")
+	@ResponseBody
+	public int nicknameCheck(String userNickname) {
+		int result = userService.nicknameCheck(userNickname);
 		return result;
 	}
 	
