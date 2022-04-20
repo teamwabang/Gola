@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+	<div th:fragment="fr_picModal">
+	<!-- pw edit Modal -->
+	    <div class="modal fade" id="picChange" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">프로필사진 변경</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3"	id="upFIleDiv1">
+					<div class="custom-file">
+					  	<input type="file" class="custom-file-input"	name="upFile" >
+					  	<label class="custom-file-label" for="customFileLang" id="upFileTxt1">사진업로드</label>
+				  	</div>
+			</div>
+        </div>
+      </div>
+    </div>
+	</div>
+	
+</body>
+</html>
