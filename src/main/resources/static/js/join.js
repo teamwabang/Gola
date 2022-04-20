@@ -175,6 +175,23 @@ function idCheck(){
 	})
 }
 
+function nicknameCheck(){
+	$.ajax({
+		url : "/nicknameCheck",
+		type : "post",
+		dataType : "json",
+		data : {"userNickname" : $("#userNickname").val()},
+		success : function(data) {
+			if(data == 1) {
+	          alert("이미 사용하고 있는 닉네임입니다.");
+	        } else if(data == 0) {
+	          $("#idCheck").attr("value", "Y");
+	          alert("사용가능한 닉네임입니다.");
+	        }
+	    }
+	})
+}
+
 function emailCheck(){
 	$.ajax({
 		url : "/emailCheck",
