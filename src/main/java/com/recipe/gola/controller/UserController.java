@@ -1,6 +1,5 @@
 package com.recipe.gola.controller;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
 
@@ -89,7 +88,7 @@ public class UserController {
 				
 				out.println("<script>alert('회원가입에 실패하였습니다.'); location.href='/';</script>");
 		        out.flush();
-			} else if(result == 0 || result == 0) {
+			} else if(result == 0 || result2 == 0) {
 				logger.info("-----> 회원가입에 성공하였습니다.");
 				String rawPwd = dto.getUserPwd();
 				String encPwd = bCryptPasswordEncoder.encode(rawPwd);
