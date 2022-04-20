@@ -19,11 +19,6 @@
 	      	<form th:name="form2" th:onsubmit="return submitCheck(form2);" method="post">
 	      		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		    	<input type="hidden" name="userId" th:value="${dto.getUserId() }" readonly><br>
-<<<<<<< Updated upstream
-		    	<input type="text" id="userNicknameedit" name="userNickname" placeholder="변경할 닉네임을 입력하세요."><br>
-		    	<button type="button" class="nicknameCheck" onclick="nicknameCheck();" value="N">중복확인</button>
-		  		   <p id="userNicknameCheck"></p>
-=======
 		    	<!-- 변경할 닉네임 입력  -->
 		    	<input type="text" id="userNicknameedit" name="userNickname" onkeyup="nickCheckInit(form2);" placeholder="변경할 닉네임을 입력하세요.">
 		  		<!-- 중복확인 -->
@@ -32,7 +27,6 @@
 		  		<!-- 유효성 검사문구 -->
 		  		<p id="userNicknameCheck"></p>
 		    	<!-- 변경 submit -->
->>>>>>> Stashed changes
 		    	<input type="button" id="change-nickname-btn" value="변경">
 			</form>
 			</div>
@@ -42,11 +36,11 @@
       </div>
     </div>
 	</div>
-	</div>
+
 	
 	<script type="text/javascript">
 		
-		/*닉에임 유효성 검사*/
+		/*닉 유효성 검사*/
 		$('#userNicknameedit').on('keyup' ,function() {
 			  if (!/^[가-힣a-zA-Z0-9]{3,20}$/g.test($('#userNicknameedit').val())) {
 			    $('#userNicknameCheck').css({
