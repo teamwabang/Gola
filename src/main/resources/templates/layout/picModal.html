@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
 	<div th:fragment="fr_picModal">
+
 	<!-- pw edit Modal -->
 	    <div class="modal fade" id="picChange" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -10,17 +11,87 @@
             <h5 class="modal-title" id="staticBackdropLabel">프로필사진 변경</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
+            <form name="form" id="form" role="form" method="post" action="" enctype="multipart/form-data">
+            	<input type="hidden" name="fno" id="fno"/>
+            	<input type="hidden" name="deleteFilesNo" id="deleteFilesNo"/>
           <div class="modal-body">
             <div class="mb-3"	id="upFIleDiv1">
 					<div class="custom-file">
 					  	<input type="file" class="custom-file-input"	name="upFile" >
-					  	<label class="custom-file-label" for="customFileLang" id="upFileTxt1">사진업로드</label>
+					  	<label class="custom-file-label" for="customFileLang" id="upFileTxt1"></label>
 				  	</div>
 			</div>
+			<button type="button" id="saveBtn">save</button>
+			
         </div>
+        </form>
       </div>
     </div>
 	</div>
+	 <script th:inline="javascript">
+		
+	 	//컨트롤러에서 받은 타임리프 값을 javascript 변수에 넣는다.
+	    let fno = [[${fno}]];
+	    let fileName = [[${fileName}]];
+	 	
+	 	console.log(fno);
+		console.log(fileName);
+
+		
+		//파일삭제버튼
+		let fnDeleteFile = function(fno){
+			console.log('fno');
+			console.log(fno);
+			$('#deleteFileBtn').remove();
+			//선택한 삭제파일만큼 배열에 누적시킨다. 
+			$("input[name='deleteFilesNo']").val(fno);
+		}
+	 	
+	 	$(document).ready(function(){
+	 		
+	 		if(fno != "" || fno != null){
+				$('#upFIleDiv1').append('<button type="button" class="btn btn-sm btn-warning" id="deleteFileBtn" onclick="javascript:fnDeleteFile('+fno+');">파일삭제</button>');	 			
+	 		}
+
+			//사진업로드 체인지 이벤트
+			$("input[name=upFile]").on('change',function(){
+		
+				var ext = $(this).val().split('.').pop().toLowerCase();
+		 		if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+		 			alert('gif, png, jpg, jpeg 파일만 업로드 할수 있습니다.');
+			 		return;
+		  		}			
+				//수정페이지일때 파일삭제버튼이 달려있다면 먼저 삭제후 재등록 해야한다.
+				if($(this).parent('.custom-file').next().text() == "파일삭제"){
+					alert("기존파일을 먼저 삭제해주세요.");
+					return false;
+				}
+
+				//get the file name
+				var fileValue = $(this).val().split("\\");
+				console.log('fileName : '+fileName);
+		   		//replace the "Choose a file" label
+		   		
+		  		$(this).next('.custom-file-label').html(fileName);
+		   		
+		   		console.log("test");
+
+			}); 
+			
+	        //저장버튼
+	       	$("#saveBtn").on("click", function(){
+
+	      		let form = $("#form");
+	          	//게시판번호가 있으면 기존수정모드 없으면 신규글쓰기모드.
+	         	$('#deleteFilesNo').val() != "" ?   form.attr("action", "mypage/updateProfilePhoto") :   form.attr("action", "mypage/insertProfilePhoto")
+          		form.attr("method", "post");
+             	form.submit();
+                
+	       	});
+	
+			
+		});
+	</script>
 	
 </body>
 </html>

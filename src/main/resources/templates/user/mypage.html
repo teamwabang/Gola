@@ -33,7 +33,7 @@
       </div>
       <div class="InfoContents">
       <div class="userInfo">
-        <img class="userPic" src="/images/012ad2a59bf14a55b1dddf1051e32e43.png" />
+        <img class="userPic" th:src="${imgSrc}" />
         <button data-bs-toggle="modal" class="picModalBtn" data-bs-target="#picChange">
 				<i class="fa-solid fa-camera"></i>
 			</button>
@@ -55,7 +55,7 @@
         <div class="mainUserInfo">
           <div class="mainTitle"> 기본정보</div>
           <div class="mainUserMainInfo">
-            <img class="mainUserMainPic" src="/images/012ad2a59bf14a55b1dddf1051e32e43.png">
+            <img class="mainUserMainPic" th:src="${imgSrc}">
             <div class="mainUserMainId">
              <div th:text="${dto.getUserNickname() }" class="mainUserNickname"></div>
           	  <!-- <div th:text="${dto.getUserEmail() }" class="mainUserMainId"></div> -->

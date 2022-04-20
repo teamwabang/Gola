@@ -179,7 +179,6 @@ main {
 	padding :0px !important;	
 }
 
-.custom-file-input ~ .custom-file-label::after {content: "사진찾기";}
 
 .picModalBtn {
 	position:absolute;
