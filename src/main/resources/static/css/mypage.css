@@ -36,6 +36,7 @@
 }
 
 .userInfo {
+  position:relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -158,7 +159,6 @@ main {
   margin-bottom: 25px;
 }
 
-
 .mainUserMainId {
   padding-left:10px;
   font-size:23px;
@@ -177,4 +177,16 @@ main {
 
 .infologoutmenu{
 	padding :0px !important;	
+}
+
+.custom-file-input ~ .custom-file-label::after {content: "사진찾기";}
+
+.picModalBtn {
+	position:absolute;
+	top:90px;
+	right:100px;
+	background: none;
+	border:1px solid rgba(0,0,0,0.5);
+	border-radius: 50%;
+	background-color: white;
 }
