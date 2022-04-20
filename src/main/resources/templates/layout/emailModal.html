@@ -4,7 +4,7 @@
 	<div th:fragment="fr_EmailModal">
 	<!-- pw edit Modal -->
 	    <div class="modal fade" id="emailChange" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="staticBackdropLabel">이메일 변경</h5>
@@ -19,9 +19,9 @@
 		      	<form th:name="form3" method="post">
 		      		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			    	<input type="hidden" name="userId" th:value="${dto.getUserId() }" readonly><br>
-			    	<input type="text" id="userEmailedit" name="userEmail" placeholder="변경할 이메일을 입력하세요."><br>
+			    	<input type="text" id="userEmailedit" name="userEmail" placeholder="변경할 이메일을 입력하세요.">
+					<button type="button" class="emailCheck" onclick="emailCheck();" value="N">중복확인</button>
 			    	  <p id="userEmailCheck"></p>
-					  <button type="button" class="emailCheck" onclick="emailCheck();" value="N">중복확인</button>
 					<input type="button" id="change-email-btn" value="변경">
 				</form>
 				</div>
@@ -32,7 +32,7 @@
     </div>
 	</div>
 	
-		<script type="text/javascript">
+	<script type="text/javascript">
 		
 		$('#userEmailedit').on('keyup' ,function() {
 			  if (!/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/g.test($('#userEmailedit').val())) {
@@ -53,9 +53,8 @@
 		$(function() {
 			$("#change-email-btn").click(function() {
 				if(!/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/g.test($('#userEmailedit').val())) {
-				confirm("알맞은 이메일 형식으로 입력해주세요");
-			}else 
-	    		if(confirm("회원정보를 수정하시겠습니까?")) {
+					confirm("알맞은 이메일 형식으로 입력해주세요");
+				} else if(confirm("회원정보를 수정하시겠습니까?")) {
 		    		// 폼 내부의 데이터를 전송할 주소
 		    		document.form3.action="mypage/modify/email";
 		    		document.form3.submit();	// 제출
