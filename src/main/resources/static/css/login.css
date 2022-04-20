@@ -92,10 +92,6 @@
 	margin-top:15px;
 	margin-bottom:15px;
 }
-#remember{
-    cursor: pointer;
-
-}
 
 .rememberlable{
 	margin-left:10px;
@@ -114,7 +110,7 @@ input[type="checkbox"] + label{
   height: 20px;
   border:2px solid #707070;
   position: relative;
-
+  cursor: pointer;
 }
 input[id="remember"]:checked + label::after{
    content:'✔';
