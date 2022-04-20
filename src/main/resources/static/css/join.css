@@ -68,6 +68,11 @@ input[type=text], input[type=password] {
     cursor:pointer !important;
 }
 
+.joinResetBtn button:hover {
+    background-color: crimson !important;
+    border: 1px solid crimson;
+}
+
 .early {
     display: flex;
     justify-content: center;
