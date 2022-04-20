@@ -43,23 +43,25 @@
    </div>
       </div>
       <div class="boardContent">
-        <div class="boardAuthor">     
+        <div class="boardAuthor">
+		<form name="form" id="form" role="form" method="" action="">    
         <input type="hidden" name="bno" id="bno" th:value="${bbs.bno}">
-          <div th:text="${bbs.userNickname}" class="authorId"> </div>
-         <div th:text="${bbs.title}" class="authorTitle"></div>
-             <button type="button" class="btn btn-sm btn-primary" id="bbsModBtn">수정</button>
-          <button type="button" class="btn btn-sm btn-primary" id="delBtn">삭제</button>
-          <button type="button" class="btn btn-sm btn-primary"  onclick="javascript:location.href='/bbs/review';">목록</button>
+			<div class="detailIdPwd">
+		         <div th:text="${bbs.userNickname}" class="authorId"> </div>
+		         <div th:text="${bbs.title}" class="authorTitle"></div>
+			</div>
+		</form>
+          <div class="detailBtns">
+          	<button type="button" class="btn btn-sm btn-primary detailBtn" id="bbsModBtn">수정</button>
+          	<button type="button" class="btn btn-sm btn-primary detailBtn" id="delBtn">삭제</button>
+          	<button type="button" class="btn btn-sm btn-primary detailBtn"  onclick="javascript:location.href='/bbs/review';">목록</button>
+          </div>
         </div>
         <div class="boardCommentMain">
 
           <!--댓글-->
           <div class="comment">
             <div class="commentText">
-              <div class="commentAuthor"></div>
-              <div class="commentSubtance"></div>
-            </div>
-            <div class="updateDelete"> 
             </div>
             
             <div id="commentList"></div>
