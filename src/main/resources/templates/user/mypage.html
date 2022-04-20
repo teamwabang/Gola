@@ -37,13 +37,6 @@
         <h2 th:text="${dto.getUserId() }" class="userName"></h2>
         <h1 th:text="${dto.getUserEmail() }" class="userEmail"></h1>
       </div>
-      <nav class="infoNav">
-      
-
-      
-
-	    	
-      </nav>
       <nav class="infoFunction">
         <ul class="infologoutmenu">
           <li class="infoLogout"><a class="infoLogout btn btn-light" th:href="@{logout}"> <i class="fa-solid fa-arrow-right-from-bracket"></i>  로그아웃</a></li>
@@ -56,45 +49,43 @@
     <main>
       <div class="myPageMain">
         <div class="mainUserInfo">
-          <div class="mainTitle"> 기본정보
-          </div>
+          <div class="mainTitle"> 기본정보</div>
           <div class="mainUserMainInfo">
             <img class="mainUserMainPic" src="/images/012ad2a59bf14a55b1dddf1051e32e43.png">
-          <div class="mainUserMainId">
+            <div class="mainUserMainId">
              <div th:text="${dto.getUserNickname() }" class="mainUserNickname"></div>
-            <!-- <div th:text="${dto.getUserEmail() }" class="mainUserMainId"></div> -->
+          	  <!-- <div th:text="${dto.getUserEmail() }" class="mainUserMainId"></div> -->
+             </div>
           </div>
-          </div>
-       
-       
-       	<!-- 닉네임 변경 시작 --> 
- 			<button data-bs-toggle="modal" data-bs-target="#nickNameChange">
-						nick 변경
-	 		 </button>
-    	    <div th:insert="layout/NickNameModal :: fr_NickNameModal"></div>
-		<!-- 닉네임 변경 끝 -->
-       
-        <!-- 비밀번호 변경 시작 -->
-       	 <button data-bs-toggle="modal" data-bs-target="#pwdChange">
-							비밀번호변경
-		 		 </button>
-    	    <div th:insert="layout/PwModal :: fr_PwModal"></div>
-		<!-- 비밀번호 변경 끝 -->
-		
-
-		
-		<!-- 이메일 변경 시작 -->
-	       <button data-bs-toggle="modal" data-bs-target="#emailChange">
-						email 변경
-		  </button>
-    	    <div th:insert="layout/EmailModal :: fr_EmailModal"></div>
-		<!-- 이메일 변경 끝 -->
-	
-	
-
-	
-        </div>  
+ 
+ 		<div class="editsection">
+	         <!-- 닉네임 변경 시작 --> 
+			<button data-bs-toggle="modal" data-bs-target="#nickNameChange">
+				nick 변경
+			</button>
+			<div th:insert="layout/NickNameModal :: fr_NickNameModal"></div>
+			<!-- 닉네임 변경 끝 -->
+				       
+			<!-- 비밀번호 변경 시작 -->
+			<button data-bs-toggle="modal" data-bs-target="#pwdChange">
+				비밀번호변경
+			</button>
+			<div th:insert="layout/PwModal :: fr_PwModal"></div>
+			<!-- 비밀번호 변경 끝 -->
+						
+			<!-- 이메일 변경 시작 -->
+			<button data-bs-toggle="modal" data-bs-target="#emailChange">
+				email 변경
+			</button>
+			<div th:insert="layout/EmailModal :: fr_EmailModal"></div>
+			<!-- 이메일 변경 끝 -->
+    	   </div>  
+    	   
+    	   
+    	   
       </div>
+      </div>
+
       <div class="myPageMain">
         <div class="mainUserInfo">
           <div class="mainTitle RecipeTitle"> 마이레시피 </div>        
