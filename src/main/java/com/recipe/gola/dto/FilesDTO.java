@@ -1,3 +1,4 @@
+
 package com.recipe.gola.dto;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -7,7 +8,7 @@ import lombok.Data;
 @Data
 public class FilesDTO {
     private String fno;					//파일번호
-    private String bno;					//게시판글번호
+    private String bno;					//게시판글번호 or userId
     private String fileName;			//파일명
     private String fileExt;				//파일확장자
     private String fileSize;			//파일사이즈
