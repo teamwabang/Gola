@@ -14,82 +14,6 @@
     <!-- JavaScript -->
     <script type="text/javascript" src="/js/chatbot.js"></script>
 	<script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript">
-		$(function() {
-			$("#change-password-btn").click(function() {
-	    		if(confirm("회원정보를 수정하시겠습니까?")) {
-		    		// 폼 내부의 데이터를 전송할 주소
-		    		document.form1.action="mypage/modify/password";
-		    		document.form1.submit();	// 제출
-	    		}
-			});
-		});
-	
-		$(function() {
-			$("#change-nickname-btn").click(function() {
-	    		if(confirm("회원정보를 수정하시겠습니까?")) {
-		    		// 폼 내부의 데이터를 전송할 주소
-		    		document.form2.action="mypage/modify/nickname";
-		    		document.form2.submit();	// 제출
-	    		}
-			});
-		});
-		
-		$(function() {
-			$("#change-email-btn").click(function() {
-	    		if(confirm("회원정보를 수정하시겠습니까?")) {
-		    		// 폼 내부의 데이터를 전송할 주소
-		    		document.form3.action="mypage/modify/email";
-		    		document.form3.submit();	// 제출
-	    		}
-			});
-		});
-		
-		$(document).ready(function() {
-			$("#change-password-area").css("display", "none");
-			$("#password-btn").click(function(e) {
-	            e.preventDefault();
-	            $("#password-area").css("display", "none");
-	            $("#change-password-area").css("display", "");
-	        });
-			
-			$("#cancel-password-btn").click(function(e) {
-				e.preventDefault();
-	            $("#password-area").css("display", "");
-	            $("#change-password-area").css("display", "none");
-			})
-		});
-		
-		$(document).ready(function() {
-			$("#change-nickname-area").css("display", "none");
-			$("#nickname-btn").click(function(e) {
-	            e.preventDefault();
-	            $("#nickname-area").css("display", "none");
-	            $("#change-nickname-area").css("display", "");
-	        });
-			
-			$("#cancel-nickname-btn").click(function(e) {
-				e.preventDefault();
-	            $("#nickname-area").css("display", "");
-	            $("#change-nickname-area").css("display", "none");
-			})
-		});
-		
-		$(document).ready(function() {
-			$("#change-email-area").css("display", "none");
-			$("#email-btn").click(function(e) {
-	            e.preventDefault();
-	            $("#email-area").css("display", "none");
-	            $("#change-email-area").css("display", "");
-	        });
-			
-			$("#cancel-email-btn").click(function(e) {
-				e.preventDefault();
-	            $("#email-area").css("display", "");
-	            $("#change-email-area").css("display", "none");
-			})
-		});
-	</script>
 	
 	<style>
 		.mypage-input-btn {
@@ -98,6 +22,7 @@
 			height: 30px;
 		}
 	</style>
+	
 	
 
 </head>
@@ -142,57 +67,32 @@
           </div>
        
        
-       	<!-- 닉네임 변경 시작 -->
-      	<div id="nickname-area">
-      		<input type="button" id="nickname-btn" value="닉네임 변경">
-      	</div>
-      	<div id="change-nickname-area">
-      	<form th:name="form2" method="post">
-      		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-	    	<input type="hidden" name="userId" th:value="${dto.getUserId() }" readonly><br>
-	    	<input type="text" name="userNickname" placeholder="변경할 닉네임을 입력하세요."><br>
-	    	<input type="button" id="cancel-nickname-btn" value="취소">
-	    	<input type="button" id="change-nickname-btn" value="변경">
-		</form>
-		</div>
+       	<!-- 닉네임 변경 시작 --> 
+ 			<button data-bs-toggle="modal" data-bs-target="#nickNameChange">
+						nick 변경
+	 		 </button>
+    	    <div th:insert="layout/NickNameModal :: fr_NickNameModal"></div>
 		<!-- 닉네임 변경 끝 -->
        
         <!-- 비밀번호 변경 시작 -->
-       <div class="infoediter">
-       	<span class="infoicon"><i class="fa-solid fa-user" id="inputicon"></i></span>
-	      	<div id="password-area">
-	      		<input type="button" id="password-btn" value="비밀번호 변경">
-	      	</div>
-	      	<div id="change-password-area">
-	      	<form th:name="form1" method="post">
-	      		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-		    	<input type="hidden" name="userId" th:value="${dto.getUserId() }" readonly><br>
-		    	<input type="password" name="userPwd" placeholder="변경할 비밀번호를 입력하세요."><br>
-		    	<input type="button" id="cancel-password-btn" value="취소">
-		    	<input type="button" id="change-password-btn" value="변경">
-			</form>
-			</div>
-		</div>
+       	 <button data-bs-toggle="modal" data-bs-target="#pwdChange">
+							비밀번호변경
+		 		 </button>
+    	    <div th:insert="layout/PwModal :: fr_PwModal"></div>
 		<!-- 비밀번호 변경 끝 -->
 		
 
 		
 		<!-- 이메일 변경 시작 -->
-		<div id="email-area">
-      		<input type="button" id="email-btn" value="이메일 변경">
-      	</div>
-      	<div id="change-email-area">
-      	<form th:name="form3" method="post">
-      		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-	    	<input type="hidden" name="userId" th:value="${dto.getUserId() }" readonly><br>
-	    	<input type="text" name="userEmail" placeholder="변경할 이메일을 입력하세요."><br>
-	    	<input type="button" id="cancel-email-btn" value="취소">
-	    	<input type="button" id="change-email-btn" value="변경">
-		</form>
-		</div>
+	       <button data-bs-toggle="modal" data-bs-target="#emailChange">
+						email 변경
+		  </button>
+    	    <div th:insert="layout/EmailModal :: fr_EmailModal"></div>
 		<!-- 이메일 변경 끝 -->
-		
-         
+	
+	
+	
+	
         </div>  
       </div>
       <div class="myPageMain">

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+	<div th:fragment="fr_EmailModal">
+	<!-- pw edit Modal -->
+	    <div class="modal fade" id="emailChange" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">이메일 변경</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-sm">이메일 </span>
+		   		<!-- 이메일 변경 시작 -->
+
+		      	<div id="change-email-area">
+		      	<form th:name="form3" method="post">
+		      		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			    	<input type="hidden" name="userId" th:value="${dto.getUserId() }" readonly><br>
+			    	<input type="text" name="userEmail" placeholder="변경할 이메일을 입력하세요."><br>
+			    	<input type="button" id="change-email-btn" value="변경">
+				</form>
+				</div>
+				<!-- 이메일 변경 끝 -->
+          </div>
+        </div>
+      </div>
+    </div>
+	</div>
+	
+		<script type="text/javascript">
+		$(function() {
+			$("#change-email-btn").click(function() {
+	    		if(confirm("회원정보를 수정하시겠습니까?")) {
+		    		// 폼 내부의 데이터를 전송할 주소
+		    		document.form3.action="mypage/modify/email";
+		    		document.form3.submit();	// 제출
+	    		}
+			});
+		});
+	
+	</script>
+</body>
+</html>

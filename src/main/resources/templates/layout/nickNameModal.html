@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+	<div th:fragment="fr_NickNameModal">
+	<!-- pw edit Modal -->
+	    <div class="modal fade" id="nickNameChange" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">닉네임 변경</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-sm">닉네임</span>		       
+	       	<!-- 닉네임 변경 시작 -->
+	      	<div id="change-nickname-area">
+	      	<form th:name="form2" method="post">
+	      		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		    	<input type="hidden" name="userId" th:value="${dto.getUserId() }" readonly><br>
+		    	<input type="text" name="userNickname" placeholder="변경할 닉네임을 입력하세요."><br>
+		    
+		    	<input type="button" id="change-nickname-btn" value="변경">
+			</form>
+			</div>
+			<!-- 닉네임 변경 끝 -->
+          </div>
+        </div>
+      </div>
+    </div>
+	</div>
+	
+		<script type="text/javascript">
+		$(function() {
+			$("#change-nickname-btn").click(function() {
+	    		if(confirm("회원정보를 수정하시겠습니까?")) {
+		    		// 폼 내부의 데이터를 전송할 주소
+		    		document.form2.action="mypage/modify/nickname";
+		    		document.form2.submit();	// 제출
+	    		}
+			});
+		});
+	</script>
+</body>
+</html>
