@@ -19,8 +19,8 @@
 	      		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		    	<input type="hidden" name="userId" th:value="${dto.getUserId() }" readonly><br>
 		    	<input type="text" id="userNicknameedit" name="userNickname" placeholder="변경할 닉네임을 입력하세요."><br>
-		    	<button type="button" class="nicknameCheck" onclick="nicknameCheck();" value="N">중복확인</button>
-		  		   <p id="userNicknameCheck"></p>
+		  		<button type="button" class="nicknameCheck" onclick="nicknameCheck();" value="N">중복확인</button>
+		  		<p id="userNicknameCheck"></p>
 		    	<input type="button" id="change-nickname-btn" value="변경">
 			</form>
 			</div>
@@ -30,7 +30,7 @@
       </div>
     </div>
 	</div>
-	</div>
+
 	
 	<script type="text/javascript">
 		
