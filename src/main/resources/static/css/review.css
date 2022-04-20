@@ -141,7 +141,6 @@
   border: none;
   font-size: 18px;
   padding: 7px 15px;
-
 }
 
 #writebutton {
@@ -165,6 +164,13 @@
    border: 1px solid crimson;
    font-weight:900;
 }
+
+#schBtn i:hover{
+   color: crimson;
+   font-weight:bold;
+   transition: 0.2s;
+}
+
 
 .noresult {
 	margin: 50px 10%; 
