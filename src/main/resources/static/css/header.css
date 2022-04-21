@@ -58,8 +58,6 @@
     top: 0;
 }
 
-
-
 .headertop {
     display: flex;
     margin-bottom:30px;
@@ -67,7 +65,7 @@
     justify-content: center;
     font-family: 'LeferiPoint-WhiteObliqueA';
     width:100%;
-    height:140px;
+    height:170px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
