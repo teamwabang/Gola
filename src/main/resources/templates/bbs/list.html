@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<head>
 		<meta charset="UTF-8">
 		<!-- jQuery -->
@@ -46,7 +46,7 @@
 						</tbody>
 					</table>
 				</div>
-				<div>
+				<div sec:authorize="isAuthenticated()">
 					<button type="button" class="btn btn-sm btn-primary" onclick="javascript:location.href='/bbs/write';">글쓰기</button>
 				</div>
 			</div>

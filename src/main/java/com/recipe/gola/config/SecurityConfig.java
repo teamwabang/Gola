@@ -55,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 			.and()
 				.rememberMe()
-			        .key("gola") 
+					.key("gola")
 			        .rememberMeParameter("remember-me")
 					.tokenValiditySeconds(86400)	// 토큰 유지 시간(초단위) - 하루
 			.and()

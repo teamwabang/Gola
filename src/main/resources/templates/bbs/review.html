@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -29,7 +29,7 @@
             <form class = "searchform" id="form">
               <span>Find your recipe : </span> 
                 <input type="text" name="schTxt" id="schTxt"><button type="button" id="schBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
-            	<button id ="writebutton"type="button" class="btn btn-sm btn-primary" onclick="javascript:location.href='/bbs/write';"><i class="fa-solid fa-pencil"></i>    글쓰기</button>
+            	<button sec:authorize="isAuthenticated()" id ="writebutton" type="button" class="btn btn-sm btn-primary" onclick="javascript:location.href='/bbs/write';"><i class="fa-solid fa-pencil"></i>    글쓰기</button>
             </form>
           </div>
     <section class="reviewsection">
