@@ -1,3 +1,4 @@
+
 package com.recipe.gola.dto;
 
 import java.util.*;
@@ -10,8 +11,9 @@ public class CommentDTO {
     private String  commenter;
     private Date    reg_date;
     private Date    up_date;
+	private String  userNickname;
 
-    public CommentDTO() {}
+	public CommentDTO() {}
     public CommentDTO(Integer bno, Integer pcno, String comment, String commenter) {
         this.bno = bno;
         this.pcno = pcno;
@@ -86,6 +88,12 @@ public class CommentDTO {
 
     public void setCno(Integer cno) {
         this.cno = cno;
+    }
+    public String getUserNickname() {
+    	return userNickname;
+    }
+    public void setUserNickname(String userNickname) {
+    	this.userNickname = userNickname;
     }
 
     @Override
