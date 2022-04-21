@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
   <head>
     <meta charset="UTF-8">
 		<!-- jQuery -->
@@ -52,8 +52,8 @@
 			</div>
 		</form>
           <div class="detailBtns">
-          	<button type="button" class="btn btn-sm btn-primary detailBtn" id="bbsModBtn">수정</button>
-          	<button type="button" class="btn btn-sm btn-primary detailBtn" id="delBtn">삭제</button>
+          	<button sec:authorize="isAuthenticated()" type="button" class="btn btn-sm btn-primary detailBtn" id="bbsModBtn">수정</button>
+          	<button sec:authorize="isAuthenticated()" type="button" class="btn btn-sm btn-primary detailBtn" id="delBtn">삭제</button>
           	<button type="button" class="btn btn-sm btn-primary detailBtn"  onclick="javascript:location.href='/bbs/review';">목록</button>
           </div>
         </div>
@@ -78,8 +78,8 @@
         </div>
         <div class="boardWrite">
           <input type="text" class="boardWriteComment" name="comment" placeholder="댓글달기">
-          <input type="button" id="sendBtn" class="sendMod" value="게시">
-          <input type="button" id="modBtn" class="sendMod" value="수정">
+          <input sec:authorize="isAuthenticated()" type="button" id="sendBtn" class="sendMod" value="게시">
+          <input sec:authorize="isAuthenticated()" type="button" id="modBtn" class="sendMod" value="수정">
         </div>
       </div>
     </div> 
