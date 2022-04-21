@@ -3,7 +3,7 @@ package com.recipe.gola.dto;
 import lombok.Data;
 
 @Data
-public class MenuDTO {
+public class RecipeDTO {
 
 	private String no;	// 번호
 	private String menu;	// 메뉴명

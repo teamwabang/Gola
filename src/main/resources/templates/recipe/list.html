@@ -27,7 +27,7 @@
 	<!-- end of import header -->
 
     <div th:style="@{text-align:center; width:250px; margin:0 auto; color: black; font-size: 16px;}">
-    	<table border="1">
+    	<table>
     		<thead>
     		<tr>
     			<td>번호</td>
@@ -35,9 +35,9 @@
     		</tr>
     		</thead>
     		<tbody>
-    		<tr th:each="menu : ${menulist}">
-    			<td><a th:text="${menu.no}" th:href="@{/menu/detail(no = ${menu.no})}"></a></td>
-    			<td th:text="${menu.menu}"></td>
+    		<tr th:each="list : ${list}">
+    			<td><a th:text="${list.no}" th:href="@{/recipe/detail(no = ${list.no})}"></a></td>
+    			<td th:text="${list.menu}"></td>
     		</tr>
     		</tbody>
     	</table>
