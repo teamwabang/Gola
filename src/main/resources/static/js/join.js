@@ -1,19 +1,37 @@
-$('#userIdJoin').on('keyup' ,function() {
-  if (!/[a-zA-Z0-9]{2,20}$/g.test($('#userIdJoin').val())) {
-    $('#userIdCheck').css({
-      "color" : "red"
-    });
-    $('#userIdCheck').html("아이디는 영문, 숫자로만 이루어진 2~20자리로 입력해주세요.");
-    $('#userIdCheck').show();
-  } else {
-    $('#userIdCheck').css({
-      "color" : "red"
-    });
-      $('#userIdCheck').html("로그인 아이디를 중복확인 해주세요");
-      $('#userIdCheck').show();
-  }
+//아이디 유효성 검사 
+$('#userIdJoin').on('keyup' ,function(){
+	const id = document.getElementById('userIdJoin').value;
+	const checkResult = document.getElementById('userIdCheck');
+	const idLength = id.length;
+	const exp = /[a-zA-Z0-9]{2,20}$/;
+	
+	if(idLength == 0){
+    	checkResult.innerHTML = '필수항목입니다'
+    	checkResult.style.color = 'red';
+    }else if(!id.match(exp)){
+    	checkResult.innerHTML = '아이디는 영문, 숫자로만 이루어진 2~20자리로 입력해주세요.'
+    	checkResult.style.color = 'red';
+    }else if(id.match(exp)) {
+	$.ajax({
+		url : "/idCheck",
+		type : "post",
+		dataType : "json",
+		data : {"userId" : $("#userIdJoin").val()},
+		success : function(data) {
+			if(data == 1) {
+	          checkResult.innerHTML = '이미 사용하고 있는 아이디입니다'
+    		  checkResult.style.color = 'red';
+	        } else if(data == 0) {
+	          $("#idCheck").attr("value", "Y");
+	          checkResult.innerHTML = '사용가능한 아이디입니다'
+    		  checkResult.style.color = 'blue';
+	        }
+	    }
+	})
+	}
 });
-
+	
+//비밀번호 유효성 검사
 $('#userPwdJoin').on('keyup' ,function() {
   if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]).{8,16}$/g.test($('#userPwdJoin').val())) {
     $('#userPwdCheck').css({
@@ -49,50 +67,84 @@ $('#confirm').on('keyup', function () {
   }
 });
 
-
+//닉네임 유효성 검사 
 $('#userNickname').on('keyup' ,function() {
-  if (!/^[가-힣a-zA-Z0-9]{3,20}$/g.test($('#userNickname').val())) {
-    $('#userNicknameCheck').css({
-      "color" : "red"
-    });
-    $('#userNicknameCheck').html("닉네임은 특수문자를 제외한 3~20자리로 입력해주세요.");
-    $('#userNicknameCheck').show();
-  } else {
-    $('#userNicknameCheck').css({
-      "color" : "blue"
-    });
-      $('#userNicknameCheck').html("사용 가능한 닉네임입니다.");
-      $('#userNicknameCheck').show();
-  }
+	const nick = document.getElementById('userNickname').value;
+	const checkResult = document.getElementById('userNicknameCheck');
+	const nickLength = nick.length;
+	const exp = /^[가-힣a-zA-Z0-9]{3,20}$/;
+	
+	if(nickLength == 0){
+    	checkResult.innerHTML = '필수항목입니다'
+    	checkResult.style.color = 'red';
+    }else if(!nick.match(exp)){
+    	checkResult.innerHTML = '닉네임은 특수문자를 제외한 3~20자리로 입력해주세요.'
+    	checkResult.style.color = 'red';
+    }else if(nick.match(exp)) {
+	$.ajax({
+		url : "/nicknameCheck",
+		type : "post",
+		dataType : "json",
+		data : {"userNickname" : $("#userNickname").val()},
+		success : function(data) {
+			if(data == 1) {
+				checkResult.innerHTML = '이미 사용하고 있는 닉네임입니다'
+    		  checkResult.style.color = 'red';
+	        } else if(data == 0) {
+	          $("#idCheck").attr("value", "Y");
+	          checkResult.innerHTML = '사용가능한 닉네임입니다'
+    		  checkResult.style.color = 'blue';
+	          }
+	    }
+	})
+	}
 });
+
+//이메일 유효성 검사
 
 $('#userEmail').on('keyup' ,function() {
-  if (!/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/g.test($('#userEmail').val())) {
-    $('#userEmailCheck').css({
-      "color" : "red"
-    });
-    $('#userEmailCheck').html("올바르지 않은 이메일 형식입니다.");
-    $('#userEmailCheck').show();
-  } else {
-    $('#userEmailCheck').css({
-      "color" : "blue"
-    });
-      $('#userEmailCheck').html("올바른 이메일 형식입니다.");
-      $('#userEmailCheck').show();
-  }
+	const email = document.getElementById('userEmail').value;
+	const checkResult = document.getElementById('userEmailCheck');
+	const emailLength = email.length;
+	const exp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+	
+	if(emailLength == 0){
+    	checkResult.innerHTML = '필수항목입니다'
+    	checkResult.style.color = 'red';
+    }else if(!email.match(exp)){
+    	checkResult.innerHTML = '올바르지 않은 이메일 형식입니다.'
+    	checkResult.style.color = 'red';
+    }else if(email.match(exp)) {
+		$.ajax({
+			url : "/emailCheck",
+			type : "post",
+			dataType : "json",
+			data : {"userEmail" : $("#userEmail").val()},
+			success : function(data) {
+				if(data == 1) {
+		          checkResult.innerHTML = '이미 사용하고 있는 이메일입니다'
+    			  checkResult.style.color = 'red';
+		        } else if(data == 0) {
+		          $("#emailCheck").attr("value", "Y");
+		          checkResult.innerHTML = '사용가능한 이메일입니다'
+    		 	  checkResult.style.color = 'blue';
+	        }
+	    }
+	})
+	}
 });
+	
 
 //회원가입 버튼 비활성화 -> 활성화
-$(document).ready(function() {
-  $("#userIdJoin, #userPwdJoin, #confirm, #userEmail, #userNickname").change(function() {
+  $("#userIdJoin, #userPwdJoin, #confirm,  #userNickname, #userEmail").change(function() {
     if( $("#userIdJoin").val() != "" && $("#userPwdJoin").val() != "" && $('#confirm').val() != "" && $('#userEmail').val() != "" && $('#userNickname').val() != "") {
       $('#joinSubmit').prop('disabled', false);
     } else {
       $('#joinSubmit').prop('disabeld', true);      
     }
-  })
-});
+  });
 
+/*
 $('#joinSubmit').on('click', function(event) {
 	event.preventDefault();
 	if (!/[a-zA-Z0-9]{2,20}$/g.test($('#userIdJoin').val())) {
@@ -127,9 +179,10 @@ $('#joinSubmit').on('click', function(event) {
         })
 	} else {
 		$(this).unbind('click').click();
-		/*alert("회원가입");*/	
+		
 	};
 });
+<<<<<<< Updated upstream
 
 
 /* 아이디 중복 검사
@@ -210,3 +263,6 @@ function emailCheck(){
 }
 
 
+=======
+*/
+>>>>>>> Stashed changes

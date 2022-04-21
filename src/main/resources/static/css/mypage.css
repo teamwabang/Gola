@@ -63,6 +63,7 @@
 .userEmail {
   color: rgba(0, 0, 0, 0.4);
   font-size: 15px;
+  text-transform:none !important;
 }
 
 .infoNav ul{
