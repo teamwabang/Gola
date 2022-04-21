@@ -145,8 +145,10 @@ $('#userEmail').on('keyup' ,function() {
   });
 
 
-
+/* 아이디 입력확인 swal */
 $('#joinSubmit').on('click', function(event) {
+	const id = document.getElementById('userIdJoin').value;
+	const idexp = /[a-zA-Z0-9]{2,20}$/;
 	event.preventDefault();
 	if (!/[a-zA-Z0-9]{2,20}$/g.test($('#userIdJoin').val())) {
 		swal({
@@ -154,18 +156,38 @@ $('#joinSubmit').on('click', function(event) {
             text:'아이디를 확인해주세요.',
             icon:'error',
        		buttons: '확인'
-        }).then(function(){
-			location.replace("./");
-		});
-        return false;
-	} else if(!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]).{8,16}$/g.test($('#userPwdJoin').val())) {
+        })
+	} else if(id.match(idexp)) {
+		$.ajax({
+			url : "/idCheck",
+			type : "post",
+			dataType : "json",
+			data : {"userId" : $("#userIdJoin").val()},
+			success : function(data) {
+				if(data == 1) {
+					swal({
+			            title:'ID ERROR',
+			            text:'이미 사용하고 있는 아이디입니다.',
+			            icon:'error',
+			       		buttons: '확인'
+			        })
+		   		 }
+			}
+		})
+	}
+	
+});
+
+/* 비밀번호 입력확인 swal */
+$('#joinSubmit').on('click', function(event) {
+	event.preventDefault();
+	if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]).{8,16}$/g.test($('#userPwdJoin').val())) {
 		swal({
             title:'PASSWORD ERROR',
             text:'비밀번호를 확인해주세요.',
             icon:'error',
             buttons: '확인'
         })
-        return false;
 	} else if( $("#userPwdJoin").val() != $("#confirm").val()) {
 		swal({
             title:'PASSWORD CEHCK ERROR',
@@ -173,24 +195,78 @@ $('#joinSubmit').on('click', function(event) {
             icon:'error',
             buttons: '확인',
         })	
-        return false;
-	} else if(!/^[가-힣a-zA-Z0-9]{3,20}$/g.test($('#userNickname').val())) {
+	} 
+});
+
+/* 닉네임 입력확인 swal */
+$('#joinSubmit').on('click', function(event) {
+	event.preventDefault();
+		
+	const nick = document.getElementById('userNickname').value;
+	const nickexp = /^[가-힣a-zA-Z0-9]{3,20}$/;
+	
+	if(!/^[가-힣a-zA-Z0-9]{3,20}$/g.test($('#userNickname').val())) {
 		swal({
             title:'NICKNAME ERROR',
             text:'닉네임을 확인해주세요.',
-            icon:'error'
+            icon:'error',
+            buttons: '확인'
         })
-       return false;
-	} else if(!/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/g.test($('#userEmail').val())) {
+       
+	} else if(nick.match(nickexp)) {
+		$.ajax({
+			url : "/nicknameCheck",
+			type : "post",
+			dataType : "json",
+			data : {"userNickname" : $("#userNickname").val()},
+			success : function(data) {
+				if(data == 1) {
+					swal({
+			            title:'NICKNAME ERROR',
+			            text:'이미 사용하고 있는 닉네임입니다.',
+			            icon:'error',
+			       		buttons: '확인'
+			        })
+		   		 }
+			}
+		})
+	}
+});
+
+
+/* 이메일 입력확인 swal */
+$('#joinSubmit').on('click', function(event) {
+	event.preventDefault();
+	const email = document.getElementById('userEmail').value;
+	const emailexp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+	if(!/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/g.test($('#userEmail').val())) {
 		swal({
             title:'EMAIL ERROR',
             text:'이메일을 확인해주세요.',
-            icon:'error'
+            icon:'error',
+            buttons: '확인'
         })
         return false;
-	} else {
+	} else if(email.match(emailexp)) {
+		$.ajax({
+			url : "/emailCheck",
+			type : "post",
+			dataType : "json",
+			data : {"userEmail" : $("#userEmail").val()},
+			success : function(data) {
+				if(data == 1) {
+					swal({
+			            title:'EMAIL ERROR',
+			            text:'이미 사용하고 있는 이메일입니다.',
+			            icon:'error',
+			       		buttons: '확인'
+			        })
+		   		 }
+			}
+		})
+	}
+	else {
 		$(this).unbind('click').click();
 		
 	};
 });
-
