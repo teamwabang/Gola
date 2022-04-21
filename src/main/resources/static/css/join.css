@@ -30,9 +30,12 @@ input[type=text], input[type=password] {
 }
 
 .joinTitle {
-	font-size: 20px;
-	font-weight:500;
+	font-size: 18px;
+	font-weight:700;
     padding: 10px 0px 0px 0px;
+    text-align:left;
+    color: black;;
+    font-family: 'LeferiPoint-WhiteObliqueA';
 }
 
 .joinInput {  
@@ -46,8 +49,8 @@ input[type=text], input[type=password] {
     align-items: center;
 }
 
-.joinIdInput input[type=text] {
-    width: 65%;
+.joininput {
+    width: 83%;
 }
 
 .idCheck {
@@ -81,4 +84,3 @@ input[type=text], input[type=password] {
 #userPwdCheck {
     line-height: 1.3;
 }
-
