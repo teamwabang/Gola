@@ -164,7 +164,7 @@ main {
 
 .mainUseredit {
   padding-left:20px;
-  font-size:23px;
+  font-size:17px;
   font-weight:bold;
   color:black;
   font-family: 'Montserrat Alternates', sans-serif;
@@ -222,4 +222,6 @@ main {
 .btnedit button {
 	padding-top: 9px !important;
 }
+
+
 
