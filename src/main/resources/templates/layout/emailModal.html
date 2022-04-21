@@ -17,10 +17,11 @@
 		      	<div id="change-email-area">
 		      	<form th:name="form3" method="post">
 		      		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-			    	<input type="hidden" name="userId" th:value="${dto.getUserId() }" readonly><br>
-			    	<input type="text" id="userEmailedit" name="userEmail" placeholder="변경할 이메일을 입력하세요.">
-					<button type="button" class="emailCheck" onclick="emailCheck();" value="N">중복확인</button>
-			    	  <p id="userEmailCheck"></p>
+			    	<input type="hidden" name="userId" th:value="${dto.getUserId() }" readonly>
+			    	<!-- 변경할 이메일 입력  -->
+			    	<input type="text" id="userEmailedit" name="userEmail" maxlength="50" placeholder="변경할 이메일을 입력하세요.">
+			    	 <!-- 유효성 검사문구 -->
+			    	 <p id="userEmailCheck"></p>
 					<input type="button" id="change-email-btn" value="변경">
 				</form>
 				</div>
@@ -33,22 +34,39 @@
 	
 	<script type="text/javascript">
 		
-		$('#userEmailedit').on('keyup' ,function() {
-			  if (!/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/g.test($('#userEmailedit').val())) {
-			    $('#userEmailCheck').css({
-			      "color" : "red"
-			    });
-			    $('#userEmailCheck').html("올바르지 않은 이메일 형식입니다.");
-			    $('#userEmailCheck').show();
-			  } else {
-			    $('#userEmailCheck').css({
-			      "color" : "blue"
-			    });
-			      $('#userEmailCheck').html("올바른 이메일 형식입니다.");
-			      $('#userEmailCheck').show();
-			  }
-			});
+	$('#userEmailedit').on('keyup' ,function() {
+		const email = document.getElementById('userEmailedit').value;
+		const checkResult = document.getElementById('userEmailCheck');
+		const emailLength = email.length;
+		const exp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 		
+		if(emailLength == 0){
+	    	checkResult.innerHTML = '필수항목입니다'
+	    	checkResult.style.color = 'red';
+	    }else if(!email.match(exp)){
+	    	checkResult.innerHTML = '올바르지 않은 이메일 형식입니다.'
+	    	checkResult.style.color = 'red';
+	    }else if(email.match(exp)) {
+			$.ajax({
+				url : "/emailCheck",
+				type : "post",
+				dataType : "json",
+				data : {"userEmail" : $("#userEmailedit").val()},
+				success : function(data) {
+					if(data == 1) {
+			          checkResult.innerHTML = '이미 사용하고 있는 이메일입니다'
+	    			  checkResult.style.color = 'red';
+			        } else if(data == 0) {
+			          $("#emailCheck").attr("value", "Y");
+			          checkResult.innerHTML = '사용가능한 이메일입니다'
+	    		 	  checkResult.style.color = 'blue';
+		        }
+		    }
+		})
+		}
+	});
+		
+		/*submit버튼 유효성*/
 		$(function() {
 			$("#change-email-btn").click(function() {
 				if(!/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/g.test($('#userEmailedit').val())) {
@@ -60,23 +78,7 @@
 	    		}
 			});
 		});
-		
-		function emailCheck(){
-			$.ajax({
-				url : "/emailCheck",
-				type : "post",
-				dataType : "json",
-				data : {"userEmail" : $("#userEmailedit").val()},
-				success : function(data) {
-					if(data == 1) {
-			          alert("이미 사용하고 있는 이메일입니다.");
-			        } else if(data == 0) {
-			          $("#emailCheck").attr("value", "Y");
-			          alert("사용가능한 이메일입니다.");
-			        }
-			    }
-			})
-		}
+
 	
 	</script>
 </body>
