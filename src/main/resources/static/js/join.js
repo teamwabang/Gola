@@ -175,8 +175,12 @@ $('#joinSubmit').on('click', function(event) {
 			}
 		})
 	}
-	
+	else {
+		$(this).unbind('click').click();
+		
+	};
 });
+
 
 /* 비밀번호 입력확인 swal */
 $('#joinSubmit').on('click', function(event) {
@@ -195,7 +199,11 @@ $('#joinSubmit').on('click', function(event) {
             icon:'error',
             buttons: '확인',
         })	
-	} 
+	} else {
+		$(this).unbind('click').click();
+		
+	};
+
 });
 
 /* 닉네임 입력확인 swal */
@@ -231,6 +239,10 @@ $('#joinSubmit').on('click', function(event) {
 			}
 		})
 	}
+	else {
+		$(this).unbind('click').click();
+		
+	};
 });
 
 
