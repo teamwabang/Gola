@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.recipe.gola.mapper.RecipeMapper">
+
+	<!-- 레시피 전체리스트 출력 -->
+	<select id="list" resultType="RecipeDTO">
+	<![CDATA[
+		SELECT *
+		FROM recipe
+	]]>
+	</select>
+	
+	<!-- 각 레시피 상세페이지 출력 -->
+	<select id="detail" resultType="RecipeDTO" parameterType="int">
+		SELECT *
+		FROM recipe
+		WHERE no=${no};
+	</select>
+	
+</mapper>
