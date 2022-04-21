@@ -31,62 +31,70 @@
       <div class="goIndex">
         <h3><a th:href="@{/}">Home</a></h3>	<!-- 나중에 Gola Home 지우고 image로 대체 -->
       </div>
+      <!-- 왼쪽 Navigation Bar-->
       <div class="InfoContents">
-      <div class="userInfo">
-        <img class="userPic" th:src="${imgSrc}" />
-        <button data-bs-toggle="modal" class="picModalBtn" data-bs-target="#picChange">
-				<i class="fa-solid fa-camera"></i>
-			</button>
-			<div th:insert="layout/picModal :: fr_picModal"></div>
-        <h2 th:text="${dto.getUserId() }" class="userName"></h2>
-        <h1 th:text="${dto.getUserEmail() }" class="userEmail"></h1>
+        <div class="userInfo">
+      	  <div class="userpicedit">
+            <img class="userPic" th:src="${imgSrc}" />
+            <button data-bs-toggle="modal" class="picModalBtn" data-bs-target="#picChange">
+		      <i class="fa-solid fa-camera"></i>
+		    </button>
+		  </div>
+		 
+		  <div class="userinfoIdEmail">
+            <h2 th:text="${dto.getUserId() }" class="userName"></h2>
+            <h1 th:text="${dto.getUserEmail() }" class="userEmail"></h1>
+          </div>
+          <div class="infoFunction">
+            <ul class="infologoutmenu">
+              <li class="infoLogout"><a class="infoLogout btn btn-light" th:href="@{logout}"> <i class="fa-solid fa-arrow-right-from-bracket"></i>  로그아웃</a></li>
+              <li class="infoLogout"><a class="infoLogout btn btn-light" th:href="@{mypage/leave}"><i class="fa-solid fa-person-hiking"></i>   회원탈퇴</a></li>
+            </ul>
+          </div>
+         </div>
       </div>
-      <nav class="infoFunction">
-        <ul class="infologoutmenu">
-          <li class="infoLogout"><a class="infoLogout btn btn-light" th:href="@{logout}"> <i class="fa-solid fa-arrow-right-from-bracket"></i>  로그아웃</a></li>
-          <li class="infoLogout"><a class="infoLogout btn btn-light" th:href="@{mypage/leave}"><i class="fa-solid fa-person-hiking"></i>   회원탈퇴</a></li>
-        </ul>
-      </nav>
-    </div>
     </header>
-
+	<!-- 오른쪽 main -->
     <main>
       <div class="myPageMain">
         <div class="mainUserInfo">
           <div class="mainTitle"> 기본정보</div>
           <div class="mainUserMainInfo">
             <img class="mainUserMainPic" th:src="${imgSrc}">
-            <div class="mainUserMainId">
-             <div th:text="${dto.getUserNickname() }" class="mainUserNickname"></div>
+            </div>
+            <div class="mainUseredit">
+              <div th:text="${dto.getUserNickname() }" class="mainUserNickname"></div>
+              <!-- 닉네임 변경--> 
+			  <div class="btnedit"><button class="btn btn-dark changeBtn" data-bs-toggle="modal" data-bs-target="#nickNameChange"><i class="fa-solid fa-pen"></i></button></div>  
           	  <!-- <div th:text="${dto.getUserEmail() }" class="mainUserMainId"></div> -->
-             </div>
+            </div>
+              		
+            <div class="mainUseredit">
+            <div>*********</div>
+           <!-- 비밀번호 변경 -->
+			<div class="btnedit"><button class="btn btn-dark changeBtn" data-bs-toggle="modal" data-bs-target="#pwdChange"><i class="fa-solid fa-pen"></i></button></div>
+			
+        	  <!-- <div th:text="${dto.getUserEmail() }" class="mainUserMainId"></div> -->
+          </div>   		
+              		
+              		   <div class="mainUseredit">
+              <div th:text="${dto.getUserEmail() }" class="mainUserNickname"></div>
+             			<!-- 이메일 변경 -->
+			<div class="btnedit"><button class="btn btn-dark changeBtn" data-bs-toggle="modal" data-bs-target="#emailChange"><i class="fa-solid fa-pen"></i></button></div>
+  
+          	  <!-- <div th:text="${dto.getUserEmail() }" class="mainUserMainId"></div> -->
+            </div>
+            
+            
+
+			
+			
+    	   
           </div>
  
- 		<div class="editsection">
-	         <!-- 닉네임 변경 시작 --> 
-			<button data-bs-toggle="modal" data-bs-target="#nickNameChange">
-				nick 변경
-			</button>
-			<div th:insert="layout/NickNameModal :: fr_NickNameModal"></div>
-			<!-- 닉네임 변경 끝 -->
-				       
-			<!-- 비밀번호 변경 시작 -->
-			<button data-bs-toggle="modal" data-bs-target="#pwdChange">
-				비밀번호변경
-			</button>
-			<div th:insert="layout/PwModal :: fr_PwModal"></div>
-			<!-- 비밀번호 변경 끝 -->
-						
-			<!-- 이메일 변경 시작 -->
-			<button data-bs-toggle="modal" data-bs-target="#emailChange">
-				email 변경
-			</button>
-			<div th:insert="layout/EmailModal :: fr_EmailModal"></div>
-			<!-- 이메일 변경 끝 -->
-    	   </div>  
+
     	   
-    	   
-    	   
+    	 </div>  
       </div>
       </div>
 
@@ -104,6 +112,13 @@
         </div>    
       </div>    
     </main>  
+    
+    <!-- modal -->
+    <div class="picmodal" th:insert="layout/picModal :: fr_picModal"></div>
+    <div th:insert="layout/NickNameModal :: fr_NickNameModal"></div>
+    <div th:insert="layout/PwModal :: fr_PwModal"></div>
+    <div th:insert="layout/EmailModal :: fr_EmailModal"></div>
+    
     <!-- Option 1: Bootstrap Bundle with Popper -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	<!-- Option 2: Separate Popper and Bootstrap JS -->
