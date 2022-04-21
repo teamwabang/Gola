@@ -162,18 +162,29 @@ public class UserController {
 		logger.info("유저 아이디 : " + principaldetail.getUsername());
 		
 		model.addAttribute("dto", principaldetail.getDto());
-//	    BbsDTO bbsDto = new BbsDTO();
-//	    bbsDto.setWriter(principaldetail.getUsername());
-//		model.addAttribute("list",bbsService.selectListBbs(bbsDto));		
-//		String imgSrc = bbsService.selectListFiles(principaldetail.getUsername()).get(0).getImgSrc();
-//		String fno =  bbsService.selectListFiles(principaldetail.getUsername()).get(0).getFno();
-//		String fileName = bbsService.selectListFiles(principaldetail.getUsername()).get(0).getFileName();
-//		
-//		//file Info
-//		model.addAttribute("imgSrc", imgSrc);
-//		model.addAttribute("fno",fno);
-//		model.addAttribute("fileName",fileName);
-//		
+		BbsDTO bbsDto = new BbsDTO();
+	    bbsDto.setWriter(principaldetail.getUsername());
+		model.addAttribute("list",bbsService.selectListBbs(bbsDto));		
+		
+		String writer = principaldetail.getUsername();
+		String imgSrc = "";
+		String fno = "";
+		String fileName = "";
+		
+		if(bbsService.selectListFiles(writer).size() > 0) {
+			logger.info("no User");
+			imgSrc = bbsService.selectListFiles(writer).get(0).getImgSrc();
+			fno =  bbsService.selectListFiles(writer).get(0).getFno();
+			fileName = bbsService.selectListFiles(writer).get(0).getFileName();
+			
+			//file Info
+			model.addAttribute("imgSrc", imgSrc);
+			model.addAttribute("fno",fno);
+			model.addAttribute("fileName",fileName);
+		}else {
+			imgSrc = "/images/default.png";
+			model.addAttribute("imgSrc", imgSrc);
+		}
 		
 		return "user/mypage";
 	}

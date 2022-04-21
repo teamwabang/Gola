@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
+
 	<div th:fragment="fr_picModal">
 
 	<!-- pw edit Modal -->
@@ -16,10 +17,10 @@
             	<input type="hidden" name="deleteFilesNo" id="deleteFilesNo"/>
           <div class="modal-body">
             <div class="mb-3"	id="upFIleDiv1">
-					<div class="custom-file">
-					  	<input type="file" class="custom-file-input"	name="upFile" >
-					  	<label class="custom-file-label" for="customFileLang" id="upFileTxt1"></label>
-				  	</div>
+				<div class="custom-file">
+				  	<input type="file" class="custom-file-input"	name="upFile" >
+				  	<label class="custom-file-label" for="customFileLang" id="upFileTxt1"></label>
+			  	</div>
 			</div>
 			<button type="button" id="saveBtn">save</button>
 			
@@ -47,36 +48,40 @@
 			$("input[name='deleteFilesNo']").val(fno);
 		}
 	 	
+		//사진업로드 체인지 이벤트
+		$("input[name=upFile]").on('change',function(){
+	
+			var ext = $(this).val().split('.').pop().toLowerCase();
+	 		if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+	 			alert('gif, png, jpg, jpeg 파일만 업로드 할수 있습니다.');
+		 		return;
+	  		}
+	 		
+			//수정페이지일때 파일삭제버튼이 달려있다면 먼저 삭제후 재등록 해야한다.
+			if($(this).parent('.custom-file').next().text() == "파일삭제"){
+				alert("기존파일을 먼저 삭제해주세요.");
+				return false;
+			}
+			
+			//get the file name
+			var fileValue = $(this).val().split("\\");
+			console.log('fileName : '+fileName);
+	   		//replace the "Choose a file" label
+	   		
+	  		$(this).next('.custom-file-label').html(fileName);
+	   		
+	   		console.log("test");
+
+	   		
+		}); 
+		
 	 	$(document).ready(function(){
 	 		
-	 		if(fno != "" || fno != null){
+	 		if($.trim(fno) != "" && $.trim(fno) != null && $.trim(fno) != 'null'){
+	 			//$('#upFileTxt1').text(fileName);
 				$('#upFIleDiv1').append('<button type="button" class="btn btn-sm btn-warning" id="deleteFileBtn" onclick="javascript:fnDeleteFile('+fno+');">파일삭제</button>');	 			
 	 		}
 
-			//사진업로드 체인지 이벤트
-			$("input[name=upFile]").on('change',function(){
-		
-				var ext = $(this).val().split('.').pop().toLowerCase();
-		 		if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
-		 			alert('gif, png, jpg, jpeg 파일만 업로드 할수 있습니다.');
-			 		return;
-		  		}			
-				//수정페이지일때 파일삭제버튼이 달려있다면 먼저 삭제후 재등록 해야한다.
-				if($(this).parent('.custom-file').next().text() == "파일삭제"){
-					alert("기존파일을 먼저 삭제해주세요.");
-					return false;
-				}
-
-				//get the file name
-				var fileValue = $(this).val().split("\\");
-				console.log('fileName : '+fileName);
-		   		//replace the "Choose a file" label
-		   		
-		  		$(this).next('.custom-file-label').html(fileName);
-		   		
-		   		console.log("test");
-
-			}); 
 			
 	        //저장버튼
 	       	$("#saveBtn").on("click", function(){
