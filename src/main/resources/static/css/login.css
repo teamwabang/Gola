@@ -84,6 +84,13 @@
     color:  rgba(0,0,0,0.5);
 }
 
+#inputicon2 {
+	position: absolute;
+    right: 10px;
+    top: 30px;
+    color:  rgba(0,0,0,0.5);
+}
+
 .rememberbox{
 	text-align:center;
 	width:400px;
