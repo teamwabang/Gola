@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
-<title>비밀번호 찾기 | 골라</title>
+<title>아이디 찾기 | 골라</title>
 
 	<!-- CSS -->
     <link rel="stylesheet" href="/css/styles.css" />
@@ -28,16 +28,13 @@
     <!-- end of import header -->
 	
 	<div th:style="@{text-align:center;}">
-		<span>회원가입 할때 입력했던 아이디, 이메일을 입력하고 '찾기' 버튼을 눌러주세요.</span>
+		<span>회원가입 할때 입력했던 이메일을 입력하고 '찾기' 버튼을 눌러주세요.</span>
 		
-		<form th:action="@{/find/password}" method="post">
-	  		<label>이름</label>
-	  		<input type="text" name="userNickname" id="userNickname">
-	  		<br>
-	  		<label>이메일</label>
+		<form th:action="@{/find/id}" method="post">
+	  		<label for="email">이메일</label>
 	  		<input type="text" name="userEmail" id="userEmail">
-			<br>
-		   	<input type="submit" id="find_password" value="찾기">
+	  		<br>
+		   	<input type="submit" id="find_id" value="찾기">
 		</form>
 	</div>
     
