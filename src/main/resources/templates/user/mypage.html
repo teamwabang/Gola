@@ -15,8 +15,8 @@
     <script src="https://kit.fontawesome.com/c21d7630fc.js" crossorigin="anonymous"></script>
     <!-- JavaScript -->
     <script type="text/javascript" src="/js/chatbot.js"></script>
-    <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>	
-    
+    <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+  
 </head>
 <body class="mypageBody">
     <header class="mypageHeader shadow p-3 mb-5 bg-body rounded">
@@ -37,7 +37,6 @@
             <h2 th:text="${dto.getUserId() }" class="userName"></h2>
             <h1 th:text="${dto.getUserEmail() }" class="userEmail"></h1>
           </div>
-
           <div class="infoFunction">
             <ul class="infologoutmenu">
               <li class="infoLogout"><a class="infoLogout btn btn-light" th:href="@{logout}"> <i class="fa-solid fa-arrow-right-from-bracket"></i>  로그아웃</a></li>
@@ -71,10 +70,9 @@
           <!-- 이메일 변경 -->
           <div class="btnedit"><button class="btn btn-dark changeBtn" data-bs-toggle="modal" data-bs-target="#emailChange"><i class="fa-solid fa-pen"></i></button></div>
 			<!-- <div th:text="${dto.getUserEmail() }" class="mainUserMainId"></div> -->
-            </div>
           </div>
     	 </div>  
-
+      </div>
       <div class="myPageMain">
         <div class="mainUserInfo">
           <div class="mainTitle RecipeTitle"> 마이레시피 </div>        
