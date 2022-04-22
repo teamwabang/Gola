@@ -226,3 +226,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,visualstudiocode,maven,java,macos,windows
+*.java
