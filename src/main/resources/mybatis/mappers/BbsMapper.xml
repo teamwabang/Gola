@@ -170,4 +170,10 @@
         WHERE bno = #{bno}
     </update>
     
+         <update id="updateCnt" parameterType="string">
+        UPDATE board
+        SET   view_cnt = view_cnt + 1
+        WHERE bno = #{bno}
+    </update>
+    
 </mapper>
