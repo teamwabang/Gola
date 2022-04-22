@@ -34,10 +34,8 @@ public class CommentController {
     
     // 댓글을 수정하는 메서드
     @PatchMapping("/comments/{cno}")   // /comments/26  PATCH
-    public ResponseEntity<String> modify(@PathVariable Integer cno, @RequestBody CommentDTO dto,HttpSession session, @AuthenticationPrincipal PrincipalDetails principaldetail) {
-        String commenter = (String)session.getAttribute("userId");
-//        String commenter = "asdf";
-        dto.setCommenter(principaldetail.getUserNickname());
+    public ResponseEntity<String> modify(@PathVariable Integer cno, @RequestBody CommentDTO dto,HttpSession session, @AuthenticationPrincipal PrincipalDetails principaldetail) {     
+        dto.setCommenter(principaldetail.getUsername());
         dto.setCno(cno);
         System.out.println("dto = " + dto);
 
@@ -59,12 +57,10 @@ public class CommentController {
     // 댓글을 등록하는 메서드
     @PostMapping("/comments")   // /ch4/comments?bno=1085  POST
     public ResponseEntity<String> write(@RequestBody CommentDTO dto, Integer bno, HttpSession session, @AuthenticationPrincipal PrincipalDetails principaldetail ) {
-        String commenter = (String)session.getAttribute("getUserNickname");
- //       String commenter = "asdf";
 
         log.info(">>>>>>>>>>>>>>>>>>>>>>> principaldetail.getUserNickname()"+principaldetail.getUsername());
         
-        dto.setCommenter(principaldetail.getUserNickname());
+        dto.setCommenter(principaldetail.getUsername());
         dto.setBno(bno);
         System.out.println("dto = " + dto);
 
@@ -85,7 +81,7 @@ public class CommentController {
 
         	System.out.println("cno :"+cno+" bno :"+bno);
         try {
-            int rowCnt = service.remove(cno, bno, principaldetail.getUserNickname());
+            int rowCnt = service.remove(cno, bno, principaldetail.getUsername());
 
             if(rowCnt!=1)
                 throw new Exception("Delete Failed");
