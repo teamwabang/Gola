@@ -12,17 +12,20 @@
           </div>
           <div class="modal-body">
             <div class="input-group input-group-sm mb-3">
-              <span class="input-group-text" id="inputGroup-sizing-sm">이메일 </span>
 		   		<!-- 이메일 변경 시작 -->
 		      	<div id="change-email-area">
 		      	<form th:name="form3" method="post">
 		      		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			    	<input type="hidden" name="userId" th:value="${dto.getUserId() }" readonly>
-			    	<!-- 변경할 이메일 입력  -->
-			    	<input type="text" id="userEmailedit" name="userEmail" maxlength="50" placeholder="변경할 이메일을 입력하세요.">
-			    	 <!-- 유효성 검사문구 -->
-			    	 <p id="userEmailCheck"></p>
-					<input type="button" id="change-email-btn" value="변경">
+			    	<div class="modal-div">
+				    	<div class="modal-editcheck">
+					    	<!-- 변경할 이메일 입력  -->
+					    	<input type="text" id="userEmailedit" name="userEmail" maxlength="50" placeholder="변경할 이메일을 입력하세요.">
+					    	<!-- 유효성 검사문구 -->
+					    	<p id="userEmailCheck"></p>
+				    	 </div>
+						<input type="button" class="modal-editbtn" id="change-email-btn" value="변경">
+					</div>
 				</form>
 				</div>
 				<!-- 이메일 변경 끝 -->
