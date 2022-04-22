@@ -26,8 +26,16 @@
     </insert>
 
     <select id="selectAll" parameterType="int" resultType="CommentDTO">
-        SELECT cno, bno, ifnull(pcno, cno) as pcno, comment, commenter, reg_date, up_date
-        FROM comment
+        SELECT 
+        	cno
+        	, bno
+        	, ifnull(pcno, cno) as pcno
+        	, comment
+        	, commenter
+        	, reg_date
+        	, up_date
+			, (SELECT userNickname FROM user u WHERE u.userId = c.commenter) as userNickname
+        FROM comment c
         WHERE bno = #{bno}
         ORDER BY pcno ASC, cno ASC
     </select>

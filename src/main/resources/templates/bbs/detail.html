@@ -46,14 +46,18 @@
         <div class="boardAuthor">
 		<form name="form" id="form" role="form" method="" action="">    
         <input type="hidden" name="bno" id="bno" th:value="${bbs.bno}">
+        <input type="hidden" name="loginId" id="loginId" th:value="${#authentication.name}"/>
 			<div class="detailIdPwd">
 		         <div th:text="${bbs.userNickname}" class="authorId"> </div>
 		         <div th:text="${bbs.title}" class="authorTitle"></div>
 			</div>
 		</form>
           <div class="detailBtns">
-          	<button sec:authorize="isAuthenticated()" type="button" class="btn btn-sm btn-primary detailBtn" id="bbsModBtn">수정</button>
-          	<button sec:authorize="isAuthenticated()" type="button" class="btn btn-sm btn-primary detailBtn" id="delBtn">삭제</button>
+          	<!-- 스프링 인증객체와 게시판 작성자를 비교하여 수정 삭제 버튼을 제어한다. -->
+         	<th:block th:if="${#authentication.name == bbs.writer}">
+          		<button sec:authorize="isAuthenticated()" type="button" class="btn btn-sm btn-primary detailBtn" id="bbsModBtn">수정</button>
+	          	<button sec:authorize="isAuthenticated()" type="button" class="btn btn-sm btn-primary detailBtn" id="delBtn">삭제</button>
+         	</th:block>
           	<button type="button" class="btn btn-sm btn-primary detailBtn"  onclick="javascript:location.href='/bbs/review';">목록</button>
           </div>
         </div>
@@ -230,10 +234,12 @@
 		    tmp += ' data-bno=' + comment.bno + '>'
 		if(comment.cno != comment.pcno)
 		    tmp += 'ㄴ'
-		    tmp += ' <span class="commentAuthor">' + comment.commenter +'</span>'
+		    tmp += ' <span class="commentAuthor">' + comment.userNickname +'</span>'
 		    tmp += ' <span class="commentSubtance">' + comment.comment +'</span>'
-		    tmp += '<button class= "delBtn">삭제</button>'
-		    tmp += '<button class= "modBtn">수정</button>'
+		    if($('#loginId').val() == comment.commenter){
+		    	tmp += '<button class= "delBtn">삭제</button>'
+		    	tmp += '<button class= "modBtn">수정</button>'
+		    }
 		    tmp += '<button class= "replyBtn">답글</button>'
 		    tmp += '</li>'
 	})

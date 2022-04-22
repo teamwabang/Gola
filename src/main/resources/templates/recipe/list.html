@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
-<title>모든 레시피 | 골라</title>
+<title>세상 모든 레시피 | 골라</title>
 
 	<!-- CSS -->
     <link rel="stylesheet" href="/css/styles.css" />
@@ -18,6 +18,11 @@
 	<!-- Featherlight.js -->
 	<script src="/js/featherlight.js"></script>
 	<link rel="stylesheet" href="/css/featherlight.css">
+	<!-- DataTable -->
+    <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" />
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css" />
 
 </head>
 <body>
@@ -26,8 +31,8 @@
 	<header th:replace="layout/fragment :: fr_header"></header>
 	<!-- end of import header -->
 
-    <div th:style="@{text-align:center; width:250px; margin:0 auto; color: black; font-size: 16px;}">
-    	<table>
+    <div th:style="@{text-align:center; width:50%; margin:5% auto 5% auto; color: black; font-size: 16px;}">
+    	<table id="recipe" class="table table-striped table-bordered">
     		<thead>
     		<tr>
     			<td>번호</td>
@@ -37,7 +42,7 @@
     		<tbody>
     		<tr th:each="list : ${list}">
     			<td><a th:text="${list.no}" th:href="@{/recipe/detail(no = ${list.no})}"></a></td>
-    			<td th:text="${list.menu}"></td>
+    			<td><a th:text="${list.menu}" th:href="@{/recipe/detail(no = ${list.no})}"></a></td>
     		</tr>
     		</tbody>
     	</table>
@@ -53,7 +58,7 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="/js/join.js"></script>
-    
+    <script type="text/javascript" src="/js/datatable.js"></script>
 
 </body>
 </html>

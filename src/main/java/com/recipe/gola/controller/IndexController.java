@@ -11,11 +11,11 @@ import lombok.Data;
  * 
  * Created by Team Gola on 2022-04-01
  * 
- * @author Sangmin Han
  * @author 
- * @author
- * @author
- * @author
+ * @author 
+ * @author 
+ * @author 
+ * @author 
  *
  */
 @Controller
@@ -26,7 +26,7 @@ public class IndexController {
 	
 	@GetMapping("/")
 	public String index() {
-		logger.info("-----> 냉장고 안의 남은 재료들로 | 골라");
+		logger.info("-----> 우리들의 모든 레시피 | 골라");
 		return "index";
 	}
 }

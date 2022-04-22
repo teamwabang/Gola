@@ -15,19 +15,17 @@
 	                <div class="joinId">
 	                    <h2 class="joinTitle">아이디</h2>
 	                    <div class="joinIdInput">
-	                        <input type="text" name="userId" id="userIdJoin" maxlength="20" placeholder="아이디를 입력해주세요.">
-	                        <button type="button" class="idCheck" onclick="idCheck();" value="N">중복확인</button>
+	                         <input class="joininput" type="text" name="userId" id="userIdJoin" maxlength="20" placeholder="아이디를 입력해주세요.">       
 	                    </div>
 	                    <span id="userIdCheck"></span>
-	                    <span id="result"></span> 
 	                </div>
 	                <div class="joinPwd">
 	                    <h2 class="joinTitle">비밀번호</h2>
 	                    <div class="joinInput">
 	                        <input type="password" name="userPwd" id="userPwdJoin" maxlength="16" placeholder="비밀번호를 입력해주세요.">
 	                        <p id="userPwdCheck"></p>
-	                        <h2 class="joinTitle">비밀번호 확인</h2>
-	                        <input type="password" name="pwdConfirm" id="confirm" maxlength="16" placeholder="비밀번호 확인">
+	                        <h2 class="joinTitle">비밀번호 재확인</h2>
+	                        <input type="password" name="pwdConfirm" id="confirm" maxlength="16" placeholder="비밀번호를 확인해주세요">
 	                        <p id="userPwdConfirmNo" style="display:none;">비밀번호가 일치하지 않습니다.</p>
 	                        <p id="userPwdConfirmYes" style="display:none;">비밀번호가 일치합니다.</p>
 	                    </div>
@@ -35,21 +33,19 @@
 	                <div class="joinNickname">
 	                    <h2 class="joinTitle">닉네임</h2>
 	                    <div class="joinInput">
-	                        <input type="text" name="userNickname" id="userNickname" maxlength="20" placeholder="닉네임을 입력해주세요.">
-	                        <button type="button" class="nicknameCheck" onclick="nicknameCheck();" value="N">중복확인</button>
-	                        <p id="userNicknameCheck"></p>
+	                         <input class="joininput" type="text" name="userNickname" id="userNickname" maxlength="20" placeholder="닉네임을 입력해주세요.">
 	                    </div>
+	                    <span id="userNicknameCheck"></span>
 	                </div>
 	                <div class="joinEmail">
 	                    <h2 class="joinTitle">이메일</h2>
 	                    <div class="joinInput">
-	                        <input type="text" name="userEmail" id="userEmail" maxlength="50" placeholder="이메일을 입력해주세요.">
-	                        <button type="button" class="emailCheck" onclick="emailCheck();" value="N">중복확인</button>
-	                        <p id="userEmailCheck"></p>
+	                         <input class="joininput" type="text" name="userEmail" id="userEmail" maxlength="50" placeholder="예) GOLA###@gmail.com">                      
 	                    </div>
+	                     <span id="userEmailCheck"></span>
 	                </div>
 	                <div class="modal-footer joinResetBtn">
-	                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal" id="joinSubmit" disabled>회원가입</button>
+	                    <button type="submit" class="btn btn-secondary" data-toggle="modal" id="joinSubmit" disabled="disabled">회원가입</button>
 	                    <button type="reset" class="btn btn-secondary">초기화</button>
 	                </div>      
 	            </form>
