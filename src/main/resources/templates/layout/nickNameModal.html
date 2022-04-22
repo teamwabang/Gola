@@ -19,12 +19,16 @@
 	      	<form th:name="form2" th:onsubmit="return submitCheck(form2);" method="post">
 	      		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		    	<input type="hidden" name="userId" th:value="${dto.getUserId() }" readonly>
-		    	<!-- 변경할 닉네임 입력  -->
-				<input type="text" id="userNicknameedit" name="userNickname"  maxlength="20" placeholder="변경할 닉네임을 입력하세요.">
-		  		<!-- 유효성 검사문구 -->
-		  		<p id="userNicknameCheck"></p>
-		    	<!-- 변경 submit -->
-		    	<input type="button" id="change-nickname-btn" value="변경">
+		    	<div class="modal-div">
+		    		<div class="modal-editcheck">
+					    <!-- 변경할 닉네임 입력  -->
+						<input type="text" id="userNicknameedit" name="userNickname"  maxlength="20" placeholder="변경할 닉네임을 입력하세요.">
+				  		<!-- 유효성 검사문구 -->
+				  		<p id="userNicknameCheck"></p>
+			  		</div>
+			    	<!-- 변경 submit -->
+			    	<input type="button" class="modal-editbtn" id="change-nickname-btn" value="변경">
+		    	</div>
 			</form>
 			</div>
 			<!-- 닉네임 변경 끝 -->

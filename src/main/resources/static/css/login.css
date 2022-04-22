@@ -3,12 +3,39 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom:40px !important;
 }
 .modal-title{
 	font-family: 'LeferiPoint-WhiteObliqueA';	
 	font-weight: bold;
 }
+
+.modal-div {
+	width:470px;
+	display: flex;
+	justify-content:space-between;
+}
+
+.modal-editcheck {
+	width:400px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.modal-editbtn {
+	background:none;
+	border:none;
+	height: 100px;
+	width:50px;
+	font-weight: 600;
+	color:rgba(0,0,255,0.3);
+}
+
+.modal-editbtn:hover {
+	font-weight: 600;
+	color:rgba(0,0,255,0.8);
+}
+
 
 .loginSection {
     display: flex;

@@ -12,13 +12,16 @@
           </div>
           <div class="modal-body">
             <div class="input-group input-group-sm mb-3">
-              <span class="input-group-text" id="inputGroup-sizing-sm">비밀번호</span>
 		      	<form th:name="form1" method="post">
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 					<input type="hidden" name="userId" th:value="${dto.getUserId() }" readonly><br>
-					<input type="password" id="userPwdEdit" name="userPwd" placeholder="변경할 비밀번호를 입력하세요."><br>
-					 <p id="userPwdCheck"></p>
-			    	<input type="button" id="change-password-btn" value="변경">
+					<div class="modal-div">
+						<div class="modal-editcheck">
+							<input type="password" id="userPwdEdit" name="userPwd" placeholder="변경할 비밀번호를 입력하세요."><br>
+							<p id="userPwdCheck"></p>
+						 </div>
+				    	<input type="button" class="modal-editbtn" id="change-password-btn" value="변경">
+			    	</div>
 			</form>
           </div>
         </div>
