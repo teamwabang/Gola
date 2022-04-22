@@ -43,14 +43,14 @@ input[type=text], input[type=password] {
     flex-direction: column;
 }
 
+
 .joinIdInput {
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
 .joininput {
-    width: 83%;
+    width: 100%;
 }
 
 .idCheck {
@@ -101,4 +101,10 @@ input[type=text], input[type=password] {
 .swal-footer {
     text-align: center !important;
     padding:25px 16px;
+}
+
+#userIdCheck, #userPwdCheck, #userPwdConfirmNo, 
+#userPwdConfirmYes, #userNicknameCheck, #userEmailCheck {
+	font-family: 'LeferiPoint-WhiteObliqueA';
+    font-weight: bold;
 }
