@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="fr_functionModal2">
+		<!-- Modal -->
+	  	<div class="modal fade" id="functionModal2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg modal-dialog-centered">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title">로그인, 로그아웃, 마이페이지</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        <img src="/images/about/login.png">
+		        <strong>로그인 모달창</strong><br>
+		        <strong>front-end</strong>
+		        <span>1. 비밀번호 입력시 버튼으로 보임/안보임 기능</span><br>
+		        <strong>back-end</strong>
+		        <span>1. remember-me</span>
+		        <span>2. 소셜 로그인 - 구글</span><br>
+		        
+		        <img src="/images/about/change.png">
+		        <strong>마이페이지 회원정보 수정 모달창</strong><br>
+		        <strong>front-end</strong>
+		        <span>1. 비밀번호, 닉네임, 이메일 유효성검사</span><br>
+		        <strong>back-end</strong>
+		        <span>1. 유효성검사, 중복확인 통과 시 DB 업데이트</span>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="fr_functionModal1">
+		<!-- Modal -->
+	  	<div class="modal fade" id="functionModal1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg modal-dialog-centered">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title">회원가입</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        <img src="/images/about/join.png" th:style="@{width:400px; height:600px;}">
+		        <img src="/images/about/dupl.png" th:style="@{width:400px; height:134px;}">
+		        <strong>회원가입 모달창</strong><br>
+		        <strong>front-end</strong>
+		        <span>1. 아이디, 비밀번호, 닉네임, 이메일 유효성검사</span>
+		        <span>2. 아이디, 닉네임, 이메일 중복확인</span><br>
+		        <strong>back-end</strong>
+		        <span>1. 유효성검사, 중복확인 통과 시 DB에 저장</span>
+		        <span>2. 아이디, 닉네임, 이메일 중복확인</span><br>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div>
+</body>
+</html>

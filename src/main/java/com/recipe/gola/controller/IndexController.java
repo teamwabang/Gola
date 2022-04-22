@@ -32,7 +32,7 @@ public class IndexController {
 	
 	@GetMapping("gola")
 	public String gola() {
-		logger.info("소개합니다, 우리의 이야기들을 | 골라");
+		logger.info("-----> 소개합니다, 우리가 만든 이야기를 | 골라");
 		return "about/teamGOLA";
 	}
 }
