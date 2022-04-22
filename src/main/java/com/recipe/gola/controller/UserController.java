@@ -162,7 +162,7 @@ public class UserController {
 		logger.info("유저 아이디 : " + principaldetail.getUsername());
 		
 		model.addAttribute("dto", principaldetail.getDto());
-	    BbsDTO bbsDto = new BbsDTO();
+//	    BbsDTO bbsDto = new BbsDTO();
 //	    bbsDto.setWriter(principaldetail.getUsername());
 //		model.addAttribute("list",bbsService.selectListBbs(bbsDto));		
 //		String imgSrc = bbsService.selectListFiles(principaldetail.getUsername()).get(0).getImgSrc();
