@@ -68,4 +68,9 @@ public class BbsService {
     	return bbsMapper. selectDetailFiles(fno);    	    	
     }
     
+    //게시판 삭제
+    public int updateCnt(String bno) throws Exception {
+        return bbsMapper.updateCnt(bno);
+    }
+    
 }

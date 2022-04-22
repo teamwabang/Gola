@@ -14,4 +14,5 @@ public class BbsDTO extends FilesDTO{
     private String level;
     private String schTxt;
     private String userNickname;
+    private String view_cnt;
 }

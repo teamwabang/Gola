@@ -58,12 +58,18 @@ public class BbsController {
 
     //게시판 상세조회 이동
     @GetMapping("/detail")
-    public String detail(Model m, BbsDTO bbsDto, HttpServletResponse response, HttpSession session) throws Exception {
+    public String detail(Model m, BbsDTO bbsDto, HttpServletResponse response, HttpSession session, @AuthenticationPrincipal PrincipalDetails principaldetail) throws Exception {
     	log.info("Controller @GetMapping(/detail) 게시판상세화면 이동 >>>>>>>>>>>>>>> ");
     	//String writer = (String)session.getAttribute("id");
-    	
+
     	m.addAttribute("bbs",bbsService.selectDetailBbs(bbsDto));
     	m.addAttribute("fileList",bbsService.selectListFiles(bbsDto.getBno()));
+    	
+    	 
+    	bbsService.updateCnt(bbsDto.getBno());
+//    	if(bbsDto.getWriter().equals(principaldetail.getUsername())) {
+//    		bbsService.updateCnt(bbsDto.getBno());
+//    	}
     	
     	return "bbs/detail";
     }
