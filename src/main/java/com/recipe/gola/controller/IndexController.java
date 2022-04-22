@@ -29,4 +29,10 @@ public class IndexController {
 		logger.info("-----> 우리들의 모든 레시피 | 골라");
 		return "index";
 	}
+	
+	@GetMapping("gola")
+	public String gola() {
+		logger.info("소개합니다, 우리의 이야기들을 | 골라");
+		return "about/teamGOLA";
+	}
 }
