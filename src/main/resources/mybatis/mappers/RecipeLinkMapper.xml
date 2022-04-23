@@ -8,7 +8,7 @@
 	<select id="detailLink" resultType="RecipeLinkDTO" parameterType="int">
 		SELECT *
 		FROM recipe_link
-		WHERE no=${no};
+		WHERE no=${no}
 	</select>
 	
 </mapper>

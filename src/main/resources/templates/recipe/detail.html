@@ -25,32 +25,75 @@
     <!-- import header -->
     <header th:replace="layout/fragment :: fr_header"></header>
     <!-- end of import header -->
-	<div th:each="detaillink : ${detaillink}" th:style="@{text-align:center;}">
-    	<img th:src="${detaillink.menuImg}" th:style="@{width:500px; height:500px;}"><br>
+	<div th:each="detaillink : ${detaillink}">
+		<div th:style="@{text-align:center;}">
+    		<img th:src="${detaillink.menuImg}" th:style="@{width:500px; height:500px;}"><br>
+		</div>
+    	
+    	
+	    <div th:each="detail : ${detail}" th:style="@{width:1024px; margin:0 auto;}">
+			<Strong>메뉴명</Strong>&nbsp;<span th:text="${detail.menu}"></span><br>
+	    	<Strong>조리방법</Strong>&nbsp;<span th:text="${detail.how}"></span><br>
+	    	<Strong>요리종류</Strong>&nbsp;<span th:text="${detail.kind}"></span><br>
+	    	<Strong>열량</Strong>&nbsp;<span th:text="${detail.kcal}"></span><span> kcal</span>
+	    	<Strong>탄수화물</Strong>&nbsp;<span th:text="${detail.carbohydrate}"></span><span> g</span>
+	    	<Strong>단백질</Strong>&nbsp;<span th:text="${detail.protein}"></span><span> g</span>
+	    	<Strong>지방</Strong>&nbsp;<span th:text="${detail.fat}"></span><span> g</span>
+	    	<Strong>나트륨</Strong>&nbsp;<span th:text="${detail.natrium}"></span><span> g</span><br>
+	    	<Strong>재료</Strong><br>
+	    	<span th:text="${detail.material}"></span><br>
+	    	<Strong>레시피</Strong><br>
+	    	<th:block th:if="${detaillink.link1} != ''">
+		    	<img th:src="${detaillink.link1}" th:style="@{width:150px; height:100px;}"><br>
+	    	</th:block>
+		    <span th:text="${detail.recipe1}"></span><br>
+		    
+		    <th:block th:if="${detaillink.link2} != ''">
+	    		<img th:src="${detaillink.link2}" th:style="@{width:150px; height:100px;}"><br>
+	    	</th:block>
+	    	<span th:text="${detail.recipe2}"></span><br>
+	    	
+	    	<th:block th:if="${detaillink.link3} != ''">
+		    	<img th:src="${detaillink.link3}" th:style="@{width:150px; height:100px;}"><br>
+		    </th:block>
+		    <span th:text="${detail.recipe3}"></span><br>
+		    
+		    <th:block th:if="${detaillink.link4} != ''">
+	    		<img th:src="${detaillink.link4}" th:style="@{width:150px; height:100px;}"><br>
+	    	</th:block>
+	    	<span th:text="${detail.recipe4}"></span><br>
+	    	
+	    	<th:block th:if="${detaillink.link5} != ''">
+	    		<img th:src="${detaillink.link5}" th:style="@{width:150px; height:100px;}"><br>
+	    	</th:block>
+	    	<span th:text="${detail.recipe5}"></span><br>
+	    	
+	    	<th:block th:if="${detaillink.link6} != ''">
+	    		<img th:src="${detaillink.link6}" th:style="@{width:150px; height:100px;}"><br>
+	    	</th:block>
+	    	<span th:text="${detail.recipe6}"></span><br>
+	    	
+	    	<th:block th:if="${detaillink.link7} != ''">
+	    		<img th:src="${detaillink.link7}" th:style="@{width:150px; height:100px;}"><br>
+	    	</th:block>
+	    	<span th:text="${detail.recipe7}"></span><br>
+	    	
+	    	<th:block th:if="${detaillink.link8} != ''">
+	    		<img th:src="${detaillink.link8}" th:style="@{width:150px; height:100px;}"><br>
+	    	</th:block>
+	    	<span th:text="${detail.recipe8}"></span><br>
+	    	
+	    	<th:block th:if="${detaillink.link9} != ''">
+	    		<img th:src="${detaillink.link9}" th:style="@{width:150px; height:100px;}"><br>
+	    	</th:block>
+	    	<span th:text="${detail.recipe9}"></span><br>
+	    	
+	    	<th:block th:if="${detaillink.link10} != ''">
+	    		<img th:src="${detaillink.link10}" th:style="@{width:150px; height:100px;}"><br>
+	    	</th:block>
+	    	<span th:text="${detail.recipe10}"></span>
+	    </div>
 	</div>
-    <div th:each="detail : ${detail}" th:style="@{width:1024px; margin:0 auto;}">
-		<Strong>메뉴명</Strong>&nbsp;<span th:text="${detail.menu}"></span><br>
-    	<Strong>조리방법</Strong>&nbsp;<span th:text="${detail.how}"></span><br>
-    	<Strong>요리종류</Strong>&nbsp;<span th:text="${detail.kind}"></span><br>
-    	<Strong>열량</Strong>&nbsp;<span th:text="${detail.kcal}"></span><span> kcal</span>
-    	<Strong>탄수화물</Strong>&nbsp;<span th:text="${detail.carbohydrate}"></span><span> g</span>
-    	<Strong>단백질</Strong>&nbsp;<span th:text="${detail.protein}"></span><span> g</span>
-    	<Strong>지방</Strong>&nbsp;<span th:text="${detail.fat}"></span><span> g</span>
-    	<Strong>나트륨</Strong>&nbsp;<span th:text="${detail.natrium}"></span><span> g</span><br>
-    	<Strong>재료</Strong><br>
-    	<span th:text="${detail.material}"></span><br>
-    	<Strong>레시피</Strong><br>
-    	<span th:text="${detail.recipe1}"></span><br>
-    	<span th:text="${detail.recipe2}"></span><br>
-    	<span th:text="${detail.recipe3}"></span><br>
-    	<span th:text="${detail.recipe4}"></span><br>
-    	<span th:text="${detail.recipe5}"></span><br>
-    	<span th:text="${detail.recipe6}"></span><br>
-    	<span th:text="${detail.recipe7}"></span><br>
-    	<span th:text="${detail.recipe8}"></span><br>
-    	<span th:text="${detail.recipe9}"></span><br>
-    	<span th:text="${detail.recipe10}"></span>
-    </div>
     
     <!-- import footer -->
     <footer th:replace="layout/fragment :: fr_footer"></footer>
