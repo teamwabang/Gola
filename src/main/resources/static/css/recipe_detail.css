@@ -1,0 +1,32 @@
+.gola_recipe_menuimg {
+	width: 500px;
+	height: 500px;
+}
+.gola_recipe_menuimg:hover {
+	transform: scale(1.5);
+	-webkit-transform: scale(1.5);
+	-moz-transform: scale(1.5);
+	-ms-transform: scale(1.5);
+	-o-transform: scale(1.5);
+	cursor: pointer;
+}
+.gola_recipe_linkimg {
+	width: 150px;
+	height: 100px;
+}
+.gola_recipe_linkimg:hover {
+	transform: scale(2.0);
+	-webkit-transform: scale(2.0);
+	-moz-transform: scale(2.0);
+	-ms-transform: scale(2.0);
+	-o-transform: scale(2.0);
+	cursor: pointer;
+}
+.gola_reference {
+	text-align: right;
+	margin-right: 250px;
+}
+.gola_reference_link {
+	color: gray;
+	font-size: 14px;
+}
