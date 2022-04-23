@@ -25,9 +25,10 @@
     <!-- import header -->
     <header th:replace="layout/fragment :: fr_header"></header>
     <!-- end of import header -->
-	
+	<div th:each="detaillink : ${detaillink}" th:style="@{text-align:center;}">
+    	<img th:src="${detaillink.menuImg}" th:style="@{width:500px; height:500px;}"><br>
+	</div>
     <div th:each="detail : ${detail}" th:style="@{width:1024px; margin:0 auto;}">
-    	<img src="http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00130_1.png" th:style="@{width:300px; height:300px;}"><br>
 		<Strong>메뉴명</Strong>&nbsp;<span th:text="${detail.menu}"></span><br>
     	<Strong>조리방법</Strong>&nbsp;<span th:text="${detail.how}"></span><br>
     	<Strong>요리종류</Strong>&nbsp;<span th:text="${detail.kind}"></span><br>
