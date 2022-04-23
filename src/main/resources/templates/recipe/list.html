@@ -7,7 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
     />
-    <title>내가 보고, 먹고, 만든 | 골라</title>
+    <title>우리들의 모든 레시피 | 골라</title>
     
 	<!-- CSS -->
     <link rel="stylesheet" href="/css/styles.css" />
@@ -34,9 +34,8 @@
 	<!--main-->
 	<div class="searchbar">
             <form class = "searchform" id="form">
-              <span>Find your recipe : </span> 
-                <input type="text" name="schTxt" id="schTxt"><button type="button" id="schBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
-            	<button sec:authorize="isAuthenticated()" id ="writebutton" type="button" class="btn btn-sm btn-primary" onclick="javascript:location.href='/bbs/write';"><i class="fa-solid fa-pencil"></i>    글쓰기</button>
+              <span>Find recipe : </span> 
+                <input type="text" name="search" id="search"><button type="button" id="schBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
           </div>
     <section class="reviewsection">
@@ -50,7 +49,7 @@
  
        	   
              <th:block th:if="${param != null && param != ''}">
-             	<input type="hidden" id="getParam" name="getParam" th:value="${param.schTxt}"/>
+             	<input type="hidden" id="getParam" name="getParam" th:value="${param.search}"/>
          	</th:block>
          	
             	
@@ -74,7 +73,7 @@
 		$(document).ready(function(){		
 			
 			if($.trim($('#getParam').val()) != ""){
-				$('#schTxt').val( $('#getParam').val() );		
+				$('#search').val( $('#getParam').val() );		
 			}
 			
 			//create div
