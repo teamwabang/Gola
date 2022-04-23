@@ -38,6 +38,7 @@
     <select id="selectListBbs" resultType="BbsDTO" parameterType="BbsDTO" >
 
 		/*com.recipe.gola.mapper.BbsMapper.selectListBbs*/
+
         SELECT 
         	bno
         	, title

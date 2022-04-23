@@ -1,16 +1,20 @@
 (function() {
     var w = window;
+
     if (w.ChannelIO) {
       return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
     }
+
     var ch = function() {
       ch.c(arguments);
+
     };
     ch.q = [];
     ch.c = function(args) {
       ch.q.push(args);
     };
     w.ChannelIO = ch;
+
     function l() {
       if (w.ChannelIOInitialized) {
         return;
@@ -24,6 +28,7 @@
       var x = document.getElementsByTagName('script')[0];
       x.parentNode.insertBefore(s, x);
     }
+
     if (document.readyState === 'complete') {
       l();
     } else if (window.attachEvent) {
@@ -32,6 +37,7 @@
       window.addEventListener('DOMContentLoaded', l, false);
       window.addEventListener('load', l, false);
     }
+
   })();
   ChannelIO('boot', {
     "pluginKey": "5f076a8d-f365-4cc1-9120-be109cbe389f"
