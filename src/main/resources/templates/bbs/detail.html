@@ -48,7 +48,7 @@
         <input type="hidden" name="bno" id="bno" th:value="${bbs.bno}">
         <input type="hidden" name="loginId" id="loginId" th:value="${#authentication.name}"/>
 			<div class="detailIdPwd">
-				<img th:src="${bbs.userImg}" height="50px;" width="50px"/>&nbsp;&nbsp;
+				<img th:src="${bbs.userImg}" class="profilePic" height="50px;" width="50px"/>&nbsp;&nbsp;
 		         <div th:text="${bbs.userNickname}" class="authorId"> </div>
 		         <div th:text="${bbs.title}" class="authorTitle"></div>
 			</div>
@@ -82,7 +82,7 @@
           <div th:text="${#dates.format(bbs.regDate, 'yyyy-MM-dd')}" class="day"></div>
         </div>
         <div class="boardWrite">
-          <input type="text" class="boardWriteComment" name="comment" placeholder="댓글달기">
+          <input type="text" class="boardWriteComment" id="commentDiv" name="comment" placeholder="댓글달기">
           <input sec:authorize="isAuthenticated()" type="button" id="sendBtn" class="sendMod" value="게시">
           <input sec:authorize="isAuthenticated()" type="button" id="modBtn" class="sendMod" value="수정">
         </div>
@@ -189,6 +189,8 @@
 
 	            $("input[name=comment]").val(comment);
 	            $("#modBtn").attr("data-cno", cno);
+	            $("#commentDiv").focus();
+	            
 	        });
 
 	        $("#commentList").on("click", ".replyBtn",function(){

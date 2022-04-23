@@ -172,7 +172,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 .boardContent {
     height: inherit;
     width: 40%;
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
 }
@@ -182,17 +182,20 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
     justify-content:space-between;
     align-items: center;
     padding-left: 10px;
-    height: 8%;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    height: 10%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .detailIdPwd {
 	display: flex;
 	flex-direction: row;
+	justify-content:space-between;
+	font-size:14px;
 }
 
-.detailIdPwd div {
-	margin-right: 15px
+.profilePic {
+	box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
+	border-radius: 50%
 }
 
 .detailBtns {
@@ -202,19 +205,20 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 .authorId {
 	display:flex;
 	align-items:center;
+	width:60px;
     font-weight: 600;
 }
 
 .authorTitle {
 	display:flex;
 	align-items:center;
-	width:240px;
+	width:200px;
 	height:50px;
 }
 
 .detailBtn {
 	background: none;
-	color: rgba(0, 0, 255, 0.5);
+	color: rgba(0, 0, 255, 0.8);
 	border:none;
 	font-size: 10px
 }
@@ -276,6 +280,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 
 .delBtn:hover, .modBtn:hover, .replyBtn:hover {
     color: rgba(0,0,255,0.6);
+    cursor: pointer;
 }
 
 .delBtn:active , .modBtn:active , .replyBtn:active {
@@ -287,7 +292,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
     flex-direction: column;
     justify-content: space-evenly;
     height: auto;
-    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
     padding: 5px;
 }
 
@@ -332,7 +337,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
     height: 10%;
     display: flex;
     align-items: center;
-    border-top: 1px solid rgba(0, 0, 0, 0.3);;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .boardWriteComment {
