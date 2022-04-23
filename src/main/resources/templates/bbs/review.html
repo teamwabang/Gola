@@ -35,7 +35,7 @@
 	<div class="searchbar">
             <form class = "searchform" id="form">
               <span>Find your recipe : </span> 
-                <input type="text" name="schTxt" id="schTxt"><button type="button" id="schBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" name="search" id="search"><button type="button" id="schBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
             	<button sec:authorize="isAuthenticated()" id ="writebutton" type="button" class="btn btn-sm btn-primary" onclick="javascript:location.href='/bbs/write';"><i class="fa-solid fa-pencil"></i>    글쓰기</button>
             </form>
           </div>
@@ -50,7 +50,7 @@
  
        	   
              <th:block th:if="${param != null && param != ''}">
-             	<input type="hidden" id="getParam" name="getParam" th:value="${param.schTxt}"/>
+             	<input type="hidden" id="getParam" name="getParam" th:value="${param.search}"/>
          	</th:block>
          	
             	
@@ -74,14 +74,14 @@
 		$(document).ready(function(){
 			
 			if($.trim($('#getParam').val()) != ""){
-				$('#schTxt').val( $('#getParam').val() );		
+				$('#search').val( $('#getParam').val() );		
 			}
 			
 			//create div
 			callList();
 			
 			$('#schBtn').click(function(){ 		
-				let schTxt = $('#schTxt').val();		
+				let schTxt = $('#search').val();		
 	      		let form = $("#form");
           		form.attr("method", "get");
           		form.attr("action", "/bbs/review");
