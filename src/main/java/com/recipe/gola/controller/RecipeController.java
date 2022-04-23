@@ -30,9 +30,9 @@ public class RecipeController {
 	
 	// 메뉴 전체리스트
 	@GetMapping("recipe")
-	public String list(Model model) {
+	public String list(Model model, RecipeDTO dto) {
 		logger.info("-----> 전체 레시피 리스트를 출력합니다.");
-		List<RecipeDTO> list = recipeService.list();
+		List<RecipeDTO> list = recipeService.list(dto);
 		model.addAttribute("list", list);
 		return "recipe/list";
 	}

@@ -9,7 +9,7 @@ import com.recipe.gola.dto.RecipeDTO;
 @Mapper
 public interface RecipeMapper {
 
-	public List<RecipeDTO> list();
+	public List<RecipeDTO> list(RecipeDTO dto);
 
 	public RecipeDTO detail(RecipeDTO dto);
 }

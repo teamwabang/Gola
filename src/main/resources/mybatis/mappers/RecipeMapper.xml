@@ -5,11 +5,20 @@
 <mapper namespace="com.recipe.gola.mapper.RecipeMapper">
 
 	<!-- 레시피 전체리스트 출력 -->
-	<select id="list" resultType="RecipeDTO">
-	<![CDATA[
-		SELECT *
-		FROM recipe
-	]]>
+	<select id="list" resultType="RecipeDTO" parameterType="RecipeDTO">
+		SELECT 
+			r.no
+			, r.kind
+			, r.menu
+			, rl.menuImg
+		FROM recipe r
+        LEFT JOIN recipe_link rl
+		ON r.no = rl.no
+		where 1=1 
+        <if test='schTxt != "" and schTxt != null '>
+			AND r.menu like CONCAT('%',#{schTxt},'%')
+        </if>   	        
+        ORDER BY no DESC
 	</select>
 	
 	<!-- 각 레시피 상세페이지 출력 -->

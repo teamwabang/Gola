@@ -71,9 +71,24 @@
 	    
 		let list = [[${list}]];
 	 	
-		$(document).ready(function(){			
+		$(document).ready(function(){		
+			
+			if($.trim($('#getParam').val()) != ""){
+				$('#schTxt').val( $('#getParam').val() );		
+			}
+			
 			//create div
 			callList();
+
+			$('#schBtn').click(function(){ 		
+				let schTxt = $('#schTxt').val();		
+	      		let form = $("#form");
+          		form.attr("method", "get");
+          		form.attr("action", "/recipe");
+                form.submit();                
+			});	
+			
+		
 		});
 
 	 	$(document).on("click",".reviewItems > div > i ", function(){
@@ -109,7 +124,7 @@
 	                	const innerA = document.createElement("a");
 	                	innerA.setAttribute("href","/recipe/detail?no="+item.no);
 	                	const innerImg = document.createElement("img");
-	                	innerImg.setAttribute("src",'/images/default.png');
+	                	innerImg.setAttribute("src",item.menuImg);
 	                	innerA.appendChild(innerImg);
 	                	const innerI = document.createElement("i");
 	                	innerI.setAttribute("class","xi-plus-thin");
