@@ -90,7 +90,7 @@
 		});
 
 	 	$(document).on("click",".reviewItems > div > i ", function(){
-	 		location.href = "/bbs/detail?bno="+$(this).data("fno");
+	 		location.href = "/bbs/detail?bno="+$(this).data("bno");
 	 	});
 	 	
 	 	
@@ -126,7 +126,7 @@
 	                	innerA.appendChild(innerImg);
 	                	const innerI = document.createElement("i");
 	                	innerI.setAttribute("class","xi-plus-thin");
-	                	innerI.dataset.fno = item.bno;
+	                	innerI.dataset.bno = item.bno;
 	                	const innerSpan = document.createElement("span");
 	                	innerSpan.textContent="난이도 '"+item.level+"' ";
 	                	const innerP = document.createElement("p");

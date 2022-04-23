@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
-<title>세상 모든 레시피 | 골라</title>
-
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
+    />
+    <title>내가 보고, 먹고, 만든 | 골라</title>
+    
 	<!-- CSS -->
     <link rel="stylesheet" href="/css/styles.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/c21d7630fc.js" crossorigin="anonymous"></script>
     <!-- JavaScript -->
@@ -18,47 +22,122 @@
 	<!-- Featherlight.js -->
 	<script src="/js/featherlight.js"></script>
 	<link rel="stylesheet" href="/css/featherlight.css">
-	<!-- DataTable -->
-    <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
-	<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" />
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css" />
+  </head>
+  <body>    
+   
+    <!-- import header -->
+    <header th:replace="layout/fragment :: fr_header"></header>
+    <!-- end of import header -->
+  
+  
+ 
+	<!--main-->
+	<div class="searchbar">
+            <form class = "searchform" id="form">
+              <span>Find your recipe : </span> 
+                <input type="text" name="schTxt" id="schTxt"><button type="button" id="schBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            	<button sec:authorize="isAuthenticated()" id ="writebutton" type="button" class="btn btn-sm btn-primary" onclick="javascript:location.href='/bbs/write';"><i class="fa-solid fa-pencil"></i>    글쓰기</button>
+            </form>
+          </div>
+    <section class="reviewsection">
+ 
 
-</head>
-<body>
-
-	<!-- import header -->
-	<header th:replace="layout/fragment :: fr_header"></header>
-	<!-- end of import header -->
-
-    <div th:style="@{text-align:center; width:50%; margin:5% auto 5% auto; color: black; font-size: 16px;}">
-    	<table id="recipe" class="table table-striped table-bordered">
-    		<thead>
-    		<tr>
-    			<td>번호</td>
-    			<td>메뉴명</td>
-    		</tr>
-    		</thead>
-    		<tbody>
-    		<tr th:each="list : ${list}">
-    			<td><a th:text="${list.no}" th:href="@{/recipe/detail(no = ${list.no})}"></a></td>
-    			<td><a th:text="${list.menu}" th:href="@{/recipe/detail(no = ${list.no})}"></a></td>
-    		</tr>
-    		</tbody>
-    	</table>
-    </div>
+ 	<div class="reviewmain">
+		         
+		  <div class="reviewresult">
+           
+          </div>
+ 
+       	   
+             <th:block th:if="${param != null && param != ''}">
+             	<input type="hidden" id="getParam" name="getParam" th:value="${param.schTxt}"/>
+         	</th:block>
+         	
+            	
+		</div>
+				
+    </section>
     
     <!-- import footer -->
     <footer th:replace="layout/fragment :: fr_footer"></footer>
     <!-- end of import footer -->
-
     
-	<script src="http://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/js/join.js"></script>
-    <script type="text/javascript" src="/js/datatable.js"></script>
 
-</body>
-</html>
+   	<!-- Bootstrap -->
+  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script th:inline="javascript">
+
+		//컨트롤러에서 받은 타임리프 값을 javascript 변수에 넣는다.
+	    
+		let list = [[${list}]];
+	 	
+		$(document).ready(function(){			
+			//create div
+			callList();
+		});
+
+	 	$(document).on("click",".reviewItems > div > i ", function(){
+	 		location.href = "/recipe/detail?no="+$(this).data("no");
+	 	});
+	 	
+	 	
+	 	//search function
+	 	let callList = () => {
+				 		
+	 		//엘리먼트생성 결과변수
+	 		let result = "";
+	 		if(list.length > 0){
+	 			const splitList = [];
+	 			//4칸씩 쪼개기
+	 			for (let i = 0; i < list.length; i += 4){
+	 				splitList.push(list.slice(i, i +4));
+	 			}
+/* 
+	 			<div>
+                <a href="/">
+                     <img src="/images/test1.jpg"></a>
+                <i class="xi-plus-thin"></i>
+                <span> 난이도 '하'</span>
+                <p> 래면</p>
+              </div>
+ */	 			
+	 			for (let list of splitList){
+	                const outerDiv = document.createElement("div");	
+	                outerDiv.setAttribute("class","items reviewItems");
+	                for( let item of list) {
+	                	const innerDiv = document.createElement("div");
+	                	const innerA = document.createElement("a");
+	                	innerA.setAttribute("href","/recipe/detail?no="+item.no);
+	                	const innerImg = document.createElement("img");
+	                	innerImg.setAttribute("src",'/images/default.png');
+	                	innerA.appendChild(innerImg);
+	                	const innerI = document.createElement("i");
+	                	innerI.setAttribute("class","xi-plus-thin");
+	                	innerI.dataset.no = item.no;
+	                	const innerSpan = document.createElement("span");
+	                	innerSpan.textContent= item.kind
+	                	const innerP = document.createElement("p");
+	                	innerP.textContent = item.menu;
+	                	innerDiv.appendChild(innerA);
+	                	innerDiv.appendChild(innerI);
+	                	innerDiv.appendChild(innerSpan);
+	                	innerDiv.appendChild(innerP);
+	                	outerDiv.appendChild(innerDiv);
+	                }
+	                
+	                result += outerDiv.outerHTML;
+	                
+	 			}
+	 		}else {
+	 			result += '<div class="noresult">등록된 레시피가 없습니다</div>';
+	 		}
+	 		$('.reviewresult').append(result);
+	 		
+	 	}
+	 	
+ 	</script>
+ 	
+ 	<script src="http://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" src="/js/join.js"></script>
+    <script type="text/javascript" src="/js/logineye.js"></script>
+  </body>

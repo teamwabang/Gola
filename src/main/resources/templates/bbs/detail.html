@@ -48,6 +48,7 @@
         <input type="hidden" name="bno" id="bno" th:value="${bbs.bno}">
         <input type="hidden" name="loginId" id="loginId" th:value="${#authentication.name}"/>
 			<div class="detailIdPwd">
+				<img th:src="${bbs.userImg}" height="50px;" width="50px"/>&nbsp;&nbsp;
 		         <div th:text="${bbs.userNickname}" class="authorId"> </div>
 		         <div th:text="${bbs.title}" class="authorTitle"></div>
 			</div>

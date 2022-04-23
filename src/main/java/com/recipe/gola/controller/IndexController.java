@@ -2,8 +2,13 @@ package com.recipe.gola.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.recipe.gola.dto.BbsDTO;
+import com.recipe.gola.service.BbsService;
 
 import lombok.Data;
 
@@ -24,9 +29,16 @@ public class IndexController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
+	@Autowired
+    BbsService bbsService;
+	
 	@GetMapping("/")
-	public String index() {
+	public String index(Model m, BbsDTO bbsDto) throws Exception{
 		logger.info("-----> 우리들의 모든 레시피 | 골라");
+		
+		bbsDto.setIndexYn("Y");
+		m.addAttribute("list", bbsService.selectListBbs(bbsDto));
+	
 		return "index";
 	}
 	
