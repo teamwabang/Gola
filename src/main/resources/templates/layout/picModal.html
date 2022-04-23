@@ -85,6 +85,11 @@
 			
 	        //저장버튼
 	       	$("#saveBtn").on("click", function(){
+	       		
+	       		if($("input[name=upFile]").val() == ""){
+	       			alert("사진을 올려주세요.");
+	       			return false;
+	       		}
 
 	      		let form = $("#form");
 	          	//게시판번호가 있으면 기존수정모드 없으면 신규글쓰기모드.
