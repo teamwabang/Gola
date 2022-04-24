@@ -29,22 +29,11 @@
 	font-family: 'Yeon Sung', cursive;
 }
 
-.gola_function_content,
-.gola_rescue_content {
+.gola_function_content {
 	width: 50vh;
 	margin: 0 auto;
 	text-align: center;
 	font-size: 26px;
-	cursor: pointer;
-	font-family: 'Yeon Sung', cursive;
-}
-
-.gola_rescue {
-	width: 30vh;
-	margin: 0 auto;
-	text-align: center;
-	font-size: 26px;
-	font-weight: 400;
 	cursor: pointer;
 	font-family: 'Yeon Sung', cursive;
 }
@@ -70,11 +59,9 @@
 }
 
 .gola_function :hover,
-.gola_rescue :hover,
 .gola_function_content1 :hover,
 .gola_function_content2 :hover,
 .gola_function_content3 :hover,
-.gola_rescue_content :hover,
 .gola_member_kim :hover,
 .gola_member_park :hover,
 .gola_member_um :hover,
