@@ -65,8 +65,8 @@
 		        <if test='writer != "" and writer != null '>
 					AND writer = #{writer}
 		        </if>        
-		        <if test='schTxt != "" and schTxt != null '>
-					AND title like CONCAT('%',#{schTxt},'%')
+		        <if test='search != "" and search != null '>
+					AND title like CONCAT('%',#{search},'%')
 		        </if>   	        
 		        ORDER BY reg_date DESC, bno DESC
 	        </otherwise>
