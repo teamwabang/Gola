@@ -94,7 +94,12 @@
     </article>
 </body>
 	<script type="text/javascript">
-
+	$(document).ready(function() {
+		$("#modBtn").hide();
+	})
+	
+	
+	
 	let showList = function(bno) {
 	    $.ajax({
 	        type: 'GET',       // 요청 메서드
@@ -107,6 +112,7 @@
 	        } // 에러가 발생했을 때, 호출될 함수
 	    });
 	}// $.ajax()	
+	
 	
 	$(document).ready(function() {
 
@@ -196,8 +202,10 @@
 	            $("input[name=comment]").val(comment);
 	            $("#modBtn").attr("data-cno", cno);
 	            $("#commentDiv").focus();
+	           
 	            $("#sendBtn").fadeOut();
 	            $("#modBtn").fadeIn();
+	            
 	            
 	        });
 
