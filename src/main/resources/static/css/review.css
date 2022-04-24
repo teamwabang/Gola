@@ -37,14 +37,14 @@
     box-shadow: 0 0 9px rgba(54, 53, 53, 0.3);
     position: relative;
     cursor:pointer;
-    width: 280px;
-    height: 380px;
+    width: 240px;
+    height: 360px;
   }
   
   .reviewmain .items div a img {
     display: block;
-  	width: 280px;
- 	 height: 330px;
+  	width: 240px;
+ 	height: 310px;
   }
   
 
@@ -113,6 +113,7 @@
   
   .reviewmain .items div:hover span {
    bottom: 90px;
+   font-size:25px;
   }
   
  
