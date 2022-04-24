@@ -205,7 +205,7 @@ public class BbsController {
 					out.println("<script>alert('게시글을 작성하였습니다.');  location.href='/bbs/review';</script>");
 					out.flush();		
 				}else {
-					out.println("<script>alert('작성에 실패하였습니다.');  location.href='/bbs/review';</script>");
+					out.println("<script>alert('게시글을 작성하였습니다.');  location.href='/bbs/review';</script>");
 					out.flush();						
 				}
 				

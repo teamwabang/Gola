@@ -43,10 +43,10 @@ public class CommentController {
             if(service.modify(dto)!=1)
                 throw new Exception("Write failed.");
 
-            return new ResponseEntity<>("MOD_OK", HttpStatus.OK);
+            return new ResponseEntity<>("댓글을 수정했습니다.", HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
-            return new ResponseEntity<String>("MOD_ERR", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<String>("댓글 수정 실패", HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -68,10 +68,10 @@ public class CommentController {
             if(service.write(dto)!=1)
                 throw new Exception("Write failed.");
 
-            return new ResponseEntity<>("WRT_OK", HttpStatus.OK);
+            return new ResponseEntity<>("댓글을 등록했습니다.", HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
-            return new ResponseEntity<String>("WRT_ERR", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<String>( "댓글 등록 실패",HttpStatus.BAD_REQUEST);
      }
     }// 지정된 댓글을 삭제하는 메서드
     @DeleteMapping("/comments/{cno}")  // DELETE /comments/1?bno=1085  <-- 삭제할 댓글 번호
@@ -86,10 +86,10 @@ public class CommentController {
             if(rowCnt!=1)
                 throw new Exception("Delete Failed");
 
-            return new ResponseEntity<>("DEL_OK", HttpStatus.OK);
+            return new ResponseEntity<>("댓글이 삭제되었습니다.", HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
-            return new ResponseEntity<>("DEL_ERR", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("댓글 삭제 실패", HttpStatus.BAD_REQUEST);
         }
     }
 
