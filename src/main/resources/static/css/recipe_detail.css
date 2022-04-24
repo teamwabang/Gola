@@ -26,7 +26,6 @@
 	text-align: right;
 	margin-right: 250px;
 }
-.gola_reference_link {
-	color: gray;
-	font-size: 14px;
+.gola_reference_img {
+	transform: scale(0.4);
 }
