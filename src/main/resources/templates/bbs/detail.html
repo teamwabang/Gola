@@ -140,7 +140,9 @@
 	            data : JSON.stringify({cno:cno, comment:comment}),  // 서버로 전송할 데이터. stringify()로 직렬화 필요.
 	            success : function(result){
 	                alert(result);
-	                showList(bno);
+	                showList(bno),
+	                $("#commentDiv").val(''),
+                    $("#commentDiv").focus();;
 	            },
 	            error   : function(){ alert("error") } // 에러가 발생했을 때, 호출될 함수
 	        }); // $.ajax()
@@ -179,7 +181,8 @@
 
 	            if(comment.trim()==''){
 	                alert("댓글을 입력해주세요.");
-	                $("imput[name=comment]").focus()
+	                $("imput[name=comment]").focus();
+	                
 	            return;
 	        }
 	            $.ajax({
@@ -189,7 +192,9 @@
 	                data : JSON.stringify({bno:bno, comment:comment}),  // 서버로 전송할 데이터. stringify()로 직렬화 필요.
 	                success : function(result){
 	                    alert(result);
-	                    showList(bno);
+	                    showList(bno),
+	                    $("#commentDiv").val(''),
+	                    $("#commentDiv").focus();
 	                },
 	                error   : function(){ alert("error") } // 에러가 발생했을 때, 호출될 함수
 	            }); // $.ajax()
