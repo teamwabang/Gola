@@ -109,7 +109,7 @@
 	}// $.ajax()	
 	
 	$(document).ready(function() {
-		
+
 		let bno = $('#bno').val();
 		
 		showList(bno);
@@ -118,7 +118,10 @@
 	    $("#modBtn").click(function(){
 	        let comment = $("input[name=comment]").val();
 	        let cno = $(this).attr("data-cno");
-
+			
+	        $("#sendBtn").fadeIn();
+	        $("#modBtn").fadeOut();
+	        
 	        if(comment.trim()==''){
 	            alert("댓글을 입력해주세요.");
 	            $("imput[name=comment]").focus()
@@ -193,6 +196,8 @@
 	            $("input[name=comment]").val(comment);
 	            $("#modBtn").attr("data-cno", cno);
 	            $("#commentDiv").focus();
+	            $("#sendBtn").fadeOut();
+	            $("#modBtn").fadeIn();
 	            
 	        });
 
@@ -356,5 +361,17 @@
 	function pagination(){
 	  $('#pagination-wrap ul li').removeClass('active');
 	  $('#pagination-wrap ul li:eq('+pos+')').addClass('active');
-	}</script>
+	}
+	
+	$(".authorId").each(function() {
+		const length = 5;
+		$(this).each(function() {
+			if($(this).text().length >= length) {
+				$(this).text($(this).text().substr(0, length)+"...")
+			}
+		});
+	});
+	
+	
+	</script>
   </html>
