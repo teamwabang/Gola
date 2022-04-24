@@ -16,9 +16,10 @@
     <!-- JavaScript -->
     <script type="text/javascript" src="/js/chatbot.js"></script>
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="/js/click_disable.js"></script>
   
 </head>
-<body class="mypageBody">
+<body class="mypageBody" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
     <header class="mypageHeader shadow p-3 mb-5 bg-body rounded">
       <div class="goIndex">
         <h3><a th:href="@{/}">Home</a></h3>	<!-- 나중에 Gola Home 지우고 image로 대체 -->
