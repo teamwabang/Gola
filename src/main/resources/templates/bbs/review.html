@@ -19,11 +19,12 @@
     <!-- JavaScript -->
     <script type="text/javascript" src="/js/chatbot.js"></script>
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="/js/click_disable.js"></script>
 	<!-- Featherlight.js -->
 	<script src="/js/featherlight.js"></script>
 	<link rel="stylesheet" href="/css/featherlight.css">
   </head>
-  <body>    
+  <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
    
     <!-- import header -->
     <header th:replace="layout/fragment :: fr_header"></header>
@@ -42,7 +43,7 @@
     <section class="reviewsection">
  
 
- 	<div class="reviewmain reviewmainTwo">
+ 	<div class="reviewmain">
 		         
 		  <div class="reviewresult">
            
@@ -116,7 +117,7 @@
  */	 			
 	 			for (let list of splitList){
 	                const outerDiv = document.createElement("div");	
-	                outerDiv.setAttribute("class","items reviewItems itemsTwo");
+	                outerDiv.setAttribute("class","items reviewItems");
 	                for( let item of list) {
 	                	const innerDiv = document.createElement("div");
 	                	const innerA = document.createElement("a");
