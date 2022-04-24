@@ -199,13 +199,14 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 }
 
 .detailBtns {
-	margin-right: 8px;
+	margin-right: 4px;
 }
 
 .authorId {
 	display:flex;
 	align-items:center;
-	width:60px;
+	font-size: 12px;
+	width:80px;
     font-weight: 600;
 }
 
@@ -218,9 +219,10 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 
 .detailBtn {
 	background: none;
-	color: rgba(0, 0, 255, 0.8);
+	color: rgba(0, 0, 255, 0.5);
 	border:none;
-	font-size: 10px
+	font-size: 10px;
+	font-weight: 600;
 }
 
 .authorContent {
