@@ -26,6 +26,6 @@ public class RecipeDTO {
 	private String recipe9;	// 레시피9
 	private String recipe10;	// 레시피10
 	private String menuImg;
-	private String schTxt;
+	private String search;
 	
 }

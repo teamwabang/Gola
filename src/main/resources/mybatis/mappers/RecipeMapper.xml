@@ -15,8 +15,8 @@
         LEFT JOIN recipe_link rl
 		ON r.no = rl.no
 		where 1=1 
-        <if test='schTxt != "" and schTxt != null '>
-			AND r.menu like CONCAT('%',#{schTxt},'%')
+        <if test='search != "" and search != null '>
+			AND r.menu like CONCAT('%',#{search},'%')
         </if>   	        
         ORDER BY no DESC
 	</select>
