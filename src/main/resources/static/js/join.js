@@ -13,7 +13,7 @@ $('#userIdJoin').on('keyup' ,function(){
     	checkResult.style.color = 'red';
     }else if(id.match(exp)) {
 	$.ajax({
-		url : "/idCheck",
+		url : "check/id",
 		type : "post",
 		dataType : "json",
 		data : {"userId" : $("#userIdJoin").val()},
@@ -82,7 +82,7 @@ $('#userNickname').on('keyup' ,function() {
     	checkResult.style.color = 'red';
     }else if(nick.match(exp)) {
 	$.ajax({
-		url : "/nicknameCheck",
+		url : "check/nickname",
 		type : "post",
 		dataType : "json",
 		data : {"userNickname" : $("#userNickname").val()},
@@ -116,7 +116,7 @@ $('#userEmail').on('keyup' ,function() {
     	checkResult.style.color = 'red';
     }else if(email.match(exp)) {
 		$.ajax({
-			url : "/emailCheck",
+			url : "check/email",
 			type : "post",
 			dataType : "json",
 			data : {"userEmail" : $("#userEmail").val()},
@@ -159,7 +159,7 @@ $('#joinSubmit').on('click', function(event) {
         })
 	} else if(id.match(idexp)) {
 		$.ajax({
-			url : "/idCheck",
+			url : "check/id",
 			type : "post",
 			dataType : "json",
 			data : {"userId" : $("#userIdJoin").val()},
@@ -223,7 +223,7 @@ $('#joinSubmit').on('click', function(event) {
        
 	} else if(nick.match(nickexp)) {
 		$.ajax({
-			url : "/nicknameCheck",
+			url : "check/nickname",
 			type : "post",
 			dataType : "json",
 			data : {"userNickname" : $("#userNickname").val()},
@@ -261,7 +261,7 @@ $('#joinSubmit').on('click', function(event) {
         return false;
 	} else if(email.match(emailexp)) {
 		$.ajax({
-			url : "/emailCheck",
+			url : "check/email",
 			type : "post",
 			dataType : "json",
 			data : {"userEmail" : $("#userEmail").val()},

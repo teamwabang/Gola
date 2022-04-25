@@ -150,13 +150,13 @@ $(document).ready(function() {
 		
 			//게시판 수정버튼
             $("#bbsModBtn").on("click", function(){
-            	location.href = "/bbs/write?bno="+$('#bno').val();
+            	location.href = "/review/write?bno="+$('#bno').val();
             });
 
 			//게시판 삭제버튼
             $("#delBtn").on("click", function(){
                 let form = $("#form");
-                form.attr("action", "/bbs/deleteBbs");
+                form.attr("action", "/review/delete");
                 form.attr("method", "post");
              	form.submit();
             });
