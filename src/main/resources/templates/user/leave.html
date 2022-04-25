@@ -24,6 +24,21 @@
 			});
 		});
 	</script>
+	
+	<style>
+		.infoLogout {
+			font-size: 16px !important;
+			margin: 10px 10px;
+			font-family: 'LeferiPoint-WhiteObliqueA' ;
+			font-weight: bold !important;
+			background-color: skyblue !important;
+		}
+		
+		.infoLogout:hover {
+			background-color: crimson !important;
+			color: white !important;
+		}
+	</style>
 
 </head>
 <body>
@@ -32,7 +47,7 @@
     <div th:replace="layout/fragment :: fr_header"></div>
     <!-- end of import header -->
 	
-	<div th:style="@{height: 80vh;}">
+	<div th:style="@{margin: 100px 0;}">
 		<div th:style="@{text-align: center;}">
 			<p th:style="@{font-size:26px;}">정말로 회원탈퇴 하시겠습니까?</p>
 			<p th:style="@{font-size:16px; color:red;}">
@@ -44,7 +59,7 @@
 				<Strong th:text="${dto.getUserId() }"></Strong>
 		    	<input type="hidden" name="userId" th:value="${dto.getUserId() }">
 		    	<br><br>
-		    	<button id="delete-btn">회원탈퇴</button>
+		    	<button id="delete-btn" class="infoLogout btn btn-light">회원탈퇴</button>
 		   	</form>
 	    </div>
 	</div>

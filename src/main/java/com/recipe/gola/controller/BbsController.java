@@ -23,7 +23,6 @@ import java.util.UUID;
 import javax.servlet.http.*;
 
 @Controller
-@RequestMapping("/bbs")
 public class BbsController {
 	
 	@Value("${file.upload.directory}")
@@ -38,7 +37,7 @@ public class BbsController {
 	FilesService filesService;
 	
     //게시판 목록 페이지 이동
-    @GetMapping("/list")
+    @GetMapping("review/list")
     public String write(Model m, BbsDTO bbsDto) throws Exception {
     	log.info("Controller @GetMapping(/list) 게시판 목록 화면이동 >>>>>>>>>>>>>>> ");
     	m.addAttribute("list", bbsService.selectListBbs(bbsDto));
@@ -46,7 +45,7 @@ public class BbsController {
     }
 
     //게시판 쓰기/수정 페이지 이동
-    @GetMapping("/write")
+    @GetMapping("review/write")
     public String write(BbsDTO bbsDto, Model m, HttpServletResponse response, HttpSession session) throws Exception {
     	log.info("Controller @GetMapping(/write) 게시판쓰기/수정 화면이동 >>>>>>>>>>>>>>> ");
     	//String writer = (String)session.getAttribute("id");
@@ -61,7 +60,7 @@ public class BbsController {
     }
 
     //게시판 상세조회 이동
-    @GetMapping("/detail")
+    @GetMapping("review/detail")
     public String detail(Model m, BbsDTO bbsDto, HttpServletResponse response, HttpSession session, @AuthenticationPrincipal PrincipalDetails principaldetail) throws Exception {
     	log.info("Controller @GetMapping(/detail) 게시판상세화면 이동 >>>>>>>>>>>>>>> ");
     	//String writer = (String)session.getAttribute("id");
@@ -79,7 +78,7 @@ public class BbsController {
     }
     
     //게시판 저장 (insert문 호출)
-    @PostMapping("/insertBbs")
+    @PostMapping("review/insert")
     public void insertBbs(BbsDTO bbsDto, HttpServletResponse response, HttpSession session, @AuthenticationPrincipal PrincipalDetails principaldetail) throws Exception {
     	
     	response.setContentType("text/html; charset=euc-kr");
@@ -102,21 +101,21 @@ public class BbsController {
 				
 				if(filesService.fileUpload(bbsDto.getUpFile(), getSelectBno, fileUploadPath, bbsDto.getDeleteFilesNo())) {
 					//컨트롤러에서 javascript dom을 생성하여 alert메세지를 호출후 location.href함수로 페이지를 이동합니다.
-					out.println("<script>alert('게시글을 작성하였습니다.');  location.href='/bbs/review';</script>");
+					out.println("<script>alert('게시글을 작성하였습니다.');  location.href='/review';</script>");
 					out.flush();		
 				}else {
-					out.println("<script>alert('작성에 실패하였습니다.');  location.href='/bbs/review';</script>");
+					out.println("<script>alert('작성에 실패하였습니다.');  location.href='/review';</script>");
 					out.flush();						
 				}
 				
 			}else {
 				
-				out.println("<script>alert('작성에 실패하였습니다.');  location.href='/bbs/review';</script>");
+				out.println("<script>alert('작성에 실패하였습니다.');  location.href='/review';</script>");
 				out.flush();	
 				
 			}
 		} catch (Exception e) {
-			out.println("<script>alert('작성에 실패하였습니다.');  location.href='/bbs/review';</script>");
+			out.println("<script>alert('작성에 실패하였습니다.');  location.href='/review';</script>");
 			out.flush();	
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -125,7 +124,7 @@ public class BbsController {
     }
 
     //게시판 삭제 (delete문 호출)
-    @PostMapping("/deleteBbs")
+    @PostMapping("review/delete")
     public void deleteBbs(BbsDTO bbsDto, HttpServletResponse response, HttpSession session) throws Exception {
     	
     	log.info("Controller @PostMapping(/deleteBbs) 화면에서 넘어온 Dto의 값 : "+bbsDto.toString());
@@ -165,14 +164,14 @@ public class BbsController {
 				
 				
 				//컨트롤러에서 javascript dom을 생성하여 alert메세지를 호출후 location.href함수로 페이지를 이동합니다.
-				out.println("<script>alert('게시글을 삭제하였습니다.');  location.href='/bbs/review';</script>");
+				out.println("<script>alert('게시글을 삭제하였습니다.');  location.href='/review';</script>");
 				out.flush();					
 			}else {
-				out.println("<script>alert('삭제를 실패하였습니다.');  location.href='/bbs/review';</script>");
+				out.println("<script>alert('삭제를 실패하였습니다.');  location.href='/review';</script>");
 				out.flush();								
 			}
 		} catch (Exception e) {
-			out.println("<script>alert('작성에 실패하였습니다.');  location.href='/bbs/review';</script>");
+			out.println("<script>alert('작성에 실패하였습니다.');  location.href='/review';</script>");
 			out.flush();	
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -180,7 +179,7 @@ public class BbsController {
     }
     
     //게시판 수정 (update문 호출)
-    @PostMapping("/updateBbs")
+    @PostMapping("review/update")
     public void updateBbs(BbsDTO bbsDto, HttpServletResponse response, HttpSession session) throws Exception {
 
     	log.info("Controller @PostMapping(/updateBbs) 화면에서 넘어온 Dto의 값 : "+bbsDto.toString());
@@ -202,22 +201,22 @@ public class BbsController {
 				
 				if(filesService.fileUpload(bbsDto.getUpFile(), getSelectBno, fileUploadPath, bbsDto.getDeleteFilesNo())) {
 					//컨트롤러에서 javascript dom을 생성하여 alert메세지를 호출후 location.href함수로 페이지를 이동합니다.
-					out.println("<script>alert('게시글을 작성하였습니다.');  location.href='/bbs/review';</script>");
+					out.println("<script>alert('게시글을 작성하였습니다.');  location.href='/review';</script>");
 					out.flush();		
 				}else {
-					out.println("<script>alert('게시글을 작성하였습니다.');  location.href='/bbs/review';</script>");
+					out.println("<script>alert('게시글을 작성하였습니다.');  location.href='/review';</script>");
 					out.flush();						
 				}
 				
 			}else {
 				
-				out.println("<script>alert('작성에 실패하였습니다.');  location.href='/bbs/review';</script>");
+				out.println("<script>alert('작성에 실패하였습니다.');  location.href='/review';</script>");
 				out.flush();	
 				
 			}
 			
 		} catch (Exception e) {
-			out.println("<script>alert('작성에 실패하였습니다.');  location.href='/bbs/review';</script>");
+			out.println("<script>alert('작성에 실패하였습니다.');  location.href='/review';</script>");
 			out.flush();	
 			// TODO Auto-generated catch block
 			e.printStackTrace();

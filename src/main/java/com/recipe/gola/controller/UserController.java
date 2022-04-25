@@ -118,7 +118,7 @@ public class UserController {
     }
 	
 	// 아이디 중복확인
-	@PostMapping("/idCheck")
+	@PostMapping("check/id")
 	@ResponseBody
 	public int idCheck(String userId) {
 		int result = userService.idCheck(userId);
@@ -126,7 +126,7 @@ public class UserController {
 	}
 	
 	// 닉네임 중복확인
-	@PostMapping("/nicknameCheck")
+	@PostMapping("check/nickname")
 	@ResponseBody
 	public int nicknameCheck(String userNickname) {
 		int result = userService.nicknameCheck(userNickname);
@@ -134,7 +134,7 @@ public class UserController {
 	}
 	
 	// 이메일 중복확인
-	@PostMapping("/emailCheck")
+	@PostMapping("check/email")
 	@ResponseBody
 	public int emailCheck(String userEmail) {
 		int result = userService.emailCheck(userEmail);

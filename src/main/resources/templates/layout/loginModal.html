@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<body>
+<body onkeydown="javascript:onEnterLogin();">
+	<script type="text/javascript">
+		function onEnterLogin(){
+			var keyCode = window.event.keyCode;
+			if (keyCode == 13) {
+				loginForm.submit();
+			}
+		}
+	</script>
 	<div th:fragment="fr_loginModal">
 	<!-- loginModal -->
 	<div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -11,7 +19,7 @@
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	        <div class="modal-body" th:style="${'text-align: center;'}">
-		    	<form th:action="@{/login}" method="post">		    	
+		    	<form th:action="@{/login}" method="post" name="loginForm">		    	
 			    	<div class="loginSection">
 			    		<div class="loginLabel">
 				 			<h2>로그인</h2>
