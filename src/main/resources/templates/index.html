@@ -41,6 +41,7 @@
          <div class="bottomlineleft"><i class="fa-solid fa-fish fa-2x"></i></div>
          <div class="bottomlineright"><i class="fa-solid fa-fire-burner fa-2x"></i></div>
      </div>
+     	<div><a href="javascript:window.scrollTo(0,0);"></div>
    </div>
    </div>
  
@@ -60,9 +61,9 @@
 				<a th:href="@{/bbs/detail(bno = ${item.bno})}">
               		<img th:src="${item.imgSrc}">
               	</a>
-               <i class="xi-plus-thin"></i>
-               <p th:text="${item.title}"></p>
+               <i class="xi-plus-thin" ></i>
                <span th:text="|난이도 '${item.level}' |"></span> 
+               <p th:text="${item.title}"></p> 
            	</div>
          </div>
          <br>
@@ -70,7 +71,7 @@
          <div class="seemorebox">
            <div class="seemoreline">
            	<a href="/bbs/review">
-             	<p class="seemore">see more<i class="fa-solid fa-angles-right"></i></p>
+             	<p class="seemore">see more &nbsp;<i class="fa-solid fa-angles-right"></i></p>
 			</a>
            </div>
          </div>
@@ -117,7 +118,9 @@
          <br>
          <div class="seemorebox">
            <div class="seemoreline">
-             <p class="login btn btn-secondary loginFooterBtn"> see more <i class="fa-solid fa-angles-right"></i></p>
+            <a href="/bbs/review">
+             	<p class="seemore">see more &nbsp;<i class="fa-solid fa-angles-right"></i></p>
+			</a>
            </div>
          </div>
          <br>
@@ -138,7 +141,28 @@
         crossorigin="anonymous"></script>
     
     <script type="text/javascript" src="/js/join.js"></script>
+    <script type="text/javascript">
+		$(document).ready(function(){
+		    $('#inputicon2').on('click',function(){
+		        $('#userPwd').toggleClass('active');
+		        if($('#userPwd').hasClass('active')){
+		            $(this).attr('class',"fa fa-eye-slash fa-lg")
+		            $('#userPwd').attr('type','text');
+		        }else{
+		            $(this).attr('class',"fa fa-eye fa-lg")
+		            $('#userPwd').attr('type','password');
+		        }
+		    });
+		});
+	</script>
     <script type="text/javascript" src="/js/logineye.js"></script>
+    
+    <script language="javascript">
+		if(document.readyState=="loading"){
+		location.href="javascript:window.scrollTo(0,0);";
+		}
+	</script>
+  <script type="text/javascript" src="/js/logineye.js"></script>
 </body>
 
 </html>

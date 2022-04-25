@@ -102,7 +102,7 @@
     pointer-events: all;
   }
   
-  .reviewmain .items div:before {
+  .reviewmain .reviewresult .items div:before {
     content: '';
     position: absolute;
     top: 0;
