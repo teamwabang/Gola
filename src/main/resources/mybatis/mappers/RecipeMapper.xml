@@ -17,6 +17,7 @@
 		where 1=1 
         <if test='search != "" and search != null '>
 			AND r.menu like CONCAT('%',#{search},'%')
+		    OR r.kind like CONCAT(#{search})
         </if>   	        
         ORDER BY no DESC
 	</select>

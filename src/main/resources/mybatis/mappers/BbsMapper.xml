@@ -67,6 +67,7 @@
 		        </if>        
 		        <if test='search != "" and search != null '>
 					AND title like CONCAT('%',#{search},'%')
+					OR level like CONCAT(#{search})
 		        </if>   	        
 		        ORDER BY reg_date DESC, bno DESC
 	        </otherwise>
