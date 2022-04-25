@@ -15,50 +15,120 @@
     <!-- JavaScript -->
     <script type="text/javascript" src="/js/chatbot.js"></script>
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="/js/click_disable.js"></script>
 	<!-- Featherlight.js -->
 	<script src="/js/featherlight.js"></script>
 	<link rel="stylesheet" href="/css/featherlight.css">
 
 </head>
-<body>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
 
     <!-- import header -->
     <header th:replace="layout/fragment :: fr_header"></header>
     <!-- end of import header -->
+	<div th:each="detaillink : ${detaillink}">
+		<div th:style="@{text-align:center;}">
+    		<img th:src="${detaillink.menuImg}" class="gola_recipe_menuimg"><br>
+		</div>
+    	
+    	
+	    <div th:each="detail : ${detail}" th:style="@{width:1024px; margin:0 auto;}">
+			<Strong class="gola_strong">메뉴명</Strong>&nbsp;<span class="gola_discription" th:text="${detail.menu}"></span><br><br>
+	    	<Strong class="gola_strong">조리방법</Strong>&nbsp;<span class="gola_discription" th:text="${detail.how}"></span><br><br>
+	    	<Strong class="gola_strong">요리종류</Strong>&nbsp;<span class="gola_discription" th:text="${detail.kind}"></span><br><br>
+	    	<Strong class="gola_strong">열량</Strong>&nbsp;<span class="gola_discription" th:text="${detail.kcal}"></span><span class="gola_discription"> kcal</span>
+	    	<Strong class="gola_strong">탄수화물</Strong>&nbsp;<span class="gola_discription" th:text="${detail.carbohydrate}"></span><span class="gola_discription"> g</span>
+	    	<Strong class="gola_strong">단백질</Strong>&nbsp;<span class="gola_discription" th:text="${detail.protein}"></span><span class="gola_discription"> g</span>
+	    	<Strong class="gola_strong">지방</Strong>&nbsp;<span class="gola_discription" th:text="${detail.fat}"></span><span class="gola_discription"> g</span>
+	    	<Strong class="gola_strong">나트륨</Strong>&nbsp;<span class="gola_discription" th:text="${detail.natrium}"></span><span class="gola_discription"> g</span><br><br>
+	    	<Strong class="gola_strong">재료</Strong><br>
+	    	<span class="gola_discription" th:text="${detail.material}"></span><br><br>
+	    	
+	    	<Strong class="gola_strong">레시피</Strong><br><br>
+	    	
+	    	
+	    	<th:block th:if="${detaillink.link1} != ''">
+		    	<img th:src="${detaillink.link1}" class="gola_recipe_linkimg"><br><br>
+	    	</th:block>
+		    <span class="gola_discription" th:text="${detail.recipe1}"></span><br><br><br><br>
+		    
+		    <th:block th:if="${detaillink.link2} != ''">
+	    		<img th:src="${detaillink.link2}" class="gola_recipe_linkimg"><br><br>
+	    	</th:block>
+	    	<span class="gola_discription" th:text="${detail.recipe2}"></span><br><br><br><br>
+	    	
+	    	<th:block th:if="${detaillink.link3} != ''">
+		    	<img th:src="${detaillink.link3}" class="gola_recipe_linkimg"><br><br>
+		    </th:block>
+		    <span class="gola_discription" th:text="${detail.recipe3}"></span><br><br><br><br>
+		    
+		    <th:block th:if="${detaillink.link4} != ''">
+	    		<img th:src="${detaillink.link4}" class="gola_recipe_linkimg"><br><br>
+	    	</th:block>
+	    	<span class="gola_discription" th:text="${detail.recipe4}"></span><br><br><br><br>
+	    	
+	    	<th:block th:if="${detaillink.link5} != ''">
+	    		<img th:src="${detaillink.link5}" class="gola_recipe_linkimg"><br><br>
+	    	</th:block>
+	    	<span class="gola_discription" th:text="${detail.recipe5}"></span><br><br><br><br>
+	    	
+	    	<th:block th:if="${detaillink.link6} != ''">
+	    		<img th:src="${detaillink.link6}" class="gola_recipe_linkimg"><br><br>
+	    	</th:block>
+	    	<span class="gola_discription" th:text="${detail.recipe6}"></span><br><br><br><br>
+	    	
+	    	<th:block th:if="${detaillink.link7} != ''">
+	    		<img th:src="${detaillink.link7}" class="gola_recipe_linkimg"><br><br>
+	    	</th:block>
+	    	<span class="gola_discription" th:text="${detail.recipe7}"></span><br><br><br><br>
+	    	
+	    	<th:block th:if="${detaillink.link8} != ''">
+	    		<img th:src="${detaillink.link8}" class="gola_recipe_linkimg"><br><br>
+	    	</th:block>
+	    	<span class="gola_discription" th:text="${detail.recipe8}"></span><br><br><br><br>
+	    	
+	    	<th:block th:if="${detaillink.link9} != ''">
+	    		<img th:src="${detaillink.link9}" class="gola_recipe_linkimg"><br><br>
+	    	</th:block>
+	    	<span class="gola_discription" th:text="${detail.recipe9}"></span><br><br><br><br>
+	    	
+	    	<th:block th:if="${detaillink.link10} != ''">
+	    		<img th:src="${detaillink.link10}" class="gola_recipe_linkimg"><br><br>
+	    	</th:block>
+	    	<span class="gola_discription" th:text="${detail.recipe10}"></span>
+	    </div>
+	    
+		 <!-- <div class="page-control">
+			<div>
+				{% if page.previous.url %}
+				<a id="prev" class="button" href="{{ page.previous.url }}">&laquo; {{ page.previous.title }}</a>
+				{% endif %}
+			</div>
+			<div>
+				{% if page.next.url %}
+				<a id="next" class="button" href="{{ page.next.url }}">{{ page.next.title }} &raquo;</a>
+				{% endif %}
+			</div>
+		</div> -->
+	    
+	</div>
 	
-    <div th:each="detail : ${detail}" th:style="@{width:1024px; margin:0 auto;}">
-    	<img src="http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00130_1.png" th:style="@{width:300px; height:300px;}"><br>
-		<Strong>메뉴명</Strong>&nbsp;<span th:text="${detail.menu}"></span><br>
-    	<Strong>조리방법</Strong>&nbsp;<span th:text="${detail.how}"></span><br>
-    	<Strong>요리종류</Strong>&nbsp;<span th:text="${detail.kind}"></span><br>
-    	<Strong>열량</Strong>&nbsp;<span th:text="${detail.kcal}"></span><span> kcal</span>
-    	<Strong>탄수화물</Strong>&nbsp;<span th:text="${detail.carbohydrate}"></span><span> g</span>
-    	<Strong>단백질</Strong>&nbsp;<span th:text="${detail.protein}"></span><span> g</span>
-    	<Strong>지방</Strong>&nbsp;<span th:text="${detail.fat}"></span><span> g</span>
-    	<Strong>나트륨</Strong>&nbsp;<span th:text="${detail.natrium}"></span><span> g</span><br>
-    	<Strong>재료</Strong><br>
-    	<span th:text="${detail.material}"></span><br>
-    	<Strong>레시피</Strong><br>
-    	<span th:text="${detail.recipe1}"></span><br>
-    	<span th:text="${detail.recipe2}"></span><br>
-    	<span th:text="${detail.recipe3}"></span><br>
-    	<span th:text="${detail.recipe4}"></span><br>
-    	<span th:text="${detail.recipe5}"></span><br>
-    	<span th:text="${detail.recipe6}"></span><br>
-    	<span th:text="${detail.recipe7}"></span><br>
-    	<span th:text="${detail.recipe8}"></span><br>
-    	<span th:text="${detail.recipe9}"></span><br>
-    	<span th:text="${detail.recipe10}"></span>
-    </div>
+	<div class="gola_reference">
+		<a th:href="@{https://www.data.go.kr/data/15060073/openapi.do}" target="_blank"><img src="/images/about/img_opentype01.jpg" class="gola_reference_img"></a>
+	</div>
     
     <!-- import footer -->
     <footer th:replace="layout/fragment :: fr_footer"></footer>
     <!-- end of import footer -->
     
+    <button class="floating" data-bs-toggle="modal" data-bs-target="#timer">TIMER</button>
+    <div th:insert="layout/timerModal :: fr_timerModal"></div>
+    
     <script src="http://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/timer.js"></script>
     <script type="text/javascript" src="/js/join.js"></script>
 
 </body>

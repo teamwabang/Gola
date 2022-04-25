@@ -21,8 +21,8 @@ public class RecipeService {
 	@Autowired
 	private final RecipeMapper recipeMapper;
 
-	public List<RecipeDTO> list() {
-		return recipeMapper.list();
+	public List<RecipeDTO> list(RecipeDTO dto) {
+		return recipeMapper.list(dto);
 	}
 	
 	public RecipeDTO detail(RecipeDTO dto) {

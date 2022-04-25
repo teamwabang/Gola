@@ -6,7 +6,7 @@
 
 	<!-- pw edit Modal -->
 	    <div class="modal fade" id="picChange" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="staticBackdropLabel">프로필사진 변경</h5>
@@ -22,7 +22,7 @@
 				  	<label class="custom-file-label" for="customFileLang" id="upFileTxt1"></label>
 			  	</div>
 			</div>
-			<button type="button" id="saveBtn">save</button>
+			<button type="button" id="saveBtn" class="pic-editbtn">변경</button>
 			
         </div>
         </form>
@@ -85,6 +85,11 @@
 			
 	        //저장버튼
 	       	$("#saveBtn").on("click", function(){
+	       		
+	       		if($("input[name=upFile]").val() == ""){
+	       			alert("사진을 올려주세요.");
+	       			return false;
+	       		}
 
 	      		let form = $("#form");
 	          	//게시판번호가 있으면 기존수정모드 없으면 신규글쓰기모드.

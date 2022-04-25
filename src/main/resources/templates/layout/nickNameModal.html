@@ -19,12 +19,16 @@
 	      	<form th:name="form2" th:onsubmit="return submitCheck(form2);" method="post">
 	      		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		    	<input type="hidden" name="userId" th:value="${dto.getUserId() }" readonly>
-		    	<!-- 변경할 닉네임 입력  -->
-				<input type="text" id="userNicknameedit" name="userNickname"  maxlength="20" placeholder="변경할 닉네임을 입력하세요.">
-		  		<!-- 유효성 검사문구 -->
-		  		<p id="userNicknameCheck"></p>
-		    	<!-- 변경 submit -->
-		    	<input type="button" id="change-nickname-btn" value="변경">
+		    	<div class="modal-div">
+		    		<div class="modal-editcheck">
+					    <!-- 변경할 닉네임 입력  -->
+						<input type="text" id="userNicknameedit" name="userNickname"  maxlength="20" placeholder="변경할 닉네임을 입력하세요.">
+				  		<!-- 유효성 검사문구 -->
+				  		<p id="userNicknameCheck"></p>
+			  		</div>
+			    	<!-- 변경 submit -->
+			    	<input type="button" class="modal-editbtn" id="change-nickname-btn" value="변경">
+		    	</div>
 			</form>
 			</div>
 			<!-- 닉네임 변경 끝 -->
@@ -34,55 +38,6 @@
     </div>
 	</div>
 
-	
-	<script type="text/javascript">
-			
-		$('#userNicknameedit').on('keyup' ,function() {
-			const nick = document.getElementById('userNicknameedit').value;
-			const checkResult = document.getElementById('userNicknameCheck');
-			const nickLength = nick.length;
-			const exp = /^[가-힣a-zA-Z0-9]{3,20}$/;
-			if(!nick.match(exp)){
-		    	checkResult.innerHTML = '닉네임은 특수문자를 제외한 3~20자리로 입력해주세요.'
-		    	checkResult.style.color = 'red';
-		    }else if(nick.match(exp)) {
-			$.ajax({
-				url : "/nicknameCheck",
-				type : "post",
-				dataType : "json",
-				data : {"userNickname" : $("#userNicknameedit").val()},
-				success : function(data) {
-					if(data == 1) {
-					  checkResult.innerHTML = '이미 사용하고 있는 닉네임입니다'
-		    		  checkResult.style.color = 'red';
-			        } else if(data == 0) {
-			          $("#idCheck").attr("value", "Y");
-			          checkResult.innerHTML = '사용가능한 닉네임입니다'
-		    		  checkResult.style.color = 'blue';
-			          }
-			    }
-			})
-			}
-		});
-
-		/*submit버튼 유효성*/
-		$(function() {
-			$("#change-nickname-btn").click(function() {
-				if(!/^[가-힣a-zA-Z0-9]{3,20}$/g.test($('#userNicknameedit').val())) {
-					confirm("알맞은 닉네임 형식으로 입력해주세요");
-				}else if (confirm("회원정보를 수정하시겠습니까?")) {
-		    		// 폼 내부의 데이터를 전송할 주소
-		    		document.form2.action="mypage/modify/nickname";
-		    		document.form2.submit();	// 제출
-	    		}
-			});
-		});
-
-		
-
-
-
-		
-	</script>
+	<script type="text/javascript" src="/js/mypage_nickname_change.js"></script>
 </body>
 </html>

@@ -42,7 +42,7 @@ public interface BbsMapper {
 	FilesDTO selectDetailFiles(String fno) throws Exception;
 	
     int updateCommentCnt(Map<String, Object> paramMap);
-    
-    
+
+	int updateCnt(String bno);
     
 }

@@ -35,6 +35,7 @@ import com.recipe.gola.dto.BbsDTO;
 import com.recipe.gola.dto.FilesDTO;
 import com.recipe.gola.dto.UserDTO;
 import com.recipe.gola.service.BbsService;
+import com.recipe.gola.service.FilesService;
 import com.recipe.gola.service.UserService;
 
 import lombok.Data;
@@ -53,6 +54,9 @@ public class UserController {
 
 	@Autowired
 	private final BbsService bbsService;
+	
+	@Autowired
+	FilesService filesService;
 	
 	@Autowired
 	private final Validate validate;
@@ -114,7 +118,7 @@ public class UserController {
     }
 	
 	// 아이디 중복확인
-	@PostMapping("/idCheck")
+	@PostMapping("check/id")
 	@ResponseBody
 	public int idCheck(String userId) {
 		int result = userService.idCheck(userId);
@@ -122,7 +126,7 @@ public class UserController {
 	}
 	
 	// 닉네임 중복확인
-	@PostMapping("/nicknameCheck")
+	@PostMapping("check/nickname")
 	@ResponseBody
 	public int nicknameCheck(String userNickname) {
 		int result = userService.nicknameCheck(userNickname);
@@ -130,7 +134,7 @@ public class UserController {
 	}
 	
 	// 이메일 중복확인
-	@PostMapping("/emailCheck")
+	@PostMapping("check/email")
 	@ResponseBody
 	public int emailCheck(String userEmail) {
 		int result = userService.emailCheck(userEmail);
@@ -177,7 +181,7 @@ public class UserController {
 			fno =  bbsService.selectListFiles(writer).get(0).getFno();
 			fileName = bbsService.selectListFiles(writer).get(0).getFileName();
 			
-			//file Info
+			// file Info
 			model.addAttribute("imgSrc", imgSrc);
 			model.addAttribute("fno",fno);
 			model.addAttribute("fileName",fileName);
@@ -231,39 +235,28 @@ public class UserController {
 	}
 	
 	// 마이페이지 회원정보 수정(이메일)
-		@PostMapping("mypage/modify/email")
-		public void modifyEmail(@AuthenticationPrincipal PrincipalDetails principaldetail, 
-				UserDTO dto, HttpSession session, HttpServletResponse response) throws Exception {
-			logger.info("-----> 회원 " + principaldetail.getUsername() + "님이 이메일을 수정하였습니다.");
-			
-			dto.setUserAuth(UserAuth.USER);
-	        
-	        userService.modifyEmail(dto);
+	@PostMapping("mypage/modify/email")
+	public void modifyEmail(@AuthenticationPrincipal PrincipalDetails principaldetail, 
+			UserDTO dto, HttpSession session, HttpServletResponse response) throws Exception {
+		logger.info("-----> 회원 " + principaldetail.getUsername() + "님이 이메일을 수정하였습니다.");
+		
+		dto.setUserAuth(UserAuth.USER);
+        
+        userService.modifyEmail(dto);
 
-	        session.invalidate();
-			
-	        response.setContentType("text/html; charset=euc-kr");
-	        PrintWriter out;
-	        out = response.getWriter();
-	        out.println("<script>alert('회원정보를 수정하여 재로그인이 필요합니다.'); location.href='/';</script>");
-	        out.flush();
-
-		}
-
-	
-	// 회원탈퇴
-	@GetMapping("mypage/leave")
-	public String remove(@AuthenticationPrincipal PrincipalDetails principaldetail, 
-			Model model, HttpServletResponse response) {
-		logger.info("-----> 회원탈퇴 페이지로 이동합니다.");
-		logger.info("유저 아이디 : " + principaldetail.getUsername());
-		model.addAttribute("dto", principaldetail.getDto());
-		return "user/leave";
+        session.invalidate();
+		
+        response.setContentType("text/html; charset=euc-kr");
+        PrintWriter out;
+        out = response.getWriter();
+        out.println("<script>alert('회원정보를 수정하여 재로그인이 필요합니다.'); location.href='/';</script>");
+        out.flush();
 	}
-
 	
+	// 마이페이지 회원정보 수정(프로필 사진)
     @PostMapping("mypage/insertProfilePhoto")
-    public void insertProfilePhoto(MultipartFile upFile, HttpServletResponse response, HttpSession session, @AuthenticationPrincipal PrincipalDetails principaldetail) throws Exception {
+    public void insertProfilePhoto(MultipartFile[] upFile, HttpServletResponse response,
+    		HttpSession session, @AuthenticationPrincipal PrincipalDetails principaldetail) throws Exception {
     	
     	response.setContentType("text/html; charset=euc-kr");
     	PrintWriter out;
@@ -271,173 +264,79 @@ public class UserController {
     	
     	logger.info("Controller @PostMapping(/insertProfilePhoto) 화면에서 넘어온 Dto의 값 : "+upFile);
     	
-    	//로그인 사용자 조회   	
-     	String writer = principaldetail.getUsername();
-    
-		int result;
-
 		try {
-				//html에서 넘어온 input=file 객체가 있으면
-	    	if(!upFile.isEmpty()) {
-	    		logger.info("파일이 있네...");
-	    		
-	    		//2-1. 업로드 폴더가 없으면 생성
-	    		File dir = new File(fileUploadPath);
-	    		if (dir.exists() == false) {
-	    			dir.mkdirs();
-	    		}
 
-				/* 파일 확장자 */
-				final String extension = FilenameUtils.getExtension(upFile.getOriginalFilename());
-				
-				/* 서버에 저장할 파일명 (랜덤 문자열 + 확장자) */
-				final String saveName = getRandomString() + "." + extension;
-				final String fileName = upFile.getOriginalFilename();
-				final long fileSize = upFile.getSize();
-
-				logger.info("::::: 원본 파일이름 file.getOriginalFilename() >>>>> "+upFile.getOriginalFilename());
-				logger.info("::::: 파일 사이즈 file.size() >>>>> "+upFile.getSize());
-				logger.info("::::: 저장 파일이름 saveName >>>>> "+saveName);			
-				
-				//2-3.파일정보 데이터베이스에 저장
-				FilesDTO filesDto = new FilesDTO();
-				filesDto.setBno(writer);				//user Id
-				filesDto.setFileName(fileName);			//파일원본이름
-				filesDto.setFileSavename(saveName);		//파일저장이름
-				filesDto.setFileSize(Long.toString(fileSize));		//파일사이즈
-				filesDto.setFilePath(fileUploadPath+"/");				//파일업로드한 경로
-				
-				result = bbsService.insertFiles(filesDto);
-
-				//2-4. 파일저장이 성공시 메세지 출력
-				if(result >0) {
-
-					//2-5. 업로드 경로에 saveName과 동일한 이름을 가진 파일 생성 
-					File target = new File(fileUploadPath, saveName);
-					upFile.transferTo(target);
-					
-					//컨트롤러에서 javascript dom을 생성하여 alert메세지를 호출후 location.href함수로 페이지를 이동합니다.
-					out.println("<script>alert('프로필 사진을 등록하였습니다.');  location.href='/mypage';</script>");
-					out.flush();		
-				}else {
-					out.println("<script>alert('프로필 사진 등록에 실패하였습니다.');  location.href='/mypage';</script>");
-					out.flush();					    					
-				}
-	    	}
-			
+			if(filesService.fileUpload(upFile, principaldetail.getUsername(), fileUploadPath, null)) {
+				//컨트롤러에서 javascript dom을 생성하여 alert메세지를 호출후 location.href함수로 페이지를 이동합니다.
+				out.println("<script>alert('프로필 사진을 등록 하였습니다.');  location.href='/mypage';</script>");
+				out.flush();		
+			}else {
+				out.println("<script>alert('프로필 사진 등록에 실패하였습니다.');  location.href='/mypage';</script>");
+				out.flush();						
+			}
+		
 		} catch (Exception e) {
 			out.println("<script>alert('프로필 사진 등록에 실패하였습니다.');  location.href='/mypage';</script>");
 			out.flush();	
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}    	
-		
+		}
     }
 
+    // 마이페이지 회원정보 수정(프로필 사진)
     @PostMapping("mypage/updateProfilePhoto")
-    public void updateProfilePhoto(@RequestParam Map<String,Object> paramMap, MultipartFile upFile, HttpServletResponse response, HttpSession session, @AuthenticationPrincipal PrincipalDetails principaldetail) throws Exception {
+    public void updateProfilePhoto(@RequestParam Map<String,Object> paramMap, MultipartFile[] upFile,
+    		HttpServletResponse response, HttpSession session, @AuthenticationPrincipal PrincipalDetails principaldetail) throws Exception {
     	
     	response.setContentType("text/html; charset=euc-kr");
     	PrintWriter out;
     	out = response.getWriter();
     	
     	logger.info("Controller @PostMapping(/insertProfilePhoto) 화면에서 넘어온 Dto의 값 : "+upFile);
-    	logger.info("param Values>>>>>>>>>>>>>>>>> "+paramMap.toString());
     	
-    	String fno = "";
-    	if(!paramMap.isEmpty()){
-    		fno = paramMap.get("deleteFilesNo").toString();
-    	}
-    	//로그인 사용자 조회   	
-     	String writer = principaldetail.getUsername();
-    
-		int result;
+    	logger.info("param Values>>>>>>>>>>>>>>>>> "+paramMap.toString());
 
-		try {
-				//html에서 넘어온 input=file 객체가 있으면
-	    	if(!upFile.isEmpty()) {
-	    		logger.info("파일이 있네...");
-	    		
-	    		//2-1. 업로드 폴더가 없으면 생성
-	    		File dir = new File(fileUploadPath);
-	    		if (dir.exists() == false) {
-	    			dir.mkdirs();
+    	String deleteFilesNo[] = new String[1];
+
+    	try {
+
+    		if(!paramMap.isEmpty() && !"".equals(paramMap.get("deleteFilesNo").toString())){
+    			
+    			String deleteFileNo = paramMap.get("deleteFilesNo").toString();
+    			
+    			deleteFilesNo[0] = deleteFileNo;
+
+	    		if(filesService.fileUpload(upFile, principaldetail.getUsername(), fileUploadPath, deleteFilesNo)) {
+	    			//컨트롤러에서 javascript dom을 생성하여 alert메세지를 호출후 location.href함수로 페이지를 이동합니다.
+	    			out.println("<script>alert('프로필 사진을 등록 하였습니다.');  location.href='/mypage';</script>");
+	    			out.flush();		
+	    		}else {
+	    			out.println("<script>alert('프로필 사진 등록에 실패하였습니다.');  location.href='/mypage';</script>");
+	    			out.flush();						
 	    		}
-
-				/* 파일 확장자 */
-				final String extension = FilenameUtils.getExtension(upFile.getOriginalFilename());
-				
-				/* 서버에 저장할 파일명 (랜덤 문자열 + 확장자) */
-				final String saveName = getRandomString() + "." + extension;
-				final String fileName = upFile.getOriginalFilename();
-				final long fileSize = upFile.getSize();
-
-				logger.info("::::: 원본 파일이름 file.getOriginalFilename() >>>>> "+upFile.getOriginalFilename());
-				logger.info("::::: 파일 사이즈 file.size() >>>>> "+upFile.getSize());
-				logger.info("::::: 저장 파일이름 saveName >>>>> "+saveName);			
-				
-				//2-3.파일정보 데이터베이스에 저장
-				FilesDTO filesDto = new FilesDTO();
-				filesDto.setBno(writer);				//user Id
-				filesDto.setFileName(fileName);			//파일원본이름
-				filesDto.setFileSavename(saveName);		//파일저장이름
-				filesDto.setFileSize(Long.toString(fileSize));		//파일사이즈
-				filesDto.setFilePath(fileUploadPath+"/");				//파일업로드한 경로
-				
-				result = bbsService.insertFiles(filesDto);
-
-				//2-4. 파일저장이 성공시 메세지 출력
-				if(result >0) {
-
-					//2-5. 업로드 경로에 saveName과 동일한 이름을 가진 파일 생성 
-					File target = new File(fileUploadPath, saveName);
-					upFile.transferTo(target);	
-					
-					if(!"".equals(fno)) {
-	    				logger.info("::::: 삭제 파일번호 fno >>>>> "+fno);			
-	    				
-						FilesDTO deleteFileDto = new FilesDTO();
-	
-						deleteFileDto = bbsService.selectDetailFiles(fno);
-						
-						final String fileSavename = deleteFileDto.getFileSavename();
-	
-	    				logger.info("::::: 삭제 파일경로 >>>>> "+fileUploadPath+"/"+fileSavename);			
-						
-						File deleteTarget = new File(fileUploadPath,fileSavename); 
-						if(deleteTarget.exists()) { // 파일이 존재하면 
-							deleteTarget.delete(); // 파일 삭제 
-						}
-						//2-7 기존파일정보 데이터베이스에서 삭제
-						result = bbsService.deleteFiles(fno);
-						logger.info("::::::::: 파일정보 삭제결과 result >>>>>> " +result);
-					
-					}
-					
-					//컨트롤러에서 javascript dom을 생성하여 alert메세지를 호출후 location.href함수로 페이지를 이동합니다.
-					out.println("<script>alert('프로필 사진을 등록하였습니다.');  location.href='/mypage';</script>");
-					out.flush();		
-				}else {
-					out.println("<script>alert('프로필 사진 등록에 실패하였습니다.');  location.href='/mypage';</script>");
-					out.flush();					    					
-				}
 	    	}
 			
 		} catch (Exception e) {
 			out.println("<script>alert('프로필 사진 등록에 실패하였습니다.');  location.href='/mypage';</script>");
-			out.flush();	
-			// TODO Auto-generated catch block
+			out.flush();
 			e.printStackTrace();
-		}    	
-		
-		
-		
-    }    
+		}
+    }
+
     
+    // 회원탈퇴
+ 	@GetMapping("mypage/leave")
+ 	public String remove(@AuthenticationPrincipal PrincipalDetails principaldetail, 
+ 			Model model, HttpServletResponse response) {
+ 		logger.info("-----> 회원탈퇴 페이지로 이동합니다.");
+ 		logger.info("유저 아이디 : " + principaldetail.getUsername());
+ 		model.addAttribute("dto", principaldetail.getDto());
+ 		return "user/leave";
+ 	}
 	
 	@PostMapping("mypage/leave")
 	public void remove(@AuthenticationPrincipal PrincipalDetails principaldetail, 
-			@RequestParam String userId, Model model, HttpSession session, HttpServletResponse response) throws Exception {
+		@RequestParam String userId, Model model, HttpSession session, HttpServletResponse response) throws Exception {
 		logger.info("-----> 회원탈퇴가 정상적으로 완료되었습니다.");
 		
 //		Cookie cookie = new Cookie("remember-me", null);
@@ -455,9 +354,16 @@ public class UserController {
         out.flush();
 	}
 	
-    //파일생성을 위한 랜덤난수값 생성
-	private final String getRandomString() {
-		return UUID.randomUUID().toString().replaceAll("-", "");
+    // 아이디 찾기
+	@GetMapping("find/id")
+	public String findId() {
+		return "user/find_id";
+	}
+	
+	// 비밀번호 찾기
+	@GetMapping("find/password")
+	public String findPwd() {
+		return "user/find_password";
 	}
 	
 }

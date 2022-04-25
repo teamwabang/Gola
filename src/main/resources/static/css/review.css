@@ -21,7 +21,7 @@
 
 .reviewmain .items {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     column-gap: 40px;
     row-gap: 40px;
  }
@@ -37,14 +37,25 @@
     box-shadow: 0 0 9px rgba(54, 53, 53, 0.3);
     position: relative;
     cursor:pointer;
-    width: 280px;
-    height: 380px;
+    width: 240px;
+    height: 360px;
   }
   
   .reviewmain .items div a img {
     display: block;
+  	width: 240px;
+ 	height: 310px;
+  }
+  
+  .reviewmainTwo .itemsTwo div {
   	width: 280px;
- 	 height: 330px;
+    height: 380px;
+  }
+  
+  .reviewmainTwo .itemsTwo div a img {
+	display: block;
+	width: 280px;
+ 	height: 330px;
   }
   
 
@@ -80,7 +91,7 @@
 	font-family: 'LeferiPoint-WhiteObliqueA';
 	color: rgb(85, 85, 85);
 	font-weight: 600;
-	font-size: 20px;
+	font-size: 17px;
 	text-align: center;
 	margin-top: 20px;
   }
@@ -113,6 +124,7 @@
   
   .reviewmain .items div:hover span {
    bottom: 90px;
+   font-size:25px;
   }
   
  
@@ -173,7 +185,7 @@
 }
 
 .noresult {
-	margin: 50px 10%; 
+	margin: 135px; 
 	text-align:center;
 	font-family: 'LeferiPoint-WhiteObliqueA';
 	font-size: 20px;

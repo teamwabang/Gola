@@ -12,17 +12,20 @@
           </div>
           <div class="modal-body">
             <div class="input-group input-group-sm mb-3">
-              <span class="input-group-text" id="inputGroup-sizing-sm">이메일 </span>
 		   		<!-- 이메일 변경 시작 -->
 		      	<div id="change-email-area">
 		      	<form th:name="form3" method="post">
 		      		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			    	<input type="hidden" name="userId" th:value="${dto.getUserId() }" readonly>
-			    	<!-- 변경할 이메일 입력  -->
-			    	<input type="text" id="userEmailedit" name="userEmail" maxlength="50" placeholder="변경할 이메일을 입력하세요.">
-			    	 <!-- 유효성 검사문구 -->
-			    	 <p id="userEmailCheck"></p>
-					<input type="button" id="change-email-btn" value="변경">
+			    	<div class="modal-div">
+				    	<div class="modal-editcheck">
+					    	<!-- 변경할 이메일 입력  -->
+					    	<input type="text" id="userEmailedit" name="userEmail" maxlength="50" placeholder="변경할 이메일을 입력하세요.">
+					    	<!-- 유효성 검사문구 -->
+					    	<p id="userEmailCheck"></p>
+				    	 </div>
+						<input type="button" class="modal-editbtn" id="change-email-btn" value="변경">
+					</div>
 				</form>
 				</div>
 				<!-- 이메일 변경 끝 -->
@@ -32,54 +35,6 @@
     </div>
 	</div>
 	
-	<script type="text/javascript">
-		
-	$('#userEmailedit').on('keyup' ,function() {
-		const email = document.getElementById('userEmailedit').value;
-		const checkResult = document.getElementById('userEmailCheck');
-		const emailLength = email.length;
-		const exp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-		
-		if(emailLength == 0){
-	    	checkResult.innerHTML = '필수항목입니다'
-	    	checkResult.style.color = 'red';
-	    }else if(!email.match(exp)){
-	    	checkResult.innerHTML = '올바르지 않은 이메일 형식입니다.'
-	    	checkResult.style.color = 'red';
-	    }else if(email.match(exp)) {
-			$.ajax({
-				url : "/emailCheck",
-				type : "post",
-				dataType : "json",
-				data : {"userEmail" : $("#userEmailedit").val()},
-				success : function(data) {
-					if(data == 1) {
-			          checkResult.innerHTML = '이미 사용하고 있는 이메일입니다'
-	    			  checkResult.style.color = 'red';
-			        } else if(data == 0) {
-			          $("#emailCheck").attr("value", "Y");
-			          checkResult.innerHTML = '사용가능한 이메일입니다'
-	    		 	  checkResult.style.color = 'blue';
-		        }
-		    }
-		})
-		}
-	});
-		
-		/*submit버튼 유효성*/
-		$(function() {
-			$("#change-email-btn").click(function() {
-				if(!/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/g.test($('#userEmailedit').val())) {
-					confirm("알맞은 이메일 형식으로 입력해주세요");
-				} else if(confirm("회원정보를 수정하시겠습니까?")) {
-		    		// 폼 내부의 데이터를 전송할 주소
-		    		document.form3.action="mypage/modify/email";
-		    		document.form3.submit();	// 제출
-	    		}
-			});
-		});
-
-	
-	</script>
+	<script type="text/javascript" src="/js/mypage_email_change.js"></script>
 </body>
 </html>

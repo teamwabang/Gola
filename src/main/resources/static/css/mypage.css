@@ -235,7 +235,16 @@ main {
 	margin-top:180px;
 }
 
+.mainUserPwd {
+	font-size: 16px;
+	margin-right: 15px;
+}
 
+.mainUserPwd,
+.mainUserNickname,
+.mainUserEmail {
+	font-family: 'LeferiPoint-WhiteObliqueA';
+}
 
 
 .picModalBtn {
@@ -253,6 +262,14 @@ main {
 	color:white !important;
 	border:1px solid crimson;
 	transition:0.1s!important;
+}
+
+.pic-editbtn {
+	background: none;
+    border: none;
+    width: 50px;
+    font-weight: 600;
+    color: rgba(0,0,255,0.3);
 }
 
 .userinfoIdEmail{

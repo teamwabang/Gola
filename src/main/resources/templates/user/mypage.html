@@ -8,25 +8,18 @@
 
 	<!-- CSS -->
     <link rel="stylesheet" href="/css/styles.css" />
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-     <!-- fontawesome -->
+  	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/c21d7630fc.js" crossorigin="anonymous"></script>
     <!-- JavaScript -->
     <script type="text/javascript" src="/js/chatbot.js"></script>
-	<script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
-	
-	<style>
-		.mypage-input-btn {
-			border-style: none;
-			width: 200px;
-			height: 30px;
-		}
-	</style>
-	
-	
-
+    <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="/js/click_disable.js"></script>
+  
 </head>
-<body class="mypageBody">
+<body class="mypageBody" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
     <header class="mypageHeader shadow p-3 mb-5 bg-body rounded">
       <div class="goIndex">
         <h3><a th:href="@{/}" id="homebutton">Home</a></h3>	<!-- 나중에 Gola Home 지우고 image로 대체 -->
@@ -47,8 +40,8 @@
           </div>
           <div class="infoFunction">
             <ul class="infologoutmenu">
-              <li class="infoLogout"><a class="infoLogout btn btn-light" th:href="@{logout}"> <i class="fa-solid fa-arrow-right-from-bracket"></i>  로그아웃</a></li>
-              <li class="infoLogout"><a class="infoLogout btn btn-light" th:href="@{mypage/leave}"><i class="fa-solid fa-person-hiking"></i>   회원탈퇴</a></li>
+              <li class="infoLogout"><a class="infoLogout btn btn-light" th:href="@{/logout}"> <i class="fa-solid fa-arrow-right-from-bracket"></i>  로그아웃</a></li>
+              <li class="infoLogout"><a class="infoLogout btn btn-light" th:href="@{/mypage/leave}"><i class="fa-solid fa-person-hiking"></i>   회원탈퇴</a></li>
             </ul>
           </div>
          </div>
@@ -63,25 +56,24 @@
             <img class="mainUserMainPic" th:src="${imgSrc}">
             </div>
             <div class="mainUseredit">
+            <label>비밀번호</label>
+            <div class="mainUserPwd">*********</div>
+           <!-- 비밀번호 변경 -->
+			<div class="btnedit"><button class="btn btn-dark changeBtn" data-bs-toggle="modal" data-bs-target="#pwdChange"><i class="fa-solid fa-pen"></i></button></div>
+          </div>
+            <div class="mainUseredit">
+              <label>닉네임</label>
               <div th:text="${dto.getUserNickname() }" class="mainUserNickname"></div>
-              <!-- 닉네임 변경--> 
+              <!-- 닉네임 변경-->
 			  <div class="btnedit"><button class="btn btn-dark changeBtn" data-bs-toggle="modal" data-bs-target="#nickNameChange"><i class="fa-solid fa-pen"></i></button></div>  
           	  <!-- <div th:text="${dto.getUserEmail() }" class="mainUserMainId"></div> -->
             </div>
-              		
-            <div class="mainUseredit">
-            <div>*********</div>
-           <!-- 비밀번호 변경 -->
-			<div class="btnedit"><button class="btn btn-dark changeBtn" data-bs-toggle="modal" data-bs-target="#pwdChange"><i class="fa-solid fa-pen"></i></button></div>
-          </div>   		
-              		
-              		   <div class="mainUseredit">
-              <div th:text="${dto.getUserEmail() }" class="mainUserNickname"></div>
-             			<!-- 이메일 변경 -->
-			<div class="btnedit"><button class="btn btn-dark changeBtn" data-bs-toggle="modal" data-bs-target="#emailChange"><i class="fa-solid fa-pen"></i></button></div>
-  
-          	  <!-- <div th:text="${dto.getUserEmail() }" class="mainUserMainId"></div> -->
- 
+          <div class="mainUseredit">
+          <label>이메일</label>
+          <div th:text="${dto.getUserEmail() }" class="mainUserEmail"></div>
+          <!-- 이메일 변경 -->
+          <div class="btnedit"><button class="btn btn-dark changeBtn" data-bs-toggle="modal" data-bs-target="#emailChange"><i class="fa-solid fa-pen"></i></button></div>
+			<!-- <div th:text="${dto.getUserEmail() }" class="mainUserMainId"></div> -->
           </div>
     	 </div>  
       </div>
@@ -90,9 +82,9 @@
           <div class="mainTitle RecipeTitle"> 마이레시피 </div>        
           <ul class="myRecipes">
             <li class="myRecipe" th:each="item : ${list}">
-            	<a th:href="@{/bbs/detail(bno = ${item.bno})}">
+            	<a th:href="@{/review/detail(bno = ${item.bno})}">
             		<img th:src="${item.imgSrc}">
-					<span th:text="${item.title}"></span>
+					<span id="itemtitle" th:text="${item.title}"></span>
 				</a>
             </li>
           </ul>
@@ -113,4 +105,14 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
 </body>
+<script type="text/javascript">
+$("#itemtitle").each(function() {
+	const length = 10;
+	$(this).each(function() {
+		if($(this).text().length >= length) {
+			$(this).text($(this).text().substr(0, length)+"...")
+		}
+	});
+});
+</script>
 </html>

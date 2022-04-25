@@ -38,6 +38,7 @@
     <select id="selectListBbs" resultType="BbsDTO" parameterType="BbsDTO" >
 
 		/*com.recipe.gola.mapper.BbsMapper.selectListBbs*/
+
         SELECT 
         	bno
         	, title
@@ -54,14 +55,24 @@
 			) as img_src		/*이미지주소, 최상위 1건만*/
         
         FROM board b
-        WHERE 1=1
-        <if test='writer != "" and writer != null '>
-			AND writer = #{writer}
-        </if>        
-        <if test='schTxt != "" and schTxt != null '>
-			AND title like CONCAT('%',#{schTxt},'%')
-        </if>   
-        ORDER BY reg_date DESC, bno DESC
+		<choose>
+			<when test='indexYn == "Y" '>
+		  		ORDER BY view_cnt DESC, bno DESC
+        		LIMIT 4	        
+		 	</when>
+	        <otherwise>
+		        WHERE 1=1
+		        <if test='writer != "" and writer != null '>
+					AND writer = #{writer}
+		        </if>        
+		        <if test='search != "" and search != null '>
+					AND title like CONCAT('%',#{search},'%')
+					OR level like CONCAT(#{search})
+		        </if>   	        
+		        ORDER BY reg_date DESC, bno DESC
+	        </otherwise>
+        </choose>
+
         
     </select>
 
@@ -78,6 +89,9 @@
         	, date_format(reg_date, '%Y-%m-%d') as reg_date
         	, level
 			, (SELECT userNickname FROM user u WHERE u.userId = b.writer) as userNickname
+			, (SELECT 
+				IFNULL(CONCAT('/upload/',MAX(file_savename)),'/images/default.png')
+				FROM files f where f.bno = b.writer) as userImg
         FROM board b     
         WHERE bno = #{bno}
     </select>
@@ -167,6 +181,12 @@
      <update id="updateCommentCnt" parameterType="map">
         UPDATE board
         SET   comment_cnt = comment_cnt + #{cnt}
+        WHERE bno = #{bno}
+    </update>
+    
+         <update id="updateCnt" parameterType="string">
+        UPDATE board
+        SET   view_cnt = view_cnt + 1
         WHERE bno = #{bno}
     </update>
     
