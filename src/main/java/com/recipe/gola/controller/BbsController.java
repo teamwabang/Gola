@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.recipe.gola.config.auth.PrincipalDetails;
 import com.recipe.gola.dto.*;
 import com.recipe.gola.service.BbsService;
+import com.recipe.gola.service.CommentService;
 import com.recipe.gola.service.FilesService;
 
 import java.io.File;
@@ -35,6 +36,9 @@ public class BbsController {
 
 	@Autowired
 	FilesService filesService;
+	
+	@Autowired
+    CommentService commentService;
 	
     //게시판 목록 페이지 이동
     @GetMapping("review/list")
@@ -67,7 +71,6 @@ public class BbsController {
 
     	m.addAttribute("bbs",bbsService.selectDetailBbs(bbsDto));
     	m.addAttribute("fileList",bbsService.selectListFiles(bbsDto.getBno()));
-    	
     	 
     	bbsService.updateCnt(bbsDto.getBno());
 //    	if(bbsDto.getWriter().equals(principaldetail.getUsername())) {
@@ -134,14 +137,18 @@ public class BbsController {
 		PrintWriter out;
 		out = response.getWriter();
 		
+		final String bno = bbsDto.getBno();
+		
 		int result;
 
 		try {
+			
+			commentService.deleteAll(Integer.parseInt(bno));				
+			
 			result = bbsService.deleteBbs(bbsDto);
 			//마이바티스에서 delete문이 성공하면 숫자 1을 반환합니다.
 			if(result > 0) {
 				
-				final String bno = bbsDto.getBno();
 
 				//게시글번호 기준으로 전체 파일목록을 조회한다.
 				List<FilesDTO> deleteListFiles= bbsService.selectListFiles(bno);
@@ -162,6 +169,7 @@ public class BbsController {
 					log.info("::::::::: 파일정보 삭제결과 result >>>>>> " +result);
 				}
 				
+
 				
 				//컨트롤러에서 javascript dom을 생성하여 alert메세지를 호출후 location.href함수로 페이지를 이동합니다.
 				out.println("<script>alert('게시글을 삭제하였습니다.');  location.href='/review';</script>");

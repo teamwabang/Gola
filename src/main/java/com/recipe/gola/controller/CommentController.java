@@ -75,13 +75,15 @@ public class CommentController {
      }
     }// 지정된 댓글을 삭제하는 메서드
     @DeleteMapping("/comments/{cno}")  // DELETE /comments/1?bno=1085  <-- 삭제할 댓글 번호
-    public ResponseEntity<String> remove(@PathVariable Integer cno, Integer bno, HttpSession session, @AuthenticationPrincipal PrincipalDetails principaldetail) {
+    public ResponseEntity<String> remove(@PathVariable Integer cno, Integer bno, Integer pcno, HttpSession session, @AuthenticationPrincipal PrincipalDetails principaldetail) {
         String commenter = (String)session.getAttribute("UserNickname");
 //        String commenter = "asdf";
 
-        	System.out.println("cno :"+cno+" bno :"+bno);
+        System.out.println("cno :"+cno+" bno :"+bno+" pcno :"+pcno);
+
         try {
-            int rowCnt = service.remove(cno, bno, principaldetail.getUsername());
+
+       		int rowCnt = service.remove(cno, bno, pcno, principaldetail.getUsername());
 
             if(rowCnt!=1)
                 throw new Exception("Delete Failed");

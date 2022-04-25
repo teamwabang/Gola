@@ -15,9 +15,17 @@
     </select>
 
     <delete id="delete" parameterType="hashmap">
-        DELETE FROM comment WHERE cno = #{cno}
+        DELETE 
+        FROM comment 
+        WHERE cno = #{cno}
     </delete>
-
+    
+    <delete id="childDelete" parameterType="int">
+    	DELETE
+    	FROM comment
+    	WHERE pcno = #{pcno}    
+    </delete>
+    
     <insert id="insert" parameterType="CommentDTO">
         INSERT INTO comment
             (bno, pcno, comment, commenter, reg_date, up_date)
