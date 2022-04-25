@@ -6,11 +6,24 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">TIMER</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+	    <center>
+	    	<h1 id="clock" style="color:gray;"></h1>
+		</center>
+	    <div class="containerMrs">
+	        <p id="output"><b>00:00:00</b></p>
+	        <div id="controls" align="center">
+	            <button id="startPause" onclick="startPause()"><b id="start">시작</b></button>
+	            <button onclick="reset()" id="reset"><b id="reset">리셋</b></button>
+	        </div>
+	    </div>
+	    <center>
+	        <h1 id=stopTime></h1>
+	        <h1 id="breaktime"></h1>
+	    </center>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
