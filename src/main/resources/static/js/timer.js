@@ -9,9 +9,9 @@ function startPause() {
         running = 1;
         increment();
         document.getElementById('stopTime').innerHTML="";
-        document.getElementById("start").innerHTML = "일시중지";
-        document.getElementById("startPause").style.backgroundColor = "red";
-        document.getElementById("startPause").style.borderColor = "red";
+        document.getElementById("start").innerHTML = "STOP";
+        document.getElementById("startPause").style.backgroundColor = "rgba(255,0,0,0.5)";
+        
 
     }
     else {
@@ -33,10 +33,9 @@ function startPause() {
         if(sec<10){
             sec = '0'+sec;
         }
-        document.getElementById('stopTime').innerHTML= "일시정지  "+nowMonth+"/"+nowDate+" "+hour+":"+min+":"+sec;
-        document.getElementById("start").innerHTML = "계속";
-        document.getElementById("startPause").style.backgroundColor = "green";
-        document.getElementById("startPause").style.borderColor = "green";
+        document.getElementById('stopTime').innerHTML= "PAUSE : "+hour+":"+min+":"+sec;
+        document.getElementById("start").innerHTML = "CONTINUE";
+        document.getElementById("startPause").style.backgroundColor = "rgba(51,170,51,0.5)";
     }
 }
 //리셋
@@ -45,10 +44,9 @@ function reset() {
     time = 0;
     clearTimeout(timerid);
     document.getElementById('stopTime').innerHTML="";
-    document.getElementById("start").innerHTML = "시작";
+    document.getElementById("start").innerHTML = "START";
     document.getElementById("output").innerHTML = "<b>00:00:00</b>";
-    document.getElementById("startPause").style.backgroundColor = "green";
-    document.getElementById("startPause").style.borderColor = "green";
+    document.getElementById("startPause").style.backgroundColor = "rgba(51,170,51,0.5)";
 }
 //타이머 시간측정 
 function increment() {
