@@ -76,6 +76,7 @@
 			<div id="replyForm" style="display: none">
 			    <input type="text" name="replyComment">
 			    <button id="wrtRepBtn" class="delBtn" type="button">등록</button>
+			    <button id="cancelRepBtn" class="delBtn" type="button">취소</button>
 			</div>
           </div>        
         </div>
@@ -175,6 +176,13 @@
 	            $("#replyForm").appendTo("body");
 	        });
 
+	     	$("#cancelRepBtn").click(function() {
+	     		$("#replyForm").css("display","none");
+	     		$("input[name=replyComment]").val('')
+	            $("#replyForm").appendTo("body");
+
+	     	})
+	     
 	        $("#sendBtn").click(function(){
 	            let cno = $(this).attr("data-cno");
 	            let comment = $("input[name=comment]").val();
