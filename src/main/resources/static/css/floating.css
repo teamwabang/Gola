@@ -1,0 +1,14 @@
+.floating {
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	position: fixed;
+	left: 95.5%;
+	top: 80%;
+	height: 55px;
+	width: 55px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	border-radius: 22px;
+	border:none;
+	background-color: #FFFFFF;
+}
