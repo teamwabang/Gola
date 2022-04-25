@@ -378,3 +378,19 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
     border: none;
     color: rgba(0, 0, 200, 0.3);
 }
+
+#modBtn {
+	border-bottom: 1px solid black;
+	padding-bottom: 5px;
+}
+
+#cancelModBtn {
+	padding-top: 5px; 
+}
+
+.modClass {
+	display: flex;
+	flex-direction: column;
+	width:40px;
+	margin-left: 4px;
+}

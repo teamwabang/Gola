@@ -87,8 +87,11 @@
         </div>
         <div class="boardWrite">
           <input type="text" class="boardWriteComment" id="commentDiv" name="comment" placeholder="댓글달기">
-          <input sec:authorize="isAuthenticated()" type="button" id="sendBtn" class="sendMod" value="게시">
-          <input sec:authorize="isAuthenticated()" type="button" id="modBtn" class="sendMod" value="수정">
+          <div class="modClass">
+          	<input sec:authorize="isAuthenticated()" type="button" id="sendBtn" class="sendMod" value="게시">
+          	<input sec:authorize="isAuthenticated()" type="button" id="modBtn" class="sendMod" value="수정">
+          	<input sec:authorize="isAuthenticated()" type="button" id="cancelModBtn" class="sendMod" value="취소">
+          </div>
         </div>
       </div>
     </div> 
@@ -97,6 +100,7 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		$("#modBtn").hide();
+		$("#cancelModBtn").hide();
 	})
 	
 	
@@ -128,6 +132,7 @@
 			
 	        $("#sendBtn").fadeIn();
 	        $("#modBtn").fadeOut();
+	        $("#cancelModBtn").fadeOut();
 	        
 	        if(comment.trim()==''){
 	            alert("댓글을 입력해주세요.");
@@ -218,6 +223,7 @@
 	           
 	            $("#sendBtn").fadeOut();
 	            $("#modBtn").fadeIn();
+	            $("#cancelModBtn").fadeIn();
 	            
 	            
 	        });
@@ -254,6 +260,14 @@
                 form.attr("method", "post");
              	form.submit();
             });
+			
+			$("#cancelModBtn").on("click", function(){
+				$("#modBtn").fadeOut();
+				$("#cancelModBtn").fadeOut();
+				$("#sendBtn").fadeIn();
+				$("#commentDiv").val('');
+				$("#commentDiv").focus();
+			})
 			
 		});
 	
