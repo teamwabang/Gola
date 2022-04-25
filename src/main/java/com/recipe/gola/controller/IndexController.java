@@ -42,8 +42,8 @@ public class IndexController {
 		return "index";
 	}
 	
-	@GetMapping("gola")
-	public String gola() {
+	@GetMapping("about")
+	public String about() {
 		logger.info("-----> 소개합니다, 우리가 만든 이야기를 | 골라");
 		return "about/teamGOLA";
 	}

@@ -40,8 +40,8 @@
           </div>
           <div class="infoFunction">
             <ul class="infologoutmenu">
-              <li class="infoLogout"><a class="infoLogout btn btn-light" th:href="@{logout}"> <i class="fa-solid fa-arrow-right-from-bracket"></i>  로그아웃</a></li>
-              <li class="infoLogout"><a class="infoLogout btn btn-light" th:href="@{mypage/leave}"><i class="fa-solid fa-person-hiking"></i>   회원탈퇴</a></li>
+              <li class="infoLogout"><a class="infoLogout btn btn-light" th:href="@{/logout}"> <i class="fa-solid fa-arrow-right-from-bracket"></i>  로그아웃</a></li>
+              <li class="infoLogout"><a class="infoLogout btn btn-light" th:href="@{/mypage/leave}"><i class="fa-solid fa-person-hiking"></i>   회원탈퇴</a></li>
             </ul>
           </div>
          </div>
@@ -82,7 +82,7 @@
           <div class="mainTitle RecipeTitle"> 마이레시피 </div>        
           <ul class="myRecipes">
             <li class="myRecipe" th:each="item : ${list}">
-            	<a th:href="@{/bbs/detail(bno = ${item.bno})}">
+            	<a th:href="@{/review/detail(bno = ${item.bno})}">
             		<img th:src="${item.imgSrc}">
 					<span id="itemtitle" th:text="${item.title}"></span>
 				</a>
