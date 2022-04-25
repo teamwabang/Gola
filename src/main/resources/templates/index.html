@@ -38,6 +38,7 @@
          <div class="bottomlineleft"><i class="fa-solid fa-fish fa-2x"></i></div>
          <div class="bottomlineright"><i class="fa-solid fa-fire-burner fa-2x"></i></div>
      </div>
+     	<div><a href="javascript:window.scrollTo(0,0);"></div>
    </div>
    </div>
  
@@ -53,44 +54,22 @@
              <h1> <span>LATEST </span> RECIPES  </h1>
          </div>
          <div class="items">
-             <div>
-                 <a th:href="@{/index}" data-featherlight="iframe" >
-                      <img src="/images/test1.jpg"></a>
-                 <i class="xi-plus-thin"></i>
-                 <p> 라면</p>
-                  <span> 난이도 '하' </span> 
-               </div>
-              
-             <div>
-                 <a th:href="@{/}">
-                     <img src="/images/test1.jpg">
-                 </a>
-                 <i class="xi-plus-thin"></i>
-                 <span> 난이도 '하' </span>
-                 <p>제육볶음</p>
-             </div>
-             <div >
-                 <a th:href="@{/}">
-                     <img src="/images/test1.jpg">
-                 </a>
-                 <i class="xi-plus-thin"></i>
-                 <span> 난이도 '하' </span>
-                 <p> 가지튀김</p>
-             </div>
-             <div >
-                 <a th:href="@{/}">
-                     <img src="/images/test1.jpg">
-                 </a>
-                 <i class="xi-plus-thin"></i>
-                 <span> 난이도 '중' </span>
-                 <p> 바질 파스타</p>
-             </div>
+             <div th:each="item : ${list}"> 
+				<a th:href="@{/bbs/detail(bno = ${item.bno})}">
+              		<img th:src="${item.imgSrc}">
+              	</a>
+               <i class="xi-plus-thin" ></i>
+               <span th:text="|난이도 '${item.level}' |"></span> 
+               <p th:text="${item.title}"></p> 
+           	</div>
          </div>
          <br>
          <br>
          <div class="seemorebox">
            <div class="seemoreline">
-             <p class="seemore"> see more <i class="fa-solid fa-angles-right"></i></p>
+           	<a href="/bbs/review">
+             	<p class="seemore">see more &nbsp;<i class="fa-solid fa-angles-right"></i></p>
+			</a>
            </div>
          </div>
          <br>
@@ -136,7 +115,9 @@
          <br>
          <div class="seemorebox">
            <div class="seemoreline">
-             <p class="login btn btn-secondary loginFooterBtn"> see more <i class="fa-solid fa-angles-right"></i></p>
+            <a href="/bbs/review">
+             	<p class="seemore">see more &nbsp;<i class="fa-solid fa-angles-right"></i></p>
+			</a>
            </div>
          </div>
          <br>
@@ -169,6 +150,14 @@
 		    });
 		});
 	</script>
+    <script type="text/javascript" src="/js/logineye.js"></script>
+    
+    <script language="javascript">
+		if(document.readyState=="loading"){
+		location.href="javascript:window.scrollTo(0,0);";
+		}
+	</script>
+
 </body>
 
 </html>

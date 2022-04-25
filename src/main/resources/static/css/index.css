@@ -25,15 +25,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position:fixed;
+  top:0;
+  left:0;
+  width: 100%;
   height: 100%;
-  width:100%;
-  top: 0;
-  animation: hideSplashScreen 0.4s ease-in-out forwards;
+
+  animation:hideSplashScreen ease-in-out forwards; 
   animation-delay: 0.9s;
-  left: 0;
-  right:0;
-  bottom:0;
+
   visibility:inherit;
   box-sizing:border-box;
   overflow-y: hidden;
@@ -43,12 +43,13 @@
 }
 
 .loading {
-  width: 8%;
-  height: 16%;
+  width: 10%;
+  height: 17%;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-size:23px;
 }
 
 .upline {
@@ -63,14 +64,14 @@
   width: 100%;
   height: 100%;
   color: rgb(253, 114, 0);
-  animation: fadein 0.5s linear forwards;
+  animation: fadein 0.5s 0.3s linear forwards;
   
 }
 
 .uplineright {
   flex: 50%;
   color: rgb(110, 0, 253);
-  animation: fadein 0.3s 0.2s linear forwards;
+  animation: fadein 0.3s 0.4s linear forwards;
 }
 
 .bottomline {
@@ -82,13 +83,13 @@
 .bottomlineleft {
   flex: 50%;
   color: rgb(0, 194, 253);
-  animation: fadein 0.3s 0.4s linear forwards;
+  animation: fadein 0.3s 0.6s linear forwards;
 }
 
 .bottomlineright {
   flex: 50%;
   color: rgb(253, 0, 55);
-  animation: fadein 0.3s 0.3s linear forwards;
+  animation: fadein 0.3s 0.5s linear forwards;
 }
 
 @keyframes fadein {
@@ -101,7 +102,7 @@
   }
 }
 
-@keyframes  hideSplashScreen{
+@keyframes hideSplashScreen{
   from {
     opacity: 1;
   } to {
@@ -109,7 +110,6 @@
     visibility: hidden;
   }
 }
-/*end of intro */
 
 
 
@@ -177,6 +177,18 @@
     height: 380px;
 }
 
+
+.items div a {
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 0 9px rgba(54, 53, 53, 0.3);
+    position: relative;
+    cursor:pointer;
+    width: 280px;
+    height: 380px;
+}
+
+
 .indexmain .items div a img {
     display: block;
   	width: 280px;
@@ -191,12 +203,15 @@
     opacity: 0;
     font-size: 40px;
     color: #fff;
+    z-index:13;
+    height: 100%;
+    text-align: center;
+    padding-top: 50%;
 }
 
 .items div span {
-    position: absolute;
-    bottom: -40px;
-    margin:auto;
+    position: relative;
+    bottom: -70px;
     width:100%;
     text-align: center;
     padding: 10px;
@@ -205,6 +220,7 @@
     font-size: 30px;
     font-family: 'Nanum Gothic', sans-serif;
     color: white;
+    z-index:8;
 }
 
 .indexmain .items div p {
@@ -213,7 +229,10 @@
 	font-weight: 600;
 	font-size: 20px;
 	text-align: center;
-	margin-top: 20px;
+	margin-top:20px;
+    box-sizing: border-box;
+    position:relative;
+    bottom:30px;
 }
 
 .indexmain .items div span,
@@ -222,6 +241,11 @@
   transition: 0.2s;
   pointer-events: all;
 }
+
+.itmes div i:before {
+  width: 100%;
+  height: 100%;
+ }
 
 .items div:before {
     content: '';
@@ -252,9 +276,11 @@
 }
 
 .indexmain .seemore {
-  border: 1px solid #000;
-  height: 40px;
-  width: 120px;
+  border: 1px solid rgb(60, 60, 60);
+  background-color: #000;
+  color:white;
+  height: 42px;
+  width: 130px;
   text-align: center;
   padding-top: 8px;
   margin-left: 45%;
@@ -262,6 +288,7 @@
   margin-top: 40px;
   cursor:pointer;
   border-radius:6px;
+  font-size:18px;
 }
 
 .indexmain .seemore:hover {

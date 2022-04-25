@@ -22,7 +22,15 @@
   justify-content: center;
   font-size: 200%;
   padding-top:40px;
+  color:cirmson !important;
+  font-family: 'Montserrat Alternates', sans-serif;
 }
+
+#homebutton:hover {
+	color:crimson !important;
+}
+
+
 
 .userInfo, .infoNav, .infoFunction {
   width: 100%;
@@ -100,6 +108,12 @@
 	color:white !important;
 }
 
+.btnedit button:hover {
+	background-color:crimson !important;
+	color:white !important;
+	border: 1px solid crimson !important;
+}
+
 main {
   height: 100%;
   width: 70%;
@@ -133,7 +147,7 @@ main {
   padding-bottom: 12px;
   font-family: 'LeferiPoint-WhiteObliqueA';
   font-size:20px;
-  font-weight:bold;
+  font-weight:900;
 }
 
 .mainUserMainPic {
@@ -144,6 +158,12 @@ main {
   box-shadow:1px 1px 15px #dddddd;
 }
 
+
+.mainUseredit label, #itemtitle {
+	 font-family: 'LeferiPoint-WhiteObliqueA';
+	 font-weight:600px;
+	 color:black;
+}
 .myRecipes {
   height: 250px;
   width: 100%;

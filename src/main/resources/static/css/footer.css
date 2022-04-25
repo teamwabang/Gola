@@ -48,7 +48,7 @@ a {
 .footernav li a:before {
     content: '';
     position: absolute;
-    background-color: dodgerblue;
+    background-color: crimson;
     height: 4px;
     width: 0;
     bottom: -6px;
@@ -80,4 +80,8 @@ a {
     border: 1px solid #000;
     height: 20px;
     text-align: center;
+}
+
+#footertopbutton a:hover{
+	color:crimson !important;
 }

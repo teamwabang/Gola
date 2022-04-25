@@ -9,4 +9,26 @@
 @import "detail.css";
 @import "error.css";
 @import "nick.css";
-@import "featherlight.css";
+@import "teamgola.css";
+@import "recipe_detail.css";
+@import "floating.css";
+@import "timer.css";
+
+
+
+/* scroll style */
+*::-webkit-scrollbar {
+   width: 15px;
+ }
+*::-webkit-scrollbar-thumb {
+   background-color: #b8b8b8;
+   border-radius: 10px;
+   background-clip: padding-box;
+   border: 2px solid transparent;
+ }
+*::-webkit-scrollbar-track {
+   background-color: none;
+   border-radius: 10px;
+   box-shadow: inset 0px 0px 5px white;
+ }
+/*end of scroll style*/
