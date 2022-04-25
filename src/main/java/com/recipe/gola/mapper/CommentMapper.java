@@ -15,7 +15,7 @@ public interface CommentMapper {
     int count(Integer bno) throws Exception // T selectOne(String statement)
     ;
 
-    int deleteAll(Integer bno) // int delete(String statement)
+    int deleteAll(int bno) // int delete(String statement)
     ;
 
     int delete(Map<String, Object> map) throws Exception // int delete(String statement, Object parameter)
@@ -46,5 +46,8 @@ public interface CommentMapper {
     CommentDTO read(Integer cno) throws Exception;
 
     int modify(CommentDTO commentDto) throws Exception;
+    
+    int childDelete(int pcno) // int delete(String statement)
+    ;
 
 }

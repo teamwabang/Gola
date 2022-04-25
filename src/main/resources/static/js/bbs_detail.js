@@ -135,9 +135,11 @@ $(document).ready(function() {
 	        $("#commentList").on("click", ".delBtn",function(){
 	            let cno = $(this).parent().attr("data-cno");
 	            let bno = $(this).parent().attr("data-bno");
+	            let pcno = $(this).parent().attr("data-pcno");
+	            
 	            $.ajax({
 	                type: 'DELETE',       // 요청 메서드
-	                url: '/comments/' + cno + '?bno=' + bno,  // 요청 URI
+	                url: '/comments/' + cno + '?bno=' + bno+ '&pcno=' +pcno,  // 요청 URI
 	                success: function (result) {
 	                    alert(result)
 	                    showList(bno);
