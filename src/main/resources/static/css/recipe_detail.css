@@ -3,23 +3,25 @@
 	height: 500px;
 }
 .gola_recipe_menuimg:hover {
-	transform: scale(1.5);
-	-webkit-transform: scale(1.5);
-	-moz-transform: scale(1.5);
-	-ms-transform: scale(1.5);
-	-o-transform: scale(1.5);
+	transform: scale(1.2);
+	-webkit-transform: scale(1.2);
+	-moz-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	-o-transform: scale(1.2);
 	cursor: pointer;
 }
 .gola_recipe_linkimg {
-	width: 150px;
-	height: 100px;
+	width: 300px;
+	height: 200px;
+	margin: 0px 10px 10px;
+	text-align: center;
 }
 .gola_recipe_linkimg:hover {
-	transform: scale(2.0);
-	-webkit-transform: scale(2.0);
-	-moz-transform: scale(2.0);
-	-ms-transform: scale(2.0);
-	-o-transform: scale(2.0);
+	transform: scale(1.3);
+	-webkit-transform: scale(1.3);
+	-moz-transform: scale(1.3);
+	-ms-transform: scale(1.3);
+	-o-transform: scale(1.3);
 	cursor: pointer;
 }
 .gola_reference {
@@ -28,4 +30,18 @@
 }
 .gola_reference_img {
 	transform: scale(0.4);
+}
+.gola_strong{
+	font-size: 22px !important;
+	color: black;
+	margin:20px 10px;
+	font-family: 'LeferiPoint-WhiteObliqueA' ;
+	font-weight:bold !important;
+}
+.gola_discription{
+	font-size: 18px !important;
+	color:  rgba(0, 0, 0, 0.7);
+	margin:30px 5px 30px;
+	font-family: 'LeferiPoint-WhiteObliqueA' ;
+	font-weight:bold !important;
 }
