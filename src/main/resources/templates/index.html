@@ -58,7 +58,7 @@
          </div>
          <div class="items">
              <div th:each="item : ${list}"> 
-				<a th:href="@{/bbs/detail(bno = ${item.bno})}">
+				<a th:href="@{/review/detail(bno = ${item.bno})}">
               		<img th:src="${item.imgSrc}">
               	</a>
                <i class="xi-plus-thin" ></i>
