@@ -13,6 +13,8 @@
 @import "recipe_detail.css";
 @import "floating.css";
 @import "timer.css";
+@import "write.css";
+
 
 /* scroll style */
 *::-webkit-scrollbar {
