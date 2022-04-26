@@ -16,7 +16,7 @@
 	<!-- 회원가입 -->
 	<insert id="insertuser">
 	<![CDATA[
-		INSERT INTO gola.user (userId, userPwd, userNickname, userEmail, userAuth, regdate)
+		INSERT INTO user (userId, userPwd, userNickname, userEmail, userAuth, regdate)
 		VALUES(#{userId}, #{userPwd}, #{userNickname}, #{userEmail}, "USER", now())
 	]]>
 	</insert>
