@@ -1,0 +1,27 @@
+/*Web Font*/
+@font-face {
+  font-family: 'LeferiPoint-WhiteObliqueA';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-WhiteObliqueA.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.writebody{
+	margin : 0 20%;
+}
+.container {
+	justify-content:center;
+}
+
+.writehead{
+	font-family: 'LeferiPoint-WhiteObliqueA' !important;
+	font-weight:700 !important;
+	font-size:24px;
+	
+}
+
+#form{
+	font-family: 'LeferiPoint-WhiteObliqueA' !important;
+	font-weight:700 !important;
+}
+
