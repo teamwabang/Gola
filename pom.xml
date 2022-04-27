@@ -11,8 +11,8 @@
 	<groupId>com.recipe</groupId>
 	<artifactId>gola</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>gola</name>
 	<packaging>war</packaging>
+	<name>gola</name>
 	<description>Spring boot recipe gola</description>
 	<properties>
 		<java.version>1.8</java.version>
