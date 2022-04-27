@@ -92,7 +92,7 @@
 	            let schTxt = $('#search').val();      
 	               let form = $("#form");
 	                form.attr("method", "get");
-	                form.attr("action", "/bbs/review");
+	                form.attr("action", "/review");
 	                form.submit();                
 	         });   
 
@@ -145,7 +145,7 @@
 	                for( let item of list) {
 	                	const innerDiv = document.createElement("div");
 	                	const innerA = document.createElement("a");
-	                	innerA.setAttribute("href","/bbs/detail?bno="+item.bno);
+	                	innerA.setAttribute("href","/review/detail?bno="+item.bno);
 	                	const innerImg = document.createElement("img");
 	                	innerImg.setAttribute("src",item.imgSrc);
 	                	innerA.appendChild(innerImg);
