@@ -42,7 +42,6 @@
 								<th>NO</th>
 								<th>글제목</th>
 								<th>작성자</th>
-								<th>조회수</th>
 								<th>작성일</th>
 							</tr>
 						</thead>
@@ -51,7 +50,6 @@
 									<td th:text="${item.bno}"></td> 
 									<td><a th:text="${item.title}" th:href="@{/bbs/detail(bno = ${item.bno})}"></a></td> 
 									<td th:text="${item.writer}"></td> 
-									<td th:text="${item.view_cnt}"></td>
 									<td th:text="${#dates.format(item.regDate, 'yyyy-MM-dd')}"></td> 
 								</tr>
 						</tbody>
