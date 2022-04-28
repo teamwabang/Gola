@@ -16,11 +16,11 @@ import lombok.Data;
  * 
  * Created by Team Gola on 2022-04-01
  * 
- * @author 
- * @author 
- * @author 
- * @author 
- * @author 
+ * @author 김율리아
+ * @author 박병권
+ * @author 엄지혜
+ * @author 정재홍
+ * @author 한상민
  *
  */
 @Controller
