@@ -20,16 +20,17 @@ a {
     font-family: 'Montserrat Alternates', sans-serif;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   	height:70px;
+
 }
 
 .footernav {
     list-style: none;
     width: 700px;
-    background-color: #fff;
     border-radius: 10px;
     padding: 10px 10px;
     display: flex;
     margin-bottom: 0px;
+    background-color:transparent;
 }
 
 .footernav li {
@@ -41,14 +42,14 @@ a {
     font-size: 14px;
     position: relative;
     text-decoration-line:none;
-    color:#000
-    
+    color : #fff !important;    
+    z-index:999;
 }
 
 .footernav li a:before {
     content: '';
     position: absolute;
-    background-color: crimson;
+    background-color: #FE5E00;
     height: 4px;
     width: 0;
     bottom: -6px;
@@ -66,10 +67,11 @@ a {
     margin-top: 15px;
     margin-bottom: 15px;
     width: 500px;
-    background-color: #fff;
+    background-color: transparent;
     border-radius: 10px;
     padding: 10px 10px;
     text-align: right;
+    color: #fff;
 }
 
 .footername {
@@ -77,11 +79,16 @@ a {
 }
 
 .footerbottom {
-    border: 1px solid #000;
     height: 20px;
     text-align: center;
 }
 
-#footertopbutton a:hover{
-	color:crimson !important;
+
+#footertopbutton i{
+	color:#fff;
+	font-size:25px
+}
+
+#footertopbutton i:hover{
+	color:#FE5E00 !important;
 }

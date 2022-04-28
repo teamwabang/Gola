@@ -7,21 +7,67 @@
 }
 
 .writebody{
-	margin : 0 20%;
+	margin : 0px 20%;
+	background-image : url(/images/mypagebackground.png);
+	background-size:cover;
 }
 .container {
+	width:700px;
+	height:auto;
 	justify-content:center;
+	margin-top:5px;
 }
 
 .writehead{
-	font-family: 'LeferiPoint-WhiteObliqueA' !important;
-	font-weight:700 !important;
-	font-size:24px;
+	font-size:40px;
+	font-family: 'ROKAFSlabSerifBold' !important;
+    font-weight: 700 !important;
+    color:#cf6f03;
 	
 }
 
 #form{
-	font-family: 'LeferiPoint-WhiteObliqueA' !important;
-	font-weight:700 !important;
+	font-family: 'ROKAFSlabSerifBold' !important;
+    font-weight: 700 !important;
+	
 }
 
+#writecontainer label{
+	color:#fff;
+	margin-bottom:10px;
+	font-size:18px;
+}
+
+#writer {
+	color:#973800;
+}
+
+.writebutton{
+	text-align:center;
+	justify-content:center;
+
+}
+
+.writebutton button{
+    background-color: #fff;
+    border:1px solid #fff; 
+	color:#000;
+	width:100px;
+	height:40px;
+	font-size:18px;
+	margin-right:20px;
+	margin-left:20px;
+	font-family: 'ROKAFSlabSerifBold' !important;
+	font-weight:bold
+}
+
+
+.writebutton button:hover{
+    background-color: rgb(255, 94, 0);
+   border:1px solid rgb(255, 94, 0); 
+	color:#fff;
+}
+
+#content{
+   height: 150px !important;
+}

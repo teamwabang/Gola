@@ -22,18 +22,26 @@
 	<link rel="stylesheet" href="/css/featherlight.css">
 
 </head>
-<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" class="recipedetailbody">
 
     <!-- import header -->
     <header th:replace="layout/fragment :: fr_header"></header>
     <!-- end of import header -->
+  
+  
+        <!-- center title -->
+  	<div>
+  	<span class="detailtitle"> View Details</span>
+  	</div>
+  
+  	  <hr class="detailhr">   
 	<div th:each="detaillink : ${detaillink}">
 		<div th:style="@{text-align:center;}">
     		<img th:src="${detaillink.menuImg}" class="gola_recipe_menuimg"><br>
 		</div>
     	
     	
-	    <div th:each="detail : ${detail}" th:style="@{width:1024px; margin:0 auto;}">
+	    <div class="recipedetailmain" th:each="detail : ${detail}" th:style="@{width:1024px; margin:0 auto;}">
 			<Strong class="gola_strong">메뉴명</Strong>&nbsp;<span class="gola_discription" th:text="${detail.menu}"></span><br><br>
 	    	<Strong class="gola_strong">조리방법</Strong>&nbsp;<span class="gola_discription" th:text="${detail.how}"></span><br><br>
 	    	<Strong class="gola_strong">요리종류</Strong>&nbsp;<span class="gola_discription" th:text="${detail.kind}"></span><br><br>
@@ -45,6 +53,9 @@
 	    	<Strong class="gola_strong">재료</Strong><br>
 	    	<span class="gola_discription" th:text="${detail.material}"></span><br><br>
 	    	
+	    	  <div class="dot">
+	    	  	<span><i class="fa-solid fa-circle"></i>&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-circle"></i>&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-circle"></i></span>
+	    	  </div>
 	    	<Strong class="gola_strong">레시피</Strong><br><br>
 	    	
 	    	
