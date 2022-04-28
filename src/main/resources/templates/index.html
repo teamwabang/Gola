@@ -12,24 +12,131 @@
     <meta property="og:type" content="website">
     <title>우리들의 모든 레시피 | 골라</title>
 
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/c21d7630fc.js" crossorigin="anonymous"></script>
+    <!-- JavaScript -->
+ 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="/js/chatbot.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css">
+ 
+    
     <!-- CSS -->
     <link rel="stylesheet" href="/css/styles.css" />
   	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<<<<<<< Updated upstream
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/c21d7630fc.js" crossorigin="anonymous"></script>
     <!-- JavaScript -->
     <script type="text/javascript" src="/js/chatbot.js"></script>
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="/js/click_disable.js"></script>
+	<script type="text/javascript" src="/js/click_disable.js"></script>
+	<script type="text/javascript" src="/js/developer_tools.js"></script>
 	<!-- Featherlight.js -->
 	<script src="/js/featherlight.js"></script>
 	<link rel="stylesheet" href="/css/featherlight.css">
-	
-	
+=======
+    
+
+    
 </head>
 
+
+<body class="indexbody">
+
+<div id ="fullpage">
+	<div class="section">
+	  <!-- 상단 header 고정값 -->
+		
+		   <!-- 로고 -->
+		   <div class="golalogo">
+		     <img src="images/golalogo.png" alt="">
+		   </div>
+		   <!-- 로그인 -->
+		   <div sec:authorize="isAuthenticated()" class="indexloginlogout">
+					<form th:action="@{/logout}" method="post">
+				        <button id="indexbutton" class="logjoinbutton">로그아웃</button>
+				    </form>
+		  </div>
+		   <div sec:authorize="isAnonymous()" class="indexlogin" >  
+		     <button id="indexbutton" class="logjoinbutton" data-bs-toggle="modal" data-bs-target="#loginModal">
+				로그인
+			</button>
+		   </div>
+		   <!-- 회원가입 -->
+		   <div sec:authorize="isAnonymous()"  class="indexjoin">
+		   	<button id="indexbutton" class="logjoinbutton" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+						회원가입
+			</button>
+		   </div>
+		   
+	   		<div sec:authorize="isAuthenticated()" class="indexloginmypage" >
+				<form th:action="@{/mypage}" method="get">
+					<button id="indexbutton" class="logjoinbutton" >마이페이지</button>
+				</form>
+			</div>
+			<div sec:authorize="hasAuthority('ADMIN')" class="indexlogin">
+				<form th:action="@{admin/list}" method="get">
+					<button id="indexbutton" class="logjoinbutton">전체 회원목록</button>
+				</form>
+			</div>
+	   
+		   
+		   
+		
+		   <!-- trigger -->
+		   <div class="indextrigger">
+		     <span></span>
+		     <span></span>
+		     <span></span>
+		   </div>
+		   <!-- trigger 메뉴 -->
+		   <div class="navmodal-gnb">
+		     <div class="modalgnb">
+		       <a th:href="@{/recipe}">RECIPE</a>
+		       <a th:href="@{/review}">REVIEW</a>
+		     </div>
+		   </div>
+		   <!-- end of 상단 header 고정값 -->
+		
+>>>>>>> Stashed changes
+	
+	
+		<!--1 section -->
+		<div class="slide">
+	
+		  <div id="videogradient">
+		  
+		  </div>
+          <!-- 비디오  -->
+          <video id="indexvideo" loop muted data-autoplay playsinline>
+	           <source src="/images/cookingvideo.mp4" type="video/mp4">
+	
+		  </video>
+          
+          
+          <!-- 오른쪽 하단 문구 - 소개글 -->
+          <div class="videoheading">
+            <h1>
+              <span>오늘 뭐 먹지?</span>
+              식사시간만 되면 찾아오는 고민
+            </h1>
+            <p>
+              아직 메뉴를 정하지 못하셨나요? <br>
+              그렇다면, '골라'에서 다양한 레시피를 만나보세요.<br>
+            </p>
+            <a class="btn-seemore" href="">see more</a>
+          </div>
+          
+          <!-- 왼쪽 하단 문구 - since 2022 -->
+          <div class="indexsince">
+            <em>SINCE</em>
+            <span>2022</span>
+          </div>
+
+<<<<<<< Updated upstream
 <body class="indexbody" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
   <div class="introani">
     <div class="loading">
@@ -83,7 +190,7 @@
          <div class="items">
            <div>
              <a th:href="@{/}">
-               <img src="/images/test1.jpgg">
+               <img src="/images/test1.jpg">
              </a>
              <i class="xi-plus-thin"></i>
              <span> 난이도 '중' </span>
@@ -133,8 +240,24 @@
      <footer th:replace="layout/fragment :: fr_footer"></footer>
      <!-- end of import footer -->
      
+=======
+		</div>
+		
+		
+		<!--2 section -->
+		<div class="slide">slide22</div>
+		<!--3 section -->
+		<div class="slide">slide33</div>
+	</div>
+</div>
+>>>>>>> Stashed changes
 
-    
+	<!-- 	modal -->
+	<div th:insert="layout/loginModal :: fr_loginModal"></div>
+	<div th:insert="layout/joinModal :: fr_joinModal"></div>
+	
+	
+	
 	<script src="http://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -163,6 +286,30 @@
 		}
 	</script>
   <script type="text/javascript" src="/js/logineye.js"></script>
+  
+<script>
+
+$(document).ready(function() {
+    $('#fullpage').fullpage({
+        //options here
+        licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
+        autoScrolling:true,
+        scrollHorizontally: true,
+        nagivation: true,
+        navigationPosition: 'right',
+        fitToSection:true
+    });
+});
+
+</script>
+
+  <!-- trigger -->
+  <script>
+    $('.indextrigger').click(function () {
+      $(this).toggleClass('popup')
+      $('.navmodal-gnb').fadeToggle();
+    })
+  </script>
 </body>
 
 </html>
