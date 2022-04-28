@@ -100,11 +100,10 @@
           <!-- 비디오  -->
           <video id="indexvideo" loop muted data-autoplay playsinline>
 	           <source src="/images/cookingvideo.mp4" type="video/mp4">
-	
 		  </video>
           
           
-          <!-- 오른쪽 하단 문구 - 소개글 -->
+          <!-- 오른쪽 하단 문구 - 소개글(레시피게시판 연결) -->
           <div class="videoheading">
             <h1>
               <span>오늘 뭐 먹지?</span>
@@ -114,7 +113,7 @@
               아직 메뉴를 정하지 못하셨나요? <br>
               그렇다면, '골라'에서 다양한 레시피를 만나보세요.<br>
             </p>
-            <a class="btn-seemore" href="">see more</a>
+            <a class="btn-seemore" th:href="@{/recipe}">see more <i class="fa-solid fa-angle-right"></i><i class="fa-solid fa-angle-right"></i></a>
           </div>
           
           <!-- 왼쪽 하단 문구 - since 2022 -->
@@ -124,12 +123,129 @@
           </div>
 
 		</div>
-		
+		<!-- end of 1 section -->
 		
 		<!--2 section -->
-		<div class="slide">slide22</div>
+		<div class="slide">
+		 <!-- 비디오  -->
+         <div class="video-frame2">
+           <video id="indexvideo2" loop muted data-autoplay playsinline>
+	           <source src="/images/reviewvideo.mp4" type="video/mp4">
+		  </video>
+        </div>
+  
+       <!-- 중앙 하단 문구 - 소개글(리뷰게시판 연결) -->
+        <div class="videoheading2">
+          <h1>
+            <span>함께하는 순간</span>
+          </h1>
+          <p>
+            '골라'와 함께 내가 만든 요리를 
+            더 많은 사람과 즐겨보세요
+          </p>
+          <a class="btn-seemore" th:href="@{/review}">see more <i class="fa-solid fa-angle-right"></i><i class="fa-solid fa-angle-right"></i></a>
+        </div>
+		
+		
+		</div>
+		
+		<!--end of 2 section -->
+		
+		
+		
 		<!--3 section -->
-		<div class="slide">slide33</div>
+		<div class="slide">
+			<div class="section2background">
+
+        </div>
+        <div class="aboutus">
+          <h1><span>ABOUT</span>US</h1>
+        </div>
+
+        <div class="aboutbody">
+          <ul class="aboutgallery">
+            <li>
+              <div class="gallerycontent">
+                <h2 >김율리아(Kim Yulia)</h2>
+                <p>
+                  홈페이지 전체적인 레이아웃 구현
+                  회원관리 : 마이페이지, 로그인, 회원가입 화면 디자인수정, 아이디/닉네임/비밀번호 중복검사 추가
+                  회원가입 화면 디자인수정, 아이디/닉네임/비밀번호 중복검사 추가
+                </p>
+                <div class="galleryicon">
+                  <!-- 블로그 -->
+                  <a href="#"><i class="fa-solid fa-b"></i></a>
+                  <!-- 깃허브 -->
+                  <a href="#"><i class="fa-brands fa-github"></i></a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="gallerycontent">
+                <h2>박병권(Park)</h2>
+                <p>
+                  홈페이지 전체적인 레이아웃 구현
+                  회원관리 : 마이페이지, 로그인, 회원가입 화면 디자인수정, 아이디/닉네임/비밀번호 중복검사 추가
+                </p>
+                <div class="galleryicon">
+                  <!-- 블로그 -->
+                  <a href="#"><i class="fa-solid fa-b"></i></a>
+                  <!-- 깃허브 -->
+                  <a href="#"><i class="fa-brands fa-github"></i></a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="gallerycontent">
+                <h2>엄지혜(Eom)</h2>
+                <p>
+                  홈페이지 전체적인 레이아웃 구현
+                  회원관리 : 마이페이지, 로그인, 회원가입 화면 디자인수정, 아이디/닉네임/비밀번호 중복검사 추가
+                </p>
+                <div class="galleryicon">
+                  <!-- 블로그 -->
+                  <a href="#"><i class="fa-solid fa-b"></i></a>
+                  <!-- 깃허브 -->
+                  <a href="#"><i class="fa-brands fa-github"></i></a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="gallerycontent">
+                <h2>정재홍(Jeong)</h2>
+                <p>
+                  홈페이지 전체적인 레이아웃 구현
+                  회원관리 : 마이페이지, 로그인, 회원가입 화면 디자인수정, 아이디/닉네임/비밀번호 중복검사 추가
+                </p>
+                <div class="galleryicon">
+                  <!-- 블로그 -->
+                  <a href="#"><i class="fa-solid fa-b"></i></a>
+                  <!-- 깃허브 -->
+                  <a href="#"><i class="fa-brands fa-github"></i></a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="gallerycontent">
+                <h2>한상민(Han)</h2>
+                <p>
+                  홈페이지 전체적인 레이아웃 구현
+                  회원관리 : 마이페이지, 로그인, 회원가입 화면 디자인수정, 아이디/닉네임/비밀번호 중복검사 추가
+                </p>
+                <div class="galleryicon">
+                  <!-- 블로그 -->
+                  <a href="#"><i class="fa-solid fa-b"></i></a>
+                  <!-- 깃허브 -->
+                  <a href="#"><i class="fa-brands fa-github"></i></a>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+        </div>
+		
+		</div>
+		<!-- end of 3 section -->
 	</div>
 </div>
 
@@ -179,6 +295,7 @@ $(document).ready(function() {
         nagivation: true,
         navigationPosition: 'right',
         fitToSection:true
+        
     });
 });
 

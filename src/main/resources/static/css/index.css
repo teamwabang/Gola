@@ -221,7 +221,7 @@ video::-webkit-media-controls {
 /* 오른쪽 하단 문구 - 소개글*/
 .videoheading {
   position: absolute;
-  width: 950px;
+  width: 1000px;
   left: 130px;
   bottom: 120px;
   text-shadow: -0.5px 0 #000, 0 -0.5px #000,
@@ -234,8 +234,8 @@ video::-webkit-media-controls {
 .videoheading h1 {
   font-size: 70px;
   margin: 0;
-  font-family: 'LeferiPoint-WhiteObliqueA';
-  font-weight: bold;
+   font-family: 'ROKAFSlabSerifBold' !important;
+  font-weight: 400 !important;
   line-height: 100px;
   color:#fff !important;
   line-height:115px !important;
@@ -286,6 +286,220 @@ video::-webkit-media-controls {
 }
 
 
+/*SINCE*/
+.indexsince {
+  position: absolute;
+  left: 1800px;
+  bottom: 40px;
+  color: rgba(255, 255, 255, 0.219) !important;
+  text-align: center;
+  animation: videolettershowing2 1.5s 0.4s linear;
+  animation-fill-mode: both;
+}
+
+.indexsince em {
+  display: block;
+  font-style: normal;
+  font-size: 15px;
+  letter-spacing: 7px;
+  line-height: 45px;
+  margin-bottom: -20px;
+
+}
+
+.indexsince span {
+  font-family: 'Monoton', sans-serif;
+  font-size: 30px;
+}
+
+/* 2페이지 */
+
+#indexvideo2{
+	position: absolute;
+	width:33.35%;
+	left:33.34;
+	bottom: 0;
+	top:0;
+	z-index:-1
+}
+
+/* 오른쪽 하단 문구 - 소개글*/
+.videoheading2 {
+  position: absolute;
+  width: 840px;
+  left: 43.3%;
+  bottom: 150px;
+  text-shadow: -0.5px 0 #000, 0 -0.5px #000,
+    -0.5px 0 #000, 0 -0.5px #000;
+  text-shadow: 1px 1px 1px #000;
+  animation: videolettershowing3 1.5s 0.4s linear;
+  animation-fill-mode: both;
+  text-align: center;
+}
+
+.videoheading2 h1 {
+  font-size: 20px;
+  margin: 0;
+  font-family: 'LeferiPoint-WhiteObliqueA';
+  font-weight: bold;
+  line-height: 120px;
+}
+
+.videoheading2 span {
+  display: block;
+  color: rgb(255, 94, 0);
+  font-family: 'ROKAFSlabSerifBold' !important;
+  font-weight: 900;
+  font-size: 80px;
+}
+
+.videoheading2 p {
+  font-size: 1.2em;
+  line-height: 1.5em;
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 40px;
+  font-family: 'LeferiPoint-WhiteObliqueA';
+  color:#fff;
+}
+
+
+
+/* 3페이지 */
+.aboutbody{
+  margin:0;
+}
+
+.section2background {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  background: url(/images/aboutsection.png);
+  background-size:cover; 
+  left:66.68%;
+  top:0;
+  z-index:-1
+}
+
+.aboutus {
+  position: absolute;
+  width: 840px;
+  left: 66%;
+  top: 150px;
+  font-size:50px;
+  font-weight: bold;
+  color:#fff;
+  font-family: 'ROKAFSlabSerifBold' !important;
+  text-shadow: -0.5px 0 #000, 0 -0.5px #000,
+    -0.5px 0 #000, 0 -0.5px #000;
+  text-shadow: 1px 1px 1px #000;
+}
+
+.aboutus span{
+  display:block;
+  color: rgb(255, 94, 0);
+}
+
+.aboutgallery{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  top:100px;
+  display: flex;
+  height: 43vh;
+}
+
+.aboutgallery li{
+  border-right: 3px solid #191919;
+  flex:1;
+  background: no-repeat center center;
+  transition: 0.5s;
+  position:relative;
+  overflow: hidden;
+  font-size: 20px;
+}
+
+.aboutgallery li:last-child{
+  border-right:none;
+}
+
+.aboutgallery li:nth-child(1){
+  background: url(/images/yul.png); 
+  background-size:cover;
+}
+.aboutgallery li:nth-child(2){
+  background: url(/images/park.png); 
+  background-size:cover;
+}
+.aboutgallery li:nth-child(3){
+  background: url(/images/eom.png);
+  background-size:cover; 
+}
+.aboutgallery li:nth-child(4){
+  background: url(/images/jeong.png);
+  background-size:cover; 
+}
+.aboutgallery li:nth-child(5){
+  background: url(/images/han.png);
+  background-size:cover; 
+}
+
+.aboutgallery:hover li {
+  flex:1;
+  
+}
+
+.aboutgallery li:hover{
+  flex:1.5;
+  filter:grayscale(1);
+  z-index: 1;
+}
+
+.gallerycontent{
+  position:absolute;
+  background-color: #191919;
+  color:#fff;
+  text-align: center;
+  width:100%;
+  height:300px;
+  bottom: -360px;
+  transition: 0.5s;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+
+.galleryicon a{
+  color:rgb(167, 165, 165);
+  padding-right: 30px;
+  font-size: 28px;
+}
+
+.galleryicon a:hover{
+  color: #fff;
+}
+
+.aboutgallery li:hover .gallerycontent{
+  bottom: 0px;
+  transition-delay: 0.5s;
+}
+
+.gallerycontent:before{
+  content:'';
+  position:absolute;
+  background-color:#191919;
+  width: 100%;
+  height:50px;
+  left:0;
+  top: -30px;
+  transform: rotate(5deg) scale(1.3);
+}
+
+
+
+
 
 
 @keyframes navgnb {
@@ -312,3 +526,14 @@ video::-webkit-media-controls {
   }
 }
 
+@keyframes videolettershowing2 {
+  0% {
+    opacity: 0;
+    bottom: -20px;
+  }
+
+  100% {
+    opacity: 1;
+    margin-left: 0;
+  }
+}
