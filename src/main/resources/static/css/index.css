@@ -33,7 +33,7 @@ video::-webkit-media-controls {
 	bottom: 0;
 	top:0;
 	background: linear-gradient(135deg, #272626, transparent) !important;
-	z-index:0
+	z-index:0;
 }
 
 #indexvideo{
@@ -95,7 +95,7 @@ video::-webkit-media-controls {
 }
 
 .logjoinbutton {
-  font-size: 25px;
+  font-size: 16px;
   font-family: 'LeferiPoint-WhiteObliqueA';
   color: #fff !important;
   font-weight: bold;
@@ -323,7 +323,7 @@ video::-webkit-media-controls {
   position: absolute;
   width: 840px;
   left: 43%;
-  bottom: 150px;
+  bottom: 110px;
   text-shadow: -0.5px 0 #000, 0 -0.5px #000,
     -0.5px 0 #000, 0 -0.5px #000;
   text-shadow: 1px 1px 1px #000;
@@ -380,8 +380,8 @@ video::-webkit-media-controls {
 .aboutus {
   position: absolute;
   width: 840px;
-  left: 66%;
-  top: 150px;
+  left: 70%;
+  top: 200px;
   font-size:50px;
   font-weight: bold;
   color:#fff;
@@ -389,13 +389,25 @@ video::-webkit-media-controls {
   text-shadow: -0.5px 0 #000, 0 -0.5px #000,
     -0.5px 0 #000, 0 -0.5px #000;
   text-shadow: 1px 1px 1px #000;
+  color:#fff !important;
+  text-align :left;
 }
+
+.aboutus h1 {
+  color:#fff !important;
+  text-align :left;
+  font-size:60px;
+}
+
 
 .aboutus span{
-  display:block;
   color: rgb(255, 94, 0);
+  font-size:60px;
 }
 
+.aboutus h3{
+	font-family:'LeferiPoint-WhiteObliqueA'
+}
 .aboutgallery{
   list-style: none;
   padding: 0;
@@ -403,7 +415,9 @@ video::-webkit-media-controls {
   position: relative;
   top:100px;
   display: flex;
-  height: 43vh;
+  height: 50vh;
+  width:80%;
+  margin : 0 auto;
 }
 
 .aboutgallery li{
@@ -413,7 +427,7 @@ video::-webkit-media-controls {
   transition: 0.5s;
   position:relative;
   overflow: hidden;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .aboutgallery li:last-child{
@@ -421,24 +435,29 @@ video::-webkit-media-controls {
 }
 
 .aboutgallery li:nth-child(1){
-  background: url(/images/yul.png); 
+  background: url(/images/about/yul.png); 
   background-size:cover;
+  background-position: center;
 }
 .aboutgallery li:nth-child(2){
-  background: url(/images/park.png); 
+  background: url(/images/about/park.png); 
   background-size:cover;
+  background-position: center;
 }
 .aboutgallery li:nth-child(3){
-  background: url(/images/eom.png);
+  background: url(/images/about/eom.png);
   background-size:cover; 
+  background-position: left;
 }
 .aboutgallery li:nth-child(4){
-  background: url(/images/jeong.png);
+  background: url(/images/about/jeong.png);
   background-size:cover; 
+  background-position: center;
 }
 .aboutgallery li:nth-child(5){
-  background: url(/images/han.png);
+  background: url(/images/about/han.png);
   background-size:cover; 
+  background-position: center;
 }
 
 .aboutgallery:hover li {
@@ -458,22 +477,58 @@ video::-webkit-media-controls {
   color:#fff;
   text-align: center;
   width:100%;
-  height:300px;
-  bottom: -360px;
+  height:430px;
+  bottom: -490px;
   transition: 0.5s;
   padding: 20px;
   box-sizing: border-box;
+  z-index:80;
 }
 
+
+
+.gallerycontent h2{
+	color:#fff !important;
+	font-weight: bold;
+	z-index:80;
+}
+
+.gallerycontent span{
+	color:#fff !important;
+	font-weight: normal;
+	font-size:20px;
+	z-index:80;
+}
+
+.gallerycontent h4{
+	font-weight:bold;
+	display:inline-block !important;
+	text-align:left
+}
+.gallerycontent h5{
+	text-align:left;
+}
+
+.galleryicon{
+	margin-top:30px;
+}
 
 .galleryicon a{
-  color:rgb(167, 165, 165);
+  color:#fff !important;
   padding-right: 30px;
   font-size: 28px;
+  z-index:80;
 }
 
-.galleryicon a:hover{
-  color: #fff;
+.gallerycontent i{
+  color:yellow;
+  z-index:80;
+}
+
+.contenthr{
+	width:80% !important;
+	text-align:center;
+	margin: 30px auto;
 }
 
 .aboutgallery li:hover .gallerycontent{
@@ -481,16 +536,25 @@ video::-webkit-media-controls {
   transition-delay: 0.5s;
 }
 
+.aboutgallery li:hover .gallerycontent h2{
+  z-index:80;
+}
+
+
 .gallerycontent:before{
   content:'';
   position:absolute;
   background-color:#191919;
   width: 100%;
-  height:50px;
+  height:45px;
   left:0;
   top: -30px;
-  transform: rotate(5deg) scale(1.3);
+  transform: rotate(3.5deg) scale(1.3);
+  z-index:30;
 }
+
+
+
 
 
 /*SINCE*/
@@ -522,6 +586,26 @@ video::-webkit-media-controls {
 
 
 
+.fp-controlArrow.fp-next {
+    right: 15px;
+    border-width: 20px 20px 20px 20px;
+    border-color: transparent transparent transparent #fff;
+}
+
+.fp-controlArrow.fp-next:hover{
+	  border-color: transparent transparent transparent #FE5E00;
+}
+
+.fp-controlArrow.fp-prev {
+    left: 15px;
+    width: 0;
+    border-width: 20px 20px 20px 20px;
+    border-color: transparent #fff transparent transparent;
+}
+
+.fp-controlArrow.fp-prev:hover{
+	border-color: transparent #FE5E00 transparent transparent;
+}
 
 
 @keyframes navgnb {

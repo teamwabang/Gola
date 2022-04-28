@@ -4,7 +4,7 @@
 }
 
 input[type=text], input[type=password] {
-    height: 40px;
+    height: 47px;
     margin: 10px 0;
     padding-left: 10px;
 	cursor:text;
@@ -35,7 +35,7 @@ input[type=text], input[type=password] {
     padding: 10px 0px 0px 0px;
     text-align:left;
     color: black;;
-    font-family: 'LeferiPoint-WhiteObliqueA';
+    font-family: 'ROKAFSlabSerifBold' !important;
 }
 
 .joinInput {  
@@ -69,11 +69,13 @@ input[type=text], input[type=password] {
     border-radius: 7px;
     border: 1px solid rgba(0,0,0,0.5);
     cursor:pointer !important;
+    font-family: 'LeferiPoint-WhiteObliqueA';
+    font-weight: 700;
 }
 
 .joinResetBtn button:hover {
-    background-color: crimson !important;
-    border: 1px solid crimson;
+    background-color: #FE5E00 !important;
+    border: 1px solid #FE5E00;
 }
 
 .early {
