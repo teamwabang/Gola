@@ -65,9 +65,9 @@
 					<button id="indexbutton" class="logjoinbutton" >마이페이지</button>
 				</form>
 			</div>
-			<div sec:authorize="hasAuthority('ADMIN')" class="indexlogin">
+			<div sec:authorize="hasAuthority('ADMIN')" class="indexloginallusers">
 				<form th:action="@{admin/list}" method="get">
-					<button id="indexbutton" class="logjoinbutton">전체 회원목록</button>
+					<button id="indexbutton" class="logjoinbuttonallusers">전체 회원목록</button>
 				</form>
 			</div>
 	   
@@ -106,8 +106,7 @@
           <!-- 오른쪽 하단 문구 - 소개글(레시피게시판 연결) -->
           <div class="videoheading">
             <h1>
-              <span>오늘 뭐 먹지?</span>
-              식사시간만 되면 찾아오는 고민
+              <span>오늘 뭐 먹지?</span>식사시간만 되면 찾아오는 고민
             </h1>
             <p>
               아직 메뉴를 정하지 못하셨나요? <br>
@@ -116,11 +115,6 @@
             <a class="btn-seemore" th:href="@{/recipe}">see more <i class="fa-solid fa-angle-right"></i><i class="fa-solid fa-angle-right"></i></a>
           </div>
           
-          <!-- 왼쪽 하단 문구 - since 2022 -->
-          <div class="indexsince">
-            <em>SINCE</em>
-            <span>2022</span>
-          </div>
 
 		</div>
 		<!-- end of 1 section -->
@@ -243,6 +237,13 @@
           </ul>
 
         </div>
+        
+           <!-- 왼쪽 하단 문구 - since 2022 -->
+          <div class="indexsince">
+            <em>SINCE</em>
+            <span>2022</span>
+          </div>
+        
 		
 		</div>
 		<!-- end of 3 section -->
