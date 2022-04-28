@@ -33,23 +33,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.csrf().disable()
 			.authorizeRequests()
-				.antMatchers("/", "/login", "/join", "/check", "/about", "/recipe").permitAll()	// 누구나 접근 허용
+				.antMatchers("/", "/login", "/join", "/check/**", "/about", "/recipe", "/review").permitAll()	// 누구나 접근 허용
 				.antMatchers("/user/**").access("hasAuthority('USER') or hasAuthority('ADMIN')")	// USER, ADMIN만 접근 가능
-				.antMatchers("/admin/**").hasAuthority("ADMIN")	// ADMIN만 접근 가능
-				.anyRequest().permitAll()	// 나머지 요청들을 권한의 종류에 상관 없이 모두 접근 가능
-//				.anyRequest().authenticated()	// 나머지 요청들을 권한의 종류에 상관 없이 권한이 있어야 접근 가능
+				.antMatchers("/admin/**", "/review/list").hasAuthority("ADMIN")	// ADMIN만 접근 가능
+//				.anyRequest().permitAll()	// 나머지 요청들을 권한의 종류에 상관 없이 모두 접근 가능
+				.anyRequest().authenticated()	// 나머지 요청들을 권한의 종류에 상관 없이 권한이 있어야 접근 가능
 			.and()
 				.formLogin()
 					.loginPage("/login")	// 로그인 페이지 링크
 					.loginProcessingUrl("/login")
 					.defaultSuccessUrl("/")	// 로그인 성공 후 리다이렉트 주소
-					.failureUrl("/login")
+					.failureUrl("/")
 					.usernameParameter("userId")
 					.passwordParameter("userPwd")
 			.and()
 				.oauth2Login()
 					.loginPage("/login")
 					.defaultSuccessUrl("/")	// 로그인 성공 후 리다이렉트 주소
+					.failureUrl("/")
 					.userInfoEndpoint()
 					.userService(principalOAuth2Service)
 			.and()

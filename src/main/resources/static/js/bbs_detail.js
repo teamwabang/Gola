@@ -228,13 +228,15 @@ $(document).ready(function() {
 	  ************************/
 	  //automatic slider
 	  var autoSlider = setInterval(slideRight, 3000);
-	  
+	  //without this
+	  clearInterval(autoSlider);
 	  //for each slide 
 	  $.each($('#slider-wrap ul li'), function() { 
 
 	     //create a pagination
 	     var li = document.createElement('li');
-	     $('#pagination-wrap ul').append(li);    
+	     $('#pagination-wrap ul').append(li);
+	      
 	  });
 	  
 	  //counter
@@ -242,13 +244,12 @@ $(document).ready(function() {
 	  
 	  //pagination
 	  pagination();
-	  
-	  //hide/show controls/btns when hover
-	  //pause automatic slide when hover
+
 	  $('#slider-wrap').hover(
 	    function(){ $(this).addClass('active'); clearInterval(autoSlider); }, 
-	    function(){ $(this).removeClass('active'); autoSlider = setInterval(slideRight, 3000); }
 	  );
+	  
+	  
 	  
 	  
 
@@ -297,6 +298,8 @@ $(document).ready(function() {
 	  $('#pagination-wrap ul li').removeClass('active');
 	  $('#pagination-wrap ul li:eq('+pos+')').addClass('active');
 	}
+	
+	
 	
 	$(".authorId").each(function() {
 		const length = 5;

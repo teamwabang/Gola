@@ -19,7 +19,7 @@
 			AND r.menu like CONCAT('%',#{search},'%')
 		    OR r.kind like CONCAT(#{search})
         </if>   	        
-        ORDER BY no DESC
+        ORDER BY RAND()
 	</select>
 	
 	<!-- 각 레시피 상세페이지 출력 -->

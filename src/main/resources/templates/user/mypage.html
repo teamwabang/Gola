@@ -17,6 +17,7 @@
     <script type="text/javascript" src="/js/chatbot.js"></script>
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/js/click_disable.js"></script>
+    <script type="text/javascript" src="/js/developer_tools.js"></script>
   
 </head>
 <body class="mypageBody" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
@@ -94,9 +95,9 @@
     
     <!-- modal -->
     <div class="picmodal" th:insert="layout/picModal :: fr_picModal"></div>
-    <div th:insert="layout/NickNameModal :: fr_NickNameModal"></div>
-    <div th:insert="layout/PwModal :: fr_PwModal"></div>
-    <div th:insert="layout/EmailModal :: fr_EmailModal"></div>
+    <div th:insert="layout/nickNameModal :: fr_NickNameModal"></div>
+    <div th:insert="layout/pwModal :: fr_PwModal"></div>
+    <div th:insert="layout/emailModal :: fr_EmailModal"></div>
     
     <!-- Option 1: Bootstrap Bundle with Popper -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
