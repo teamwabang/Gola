@@ -17,6 +17,8 @@
     <!-- JavaScript -->
  	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src="/js/chatbot.js"></script>
+    <script type="text/javascript" src="/js/click_disable.js"></script>
+    <script type="text/javascript" src="/js/developer_tools.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css">
  
@@ -32,65 +34,16 @@
 </head>
 
 
-<body class="indexbody">
+<body class="indexbody" oncontextmenu="return false" onselectstart="return false" ondragstart="return false" >
 
 <div id ="fullpage">
 	<div class="section">
-	  <!-- 상단 header 고정값 -->
-		
-		   <!-- 로고 -->
-		   <div class="golalogo">
-		     <img src="images/golalogo.png" alt="">
-		   </div>
-		   <!-- 로그인 -->
-		   <div sec:authorize="isAuthenticated()" class="indexloginlogout">
-					<form th:action="@{/logout}" method="post">
-				        <button id="indexbutton" class="logjoinbutton">로그아웃</button>
-				    </form>
-		  </div>
-		   <div sec:authorize="isAnonymous()" class="indexlogin" >  
-		     <button id="indexbutton" class="logjoinbutton" data-bs-toggle="modal" data-bs-target="#loginModal">
-				로그인
-			</button>
-		   </div>
-		   <!-- 회원가입 -->
-		   <div sec:authorize="isAnonymous()"  class="indexjoin">
-		   	<button id="indexbutton" class="logjoinbutton" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-						회원가입
-			</button>
-		   </div>
-		   
-	   		<div sec:authorize="isAuthenticated()" class="indexloginmypage" >
-				<form th:action="@{/mypage}" method="get">
-					<button id="indexbutton" class="logjoinbutton" >마이페이지</button>
-				</form>
-			</div>
-			<div sec:authorize="hasAuthority('ADMIN')" class="indexloginallusers">
-				<form th:action="@{admin/list}" method="get">
-					<button id="indexbutton" class="logjoinbuttonallusers">전체 회원목록</button>
-				</form>
-			</div>
-	   
-		   
-		   
-		
-		   <!-- trigger -->
-		   <div class="indextrigger">
-		     <span></span>
-		     <span></span>
-		     <span></span>
-		   </div>
-		   <!-- trigger 메뉴 -->
-		   <div class="navmodal-gnb">
-		     <div class="modalgnb">
-		       <a th:href="@{/recipe}">RECIPE</a>
-		       <a th:href="@{/review}">REVIEW</a>
-		     </div>
-		   </div>
-		   <!-- end of 상단 header 고정값 -->
-		
 	
 	
+	  <!-- import header -->
+    <header th:replace="layout/fragment :: fr_header"></header>
+    <!-- end of import header -->
+  	
 		<!--1 section -->
 		<div class="slide">
 	
@@ -109,13 +62,11 @@
               <span>오늘 뭐 먹지?</span>식사시간만 되면 찾아오는 고민
             </h1>
             <p>
-              아직 메뉴를 정하지 못하셨나요? <br>
+              아직 오늘의 메뉴를 정하지 못하셨나요? <br>
               그렇다면, '골라'에서 다양한 레시피를 만나보세요.<br>
             </p>
             <a class="btn-seemore" th:href="@{/recipe}">see more <i class="fa-solid fa-angle-right"></i><i class="fa-solid fa-angle-right"></i></a>
           </div>
-          
-
 		</div>
 		<!-- end of 1 section -->
 		
@@ -124,7 +75,7 @@
 		 <!-- 비디오  -->
          <div class="video-frame2">
            <video id="indexvideo2" loop muted data-autoplay playsinline>
-	           <source src="/images/reviewvideo.mp4" type="video/mp4">
+	           <source src="/images/reviewvideorenew.mp4" type="video/mp4">
 		  </video>
         </div>
   
@@ -139,123 +90,118 @@
           </p>
           <a class="btn-seemore" th:href="@{/review}">see more <i class="fa-solid fa-angle-right"></i><i class="fa-solid fa-angle-right"></i></a>
         </div>
-		
-		
 		</div>
-		
 		<!--end of 2 section -->
-		
-		
 		
 		<!--3 section -->
 		<div class="slide">
 			<div class="section2background">
-
         </div>
         <div class="aboutus">
-          <h1><span>ABOUT</span>US</h1>
+          <h1>저희를<span> 소개합니다</span></h1>
+          <h3>협력과 소통을 통해 함께 성장해나가고 있습니다</h3>
         </div>
-
         <div class="aboutbody">
           <ul class="aboutgallery">
             <li>
               <div class="gallerycontent">
-                <h2 >김율리아(Kim Yulia)</h2>
-                <p>
-                  홈페이지 전체적인 레이아웃 구현
-                  회원관리 : 마이페이지, 로그인, 회원가입 화면 디자인수정, 아이디/닉네임/비밀번호 중복검사 추가
-                  회원가입 화면 디자인수정, 아이디/닉네임/비밀번호 중복검사 추가
-                </p>
+                <h2 >김율리아<span>(Kim Yulia)</span></h2>
+                <hr class="contenthr">
+                <h5>
+                  <h4>페이지 레이아웃 및 디자인 구현</h4><br> -[index, about, 메인, 리뷰]<br>
+                  <h4>회원 관리 및 가입 </h4> - [마이페이지, 로그인 및 회원가입 화면 디자인수정, 아이디/닉네임/비밀번호 중복검사 추가]
+                </h5>
                 <div class="galleryicon">
                   <!-- 블로그 -->
-                  <a href="#"><i class="fa-solid fa-b"></i></a>
+                  <a href="https://bluepinetree.tistory.com/"><i class="fa-solid fa-b"></i></a>
                   <!-- 깃허브 -->
-                  <a href="#"><i class="fa-brands fa-github"></i></a>
+                  <a href="https://github.com/yuuulya"><i class="fa-brands fa-github"></i></a>
                 </div>
               </div>
             </li>
             <li>
               <div class="gallerycontent">
-                <h2>박병권(Park)</h2>
-                <p>
-                  홈페이지 전체적인 레이아웃 구현
-                  회원관리 : 마이페이지, 로그인, 회원가입 화면 디자인수정, 아이디/닉네임/비밀번호 중복검사 추가
-                </p>
+                <h2>박병권<span>(Park Byeng Kwon)</span></h2>
+                <hr class="contenthr">
+                <h5>
+                  <h4>게시판</h4> - [레시피 상세 페이지 레이아웃]<br>
+                  <br>
+				  <h4>DB</h4> - [레시피]
+                </h5>
                 <div class="galleryicon">
-                  <!-- 블로그 -->
-                  <a href="#"><i class="fa-solid fa-b"></i></a>
                   <!-- 깃허브 -->
-                  <a href="#"><i class="fa-brands fa-github"></i></a>
+                  <a href="https://github.com/martin1341"><i class="fa-brands fa-github"></i></a>
                 </div>
               </div>
             </li>
             <li>
               <div class="gallerycontent">
-                <h2>엄지혜(Eom)</h2>
-                <p>
-                  홈페이지 전체적인 레이아웃 구현
-                  회원관리 : 마이페이지, 로그인, 회원가입 화면 디자인수정, 아이디/닉네임/비밀번호 중복검사 추가
-                </p>
+                <h2>엄지혜<span>(Eom Ji Hye)</span></h2>
+                <hr class="contenthr">
+                <h5>           
+	                <h4>리뷰게시판</h4> - [글 댓글 CRUD, 대댓글, <br> 사진 업로드, 조회수 상위 게시물]<br>
+	                <h4>마이페이지</h4> - [프로필 사진 업로드, <br> 마이레시피]<br>
+	                <h4>DB</h4> - [게시판, 댓글, 파일]<br>
+					<h4>그 외</h4> - [레시피 레이아웃, 게시판 검색]
+                </h5>
                 <div class="galleryicon">
                   <!-- 블로그 -->
-                  <a href="#"><i class="fa-solid fa-b"></i></a>
+                  <a href="https://wisecodinglife.tistory.com/"><i class="fa-solid fa-b"></i></a>
                   <!-- 깃허브 -->
-                  <a href="#"><i class="fa-brands fa-github"></i></a>
+                  <a href="https://github.com/jihye-12"><i class="fa-brands fa-github"></i></a>
                 </div>
               </div>
             </li>
             <li>
               <div class="gallerycontent">
-                <h2>정재홍(Jeong)</h2>
-                <p>
-                  홈페이지 전체적인 레이아웃 구현
-                  회원관리 : 마이페이지, 로그인, 회원가입 화면 디자인수정, 아이디/닉네임/비밀번호 중복검사 추가
-                </p>
+                <h2>정재홍<span>(Jeong Jae Hong)</span></h2>
+                  <hr class="contenthr">
+                <h5>
+					<h4>회원관리</h4> - [회원가입, 로그인, 마이페이지 전반적 화면구성, 유효성 검사 구현]<br>
+					
+					<h4>리뷰게시판</h4> - [게시판, detail 전반적 화면 구성,이미지 페이징, 댓글 & 대댓글 CRUD, <br> 상호적인 기능구현] <br>
+					<h4>그 외</h4> - [타이머] 
+
+                </h5>
                 <div class="galleryicon">
                   <!-- 블로그 -->
-                  <a href="#"><i class="fa-solid fa-b"></i></a>
+                  <a href="https://bohongu.tistory.com/"><i class="fa-solid fa-b"></i></a>
                   <!-- 깃허브 -->
-                  <a href="#"><i class="fa-brands fa-github"></i></a>
+                  <a href="https://github.com/bohongu"><i class="fa-brands fa-github"></i></a>
                 </div>
               </div>
             </li>
             <li>
               <div class="gallerycontent">
-                <h2>한상민(Han)</h2>
-                <p>
-                  홈페이지 전체적인 레이아웃 구현
-                  회원관리 : 마이페이지, 로그인, 회원가입 화면 디자인수정, 아이디/닉네임/비밀번호 중복검사 추가
-                </p>
+                <h2><i class="fa-solid fa-crown"></i> 한상민<span>(Han sangmin)</span></h2>
+                    <hr class="contenthr">
+                <h5>
+	                 <h4>Spring Security</h4><br> - [권한, 비밀번호 암호화, 소셜 로그인, remember-me]<br>
+	                 <h4>마이페이지</h4> - [회원정보 수정, 회원탈퇴]<br>
+	                 <h4>DB</h4> - [유저, 레시피] <br>
+ 	                 <h4>그 외</h4> - [프로젝트 구조 생성, about.html, recipe.html]   
+               </h5>
                 <div class="galleryicon">
                   <!-- 블로그 -->
-                  <a href="#"><i class="fa-solid fa-b"></i></a>
+                  <a href="https://tkdalsgks.me/"><i class="fa-solid fa-b"></i></a>
                   <!-- 깃허브 -->
-                  <a href="#"><i class="fa-brands fa-github"></i></a>
+                  <a href="https://github.com/tkdalsgks"><i class="fa-brands fa-github"></i></a>
                 </div>
               </div>
             </li>
           </ul>
-
         </div>
-        
            <!-- 왼쪽 하단 문구 - since 2022 -->
           <div class="indexsince">
             <em>SINCE</em>
             <span>2022</span>
           </div>
-        
-		
 		</div>
 		<!-- end of 3 section -->
 	</div>
 </div>
+<!-- end of fullpage -->
 
-	<!-- 	modal -->
-	<div th:insert="layout/loginModal :: fr_loginModal"></div>
-	<div th:insert="layout/joinModal :: fr_joinModal"></div>
-	
-	
-	
 	<script src="http://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -285,30 +231,19 @@
 	</script>
   <script type="text/javascript" src="/js/logineye.js"></script>
   
+  <!-- fullscreen -->
 <script>
-
 $(document).ready(function() {
     $('#fullpage').fullpage({
         //options here
         licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
-        autoScrolling:true,
-        scrollHorizontally: true,
-        nagivation: true,
-        navigationPosition: 'right',
-        fitToSection:true
+        keyboardScrolling:true, //키보드로 스크롤 가능 
         
     });
 });
-
 </script>
 
-  <!-- trigger -->
-  <script>
-    $('.indextrigger').click(function () {
-      $(this).toggleClass('popup')
-      $('.navmodal-gnb').fadeToggle();
-    })
-  </script>
+
 </body>
 
 </html>

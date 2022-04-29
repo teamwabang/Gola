@@ -1,7 +1,13 @@
 .boardBody { 
 	font-family: 'Anton', sans-serif;
 	margin-top: 120px;
-	}
+}
+
+#detailcut{
+	background-image : url(/images/aboutsection.png);
+	background-repeat: repeat;
+  	background-size: auto;
+}
 
 
 #wrapper{
@@ -157,6 +163,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
     display: flex;
     width: 1200px;
     height: 700px;
+    background-color:#fff
 }
 
 .boardPic {
@@ -394,3 +401,4 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 	width:40px;
 	margin-left: 4px;
 }
+

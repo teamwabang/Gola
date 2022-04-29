@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&display=swap');
 
 
-
 .gnb {
 	padding:10px;
     margin-top: 10px;
@@ -127,4 +126,9 @@
 
 .indexmain{
 	margin-top: 300px;
+}
+
+
+.modal-backdrop {
+    position: inherit !important;
 }

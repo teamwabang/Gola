@@ -23,7 +23,7 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     column-gap: 40px;
-    row-gap: 40px;
+    row-gap: 150px;
  }
   
 .reviewItems {
@@ -33,8 +33,9 @@
 
   .reviewmain .items div {
     border-radius: 6px;
+    border : 0.1px solid #000;
     overflow: hidden;
-    box-shadow: 0 0 9px rgba(54, 53, 53, 0.3);
+    box-shadow: 0 0 9px #1f1e1e;
     position: relative;
     cursor:pointer;
     width: 240px;
@@ -89,7 +90,7 @@
   
   .reviewmain .items div p {
 	font-family: 'LeferiPoint-WhiteObliqueA';
-	color: rgb(85, 85, 85);
+	color: #fff;
 	font-weight: 600;
 	font-size: 17px;
 	text-align: center;
@@ -109,7 +110,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.418);
+    background-color: rgb(56, 56, 56, 0.685);
     opacity: 0;
   }
   
@@ -125,7 +126,8 @@
   .reviewmain .items div:hover span {
    bottom: 90px;
    font-size:25px;
-  }
+   color:#fff;
+   }
   
  
  .searchbar {
@@ -179,8 +181,8 @@
 }
 
 #writebutton:hover{
-   background-color: crimson;
-   border: 1px solid crimson;
+   background-color:#cc4d00;
+   border: 1px solid #cc4d00;
    font-weight:900;
 }
 
@@ -190,7 +192,7 @@
 	font-family: 'LeferiPoint-WhiteObliqueA';
 	font-size: 20px;
 	font-weight:bold;
-	color:crimson;
+	color:#cc4d00;
 }
 
 .seemoreline {
@@ -213,6 +215,13 @@
 
 .seemore:hover {
 	box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+
+#writebutton{
+	position:absolute;
+	right:330px;
+	top:300px;
 }
 
 

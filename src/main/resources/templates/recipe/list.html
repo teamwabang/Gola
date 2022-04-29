@@ -7,7 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
     />
-    <title>우리들의 모든 레시피 | 골라</title>
+    <title>우리들의 모든 레시피(관리자) | 골라</title>
     
 	<!-- CSS -->
     <link rel="stylesheet" href="/css/styles.css" />
@@ -25,19 +25,23 @@
 	<script src="/js/featherlight.js"></script>
 	<link rel="stylesheet" href="/css/featherlight.css">
   </head>
-  <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+  <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" class="bbsbody">
    
     <!-- import header -->
     <header th:replace="layout/fragment :: fr_header"></header>
     <!-- end of import header -->
   
   
+    <!-- center title -->
+  	<div>
+  	<span class="bbstitle"> RECIPE </span>
+  	</div>
  
 	<!--main-->
 	<div class="searchbar">
             <form class = "searchform" id="form">
               <span>Find recipe : </span> 
-                <input type="text" name="search" id="search"><button type="button" id="schBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" name="search" id="search"><button type="button" id="schBtn"><i class="fa-solid fa-magnifying-glass" id="searchbuttonhover"></i></button>
             </form>
           </div>
     <section class="reviewsection">
@@ -50,8 +54,8 @@
           </div>
            <div class="seemorebox">
                 <div class="seemoreline">
-                    <a href="#">
-                      <p class="seemore" id="moreBtn">MORE<i class="fa-solid fa-caret-down"></i></p>
+
+                      <span class="bbsseemore" id="moreBtn">MORE<i class="fa-solid fa-angles-down"></i></span>
                </a>
                  </div>
        	   

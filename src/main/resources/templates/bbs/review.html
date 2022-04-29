@@ -25,22 +25,30 @@
 	<script src="/js/featherlight.js"></script>
 	<link rel="stylesheet" href="/css/featherlight.css">
   </head>
-  <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+  <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" class="bbsbody">
    
     <!-- import header -->
     <header th:replace="layout/fragment :: fr_header"></header>
     <!-- end of import header -->
   
+    <!-- center title -->
+  	<div>
+  	<span class="bbstitle"> REVIEW </span>
+  	</div>
   
  
 	<!--main-->
 	<div class="searchbar">
             <form class = "searchform" id="form">
               <span>Find your recipe : </span> 
-                <input type="text" name="search" id="search"><button type="button" id="schBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" name="search" id="search"><button type="button" id="schBtn"><i class="fa-solid fa-magnifying-glass" id="searchbuttonhover"></i></button>
+             </form>
+          </div>
+          
+           <form class = "searchform" id="form">
             	<button sec:authorize="isAuthenticated()" id ="writebutton" type="button" class="btn btn-sm btn-primary" onclick="javascript:location.href='/review/write';"><i class="fa-solid fa-pencil"></i>    글쓰기</button>
             </form>
-          </div>
+            
     <section class="reviewsection">
  
 
@@ -52,11 +60,10 @@
           		  <div class="seemorebox">
                 <div class="seemoreline">
                     <a href="#">
-                      <p class="seemore" id="moreBtn">MORE<i class="fa-solid fa-caret-down"></i></p>
+                      <p class="bbsseemore" id="moreBtn">MORE<i class="fa-solid fa-angles-down"></i></p>
                </a>
                  </div>
              </div>
- 
        	   
              <th:block th:if="${param != null && param != ''}">
              	<input type="hidden" id="getParam" name="getParam" th:value="${param.search}"/>
