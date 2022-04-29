@@ -3,7 +3,7 @@
 > 2022.04.01 ~ 2022.04.29
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/66001046/152260938-51b1334f-297f-4092-8f37-f02dc9cd3a07.png" alt="coding" width="150px" />
+  <img src="https://user-images.githubusercontent.com/66001046/165883371-d2378c95-be65-451e-86b7-fbff7d6bc395.jpg" alt="coding" width="300px" />
 </p>
 
 ## 결과보고서 : [바로가기](https://drive.google.com/file/d/1-5RUA6CJAL1iBL6NwASkwj_fSabBwaUA/view?usp=sharing)
@@ -97,7 +97,7 @@
 - Spring Security : 권한, 비밀번호 암호화, 소셜 로그인, remember-me
 - 마이페이지 : 회원정보 수정, 회원탈퇴
 - DB : 유저, 레시피
-- 그 외 : 서버배포, 프로젝트 구조 생성, about.html, recipe.html
+- 그 외 : 서버배포, 프로젝트 구조 생성, 중복확인, about.html, recipe.html
 
 ​	
 
