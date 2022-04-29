@@ -36,19 +36,19 @@
                <input type="hidden" name="bno" id="bno" />
                <input type="hidden" name="deleteFilesNo[]"/>
                <div class="mb-3">
-                  <label for="reg_id">작성자</label>
+                  <label for="reg_id" class="labalview">작성자</label>
                   <input type="text" class="form-control" name="writer" id="writer" placeholder="이름을 입력해 주세요" th:value="${#authentication.name}" readonly>
                </div>
                <div class="mb-3">
-                  <label for="title">제목</label>
+                  <label for="title" class="labalview">제목</label>
                   <input type="text" class="form-control" name="title" id="title" maxlength="14" placeholder="제목을 14자 이하로 입력해주세요.">
                </div>
              	<div class="mb-3">
-              		<label for="content">내용</label>
+              		<label for="content" class="labalview">내용</label>
                   	<textarea class="form-control" rows="10" name="content" id="content" placeholder="내용을 입력해 주세요."></textarea>
              	</div>  
 				<div class="mb-3">
-					<label for="tag">난이도</label>
+					<label for="tag" class="labalview">난이도</label>
 			  		<select class="form-control" id="level"  name="level">
 				    	<option value="상" selected>상</option>
 				    	<option value="중">중</option>
@@ -56,7 +56,7 @@
 				  	</select>
 				</div>
 				<div class="mb-3"	id="upFIleDiv1">
-					  	<label>사진</label><label th:style="@{font-size: 14px; color: red;}">&nbsp;&nbsp; 1장 이상의 사진 업로드는 필수입니다.</label>
+					  	<label class="labalview">사진</label><label th:style="@{font-size: 14px; color: red;}">&nbsp;&nbsp; 1장 이상의 사진 업로드는 필수입니다.</label>
 					<div class="custom-file">
 					  	<input type="file" class="custom-file-input"	name="upFile" >
 					  	<label class="custom-file-label" for="customFileLang" id="upFileTxt1">사진업로드</label>
