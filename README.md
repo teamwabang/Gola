@@ -7,6 +7,7 @@
 </p>
 
 ## 결과보고서 : [바로가기](https://drive.google.com/file/d/1-5RUA6CJAL1iBL6NwASkwj_fSabBwaUA/view?usp=sharing)
+## 시연동영상 : [바로가기](https://drive.google.com/file/d/10swsv9uMKr9eQhaI7Z5535aEUjn_6yOy/view?usp=sharing)
 
 ​	
 
