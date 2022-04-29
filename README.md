@@ -89,6 +89,7 @@
 
 - 역할 : 팀원, 프론트
 - 회원관리 : 회원가입, 로그인, 마이페이지 전반적 화면구성, 유효성 검사 구현
+- 리뷰게시판 : 게시판, detail 전반적 화면 구성
 - 그 외 : 타이머
 
 <img src="https://github.com/tkdalsgks.png" width="70" height="70"/> [한상민](https://github.com/tkdalsgks) 
