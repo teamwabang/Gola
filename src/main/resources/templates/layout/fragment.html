@@ -41,6 +41,11 @@
 					<button id="indexbutton" class="logjoinbuttonallusers">전체 회원목록</button>
 				</form>
 			</div>
+			<div sec:authorize="hasAuthority('ADMIN')" class="indexloginallreview">
+				<form th:action="@{review/list}" method="get">
+					<button id="indexbutton" class="logjoinbuttonallusers">전체 리뷰목록</button>
+				</form>
+			</div>
 	   		
 		   <!-- trigger -->
 		   <div class="indextrigger">
