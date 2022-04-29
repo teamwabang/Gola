@@ -85,10 +85,22 @@ video::-webkit-media-controls {
   z-index: 100;
 }
 .indexloginallusers{
+  
   width: 180px;
   height: 20px;
   position: absolute;
   right: 120px;
+  top: 130px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.indexloginallreview{
+  
+  width: 180px;
+  height: 20px;
+  position: absolute;
+  right: 295px;
   top: 130px;
   cursor: pointer;
   z-index: 100;
@@ -108,6 +120,10 @@ video::-webkit-media-controls {
 
   color: #c1c1c1!important;
   font-weight: bold;
+}
+
+.logjoinbuttonallusers:hover {
+	color:white !important;
 }
 
 .logjoinbutton:hover {
