@@ -1,61 +1,111 @@
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&family=Yeon+Sung&display=swap');
 
 .gola_header {
-	text-align: center;
-	font-family: 'Gowun Batang', serif;
+  text-align: center;
+  font-family: 'Gowun Batang', serif;
 }
 
 .gola_hr {
-	width: 100vh;
-	margin: 0 auto;
+  width: 100vh;
+  margin: 0 auto;
 }
 
 .gola_github {
-	width: 30vh;
-	margin: 0 auto;
-	text-align: center;
-	font-size: 20px;
-	font-weight: 400;
-	cursor: pointer;
+  width: 30vh;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
 }
 
 .gola_function {
-	width: 30vh;
-	margin: 0 auto;
-	text-align: center;
-	font-size: 26px;
-	font-weight: 400;
-	cursor: pointer;
-	font-family: 'Yeon Sung', cursive;
+  width: 30vh;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 400;
+  cursor: pointer;
+  font-family: 'Yeon Sung', cursive;
 }
 
 .gola_function_content {
-	width: 50vh;
-	margin: 0 auto;
-	text-align: center;
-	font-size: 26px;
-	cursor: pointer;
-	font-family: 'Yeon Sung', cursive;
+  width: 50vh;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 26px;
+  cursor: pointer;
+  font-family: 'Yeon Sung', cursive;
 }
 
 .github_img {
-	width: 45px;
-	height: 45px;
+  width: 45px;
+  height: 45px;
 }
 
 .github_img2 {
-	width: 30px;
-	height: 30px;
+  width: 30px;
+  height: 30px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&family=Yeon+Sung&display=swap');
+
+.gola_header {
+  text-align: center;
+  font-family: 'Gowun Batang', serif;
+}
+
+.gola_hr {
+  width: 100vh;
+  margin: 0 auto;
+}
+
+.gola_github {
+  width: 30vh;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.gola_function {
+  width: 30vh;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 400;
+  cursor: pointer;
+  font-family: 'Yeon Sung', cursive;
+}
+
+.gola_function_content {
+  width: 50vh;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 26px;
+  cursor: pointer;
+  font-family: 'Yeon Sung', cursive;
+}
+
+.github_img {
+  width: 45px;
+  height: 45px;
+}
+
+.github_img2 {
+  width: 30px;
+  height: 30px;
 }
 
 .gola_member_name {
-	width: 20vh;
-	margin: 0 auto;
-	text-align: center;
-	font-size: 26px;
-	font-weight: 400;
-	cursor: pointer;
-	font-family: 'Yeon Sung', cursive;
+  width: 20vh;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 400;
+  cursor: pointer;
+  font-family: 'Yeon Sung', cursive;
 }
 
 .gola_function :hover,
@@ -67,29 +117,75 @@
 .gola_member_um :hover,
 .gola_member_jeong :hover,
 .gola_member_han :hover {
-	font-weight: 600;
-	font-size: 30px;
-	text-shadow: 2px 2px 2px gray;
-	color: skyblue;
+  font-weight: 600;
+  font-size: 30px;
+  text-shadow: 2px 2px 2px gray;
+  color: skyblue;
 }
 
 .gola_member_info {
-	margin: 0 auto;
-	font-family: 'Yeon Sung', cursive;
+  margin: 0 auto;
+  font-family: 'Yeon Sung', cursive;
 }
 
 .gola_table1 {
-	width: 200px;
-	font-size: 26px;
-	font-weight: 600;
-	text-align: center;
+  width: 200px;
+  font-size: 26px;
+  font-weight: 600;
+  text-align: center;
 }
 
 .gola_table2 {
-	font-size: 26px;
-	font-weight: 600;
+  font-size: 26px;
+  font-weight: 600;
 }
 
 .table_p {
-	margin-bottom: 0;
+  margin-bottom: 0;
+}
+
+.gola_member_name {
+  width: 20vh;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 400;
+  cursor: pointer;
+  font-family: 'Yeon Sung', cursive;
+}
+
+.gola_function :hover,
+.gola_function_content1 :hover,
+.gola_function_content2 :hover,
+.gola_function_content3 :hover,
+.gola_member_kim :hover,
+.gola_member_park :hover,
+.gola_member_um :hover,
+.gola_member_jeong :hover,
+.gola_member_han :hover {
+  font-weight: 600;
+  font-size: 30px;
+  text-shadow: 2px 2px 2px gray;
+  color: skyblue;
+}
+
+.gola_member_info {
+  margin: 0 auto;
+  font-family: 'Yeon Sung', cursive;
+}
+
+.gola_table1 {
+  width: 200px;
+  font-size: 26px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.gola_table2 {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.table_p {
+  margin-bottom: 0;
 }

@@ -1,134 +1,209 @@
-/* Google Web Fonts CDN */
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&display=swap');
-
-
-.gnb {
-	padding:10px;
-    margin-top: 10px;
-    border-radius: 10px;
-    padding-bottom: 10px;
-    height: 10%;
-    font-size: 18px;
-    font-weight: bold;
-    
-
-}
-
-.gnb a {
-    /*border: 1px solid red;*/
-    width: 80px;
-    display: inline-block;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    padding-right: 100px;
-    padding-left: 100px;
-    color: #666; 
-    text-decoration: none; 
-    outline: none
-}
-
-.gnb a:before,
-.gnb a:after {
-    position: absolute;
-    content: attr(data-link);
-    width: 100%;
-    transition: 0.3s;
-}
-
-.gnb a:before {
-    top: 0;
-    left: 0;
-}
-
-.gnb a:after {
-    top: 100%;
-    left: 0;
-    color: red;
-}
-
-.gnb a:hover:before {
-    top: -100%;
-}
-
-.gnb a:hover:after {
-    top: 0;
-}
-
-.headertop {
-    display: flex;
-    margin-bottom:30px;
-    text-align: center;
-    justify-content: center;
-    font-family: 'LeferiPoint-WhiteObliqueA';
-    width:100%;
-    height:170px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
-
-.headerlogo {
-    width: 30px;
-    text-align: center;
-    margin: 10px 0px;
-    padding-left: 100px;
-    padding-right: 40px;
-    justify-content: center;
-    text-align: center;
-}
-
-.headernav {
-    display: flex;
-    flex-direction: column;
-}
-
-.gnb2 {
-    font-size: 14px;
-    display: inline-block;
-    text-align: right;
-    margin-top: 30px;
-
-}
-
-.gnb2 button {
-    display: inline-block;
-    font-size: 16px;
-    color: black;
-    transition: 0.2s;
-    padding-bottom: 10px;
-    background-color:transparent;
-    border : none;
-}
-.gnb2 li {
-	display:block;
-	width:930px;
-}
-
-.gnb2:hover button {
-    opacity: 0.3;
-}
-
-.gnb2 button:hover {
-    opacity: 1;
-}
-
-.gnb2 button:before {
-    content: '\f0da';
-    font-family: fontawesome;
-    margin-right: 10px;
-    opacity: 0;
-}
-
-.gnb2 button:hover:before {
-    opacity: 1;
-}
-
-.indexmain{
-	margin-top: 300px;
+/* Logo */
+.golalogo {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 10px;
+  height: 10px;
+  z-index: 99;
 }
 
 
-.modal-backdrop {
-    position: inherit !important;
+/* login&join*/
+.indexlogin {
+  width: 100px;
+  height: 20px;
+  position: absolute;
+  right: 300px;
+  top: 68px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.indexloginlogout {
+  width: 150px;
+  height: 20px;
+  position: absolute;
+  right: 320px;
+  top: 68px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.indexloginmypage {
+  width: 150px;
+  height: 20px;
+  position: absolute;
+  right: 150px;
+  top: 68px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.indexloginallusers {
+  width: 180px;
+  height: 20px;
+  position: absolute;
+  right: 120px;
+  top: 130px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.indexloginallreview {
+  width: 180px;
+  height: 20px;
+  position: absolute;
+  right: 295px;
+  top: 130px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.logjoinbutton {
+  font-size: 16px;
+  font-family: 'LeferiPoint-WhiteObliqueA';
+  color: #fff !important;
+  font-weight: bold;
+}
+
+.logjoinbuttonallusers {
+  font-size: 20px;
+  font-family: 'LeferiPoint-WhiteObliqueA';
+  color: #c1c1c1 !important;
+  font-weight: bold;
+}
+
+#indexbutton {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+.logjoinbuttonallusers:hover {
+  color: white !important;
+}
+
+.logjoinbutton:hover {
+  color: #ed4912 !important;
+  font-weight: bold;
+}
+
+.logjoinbutton.popup {
+  color: #fff;
+}
+
+.logjoinbutton.popup:hover {
+  color: rgb(255, 94, 0);
+  font-weight: bold;
+}
+
+.indexjoin {
+  width: 150px;
+  height: 20px;
+  position: absolute;
+  right: 130px;
+  top: 68px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+/* TRIGGER*/
+.indextrigger {
+  width: 40px;
+  height: 20px;
+  position: absolute;
+  right: 70px;
+  top: 70px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.indextrigger span {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  transition: 0.3s;
+}
+
+.indextrigger span:nth-child(1) {
+  top: 0;
+}
+
+.indextrigger span:nth-child(2) {
+  top: 50%;
+}
+
+.indextrigger span:nth-child(3) {
+  top: 100%;
+}
+
+.indextrigger.popup span {
+  background-color: #fff;
+}
+
+.indextrigger.popup span:nth-child(1) {
+  top: 50%;
+  transform: rotate(45deg);
+}
+
+.indextrigger.popup span:nth-child(2) {
+  opacity: 0;
+}
+
+.indextrigger.popup span:nth-child(3) {
+  top: 50%;
+  transform: rotate(-45deg);
+}
+
+
+/* Nav Modal*/
+.navmodal-gnb {
+  background-color: rgba(0, 0, 0, 0.85);
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: none;
+  z-index: 98;
+}
+
+.modalgnb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 170px;
+  text-align: center;
+  font-size: 50px;
+  color: #fff;
+}
+
+.modalgnb a {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-style: italic;
+  font-weight: 500;
+  color: #fff !important;
+  font-size: 60px;
+  font-weight: bold;
+  display: block;
+  padding: 10px;
+  transition: 0.3s;
+  animation: navgnb 0.3s linear;
+  animation-fill-mode: both;
+  opacity: 0;
+  z-index: 999;
+}
+
+.modalgnb a:hover {
+  color: #ed4912 !important;
+}
+
+.modalgnb a:nth-child(1) {
+  animation-delay: 0.5s;
+}
+
+.modalgnb a:nth-child(2) {
+  animation-delay: 0.7s;
 }
