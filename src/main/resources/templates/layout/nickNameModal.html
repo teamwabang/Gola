@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
- <!-- CSS -->
-    <link rel="stylesheet" href="/css/styles.css" />
+<!-- CSS -->
+<link rel="stylesheet" href="/css/styles.css" />
+
 <body>
-	<div th:fragment="fr_NickNameModal">
-	<!-- pw edit Modal -->
-	    <div class="modal fade" id="nickNameChange" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div th:fragment="fr_NickNameModal">
+    <!-- pw edit Modal -->
+    <div class="modal fade" id="nickNameChange" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
@@ -13,31 +15,33 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div class="input-group input-group-sm mb-3">      
-	       	<!-- 닉네임 변경 시작 -->
-	      	<div id="change-nickname-area">
-	      	<form th:name="form2" th:onsubmit="return submitCheck(form2);" method="post">
-	      		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-		    	<input type="hidden" name="userId" th:value="${dto.getUserId() }" readonly>
-		    	<div class="modal-div">
-		    		<div class="modal-editcheck">
-					    <!-- 변경할 닉네임 입력  -->
-						<input type="text" id="userNicknameedit" name="userNickname"  maxlength="20" placeholder="변경할 닉네임을 입력하세요.">
-				  		<!-- 유효성 검사문구 -->
-				  		<p id="userNicknameCheck"></p>
-			  		</div>
-			    	<!-- 변경 submit -->
-			    	<input type="button" class="modal-editbtn" id="change-nickname-btn" value="변경">
-		    	</div>
-			</form>
-			</div>
-			<!-- 닉네임 변경 끝 -->
+            <div class="input-group input-group-sm mb-3">
+              <!-- 닉네임 변경 시작 -->
+              <div id="change-nickname-area">
+                <form th:name="form2" th:onsubmit="return submitCheck(form2);" method="post">
+                  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                  <input type="hidden" name="userId" th:value="${dto.getUserId() }" readonly>
+                  <div class="modal-div">
+                    <div class="modal-editcheck">
+                      <!-- 변경할 닉네임 입력  -->
+                      <input type="text" id="userNicknameedit" name="userNickname" maxlength="20"
+                        placeholder="변경할 닉네임을 입력하세요.">
+                      <!-- 유효성 검사문구 -->
+                      <p id="userNicknameCheck"></p>
+                    </div>
+                    <!-- 변경 submit -->
+                    <input type="button" class="modal-editbtn" id="change-nickname-btn" value="변경">
+                  </div>
+                </form>
+              </div>
+              <!-- 닉네임 변경 끝 -->
+            </div>
           </div>
         </div>
       </div>
     </div>
-	</div>
 
-	<script type="text/javascript" src="/js/mypage_nickname_change.js"></script>
+    <script type="text/javascript" src="/js/mypage_nickname_change.js"></script>
 </body>
+
 </html>

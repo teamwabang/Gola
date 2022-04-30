@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <body>
-	<div th:fragment="fr_functionModal3">
-		<!-- Modal -->
-	  	<div class="modal fade" id="functionModal3" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg modal-dialog-centered">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title">레시피, 리뷰게시판</h5>
-		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		      </div>
-		      <div class="modal-body">
-		        <img src="/images/about/recipe.png" th:style="@{width: 600px;}">
-		        <img src="/images/about/recipe_detail.png" th:style="@{width: 600px;}">
-		        <strong>레시피보기</strong><br>
-		        <strong>front-end</strong>
-		        <span>1. 레시피를 더 보고 싶을때 더보기 버튼을 이용</span><br>
-		        <strong>back-end</strong>
-		        <span>1. 레시피는 DB에 저장된 데이터를 불러와서 화면에 출력</span><br>
-		        
-		        <img src="/images/about/timer.png">
-		        <strong>타이머</strong><br>
-		        <strong>front-end</strong>
-		        <span>1. 레시피를 보고 타이머를 활용하여 요리 가능</span><br>
-		        
-		        <img src="/images/about/review_write.png" th:style="@{width: 600px;}">
-		        <img src="/images/about/review_detail.png">
-		        <strong>리뷰게시판</strong><br>
-		        <strong>front-end</strong>
-		        <span>1. 제목, 내용, 난이도, 사진 등 레시피에 대한 리뷰 작성 가능</span><br>
-		        <strong>back-end</strong>
-		        <span>1. 게시글 및 댓글은 모두 DB에 저장</span>
-		        <span>2. 게시글 또는 상위댓글을 삭제하면 자식 댓글은 모두 삭제처리</span><br>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-	</div>
+  <div th:fragment="fr_functionModal3">
+    <!-- Modal -->
+    <div class="modal fade" id="functionModal3" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">레시피, 리뷰게시판</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <img src="/images/about/recipe.png" th:style="@{width: 600px;}">
+            <img src="/images/about/recipe_detail.png" th:style="@{width: 600px;}">
+            <strong>레시피보기</strong><br>
+            <strong>front-end</strong>
+            <span>1. 레시피를 더 보고 싶을때 더보기 버튼을 이용</span><br>
+            <strong>back-end</strong>
+            <span>1. 레시피는 DB에 저장된 데이터를 불러와서 화면에 출력</span><br>
+
+            <img src="/images/about/timer.png">
+            <strong>타이머</strong><br>
+            <strong>front-end</strong>
+            <span>1. 레시피를 보고 타이머를 활용하여 요리 가능</span><br>
+
+            <img src="/images/about/review_write.png" th:style="@{width: 600px;}">
+            <img src="/images/about/review_detail.png">
+            <strong>리뷰게시판</strong><br>
+            <strong>front-end</strong>
+            <span>1. 제목, 내용, 난이도, 사진 등 레시피에 대한 리뷰 작성 가능</span><br>
+            <strong>back-end</strong>
+            <span>1. 게시글 및 댓글은 모두 DB에 저장</span>
+            <span>2. 게시글 또는 상위댓글을 삭제하면 자식 댓글은 모두 삭제처리</span><br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>

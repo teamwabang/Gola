@@ -1,190 +1,194 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
-    />
-    <title>내가 보고, 먹고, 만든 | 골라</title>
-    
-	<!-- CSS -->
-    <link rel="stylesheet" href="/css/styles.css" />
-  	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
+  <title>내가 보고, 먹고, 만든 | 골라</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    <!-- fontawesome -->
-    <script src="https://kit.fontawesome.com/c21d7630fc.js" crossorigin="anonymous"></script>
-    <!-- JavaScript -->
-    <script type="text/javascript" src="/js/chatbot.js"></script>
-    <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="/js/click_disable.js"></script>
-    <script type="text/javascript" src="/js/developer_tools.js"></script>
-	<!-- Featherlight.js -->
-	<script src="/js/featherlight.js"></script>
-	<link rel="stylesheet" href="/css/featherlight.css">
-  </head>
-  <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" class="bbsbody">
-   
-    <!-- import header -->
-    <header th:replace="layout/fragment :: fr_header"></header>
-    <!-- end of import header -->
-  
-    <!-- center title -->
-  	<div>
-  	<span class="bbstitle"> REVIEW </span>
-  	</div>
-  
- 
-	<!--main-->
-	<div class="searchbar">
-            <form class = "searchform" id="form">
-              <span>Find your recipe : </span> 
-                <input type="text" name="search" id="search"><button type="button" id="schBtn"><i class="fa-solid fa-magnifying-glass" id="searchbuttonhover"></i></button>
-             </form>
-          </div>
-          
-           <form class = "searchform" id="form">
-            	<button sec:authorize="isAuthenticated()" id ="writebutton" type="button" class="btn btn-sm btn-primary" onclick="javascript:location.href='/review/write';"><i class="fa-solid fa-pencil"></i>    글쓰기</button>
-            </form>
-            
-    <section class="reviewsection">
- 
+  <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <!-- fontawesome -->
+  <script src="https://kit.fontawesome.com/c21d7630fc.js" crossorigin="anonymous"></script>
+  <!-- JavaScript -->
+  <script type="text/javascript" src="/js/chatbot.js"></script>
+  <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="/js/click_disable.js"></script>
+  <script type="text/javascript" src="/js/developer_tools.js"></script>
+  <!-- Featherlight.js -->
+  <script src="/js/featherlight.js"></script>
+  <link rel="stylesheet" href="/css/featherlight.css">
+</head>
 
- 	<div class="reviewmain reviewmainTwo">
-		         
-		  <div class="reviewresult" id="reviewresult">
-           
-          </div>
-          		  <div class="seemorebox">
-                <div class="seemoreline">
-                    <a href="#">
-                      <p class="bbsseemore" id="moreBtn">MORE<i class="fa-solid fa-angles-down"></i></p>
-               </a>
-                 </div>
-             </div>
-       	   
-             <th:block th:if="${param != null && param != ''}">
-             	<input type="hidden" id="getParam" name="getParam" th:value="${param.search}"/>
-         	</th:block>
-         	
-            	
-		</div>
-				
-    </section>
-    
-    <!-- import footer -->
-    <footer th:replace="layout/fragment :: fr_footer"></footer>
-    <!-- end of import footer -->
-	
-	
-   	<!-- Bootstrap -->
-  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-	<script th:inline="javascript">
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" class="bbsbody">
 
-		//컨트롤러에서 받은 타임리프 값을 javascript 변수에 넣는다.
-	    
-		let list = [[${list}]];
-	 	
-		$(document).ready(function(){
-	         
-	         if($.trim($('#getParam').val()) != ""){
-	            $('#search').val( $('#getParam').val() );      
-	         }
-	         
-	         //create div
-	         callList();
+  <!-- import header -->
+  <header th:replace="layout/fragment :: fr_header"></header>
+  <!-- end of import header -->
 
-	         $('#schBtn').click(function(){       
-	            let schTxt = $('#search').val();      
-	               let form = $("#form");
-	                form.attr("method", "get");
-	                form.attr("action", "/review");
-	                form.submit();                
-	         });   
+  <!-- center title -->
+  <div>
+    <span class="bbstitle"> REVIEW </span>
+  </div>
 
-	         //2라인만 보이게 셋팅하기..
-	         $('.reviewItems').hide().slice(0, 2).show();
 
-	         //숨겨진 라인이 없으면 더보기 버튼 안보이게하기
-	           if($(".reviewItems:hidden").length == 0){ 
-	               $('#moreBtn').hide();
-	           }
-	           
-	           $("#moreBtn").click(function(e){
-	                e.preventDefault();
-	              $(".reviewItems:hidden").slice(0, 2).show(); 
-	                if($(".reviewItems:hidden").length == 0){ 
-	                  $('#moreBtn').hide();
-	              }
-	             });
-	           
-	      });
+  <!--main-->
+  <div class="searchbar">
+    <form class="searchform" id="form">
+      <span>Find your recipe : </span>
+      <input type="text" name="search" id="search"><button type="button" id="schBtn"><i
+          class="fa-solid fa-magnifying-glass" id="searchbuttonhover"></i></button>
+    </form>
+  </div>
 
-	 	$(document).on("click",".reviewItems > div > i ", function(){
-	 		location.href = "/review/detail?bno="+$(this).data("bno");
-	 	});
-	 	
-	 	
-	 	//search function
-	 	let callList = () => {
-				 		
-	 		//엘리먼트생성 결과변수
-	 		let result = "";
-	 		if(list.length > 0){
-	 			const splitList = [];
-	 			//4칸씩 쪼개기
-	 			for (let i = 0; i < list.length; i += 4){
-	 				splitList.push(list.slice(i, i +4));
-	 			}
-/* 
-	 			<div>
-                <a href="/">
-                     <img src="/images/test1.jpg"></a>
-                <i class="xi-plus-thin"></i>
-                <span> 난이도 '하'</span>
-                <p> 래면</p>
-              </div>
- */	 			
-	 			for (let list of splitList){
-	                const outerDiv = document.createElement("div");	
-	                outerDiv.setAttribute("class","items reviewItems itemsTwo");
-	                for( let item of list) {
-	                	const innerDiv = document.createElement("div");
-	                	const innerA = document.createElement("a");
-	                	innerA.setAttribute("href","/review/detail?bno="+item.bno);
-	                	const innerImg = document.createElement("img");
-	                	innerImg.setAttribute("src",item.imgSrc);
-	                	innerA.appendChild(innerImg);
-	                	const innerI = document.createElement("i");
-	                	innerI.setAttribute("class","xi-plus-thin");
-	                	innerI.dataset.bno = item.bno;
-	                	const innerSpan = document.createElement("span");
-	                	innerSpan.textContent="난이도 '"+item.level+"' ";
-	                	const innerP = document.createElement("p");
-	                	innerP.textContent = item.title;
-	                	innerDiv.appendChild(innerA);
-	                	innerDiv.appendChild(innerI);
-	                	innerDiv.appendChild(innerSpan);
-	                	innerDiv.appendChild(innerP);
-	                	outerDiv.appendChild(innerDiv);
-	                }
-	                
-	                result += outerDiv.outerHTML;
-	                
-	 			}
-	 		}else {
-	 			result += '<div class="noresult">등록된 레시피가 없습니다</div>';
-	 		}
-	 		console.log(result);
-	 		$('.reviewresult').append(result);
-	 		
-	 	}
-	 	
- 	</script>
- 	
- 	<script src="http://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script type="text/javascript" src="/js/join.js"></script>
-    <script type="text/javascript" src="/js/logineye.js"></script>
-  </body>
+  <form class="searchform" id="form">
+    <button sec:authorize="isAuthenticated()" id="writebutton" type="button" class="btn btn-sm btn-primary"
+      onclick="javascript:location.href='/review/write';"><i class="fa-solid fa-pencil"></i> 글쓰기</button>
+  </form>
+
+  <section class="reviewsection">
+
+
+    <div class="reviewmain reviewmainTwo">
+
+      <div class="reviewresult" id="reviewresult">
+
+      </div>
+      <div class="seemorebox">
+        <div class="seemoreline">
+          <a href="#">
+            <p class="bbsseemore" id="moreBtn">MORE<i class="fa-solid fa-angles-down"></i></p>
+          </a>
+        </div>
+      </div>
+
+      <th:block th:if="${param != null && param != ''}">
+        <input type="hidden" id="getParam" name="getParam" th:value="${param.search}" />
+      </th:block>
+
+
+    </div>
+
+  </section>
+
+  <!-- import footer -->
+  <footer th:replace="layout/fragment :: fr_footer"></footer>
+  <!-- end of import footer -->
+
+
+  <!-- Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <script th:inline="javascript">
+
+    //컨트롤러에서 받은 타임리프 값을 javascript 변수에 넣는다.
+
+    let list = [[${ list }]];
+
+    $(document).ready(function () {
+
+      if ($.trim($('#getParam').val()) != "") {
+        $('#search').val($('#getParam').val());
+      }
+
+      //create div
+      callList();
+
+      $('#schBtn').click(function () {
+        let schTxt = $('#search').val();
+        let form = $("#form");
+        form.attr("method", "get");
+        form.attr("action", "/review");
+        form.submit();
+      });
+
+      //2라인만 보이게 셋팅하기..
+      $('.reviewItems').hide().slice(0, 2).show();
+
+      //숨겨진 라인이 없으면 더보기 버튼 안보이게하기
+      if ($(".reviewItems:hidden").length == 0) {
+        $('#moreBtn').hide();
+      }
+
+      $("#moreBtn").click(function (e) {
+        e.preventDefault();
+        $(".reviewItems:hidden").slice(0, 2).show();
+        if ($(".reviewItems:hidden").length == 0) {
+          $('#moreBtn').hide();
+        }
+      });
+
+    });
+
+    $(document).on("click", ".reviewItems > div > i ", function () {
+      location.href = "/review/detail?bno=" + $(this).data("bno");
+    });
+
+
+    //search function
+    let callList = () => {
+
+      //엘리먼트생성 결과변수
+      let result = "";
+      if (list.length > 0) {
+        const splitList = [];
+        //4칸씩 쪼개기
+        for (let i = 0; i < list.length; i += 4) {
+          splitList.push(list.slice(i, i + 4));
+        }
+        /* 
+                  <div>
+                        <a href="/">
+                             <img src="/images/test1.jpg"></a>
+                        <i class="xi-plus-thin"></i>
+                        <span> 난이도 '하'</span>
+                        <p> 래면</p>
+                      </div>
+         */
+        for (let list of splitList) {
+          const outerDiv = document.createElement("div");
+          outerDiv.setAttribute("class", "items reviewItems itemsTwo");
+          for (let item of list) {
+            const innerDiv = document.createElement("div");
+            const innerA = document.createElement("a");
+            innerA.setAttribute("href", "/review/detail?bno=" + item.bno);
+            const innerImg = document.createElement("img");
+            innerImg.setAttribute("src", item.imgSrc);
+            innerA.appendChild(innerImg);
+            const innerI = document.createElement("i");
+            innerI.setAttribute("class", "xi-plus-thin");
+            innerI.dataset.bno = item.bno;
+            const innerSpan = document.createElement("span");
+            innerSpan.textContent = "난이도 '" + item.level + "' ";
+            const innerP = document.createElement("p");
+            innerP.textContent = item.title;
+            innerDiv.appendChild(innerA);
+            innerDiv.appendChild(innerI);
+            innerDiv.appendChild(innerSpan);
+            innerDiv.appendChild(innerP);
+            outerDiv.appendChild(innerDiv);
+          }
+
+          result += outerDiv.outerHTML;
+
+        }
+      } else {
+        result += '<div class="noresult">등록된 레시피가 없습니다</div>';
+      }
+      console.log(result);
+      $('.reviewresult').append(result);
+
+    }
+
+  </script>
+
+  <script src="http://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script type="text/javascript" src="/js/join.js"></script>
+  <script type="text/javascript" src="/js/logineye.js"></script>
+</body>
