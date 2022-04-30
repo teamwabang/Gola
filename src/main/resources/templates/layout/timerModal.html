@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <body>
-<div th:fragment="fr_timerModal">
-<div class="modal fade" id="timer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">TIMER</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-	    <center>
-	    	<h1 id="clock"></h1>
-		</center>
-	    <div class="containerMrs">
-	        <p id="output"><b>00:00:00</b></p>
-	        <div id="controls" align="center">
-	            <button id="startPause" onclick="startPause()"><b id="start">START</b></button>
-	            <button onclick="reset()" id="reset"><b id="reset">RESET</b></button>
-	        </div>
-	    </div>
-	    <center id="times">
-	        <h1 id="stopTime"></h1>
-	    </center>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+  <div th:fragment="fr_timerModal">
+    <div class="modal fade" id="timer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">TIMER</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <center>
+              <h1 id="clock"></h1>
+            </center>
+            <div class="containerMrs">
+              <p id="output"><b>00:00:00</b></p>
+              <div id="controls" align="center">
+                <button id="startPause" onclick="startPause()"><b id="start">START</b></button>
+                <button onclick="reset()" id="reset"><b id="reset">RESET</b></button>
+              </div>
+            </div>
+            <center id="times">
+              <h1 id="stopTime"></h1>
+            </center>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-</div>
 </body>
+
 </html>

@@ -2,26 +2,26 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title></title>
+  <title></title>
 </head>
 
 <body>
-	
-	<!-- 안내창 출력 -->
-	<th:block th:if test="${not empty msg}">
-		alert("${msg}");		
-	</th:block>
-	
-	<!-- 뒤로 가기 -->
-	<th:block th:if test="${not empty back}">
-		history.back();	
-	</th:block>
-	
-	<!-- 페이지 이동 -->
-	<th:block th:if test="${not empty url}">
-		location.href = '${url}'
-	</th:block>
-		
+
+  <!-- 안내창 출력 -->
+  <th:block th:if test="${not empty msg}">
+    alert("${msg}");
+  </th:block>
+
+  <!-- 뒤로 가기 -->
+  <th:block th:if test="${not empty back}">
+    history.back();
+  </th:block>
+
+  <!-- 페이지 이동 -->
+  <th:block th:if test="${not empty url}">
+    location.href = '${url}'
+  </th:block>
+
 </body>
 
 </html>
