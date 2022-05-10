@@ -1,0 +1,65 @@
+.dietBackground {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
+.dietMain {
+    padding-top: 4%;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr) 60px;
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100%;
+    margin: 0px 20%;
+    background-color: white;
+    border: 1px solid white;
+  }
+
+.breakfast {
+    display: grid;
+    grid-template-columns:60px repeat(3, 1fr) 60px;
+}
+
+.lunch {
+    display: grid;
+    grid-template-columns:60px repeat(4, 1fr) 60px;
+}
+
+.dinner {
+    display: grid;
+    grid-template-columns:60px repeat(5, 1fr) 60px;
+}
+
+.breakfast * {
+    border: 1px solid black;
+}
+
+.lunch * {
+    border: 1px solid black;
+}
+
+.dinner * {
+    border: 1px solid black;
+}
+
+.meal, .kcal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dietFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3%;
+}
+
+.blank {
+    visibility: hidden;
+}
+
+.refreshBtn {
+    height: 30px; 
+}
