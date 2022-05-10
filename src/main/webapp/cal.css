@@ -1,0 +1,48 @@
+.calBackground {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+}
+
+.calMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  margin: 0px 25%;
+  background-color: white;
+  border: 1px solid black;
+}
+
+#male,
+#female,
+#age,
+#height,
+#weight {
+  margin-top: 3px;
+}
+
+#genderSection,
+#ageSection,
+#heightSection,
+#weightSection,
+#levelSection,
+.resultBtn,
+.levelDescriptionTable {
+  margin-bottom: 5%;
+}
+
+.resultBtn {
+  display: flex;
+  justify-content: center;
+}
+
+.form-check {
+  margin-right: 10px;
+}
+
+.levelDescriptionTable * {
+  border: 1px solid black;
+}
