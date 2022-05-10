@@ -12,6 +12,10 @@
 		<typeAlias type="com.recipe.gola.dto.CommentDTO" alias="CommentDTO" />
 		<typeAlias type="com.recipe.gola.dto.BbsDTO" alias="BbsDTO" />
 		<typeAlias type="com.recipe.gola.dto.FilesDTO" alias="FilesDTO" />
+		<typeAlias type="com.recipe.gola.dto.ProductDTO" alias="ProductDTO" />
+		<typeAlias type="com.recipe.gola.dto.OrderDTO" alias="OrderDTO" />
+		<typeAlias type="com.recipe.gola.dto.CartDTO" alias="CartDTO" />
+
 	</typeAliases>
 	
 </configuration>
