@@ -16,6 +16,6 @@ public class OrderDTO {
 	private String oZipcode;	// 수령자 우편번호
 	private String oAddr1;	// 수령자 주소
 	private String oAddr2;	// 수령자 상세주소
-	private String oRequest;	// 배송 시 요청사항
+	private String oRequest;	// 배송 시 요청사항 *
 	private String oRegdate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));	// 주문 날짜
 }
