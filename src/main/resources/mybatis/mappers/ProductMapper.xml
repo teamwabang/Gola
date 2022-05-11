@@ -5,7 +5,7 @@
   <mapper namespace="com.recipe.gola.mapper.ProductMapper">
   
   <!-- 상품정보 출력 -->
-  <select id="list" resultType="ProducDTO">
+  <select id="list" resultType="ProductDTO">
   		SELECT *
   		FROM product
   		WHERE pNo = ${pNo}
