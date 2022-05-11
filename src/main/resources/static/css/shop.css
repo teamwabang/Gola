@@ -1,17 +1,9 @@
-.bbsbody {
+.shopbody {
   background-image: url(/images/aboutsection.png);
   background-size: cover;
 }
 
-.searchbar {
-  height: 80px;
-  background-color: #000;
-  padding-top: 7px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.bbstitle {
+.shoptitle {
   font-family: 'Montserrat Alternates', sans-serif;
   font-style: italic;
   font-size: 70px;
@@ -25,12 +17,19 @@
   padding-top: 60px;
 }
 
+.searchbar {
+  height: 80px;
+  background-color: #000;
+  padding-top: 7px;
+  margin: 0 auto;
+  text-align: center;
+}
+
 #searchbuttonhover:hover {
   color: #FE5E00;
 }
 
-
-.bbsseemore {
+.shopseemore {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   display: flex;
   flex-direction: column;
@@ -47,14 +46,14 @@
   font-family: 'Montserrat Alternates', sans-serif;
 }
 
-.bbsseemore:hover{
+.shopseemore:hover{
   background-color:#cc4d00;
   color:#fff;
   border : 1px solid #cc4d00;
   cursor: pointer;
 }
 
-.bbsseemore:hover {
+.shopseemore:hover {
   background-color: #cc4d00;
   color: #fff;
   border: 1px solid #cc4d00;
