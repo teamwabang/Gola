@@ -1,0 +1,138 @@
+.calBackground {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+}
+
+.calMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100vh;
+  width: 100%;
+  margin: 0px 25%;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.calMainTitle {
+  font-size: 23px;
+  margin-bottom: 20px;
+}
+
+.calbtns {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border: none;
+  background-color: white;
+  color: black;
+}
+
+.calbtns:hover,
+.calbtns:active {
+  color: white !important;
+  font-weight: bold !important;
+  background-color: #96d4d4 !important;
+}
+
+.btn-check:active + .btn-secondary,
+.btn-check:checked + .btn-secondary,
+.btn-secondary.active,
+.btn-secondary:active,
+.show > .btn-secondary.dropdown-toggle {
+  color: #fff;
+  background-color: #96d4d4;
+  border-color: #96d4d4;
+}
+
+#male,
+#female,
+#age,
+#height,
+#weight {
+  margin-top: 7px;
+}
+
+#genderSection,
+#ageSection,
+#heightSection,
+#weightSection,
+#levelSection,
+.resultBtn,
+.levelDescriptionTable {
+  margin-bottom: 5%;
+}
+
+.labels,
+.genderTitle,
+.levelTitle {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.genderTitle,
+.levelTitle {
+  margin-bottom: 7px;
+}
+
+.resultBtn {
+  display: flex;
+  justify-content: center;
+}
+
+.resultbtn {
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  border: none;
+  background: none;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.resultbtn:hover,
+.recommendbtn:hover {
+  background: none;
+  color: black;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+}
+
+.recommendbtn {
+  background: none;
+  border: none;
+  color: black;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.form-check {
+  margin-right: 10px;
+}
+
+table.type06 {
+  border-collapse: collapse;
+  text-align: left;
+  line-height: 1.5;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin: 20px 10px;
+}
+table.type06 th {
+  width: 180px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+}
+table.type06 td {
+  width: 400px;
+  padding: 10px;
+  vertical-align: top;
+}
+table.type06 .even {
+  background: #efefef;
+}

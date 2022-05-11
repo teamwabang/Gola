@@ -24,11 +24,12 @@ public class ShopController {
 		return "shop/shop";
 	}
 	
+
 	// 쇼핑몰 상세페이지 
 	@GetMapping("shopdetail")
 	public String shop_detail() {
 		logger.info("-----> 쇼핑몰 상세 페이지로 이동합니다.");
 		return "shop/shopdetail";
 	}
-	
+
 }

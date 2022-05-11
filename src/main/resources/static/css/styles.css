@@ -16,13 +16,9 @@
 @import "write.css";
 @import "list.css";
 @import "leave.css";
-<<<<<<< Updated upstream
-=======
 @import "cal.css";
 @import "diet.css";
 @import "shopdetail.css";
->>>>>>> Stashed changes
-
 
 /* scroll style */
 *::-webkit-scrollbar {
