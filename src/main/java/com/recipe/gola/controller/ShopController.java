@@ -17,11 +17,19 @@ public class ShopController {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	// 회원가입
+	// 쇼핑몰 페이지 
 	@GetMapping("shop")
 	public String shop_index() {
 		logger.info("-----> 쇼핑몰 페이지로 이동합니다.");
 		return "shop/shop";
 	}
 	
+
+	// 쇼핑몰 상세페이지 
+	@GetMapping("shopdetail")
+	public String shop_detail() {
+		logger.info("-----> 쇼핑몰 상세 페이지로 이동합니다.");
+		return "shop/shopdetail";
+	}
+
 }

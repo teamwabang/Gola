@@ -1,0 +1,139 @@
+body {
+  /* background-color: rgb(72, 73, 72); */
+}
+
+.shopProd {
+  margin: 50px 20%;
+  margin-top:300px;
+}
+
+.shopDetailTop {
+  display: flex;
+  padding-bottom: 70px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.shopItemImage {
+  border: 1px solid red;
+  width: 600px;
+  height: 520px;
+}
+
+.prodInfoWrap {
+  margin-left: 70px;
+  display: flex;
+  flex-direction: column;
+  width: 480px;
+}
+
+.MainTitle {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.subTitle {
+  font-size: 16px;
+  color: gray;
+  margin-top: 10px;
+}
+
+.priceItem {
+  margin-top: 30px;
+  display: flex;
+  align-items: baseline;
+  padding-left: 20px;
+}
+
+.label {
+  font-size: 16px;
+  color: gray;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.privceValue {
+  font-size: 35px;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.prodBuyInfo {
+  border-top: 1px solid #f1f1f1;
+  margin-top: 15px;
+}
+
+
+.prodInfoIcon {
+  margin: 0 10px;
+  margin-right: 20px;
+}
+
+.prodDetailWrap {
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  border-bottom: 1px solid #f1f1f1;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  font-size: 17px;
+}
+
+
+
+.prodShipFee {
+  font-weight: bold;
+}
+
+.prodBenefitFee {
+  font-weight: bold;
+  color: #77b347
+}
+
+.Option {
+  font-weight: normal;
+  font-size: 70%;
+  color: black;
+}
+
+.prodOption {
+  margin-bottom: 30px;
+
+}
+
+.selectOption {
+  width: 480px;
+  height: 30px;
+  margin-top: 20px;
+  padding-left: 20px;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+.btn_go_box {
+  display: flex;
+  height: 60px;
+
+}
+
+.btn_go_cart {
+  width: 180px;
+  margin-right: 5px;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: bold;
+  border: 1px solid #77b347;
+  background-color: white;
+  color: #77b347;
+}
+
+.btn_go_order {
+  width: 300px;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #77b347;
+  border: 1px solid #77b347;
+  color: white;
+}
