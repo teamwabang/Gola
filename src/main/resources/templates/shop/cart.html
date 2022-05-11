@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="indexhtml">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
+  <meta property="og:title" content="우리들의 모든 레시피 | 골라">
+  <!-- <meta property="og:image" content=""> -->
+  <meta property="og:description" content="우리들의 모든 레시피, 골라">
+  <meta property="og:type" content="website">
+  <!-- title -->
+  <title>장바구니 | 골라</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <!-- fontawesome -->
+  <script src="https://kit.fontawesome.com/c21d7630fc.js" crossorigin="anonymous"></script>
+  <!-- JavaScript -->
+  <script type="text/javascript" src="/js/chatbot.js"></script>
+  <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+  <!-- <script type="text/javascript" src="/js/click_disable.js"></script>
+  <script type="text/javascript" src="/js/developer_tools.js"></script> -->
+  <!-- Featherlight.js -->
+  <script src="/js/featherlight.js"></script>
+  <link rel="stylesheet" href="/css/featherlight.css">
+
+</head>
+
+<body class="cartbody">
+
+	<!-- import header -->
+	<header th:replace="layout/fragment :: fr_header"></header>
+	<!-- end of import header -->
+	
+	<!-- center title -->
+	<div>
+		<span class="carttitle">CART</span>
+	</div>
+
+	<div class="cart_content">
+		<!-- 장바구니 타이틀 시작 -->
+	    <div class="cart_title">
+	        <h2>장바구니</h2>
+	        <ul>
+	            <li class="cart_page_on"><span>01</span> 장바구니 <span><img src="/images/shop/icon_step_on.png" alt=""></span></li>
+	            <li><span>02</span> 주문서작성/결제 <span><img src="/images/shop/icon_step_off.png" alt=""></span></li>
+	            <li><span>03</span> 주문완료 </li>
+	        </ul>
+	    </div>
+	    <!-- 장바구니 타이틀 끝 -->
+	    
+	    <div class="cart_cont">
+		    <!-- 상품 목록 시작 -->
+		    <div>
+		    	<form>
+		    		
+		    		
+		    		<p class="no_data">장바구니에 담겨있는 상품이 없습니다.</p>
+		    	</form>
+		    </div>
+		    <!-- 상품 목록 끝 -->
+		    
+		    <!-- 이전으로 돌아가기 버튼 시작 -->
+		   	<div class="cart_previous_btn">
+		   		<a href="javascript:history.back();" class="cart_previous_link">쇼핑 계속하기</a>
+		   	</div>
+		   	<!-- 이전으로 돌아가기 버튼 끝 -->
+		   	
+		   	<!-- 상품 결제금액 시작 -->
+		   	<div class="cart_price">
+		        <ul class="final_payment">
+					<li>
+						<p class="final_payment_ti">상품 금액</p>
+						<p class="final_payment_price">
+							<input type="hidden" class="cart_normal_price" value="0">
+							<span class="cart_normal_add_opt_price">0</span>원
+						</p>
+					</li>
+					<li><img src="/images/shop/order_price_plus.png" alt="더하기"></li>
+					<li>
+						<p class="final_payment_ti">배송비</p>
+						<input type="hidden" class="cart_total_save" value="0">
+						<p class="final_payment_price"><span class="cart_total_add_opt_save">0</span>원</p>
+					</li>
+					<li><img src="/images/shop/order_price_total.png" alt="합계"></li>
+					<li>
+						<p class="final_payment_ti">최종 결제 금액</p>
+						<p class="final_payment_price"><span id="pay_amt">0</span>원</p>
+					</li>
+				</ul>
+		    </div>
+		   	<!-- 상품 결제금액 끝 -->
+	   	</div>
+    </div>
+   	
+   	<!-- import footer -->
+   	<footer th:replace="layout/fragment :: fr_footer"></footer>
+   	<!-- end of import footer -->
+	
+	<!-- Bootstrap -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+	crossorigin="anonymous"></script>
+	<script src="http://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script type="text/javascript" src="/js/join.js"></script>
+	<script type="text/javascript" src="/js/logineye.js"></script>
+
+</body>
+
+</html>

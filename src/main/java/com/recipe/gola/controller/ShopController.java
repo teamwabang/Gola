@@ -23,13 +23,26 @@ public class ShopController {
 		logger.info("-----> 쇼핑몰 페이지로 이동합니다.");
 		return "shop/shop";
 	}
-	
 
 	// 쇼핑몰 상세페이지 
 	@GetMapping("shopdetail")
 	public String shop_detail() {
 		logger.info("-----> 쇼핑몰 상세 페이지로 이동합니다.");
 		return "shop/shopdetail";
+	}
+	
+	// 장바구니
+	@GetMapping("cart")
+	public String shop_cart() {
+		logger.info("-----> 장바구니 페이지로 이동합니다.");
+		return "shop/cart";
+	}
+	
+	// 쇼핑몰 상세페이지 
+	@GetMapping("order")
+	public String shop_order() {
+		logger.info("-----> 주문서작성/결제 페이지로 이동합니다.");
+		return "shop/order";
 	}
 
 }

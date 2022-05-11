@@ -1,0 +1,382 @@
+.orderbody {
+  /* background-image: url(/images/mypagebackground.png); */
+  background-repeat: repeat;
+  background-size: auto;
+}
+
+.ordertitle {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-style: italic;
+  font-size: 70px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto;
+  width: 300px;
+  height: 200px;
+  color: #77b347;
+  display: block;
+  padding-top: 60px;
+}
+
+/* 주문서작성/결제 타이틀 시작 */
+.order_content {
+	width: 1300px;
+	margin: 0 auto;
+	margin-bottom: 80px;
+}
+
+.order_title {
+	display: flex;
+	justify-content: space-between;
+	vertical-align: middle;
+	border-bottom: 1px solid #dbdbdb;
+}
+
+.order_title h2 {
+	color: black;
+	margin: 16px 0 16px 16px;
+}
+
+.order_title ul {
+	list-style: none;
+	margin-top: 20px;
+}
+
+.order_title ul li {
+	color: #d1d1d1;
+}
+
+.order_title img {
+	margin: 0 10px 0 10px;
+}
+
+.order_title li,
+.order_title li span {
+	display: inline-block;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.order_title .order_page_on {
+	color: #77b347;
+}
+
+/* 장바구니에서 담은 상품 목록 시작 */
+.no_data {
+	padding: 60px 0;
+    margin: 0 0 20px 0;
+    margin-bottom: 0;
+    text-align: center;
+    border-bottom: 1px solid #dbdbdb;
+    color: #444;
+}
+
+.order_cart_title {
+    margin: 0px 0 5px 0;
+    padding: 0 0 10px 0;
+    font-size: 16px;
+}
+
+/* 배송정보 시작 */
+.order_view_info h4 {
+    margin: 50px 0 5px 0;
+    font-size: 22px;
+}
+
+.order_zone_title {
+    margin: 0px 0 5px 0;
+    padding: 0 0 10px 0;
+    font-size: 16px;
+}
+
+.order_table_type {
+    border-top: 1px solid #999999;
+}
+
+.form_element {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+}
+
+.form_element label {
+    position: relative;
+    display: inline-block;
+    min-width: 20px;
+    min-height: 20px;
+    padding: 0 0 0 5px;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.form_element li {
+	margin-top: 16px;
+}
+
+.gray_list_btn .gray_small_btn {
+    font-size: 12px;
+    /* background: url(../img/common/btn/btn_gray_bg_02.png) repeat-x bottom; */
+    background: #efefef;
+    padding-bottom: 2px;
+    color: #777;
+}
+
+.gray_list_btn a,
+.gray_list_btn button {
+    display: inline-block;
+    padding: 2px 11px 11px 11px;
+    background: url(/images/shop/btn_gray_bg.png) repeat-x;
+    border: 1px solid #dbdbdb;
+    vertical-align: middle;
+}
+
+.gray_list_btn .gray_small_btn span {
+    line-height: 22px;
+}
+
+.gray_list_btn a span,
+.gray_list_btn button span {
+    display: inline-block;
+    padding: 0px 12px 0 0;
+}
+
+.table_left {
+	width: 100%;
+}
+
+.table_left th {
+    padding: 15px 10px 14px 20px;
+    border-top: none 0;
+    background: #f7f7f7;
+    text-align: left;
+   	vertical-align: middle;
+}
+
+.table_left td {
+	height: 31px;
+    padding: 12px 10px 11px 15px;
+    text-align: left;
+}
+
+.order_cont tr {
+	border-bottom: 1px solid #dbdbdb;
+	width: 3000px;
+}
+
+.order_cont table li {
+    display: inline-block;
+    padding: 0 30px 0 0;
+}
+
+th > .important {
+    margin: 0 0 0 -10px;
+    padding: 0 0 0 12px;
+    background: url(/images/shop/icon_point.png) no-repeat 0 center;
+    background-size: 7px;
+}
+
+.order_cont input[type="text"] {
+    width: 220px;
+    height: 33px;
+    padding: 0 10px;
+    color: #333333;
+    border: 1px solid #d6d6d6;
+    line-height: 33px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+    margin: 0;
+}
+
+.btn_post_search {
+    float: left;
+    margin: 0 0 0 5px;
+    padding: 4px 10px 7px 10px;
+    border: 1px solid #dbdbdb;
+    background: #efefef;
+    font-size: 12px;
+    line-height: 1;
+    height: 33px;
+}
+
+.address_postcode {
+    overflow: hidden;
+    position: relative;
+}
+
+.address_postcode input {
+    float: left;
+}
+
+.old_post_code {
+    top: 6px;
+    left: 55px;
+    color: #333333;
+} 
+
+.address_input input:first-child {
+    width: 400px;
+}
+
+.member_address .address_input input {
+    margin: 10px 0 0 0;
+}
+
+.td_last_say input[type="text"] {
+    width: 90%;
+}
+
+.order_msg {
+    position: absolute;
+    left: 15px;
+    top: 43px;
+    background: #fff;
+    border: 1px solid #ddd;
+    z-index: 100;
+    width: 400px;
+}
+
+.order_msg ul {
+	padding-left: 0;
+}
+
+.order_msg li {
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+    padding: 12px !important;
+    line-height: 1;
+    display: block !important;
+}
+
+/* 주문자 정보 시작 */
+.order_info h4 {
+    margin: 50px 0 5px 0;
+    font-size: 22px;
+}
+
+/* 결제정보 시작 */
+.payment_info h4 {
+    margin: 50px 0 5px 0;
+    font-size: 22px;
+}
+
+.order_table_type td {
+    height: 31px;
+    padding: 15px 10px 14px 10px;
+    color: #777777;
+    border-bottom: 1px solid #dbdbdb;
+    /* border-left: 1px dotted #ededed; */
+    background: #ffffff;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.order_table_type td > strong {
+    color: #333333;
+    font-weight: 500;
+}
+
+.order_payment_sum {
+    color: #444444;
+    font-size: 18px;
+}
+
+.order_money_use .form_element {
+    padding: 0 0 0 10px;
+    vertical-align: middle;
+}
+
+.order_money_use .money_use_txt {
+    display: block;
+    padding: 5px 0 0 0;
+    color: #46AE4F;
+}
+
+.order_money_use .money_use_sum {
+    color: #46AE4F;
+    vertical-align: -3px;
+}
+
+.order_cont table .point_my_sub,
+.point_my_sub {
+    position: absolute;
+    top: 20px;
+    left: 130px;
+    width: 460px;
+    background: #fff;
+    border: 1px solid #bfbfbf;
+    padding: 28px 18px 12px;
+    line-height: 1.56;
+    display: grid;
+}
+
+.order_cont table .point_my_sub_btn,
+.point_my_sub_btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    font-size: 0;
+    background: url(/images/shop/btn_close2.png) no-repeat center;
+    background-size: 22px;
+    border: none;
+}
+
+.order_cont table .point_my_sub_t,
+.point_my_sub_t {
+    background: #f4f4f4;
+    border-radius: 18px;
+    line-height: 1;
+    display: inline-block;
+    margin: 0 auto 18px;
+    padding: 8px 20px;
+    font-size: 15px;
+    letter-spacing: -0.04em;
+    font-weight: bold;
+}
+
+.order_cont table ul {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 0;
+    padding-bottom: 0;
+}
+
+.order_cont table .point_my_sub_c li,
+.point_my_sub_c li {
+    background: url(/images/shop/icon_dot5.png) left 8px no-repeat;
+    background-size: 2px;
+    padding: 0 0 12px 6px;
+    color: #808080;
+    font-size: 13px;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+}
+
+.order_cont table .point_my_sub_t span,
+.point_my_sub_t span {
+    color: #46ae4f;
+}
+
+.order_cont table .point_my_sub_c li span,
+.point_my_sub_c li span {
+    color: #222;
+    font-weight: 500;
+}
+
+/* 결제수단 선택/결제 시작 */
+.payment_progress h4 {
+    margin: 50px 0 5px 0;
+    font-size: 22px;
+}
+
+.payment_progress .order_zone_title > p {
+    padding: 2px 0 0 0;
+    color: #46AE4F;
+    font-size: 12px;
+}
