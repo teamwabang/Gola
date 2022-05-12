@@ -20,6 +20,9 @@
 @import "diet.css";
 @import "shopdetail.css";
 @import "shopitems.css";
+@import "cart.css";
+@import "order.css";
+@import "shopitem.css";
 
 /* scroll style */
 *::-webkit-scrollbar {
