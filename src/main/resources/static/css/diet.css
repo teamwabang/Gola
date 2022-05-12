@@ -8,9 +8,9 @@
 
 .dietMainGrid {
   display: grid;
-  grid-template-rows: 95% 5%;
+  grid-template-rows: 92% 8%;
   width: 75%;
-  height: 95vh;
+  height: 78vh;
   background-color: white;
 }
 
