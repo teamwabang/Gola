@@ -12,11 +12,16 @@ import lombok.Data;
 @Data
 public class DietController {
 	
+<<<<<<< Updated upstream
+=======
+	
+>>>>>>> Stashed changes
 	@Value("${file.upload.directory}")
 	private String fileUploadPath;
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
+<<<<<<< Updated upstream
 	//칼로리 페이지 
 	@GetMapping("cal")
 	public String diet_index() {
@@ -28,6 +33,19 @@ public class DietController {
 	@GetMapping("diet")
 	public String diet_diet() {
 		logger.info("-----> 식단 페이지로 이동합니다.");
+=======
+	// 칼로리 페이지 
+	@GetMapping("cal")
+	public String diet_cal() {
+		logger.info("-----> 칼로리 페이지로 이동합니다.");
+		return "diet/cal";
+	}
+
+	// 식단 추천 페이지 
+	@GetMapping("diet")
+	public String diet_diet() {
+		logger.info("-----> 식단 추천 페이지로 이동합니다.");
+>>>>>>> Stashed changes
 		return "diet/diet";
 	}
 
