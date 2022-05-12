@@ -22,7 +22,7 @@
 @import "shopitems.css";
 @import "cart.css";
 @import "order.css";
-@import "shopitem.css";
+@import "shop.css";
 
 /* scroll style */
 *::-webkit-scrollbar {
