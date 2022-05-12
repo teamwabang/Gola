@@ -17,7 +17,6 @@ public class DietController {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-
 	// 칼로리 페이지 
 	@GetMapping("cal")
 	public String diet_cal() {
