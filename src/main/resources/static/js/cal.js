@@ -70,4 +70,4 @@ function getDiet() {
 
 calResult.style.fontWeight = "bold";
 calResult.style.fontSize = "17px";
-calResult.style.color = "green";
+calResult.style.color = "#77b347;";

@@ -1,7 +1,8 @@
 .calBackground {
-  background-color: black;
+  background-color: none;
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 .calMain {
@@ -10,10 +11,9 @@
   align-items: center;
   justify-content: space-evenly;
   height: 100vh;
-  width: 100%;
   margin: 0px 25%;
   background-color: white;
-  border: 1px solid black;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .calMainTitle {
@@ -24,15 +24,16 @@
 .calbtns {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border: none;
-  background-color: white;
+  background-color: #46AE4F;
   color: black;
 }
 
 .calbtns:hover,
-.calbtns:active {
+.calbtns:active,
+.resultbtn:active {
   color: white !important;
   font-weight: bold !important;
-  background-color: #96d4d4 !important;
+  background-color: #77b347 !important;
 }
 
 .btn-check:active + .btn-secondary,
@@ -41,8 +42,8 @@
 .btn-secondary:active,
 .show > .btn-secondary.dropdown-toggle {
   color: #fff;
-  background-color: #96d4d4;
-  border-color: #96d4d4;
+  background-color: #77b347;
+  border-color: #77b347;
 }
 
 #male,
@@ -87,7 +88,7 @@
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   border: none;
-  background: none;
+  background: #77b347;
   color: black;
   display: flex;
   justify-content: center;
@@ -96,14 +97,14 @@
 
 .resultbtn:hover,
 .recommendbtn:hover {
-  background: none;
+  background-color: #46AE4F;
   color: black;
   box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
     rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
 }
 
 .recommendbtn {
-  background: none;
+  background-color:#77b347;
   border: none;
   color: black;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
@@ -120,7 +121,7 @@ table.type06 {
   line-height: 1.5;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
-  margin: 20px 10px;
+  margin: 0px 10px;
 }
 table.type06 th {
   width: 180px;

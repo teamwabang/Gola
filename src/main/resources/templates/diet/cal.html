@@ -14,7 +14,16 @@
     />
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
-  <body class="calBackground">
+  <body class="bbsbody"	>
+	  <div class="calBackground">
+	  <!-- import header -->
+	  <header th:replace="layout/fragment :: fr_header"></header>
+	  <!-- end of import header -->
+	
+	  <!-- center title -->
+	  <div>
+	    <span class="bbstitle"> CHECK </span>
+	  </div>
     <div class="calMain">
     <div class="calMainTitle">나의 하루 권장 칼로리는 얼마입니까 ❔</div>
       <form action="#">
@@ -208,7 +217,7 @@
         </div>
         <div class="resultBtn">
           <input
-            class="btn btn-primary resultbtn"
+            class="btn btn-secodary resultbtn"
             type="submit"
             value="✔"
             onclick="getResult()"
@@ -239,10 +248,19 @@
           </tr>
         </table>
       </div>
-
-      <a class="btn btn-primary recommendbtn" onclick="getDiet()">
+      <button
+        id="recommendBtn"
+        class="btn btn-primary recommendbtn"
+        type="button"
+        onclick="getDiet()"
+      >
         🥄 식단추천받기
-      </a>
+      </button>
+	</div>
+      <!-- import footer -->
+  <footer th:replace="layout/fragment :: fr_footer"></footer>
+  <!-- end of import footer -->
+      
     </div>
     <script src="/js/cal.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

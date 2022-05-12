@@ -14,9 +14,17 @@
     <link rel="stylesheet" href="/css/styles.css" />
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   </head>
-    <body class="dietBackground">
+  <body class="bbsbody">
+    <div class="dietBackground">
+   	  <!-- import header -->
+	  <header th:replace="layout/fragment :: fr_header"></header>
+	  <!-- end of import header -->	
+	  <!-- center title -->
+	  <div>
+	    <span class="bbstitle">DIET</span>
+	  </div>
+	  
     <div class="dietMainGrid">
-      <div class="dietHeader">이것은 제목</div>
       <div class="dietMain">
         <div class="breakfast">
           <div class="meal">BREAKFAST</div>
@@ -122,6 +130,10 @@
           />
         </div>
       </div>
+    </div>
+    <!-- import footer -->
+  <footer th:replace="layout/fragment :: fr_footer"></footer>
+  <!-- end of import footer -->
     </div>
     <a id="target" style="display: none"></a>
     <script src="/js/diet.js"></script>
