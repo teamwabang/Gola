@@ -18,10 +18,11 @@
 @import "leave.css";
 @import "cal.css";
 @import "diet.css";
-@import "shop.css";
 @import "shopdetail.css";
+@import "shopitems.css";
 @import "cart.css";
 @import "order.css";
+@import "shopitem.css";
 
 /* scroll style */
 *::-webkit-scrollbar {
