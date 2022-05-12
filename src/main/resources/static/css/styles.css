@@ -20,8 +20,12 @@
 @import "diet.css";
 @import "shop.css";
 @import "shopdetail.css";
+<<<<<<< Updated upstream
 @import "cart.css";
 @import "order.css";
+=======
+@import "shopitem.css";
+>>>>>>> Stashed changes
 
 /* scroll style */
 *::-webkit-scrollbar {
