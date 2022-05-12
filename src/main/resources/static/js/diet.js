@@ -100,11 +100,11 @@ function screenshot(e) {
   function save(canvas) {
     if (navigator.msSaveBlob) {
       var blob = canvas.msToBlob();
-      return navigator.msSaveBlob(blob, "파일명.jpg");
+      return navigator.msSaveBlob(blob, "오늘의 추천 식단.jpg");
     } else {
       var el = document.getElementById("target");
       el.href = canvas.toDataURL("image/jpeg");
-      el.download = "파일명.jpg";
+      el.download = "오늘의 추천 식단.jpg";
       el.click();
     }
   }

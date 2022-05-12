@@ -56,6 +56,18 @@ function getResult() {
   }
 }
 
+function getDiet() {
+  if (calResult.textContent == "") {
+    swal({
+      title: "하루 권장 칼로리를 확인해주세요",
+      icon: "info",
+      button: "확인",
+    });
+  } else {
+    window.location.href = 'diet';
+  }
+}
+
 calResult.style.fontWeight = "bold";
 calResult.style.fontSize = "17px";
 calResult.style.color = "green";
