@@ -1,0 +1,30 @@
+.leavemain{
+  margin: 300px auto;
+  font-family: 'ROKAFSlabSerifBold' !important;
+  color:#fff;
+}
+
+.leavename{
+  margin:100px auto;
+}
+
+.leavebutton{
+  color:  rgb(214, 86, 0) !important;
+  width: 175px !important;
+  height: 45px !important;
+  padding: 7px 7px 7px 7px !important;
+  display: inline-block !important;
+  text-align: center !important;
+  border-radius: 20px !important;
+  margin-right: 5px !important;
+  transition: 0.3s !important;
+  font-weight: 600 !important;
+  font-size: 20px !important;
+}
+
+.leavebutton:hover {
+  background-color: rgb(214, 86, 0) !important;
+  color: #f9fafb !important;
+  font-weight: 600 !important;
+  border-color: rgb(214, 86, 0) !important;
+}

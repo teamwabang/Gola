@@ -6,73 +6,74 @@
   font-style: normal;
 }
 
-.writebody{
-	margin : 0px 20%;
-	background-image : url(/images/mypagebackground.png);
-	background-size:cover;
+.writebody {
+  margin: 0px 20%;
+  background-image: url(/images/mypagebackground.png);
+  background-size: cover;
 }
+
 .container {
-	width:700px;
-	height:auto;
-	justify-content:center;
-	margin-top:5px;
+  width: 700px;
+  height: auto;
+  justify-content: center;
+  margin-top: 5px;
 }
 
-.writehead{
-	font-size:40px;
-	font-family: 'ROKAFSlabSerifBold' !important;
-    font-weight: 700 !important;
-    color:#cf6f03;
-	
+.writehead {
+  font-size: 40px;
+  font-family: 'ROKAFSlabSerifBold' !important;
+  font-weight: 700 !important;
+  color: #cf6f03;
+
 }
 
-#form{
-	font-family: 'ROKAFSlabSerifBold' !important;
-    font-weight: 700 !important;
-	
+#form {
+  font-family: 'ROKAFSlabSerifBold' !important;
+  font-weight: 700 !important;
+
 }
 
-#writecontainer label{
-	color: black;
-	margin-bottom:10px;
-	font-size:18px;
+#writecontainer label {
+  color: black;
+  margin-bottom: 10px;
+  font-size: 18px;
 }
 
-.labalview{
-	color:#fff !important;
+.labalview {
+  color: #fff !important;
 }
 
 
 #writer {
-	color:#973800;
+  color: #973800;
 }
 
-.writebutton{
-	text-align:center;
-	justify-content:center;
+.writebutton {
+  text-align: center;
+  justify-content: center;
 
 }
 
-.writebutton button{
-    background-color: #fff;
-    border:1px solid #fff; 
-	color:#000;
-	width:100px;
-	height:40px;
-	font-size:18px;
-	margin-right:20px;
-	margin-left:20px;
-	font-family: 'ROKAFSlabSerifBold' !important;
-	font-weight:bold
+.writebutton button {
+  background-color: #fff;
+  border: 1px solid #fff;
+  color: #000;
+  width: 100px;
+  height: 40px;
+  font-size: 18px;
+  margin-right: 20px;
+  margin-left: 20px;
+  font-family: 'ROKAFSlabSerifBold' !important;
+  font-weight: bold
 }
 
 
-.writebutton button:hover{
-    background-color: rgb(255, 94, 0);
-   border:1px solid rgb(255, 94, 0); 
-	color:#fff;
+.writebutton button:hover {
+  background-color: rgb(255, 94, 0);
+  border: 1px solid rgb(255, 94, 0);
+  color: #fff;
 }
 
-#content{
-   height: 150px !important;
+#content {
+  height: 150px !important;
 }

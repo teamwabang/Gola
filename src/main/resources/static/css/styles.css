@@ -15,7 +15,13 @@
 @import "timer.css";
 @import "write.css";
 @import "list.css";
-
+@import "leave.css";
+@import "cal.css";
+@import "diet.css";
+@import "shop.css";
+@import "shopdetail.css";
+@import "cart.css";
+@import "order.css";
 
 /* scroll style */
 *::-webkit-scrollbar {
@@ -32,4 +38,3 @@
    border-radius: 10px;
    box-shadow: inset 0px 0px 5px white;
  }
-/*end of scroll style*/

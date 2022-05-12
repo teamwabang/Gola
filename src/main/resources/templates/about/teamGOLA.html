@@ -2,240 +2,252 @@
 <html xmlns:th="http://www.thymeleaf.org" class="indexhtml">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
-    <meta property="og:title" content="우리들의 모든 레시피 | 골라">
-    <!-- <meta property="og:image" content=""> -->
-    <meta property="og:description" content="우리들의 모든 레시피, 골라">
-    <meta property="og:type" content="website">
-    <title>소개합니다, 우리의 이야기들을 | 골라</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
+  <meta property="og:title" content="우리들의 모든 레시피 | 골라">
+  <!-- <meta property="og:image" content=""> -->
+  <meta property="og:description" content="우리들의 모든 레시피, 골라">
+  <meta property="og:type" content="website">
+  <title>소개합니다, 우리의 이야기들을 | 골라</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="/css/styles.css" />
-  	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    <!-- fontawesome -->
-    <script src="https://kit.fontawesome.com/c21d7630fc.js" crossorigin="anonymous"></script>
-    <!-- JavaScript -->
-    <script type="text/javascript" src="/js/chatbot.js"></script>
-    <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="/js/teamgola.js"></script>
-    <script type="text/javascript" src="/js/click_disable.js"></script>
-    <script type="text/javascript" src="/js/developer_tools.js"></script>
-	<!-- Featherlight.js -->
-	<script src="/js/featherlight.js"></script>
-	<link rel="stylesheet" href="/css/featherlight.css">
+  <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <!-- fontawesome -->
+  <script src="https://kit.fontawesome.com/c21d7630fc.js" crossorigin="anonymous"></script>
+  <!-- JavaScript -->
+  <script type="text/javascript" src="/js/chatbot.js"></script>
+  <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="/js/teamgola.js"></script>
+  <!-- <script type="text/javascript" src="/js/click_disable.js"></script>
+  <script type="text/javascript" src="/js/developer_tools.js"></script> -->
+  <!-- Featherlight.js -->
+  <script src="/js/featherlight.js"></script>
+  <link rel="stylesheet" href="/css/featherlight.css">
 </head>
 
-<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+<body>
 
-     <!-- import header -->
-     <header th:replace="layout/fragment :: fr_header"></header>
-     <!-- end of import header -->
-     
-     <section>
-     	<div class="gola_header">
-	     	<span th:style="@{font-size:34px;}">소개합니다,&nbsp;&nbsp;&nbsp;우리가 만든 이야기를</span><br>
-	     	<span th:style="@{font-size:16px; color: gray;}">텍스트에 마우스를 올려 클릭해보세요 !</span>
-     	</div>
-     	<br><br>
-     	<div class="gola_function" id="gola_function_btn">
-     		<span>주요 기능소개</span>
-     	</div>
-     	<br>
-     	
-     	<div>
-     		<table class="gola_member_name">
-   				<tr class="gola_member_kim">
-   					<td id="gola_kim_btn">김율리아</td>
-   				</tr>
-   				<tr class="gola_member_park">
-   					<td id="gola_park_btn">박병권</td>
-   				</tr>
-   				<tr class="gola_member_um">
-   					<td id="gola_um_btn">엄지혜</td>
-   				</tr>
-   				<tr class="gola_member_jeong">
-   					<td id="gola_jeong_btn">정재홍</td>
-   				</tr>
-   				<tr class="gola_member_han">
-   					<td id="gola_han_btn">한상민</td>
-   				</tr>
-     		</table>
-     	</div>
-     	
-     	<div id="gola_function">
-     		<br><hr class="gola_hr"><br>
-     		<p th:style="@{text-align: center; font-family: 'Gowun Batang', serif; font-size:16px; color: gray;}">텍스트에 마우스를 올려 클릭해보세요 !</p><br>
-     		<table class="gola_function_content">
-     			<tr class="gola_function_content1">
-		     		<td data-bs-toggle="modal" data-bs-target="#functionModal1">회원가입</td>
-	     		</tr>
-	     		<tr>
-		     		<td>↓</td>
-		     	</tr>
-		     	<tr class="gola_function_content2">
-		     		<td data-bs-toggle="modal" data-bs-target="#functionModal2">로그인, 마이페이지</td>
-		     	</tr>
-		     	<tr>
-		     		<td>↓</td>
-		     	</tr>
-		     	<tr class="gola_function_content3">
-		     		<td data-bs-toggle="modal" data-bs-target="#functionModal3">레시피, 리뷰게시판</td>
-		     	</tr>
-		     	<tr>
-		     		<td>↓</td>
-		     	</tr>
-		     	<tr class="gola_function_content4">
-		     		<td>로그아웃, 회원탈퇴</td>
-		     	</tr>
-     		</table>
-     	</div>
-     	<div th:insert="layout/functionModal1 :: fr_functionModal1"></div>
-     	<div th:insert="layout/functionModal2 :: fr_functionModal2"></div>
-     	<div th:insert="layout/functionModal3 :: fr_functionModal3"></div>
-     	
-     	<div id="gola_kim">
-     		<br><hr class="gola_hr"><br>
-			<table class="gola_member_info">
-				<tr>
-					<td class="gola_table1">이름</td>
-					<td class="gola_table2">김율리아</td>
-				</tr>
-				<tr>
-					<td class="gola_table1">역할</td>
-					<td class="gola_table2">프론트, 팀원</td>
-				</tr>
-				<tr>
-					<td class="gola_table1">깃허브</td>
-					<td class="gola_table2"><a href="https://github.com/yuuulya" target="_blank"><img src="/images/about/github.svg" class="github_img2"></a></td>
-				</tr>
-	<tr>
-					<td class="gola_table1" th:style="@{vertical-align: middle;}">프로젝트 기여</td>
-					<td class="gola_table2">						
-						<p class="table_p">fragment : header, footer 디자인 제작, header,footer 페이지 연결 </p>
-					    <p class="table_p">게시판 : index 및 리뷰 페이지 레이아웃 제작 </p>
-						<p class="table_p">회원관리 : 마이페이지, 로그인, 회원가입 화면 디자인수정, 아이디/닉네임/비밀번호 중복검사 추가</p>
-						<p class="table_p">그 외 :  intro 애니메이션 제작, 페이지 내 스크롤바 변경 </p>
-				</tr>
-			</table>
-     	</div>
-     	<div id="gola_park">
-     		<br><hr class="gola_hr"><br>
-			<table class="gola_member_info">
-				<tr>
-					<td class="gola_table1">이름</td>
-					<td class="gola_table2">박병권</td>
-				</tr>
-				<tr>
-					<td class="gola_table1">역할</td>
-					<td class="gola_table2">프론트, 팀원</td>
-				</tr>
-				<tr>
-					<td class="gola_table1">깃허브</td>
-					<td class="gola_table2"><a href="https://github.com/martin1341" target="_blank"><img src="/images/about/github.svg" class="github_img2"></a></td>
-				</tr>
-				<tr>
-					<td class="gola_table1">프로젝트 기여</td>
-					<td class="gola_table2">
-						<p class="table_p">DB : 레시피</p>
-						<p class="table_p">그 외 : 레시피 상세페이지 레이아웃</p>
-					</td>
-				</tr>
-			</table>
-     	</div>
-     	<div id="gola_um">
-     		<br><hr class="gola_hr"><br>
-     		<table class="gola_member_info">
-				<tr>
-					<td class="gola_table1">이름</td>
-					<td class="gola_table2">엄지혜</td>
-				</tr>
-				<tr>
-					<td class="gola_table1">역할</td>
-					<td class="gola_table2">백, 팀원</td>
-				</tr>
-				<tr>
-					<td class="gola_table1">깃허브</td>
-					<td class="gola_table2"><a href="https://github.com/jihye-12" target="_blank"><img src="/images/about/github.svg" class="github_img2"></a></td>
-				</tr>
-				<tr>
-					<td class="gola_table1" th:style="@{vertical-align: middle;}">프로젝트 기여</td>
-					<td class="gola_table2">						
-					    <p class="table_p">리뷰게시판 : 글 댓글 CRUD, 대댓글, 사진 업로드, 조회수 상위 게시물 index 출력</p>
-						<p class="table_p">마이페이지 : 프로필 사진 업로드, 수정, 마이레시피 출력</p>
-						<p class="table_p">DB : 게시판, 댓글, 파일</p>
-						<p class="table_p">그 외 : 레시피 레이아웃, 게시판 검색</p></td>
-				</tr>
-			</table>
-     	</div>
-     	<div id="gola_jeong">
-     		<br><hr class="gola_hr"><br>
-			<table class="gola_member_info">
-				<tr>
-					<td class="gola_table1">이름</td>
-					<td class="gola_table2">정재홍</td>
-				</tr>
-				<tr>
-					<td class="gola_table1">역할</td>
-					<td class="gola_table2">프론트, 팀원</td>
-				</tr>
-				<tr>
-					<td class="gola_table1">깃허브</td>
-					<td class="gola_table2"><a href="https://github.com/bohongu" target="_blank"><img src="/images/about/github.svg" class="github_img2"></a></td>
-				</tr>
-				<tr>
-					<td class="gola_table1">프로젝트 기여</td>
-					<td class="gola_table2">
-						<p class="table_p">회원관리 : 회원가입, 로그인, 마이페이지 전반적 화면구성, 유효성 검사 </p>
-						<p class="table_p">리뷰게시판 : 게시판, detail 전반적 화면구성, 상호적인 기능 구현</p>
-						<p class="table_p">그 외 : 타이머 </p>
-					</td>
-				</tr>
-			</table>
-     	</div>
-     	<div id="gola_han">
-     		<br><hr class="gola_hr"><br>
-			<table class="gola_member_info">
-				<tr>
-					<td class="gola_table1">이름</td>
-					<td class="gola_table2">한상민</td>
-				</tr>
-				<tr>
-					<td class="gola_table1">역할</td>
-					<td class="gola_table2">백, 팀장</td>
-				</tr>
-				<tr>
-					<td class="gola_table1">깃허브</td>
-					<td class="gola_table2"><a href="https://github.com/tkdalsgks" target="_blank"><img src="/images/about/github.svg" class="github_img2"></a></td>
-				</tr>
-				<tr>
-					<td class="gola_table1" th:style="@{vertical-align: middle;}">프로젝트 기여</td>
-					<td class="gola_table2">
-						<p class="table_p">SpringSecurity : 권한, 비밀번호 암호화, 소셜로그인, remember-me</p>
-						<p class="table_p">마이페이지 : 회원정보 수정, 회원탈퇴</p>
-						<p class="table_p">DB : 유저, 레시피</p>
-						<p class="table_p">그 외 : 프로젝트 구조 생성, about.html, recipe.html</p>
-					</td>
-				</tr>
-			</table>
-     	</div>
-     </section>
- 
-     <!-- import footer -->
-     <footer th:replace="layout/fragment :: fr_footer"></footer>
-     <!-- end of import footer -->
+  <!-- import header -->
+  <header th:replace="layout/fragment :: fr_header"></header>
+  <!-- end of import header -->
 
-    
-	<script src="http://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/js/join.js"></script>
-    <script type="text/javascript" src="/js/logineye.js"></script>
+  <section>
+    <div class="gola_header">
+      <span th:style="@{font-size:34px;}">소개합니다,&nbsp;&nbsp;&nbsp;우리가 만든 이야기를</span><br>
+      <span th:style="@{font-size:16px; color: gray;}">텍스트에 마우스를 올려 클릭해보세요 !</span>
+    </div>
+    <br><br>
+    <div class="gola_function" id="gola_function_btn">
+      <span>주요 기능소개</span>
+    </div>
+    <br>
+
+    <div>
+      <table class="gola_member_name">
+        <tr class="gola_member_kim">
+          <td id="gola_kim_btn">김율리아</td>
+        </tr>
+        <tr class="gola_member_park">
+          <td id="gola_park_btn">박병권</td>
+        </tr>
+        <tr class="gola_member_um">
+          <td id="gola_um_btn">엄지혜</td>
+        </tr>
+        <tr class="gola_member_jeong">
+          <td id="gola_jeong_btn">정재홍</td>
+        </tr>
+        <tr class="gola_member_han">
+          <td id="gola_han_btn">한상민</td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="gola_function">
+      <br>
+      <hr class="gola_hr"><br>
+      <p th:style="@{text-align: center; font-family: 'Gowun Batang', serif; font-size:16px; color: gray;}">텍스트에 마우스를 올려
+        클릭해보세요 !</p><br>
+      <table class="gola_function_content">
+        <tr class="gola_function_content1">
+          <td data-bs-toggle="modal" data-bs-target="#functionModal1">회원가입</td>
+        </tr>
+        <tr>
+          <td>↓</td>
+        </tr>
+        <tr class="gola_function_content2">
+          <td data-bs-toggle="modal" data-bs-target="#functionModal2">로그인, 마이페이지</td>
+        </tr>
+        <tr>
+          <td>↓</td>
+        </tr>
+        <tr class="gola_function_content3">
+          <td data-bs-toggle="modal" data-bs-target="#functionModal3">레시피, 리뷰게시판</td>
+        </tr>
+        <tr>
+          <td>↓</td>
+        </tr>
+        <tr class="gola_function_content4">
+          <td>로그아웃, 회원탈퇴</td>
+        </tr>
+      </table>
+    </div>
+    <div th:insert="layout/functionModal1 :: fr_functionModal1"></div>
+    <div th:insert="layout/functionModal2 :: fr_functionModal2"></div>
+    <div th:insert="layout/functionModal3 :: fr_functionModal3"></div>
+
+    <div id="gola_kim">
+      <br>
+      <hr class="gola_hr"><br>
+      <table class="gola_member_info">
+        <tr>
+          <td class="gola_table1">이름</td>
+          <td class="gola_table2">김율리아</td>
+        </tr>
+        <tr>
+          <td class="gola_table1">역할</td>
+          <td class="gola_table2">프론트, 팀원</td>
+        </tr>
+        <tr>
+          <td class="gola_table1">깃허브</td>
+          <td class="gola_table2"><a href="https://github.com/yuuulya" target="_blank"><img
+                src="/images/about/github.svg" class="github_img2"></a></td>
+        </tr>
+        <tr>
+          <td class="gola_table1" th:style="@{vertical-align: middle;}">프로젝트 기여</td>
+          <td class="gola_table2">
+            <p class="table_p">fragment : header, footer 디자인 제작, header,footer 페이지 연결 </p>
+            <p class="table_p">게시판 : index 및 리뷰 페이지 레이아웃 제작 </p>
+            <p class="table_p">회원관리 : 마이페이지, 로그인, 회원가입 화면 디자인수정, 아이디/닉네임/비밀번호 중복검사 추가</p>
+            <p class="table_p">그 외 : intro 애니메이션 제작, 페이지 내 스크롤바 변경 </p>
+        </tr>
+      </table>
+    </div>
+    <div id="gola_park">
+      <br>
+      <hr class="gola_hr"><br>
+      <table class="gola_member_info">
+        <tr>
+          <td class="gola_table1">이름</td>
+          <td class="gola_table2">박병권</td>
+        </tr>
+        <tr>
+          <td class="gola_table1">역할</td>
+          <td class="gola_table2">프론트, 팀원</td>
+        </tr>
+        <tr>
+          <td class="gola_table1">깃허브</td>
+          <td class="gola_table2"><a href="https://github.com/martin1341" target="_blank"><img
+                src="/images/about/github.svg" class="github_img2"></a></td>
+        </tr>
+        <tr>
+          <td class="gola_table1">프로젝트 기여</td>
+          <td class="gola_table2">
+            <p class="table_p">DB : 레시피</p>
+            <p class="table_p">그 외 : 레시피 상세페이지 레이아웃</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="gola_um">
+      <br>
+      <hr class="gola_hr"><br>
+      <table class="gola_member_info">
+        <tr>
+          <td class="gola_table1">이름</td>
+          <td class="gola_table2">엄지혜</td>
+        </tr>
+        <tr>
+          <td class="gola_table1">역할</td>
+          <td class="gola_table2">백, 팀원</td>
+        </tr>
+        <tr>
+          <td class="gola_table1">깃허브</td>
+          <td class="gola_table2"><a href="https://github.com/jihye-12" target="_blank"><img
+                src="/images/about/github.svg" class="github_img2"></a></td>
+        </tr>
+        <tr>
+          <td class="gola_table1" th:style="@{vertical-align: middle;}">프로젝트 기여</td>
+          <td class="gola_table2">
+            <p class="table_p">리뷰게시판 : 글 댓글 CRUD, 대댓글, 사진 업로드, 조회수 상위 게시물 index 출력</p>
+            <p class="table_p">마이페이지 : 프로필 사진 업로드, 수정, 마이레시피 출력</p>
+            <p class="table_p">DB : 게시판, 댓글, 파일</p>
+            <p class="table_p">그 외 : 레시피 레이아웃, 게시판 검색</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="gola_jeong">
+      <br>
+      <hr class="gola_hr"><br>
+      <table class="gola_member_info">
+        <tr>
+          <td class="gola_table1">이름</td>
+          <td class="gola_table2">정재홍</td>
+        </tr>
+        <tr>
+          <td class="gola_table1">역할</td>
+          <td class="gola_table2">프론트, 팀원</td>
+        </tr>
+        <tr>
+          <td class="gola_table1">깃허브</td>
+          <td class="gola_table2"><a href="https://github.com/bohongu" target="_blank"><img
+                src="/images/about/github.svg" class="github_img2"></a></td>
+        </tr>
+        <tr>
+          <td class="gola_table1">프로젝트 기여</td>
+          <td class="gola_table2">
+            <p class="table_p">회원관리 : 회원가입, 로그인, 마이페이지 전반적 화면구성, 유효성 검사 </p>
+            <p class="table_p">리뷰게시판 : 게시판, detail 전반적 화면구성, 상호적인 기능 구현</p>
+            <p class="table_p">그 외 : 타이머 </p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="gola_han">
+      <br>
+      <hr class="gola_hr"><br>
+      <table class="gola_member_info">
+        <tr>
+          <td class="gola_table1">이름</td>
+          <td class="gola_table2">한상민</td>
+        </tr>
+        <tr>
+          <td class="gola_table1">역할</td>
+          <td class="gola_table2">백, 팀장</td>
+        </tr>
+        <tr>
+          <td class="gola_table1">깃허브</td>
+          <td class="gola_table2"><a href="https://github.com/tkdalsgks" target="_blank"><img
+                src="/images/about/github.svg" class="github_img2"></a></td>
+        </tr>
+        <tr>
+          <td class="gola_table1" th:style="@{vertical-align: middle;}">프로젝트 기여</td>
+          <td class="gola_table2">
+            <p class="table_p">SpringSecurity : 권한, 비밀번호 암호화, 소셜로그인, remember-me</p>
+            <p class="table_p">마이페이지 : 회원정보 수정, 회원탈퇴</p>
+            <p class="table_p">DB : 유저, 레시피</p>
+            <p class="table_p">그 외 : 프로젝트 구조 생성, about.html, recipe.html</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- import footer -->
+  <footer th:replace="layout/fragment :: fr_footer"></footer>
+  <!-- end of import footer -->
+
+  <script src="http://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/js/join.js"></script>
+  <script type="text/javascript" src="/js/logineye.js"></script>
 </body>
 
 </html>

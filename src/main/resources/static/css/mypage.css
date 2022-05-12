@@ -3,9 +3,9 @@
   display: flex;
   justify-content: center;
   background-image: url(/images/aboutsection.png);
-  background-size:cover;
+  background-size: cover;
   margin: 0px 20%;
-  z-index:-33;
+  z-index: -33;
 }
 
 .mypageHeader {
@@ -16,7 +16,7 @@
   flex-direction: column;
   align-items: center;
   padding: 35px 20px;
-  background-color:#f5e2d8;
+  background-color: #f5e2d8;
 }
 
 .goIndex {
@@ -24,28 +24,28 @@
   display: flex;
   justify-content: center;
   font-size: 200%;
-  padding-top:40px;
-  color:cirmson !important;
+  padding-top: 40px;
+  color: cirmson !important;
   font-family: 'Montserrat Alternates', sans-serif;
 }
 
-
-
-.userInfo, .infoNav, .infoFunction {
+.userInfo,
+.infoNav,
+.infoFunction {
   width: 100%;
 }
 
-.userpicedit{
-	padding-left:40px;
+.userpicedit {
+  padding-left: 40px;
 }
 
-.infoFunction{
-	text-align:center;
-	justify-content:center;
+.infoFunction {
+  text-align: center;
+  justify-content: center;
 }
 
 .userInfo {
-  position:relative;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,7 +53,7 @@
 }
 
 .userPic {
-  box-shadow:1px 1px 15px #dddddd;
+  box-shadow: 1px 1px 15px #dddddd;
   width: 120px;
   height: 120px;
   border-radius: 50%;
@@ -69,17 +69,18 @@
 .userEmail {
   color: rgba(0, 0, 0, 0.4);
   font-size: 15px;
-  text-transform:none !important;
+  text-transform: none !important;
 }
 
-.infoNav ul{
+.infoNav ul {
   height: 70px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.userProfile, .userContent {
+.userProfile,
+.userContent {
   font-size: 18px;
   text-decoration: underline;
 }
@@ -95,21 +96,20 @@
 .infoLogout {
   font-size: 16px !important;
   color: rgba(0, 0, 0, 0.3);
-  margin:10px 10px;
-  font-family: 'LeferiPoint-WhiteObliqueA' ;
-  font-weight:bold !important;
+  margin: 10px 10px;
+  font-family: 'LeferiPoint-WhiteObliqueA';
+  font-weight: bold !important;
 }
 
-
 .infoLogout a:hover {
-	background-color:#ef5114!important;
-	color:white !important;
+  background-color: #ef5114 !important;
+  color: white !important;
 }
 
 .btnedit button:hover {
-	background-color:#ef5114 !important;
-	color:white !important;
-	border: 1px solid #ef5114 !important;
+  background-color: #ef5114 !important;
+  color: white !important;
+  border: 1px solid #ef5114 !important;
 }
 
 main {
@@ -130,23 +130,21 @@ main {
   flex-direction: column;
 }
 
-
 .mainUserMainInfo {
-  padding-bottom:10px;
-
+  padding-bottom: 10px;
   display: flex;
   align-items: center;
-  justify-content:center;
-  margin:20px auto;
+  justify-content: center;
+  margin: 20px auto;
 }
 
 .mainTitle {
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   padding-bottom: 12px;
   font-family: 'ROKAFSlabSerifBold' !important;
-  font-size:20px;
-  font-weight:900;
-  color :#cf6f03;
+  font-size: 20px;
+  font-weight: 900;
+  color: #cf6f03;
 }
 
 .mainUserMainPic {
@@ -154,20 +152,21 @@ main {
   height: 100px;
   border-radius: 50%;
   border: 1px solid #c0c0c0;
-  box-shadow:1px 1px 15px #dddddd;
+  box-shadow: 1px 1px 15px #dddddd;
 }
 
-
-.mainUseredit label, #itemtitle {
-	 font-family: 'ROKAFSlabSerifBold' !important;
-	 font-weight:600;
-	 color:black;
+.mainUseredit label,
+#itemtitle {
+  font-family: 'ROKAFSlabSerifBold' !important;
+  font-weight: 600;
+  color: black;
 }
+
 .myRecipes {
   height: 250px;
   width: 100%;
-  overflow-x:scroll;
-  white-space:nowrap;
+  overflow-x: scroll;
+  white-space: nowrap;
 }
 
 .myRecipe {
@@ -178,29 +177,26 @@ main {
   margin-right: 10px;
   border-radius: 6px;
   box-shadow: 0 0 9px rgba(54, 53, 53, 0.3);
-  
 }
 
 .myRecipe img {
-  width:100%;
-  height:85%;	
+  width: 100%;
+  height: 85%;
 }
 
-.myRecipe span{
-	width: 100%;
-    text-align: center;
-    display: inline-block;
+.myRecipe span {
+  width: 100%;
+  text-align: center;
+  display: inline-block;
 }
 
-
-.myRecipe:hover{
+.myRecipe:hover {
   border: 1px solid #ef5114;
-    box-shadow:1px 1px 15px #ef5114;
-  
+  box-shadow: 1px 1px 15px #ef5114;
 }
 
-.myRecipe a img{
-	display:block;
+.myRecipe a img {
+  display: block;
 }
 
 .RecipeTitle {
@@ -208,92 +204,81 @@ main {
 }
 
 .mainUseredit {
-  padding-left:20px;
-  font-size:20px;
-  font-weight:bold;
-  color:black;
+  padding-left: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
   font-family: 'Montserrat Alternates', sans-serif;
-  display:flex;
-  padding-top:15px;
-  padding-bottom:15px;
+  display: flex;
+  padding-top: 15px;
+  padding-bottom: 15px;
   border-bottom: 1px solid black;
   justify-content: space-between;
   align-items: center;
 }
 
-.infoediter{
-	border: 1px solid black;
-	width:100%;
-	height:70px;
-	padding-top:20px;
+.infoediter {
+  border: 1px solid black;
+  width: 100%;
+  height: 70px;
+  padding-top: 20px;
 }
 
-
-.infologoutmenu{
-	padding :0px !important;	
-	margin-top:180px;
+.infologoutmenu {
+  padding: 0px !important;
+  margin-top: 180px;
 }
 
 .mainUserPwd {
-	font-size: 16px;
-	margin-right: 15px;
+  font-size: 16px;
+  margin-right: 15px;
 }
 
 .mainUserPwd,
 .mainUserNickname,
 .mainUserEmail {
-	font-family: 'LeferiPoint-WhiteObliqueA';
+  font-family: 'LeferiPoint-WhiteObliqueA';
 }
-
 
 .picModalBtn {
-	position:relative;
-	top:40px;
-	right:35px;
-	background: none;
-	border:1px solid rgba(0,0,0,0.5);
-	border-radius: 50%;
-	background-color: white;
-	justify-content:right;
+  position: relative;
+  top: 40px;
+  right: 35px;
+  background: none;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  background-color: white;
+  justify-content: right;
 }
-.picModalBtn:hover{
-	background-color:#ef5114 !important;
-	color:white !important;
-	border:1px solid #ef5114;
-	transition:0.1s!important;
+
+.picModalBtn:hover {
+  background-color: #ef5114 !important;
+  color: white !important;
+  border: 1px solid #ef5114;
+  transition: 0.1s !important;
 }
 
 .pic-editbtn {
-	background: none;
-    border: none;
-    width: 50px;
-    font-weight: 600;
-    color: rgba(0,0,255,0.3);
+  background: none;
+  border: none;
+  width: 50px;
+  font-weight: 600;
+  color: rgba(0, 0, 255, 0.3);
 }
 
-.userinfoIdEmail{
-	margin-bottom : 90px;
+.userinfoIdEmail {
+  margin-bottom: 90px;
 }
 
-.btnedit{
-	font-family: 'LeferiPoint-WhiteObliqueA';
-	font-weight:600;
-
-
+.btnedit {
+  font-family: 'LeferiPoint-WhiteObliqueA';
+  font-weight: 600;
 }
+
 .btnedit button {
-	padding-top: 9px !important;
+  padding-top: 9px !important;
 }
-
-/* .modal-backdrop { */
-/*     z-index: 1040 !important; */
-/* } */
-/* .modal-content { */
-/*     margin: 2px auto; */
-/*     z-index: 1100 !important; */
-/* } */
 
 .modal-backdrop {
-    /* bug fix - no overlay */    
-    display: none;    
+  display: none;
 }

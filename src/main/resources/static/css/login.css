@@ -1,178 +1,178 @@
 .modal-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.modal-title{
-    font-family: 'ROKAFSlabSerifBold' !important;
-	font-weight: bold;
+
+.modal-title {
+  font-family: 'ROKAFSlabSerifBold' !important;
+  font-weight: bold;
 }
 
 .modal-div {
-	width:480px;
-	display: flex;
-	justify-content:space-between;
+  width: 480px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .modal-editcheck {
-	width:400px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .modal-editbtn {
-	background:none;
-	border:none;
-	height: 100px;
-	width:50px;
-	font-weight: 600;
-	color:rgba(0,0,255,0.3);
+  background: none;
+  border: none;
+  height: 100px;
+  width: 50px;
+  font-weight: 600;
+  color: rgba(0, 0, 255, 0.3);
 }
 
 .modal-editbtn:hover {
-	font-weight: 600;
-	color:rgba(0,0,255,0.8);
+  font-weight: 600;
+  color: rgba(0, 0, 255, 0.8);
 }
 
-
 .loginSection {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top:20px;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .loginLabel {
-	width:400px;
-	text-align: left;
-	margin-bottom:20px;
+  width: 400px;
+  text-align: left;
+  margin-bottom: 20px;
 }
 
-.id, .pw, .login {
-    width: 400px;
-    height: 50px;
-    margin: 7px 0px;
-    padding-left: 10px;
-    cursor: pointer;
+.id,
+.pw,
+.login {
+  width: 400px;
+  height: 50px;
+  margin: 7px 0px;
+  padding-left: 10px;
+  cursor: pointer;
 }
 
-
-#userId, #userPwd{
-	padding-left:35px !important;
-	cursor:text !important;
-     width: 400px;
+#userId,
+#userPwd {
+  padding-left: 35px !important;
+  cursor: text !important;
+  width: 400px;
 }
 
 .loginSection h2 {
-	font-weight: 400;
-    margin-top: 23px;
-   	font-family: 'ROKAFSlabSerifBold' !important;
-    font-size:30px;
-    color : #FE5E00;
-  }
-
+  font-weight: 400;
+  margin-top: 23px;
+  font-family: 'ROKAFSlabSerifBold' !important;
+  font-size: 30px;
+  color: #FE5E00;
+}
 
 .loginFooterBtn {
-    background-color: black;
-    border: none;
+  background-color: black;
+  border: none;
 }
 
 .loginFooterBtn:hover {
-    background-color: #FE5E00 !important;
-    border : none;
+  background-color: #FE5E00 !important;
+  border: none;
 }
 
 .or {
-	display:flex;
-	flex-direction:column;
-	border-top:1px solid rgba(0,0,0,0.3);
-	margin-top:17px;
-	padding-top:17px;
-	padding-bottom:20px;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  margin-top: 17px;
+  padding-top: 17px;
+  padding-bottom: 20px;
 }
 
 .socialLogin {
-	margin-bottom: 10px;
-	width:400px
+  margin-bottom: 10px;
+  width: 400px
 }
 
-.socialLogin img{
-	width:400px;
-	height:50px;
+.socialLogin img {
+  width: 400px;
+  height: 50px;
 }
 
 .btnGoogle {
-	width:380px;
-	height:50px;
+  width: 380px;
+  height: 50px;
 }
 
-.inputdiv{
-	position: relative;
-	margin-bottom:5px;
+.inputdiv {
+  position: relative;
+  margin-bottom: 5px;
 }
+
 #inputicon {
-	position: absolute;
-    left: 10px;
-    top: 22px;
-    color:  rgba(0,0,0,0.5);
+  position: absolute;
+  left: 10px;
+  top: 22px;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 #inputicon2 {
-	position: absolute;
-    right: 10px;
-    top: 30px;
-    color:  rgba(0,0,0,0.5);
+  position: absolute;
+  right: 10px;
+  top: 30px;
+  color: rgba(0, 0, 0, 0.5);
 }
 
-.rememberbox{
-	text-align:center;
-	width:400px;
-	display:flex;
-	justify-content:center;
-	margin-top:15px;
-	margin-bottom:15px;
+.rememberbox {
+  text-align: center;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
-.rememberlable{
-	margin-left:10px;
-	font-family: 'LeferiPoint-WhiteObliqueA';
-	font-weight:700;
-	padding-top: 0px;
-	font-size:20px;
+.rememberlable {
+  margin-left: 10px;
+  font-family: 'LeferiPoint-WhiteObliqueA';
+  font-weight: 700;
+  padding-top: 0px;
+  font-size: 20px;
 }
 
-input[type="checkbox"]{
-        display: none;
+input[type="checkbox"] {
+  display: none;
+}
 
-      }
-input[type="checkbox"] + label{
+input[type="checkbox"]+label {
   display: inline-block;
   width: 20px;
   height: 20px;
-  border:2px solid #707070;
+  border: 2px solid #707070;
   position: relative;
   cursor: pointer;
 }
-input[id="remember"]:checked + label::after{
-   content:'✔';
-   font-size: 20px;
-   width: 20px;
-   height: 20px;
-   text-align: center;
-   position: absolute;
-   right: 0;
-   bottom:0;
- }
- 
-#btnLogin{
-	font-family: 'LeferiPoint-WhiteObliqueA';
-	font-weight:700;
-	font-size : 18px;
-	width:400px;
+
+input[id="remember"]:checked+label::after {
+  content: '✔';
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
-
+#btnLogin {
+  font-family: 'LeferiPoint-WhiteObliqueA';
+  font-weight: 700;
+  font-size: 18px;
+  width: 400px;
+}

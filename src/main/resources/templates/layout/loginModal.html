@@ -1,54 +1,59 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <body onkeydown="javascript:onEnterLogin();">
-	<script type="text/javascript">
-		function onEnterLogin(){
-			var keyCode = window.event.keyCode;
-			if (keyCode == 13) {
-				loginForm.submit();
-			}
-		}
-	</script>
-	<div th:fragment="fr_loginModal">
-	<!-- loginModal -->
-	<div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-dialog-centered">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">GOLA에 오신 걸 환영합니다.</h5>
-	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-	      </div>
-	        <div class="modal-body" th:style="${'text-align: center;'}">
-		    	<form th:action="@{/login}" method="post" name="loginForm">		    	
-			    	<div class="loginSection">
-			    		<div class="loginLabel">
-				 			<h2>로그인</h2>
-				 		</div>
-				 		<div class="inputdiv">
-			          		<input type="text" class="id" id="userId" name="userId" placeholder="아이디" autofocus /><br>
-			          		<i class="fa-solid fa-user" id="inputicon"></i>
-			          	</div>
-			          	<div class="inputdiv">
-			          		<input type="password" class="pw" id="userPwd" name="userPwd" placeholder="비밀번호" /><br>
-			          		<i class="fa fa-eye fa-lg" id="inputicon2"></i>
-			          		<i class="fa-solid fa-unlock" id="inputicon"></i>
-			          	</div>
-			          	<div class="rememberbox">
-								<input type="checkbox" id="remember" name="remember-me" />
-								<label for="remember"></label>
-							<p class="rememberlable">로그인 상태 유지</p>
-						</div>
-			         	<button type="submit" class="login btn btn-secondary loginFooterBtn" id="btnLogin">로그인 하기 &nbsp; <i class="fa-solid fa-right-to-bracket"></i></button>
-			         	<div class="or">
-			         		<a th:href="@{/oauth2/authorization/google}" class="socialLogin"><img src="images/buttons/btn_google.png"></a>
-			         		<!-- <a th:href="@{/oauth2/authorization/kakao}" class="socialLogin"><img src="images/buttons/btn_kakao.png"></a> -->
-			         	</div>
-			        </div>		   
-			 	</form>	 	
-    		</div>
-	    </div>
-	  </div>
-	</div>
-	</div>
+  <script type="text/javascript">
+    function onEnterLogin() {
+      var keyCode = window.event.keyCode;
+      if (keyCode == 13) {
+        loginForm.submit();
+      }
+    }
+  </script>
+  <div th:fragment="fr_loginModal">
+    <!-- loginModal -->
+    <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">GOLA에 오신 걸 환영합니다.</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" th:style="${'text-align: center;'}">
+            <form th:action="@{/login}" method="post" name="loginForm">
+              <div class="loginSection">
+                <div class="loginLabel">
+                  <h2>로그인</h2>
+                </div>
+                <div class="inputdiv">
+                  <input type="text" class="id" id="userId" name="userId" placeholder="아이디" autofocus /><br>
+                  <i class="fa-solid fa-user" id="inputicon"></i>
+                </div>
+                <div class="inputdiv">
+                  <input type="password" class="pw" id="userPwd" name="userPwd" placeholder="비밀번호" /><br>
+                  <i class="fa fa-eye fa-lg" id="inputicon2"></i>
+                  <i class="fa-solid fa-unlock" id="inputicon"></i>
+                </div>
+                <div class="rememberbox">
+                  <input type="checkbox" id="remember" name="remember-me" />
+                  <label for="remember"></label>
+                  <p class="rememberlable">로그인 상태 유지</p>
+                </div>
+                <button type="submit" class="login btn btn-secondary loginFooterBtn" id="btnLogin">로그인 하기 &nbsp; <i
+                    class="fa-solid fa-right-to-bracket"></i></button>
+                <div class="or">
+                  <a th:href="@{/oauth2/authorization/google}" class="socialLogin"><img
+                      src="images/buttons/btn_google.png"></a>
+                  <!-- <a th:href="@{/oauth2/authorization/kakao}" class="socialLogin"><img src="images/buttons/btn_kakao.png"></a> -->
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>

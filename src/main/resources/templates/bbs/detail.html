@@ -1,68 +1,76 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-  <head>
-    <meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
-	<title>내가 보고, 먹고 만든 | 골라</title>
-	
-	<!-- jQuery -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
-	<!-- Javascript -->
-	<script type="text/javascript" src="/js/chatbot.js"></script>
-	<script type="text/javascript" src="/js/click_disable.js"></script>
-	<script type="text/javascript" src="/js/developer_tools.js"></script>
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-	<!-- style.CSS -->
-	<link rel="stylesheet" href="/css/styles.css" />
-		
- </head>
-  <body class="boardBody" oncontextmenu="return false" onselectstart="return false" ondragstart="return false" id="detailcut">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
+  <title>내가 보고, 먹고 만든 | 골라</title>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+  <!-- Javascript -->
+  <script type="text/javascript" src="/js/chatbot.js"></script>
+  <!-- <script type="text/javascript" src="/js/click_disable.js"></script>
+  <script type="text/javascript" src="/js/developer_tools.js"></script> -->
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <!-- style.CSS -->
+  <link rel="stylesheet" href="/css/styles.css" />
+
+</head>
+
+<body class="boardBody" id="detailcut">
   <article>
     <div class="boardMain">
       <div class="boardPic">
-      <div id="wrapper">
-      <div id="slider-wrap">
-          <ul id="slider">
-             <li th:each="item : ${fileList}">
-      			<img th:alt="${item.fileName}" th:src="${item.imgSrc}">
-       		</li>         
-          </ul>
-          
-           <!--controls-->
-          <div class="btns" id="next"><i class="fa fa-arrow-right"></i></div>
-          <div class="btns" id="previous"><i class="fa fa-arrow-left"></i></div>
-          <div id="counter"></div>       
-          <div id="pagination-wrap">
-            <ul>
+        <div id="wrapper">
+          <div id="slider-wrap">
+            <ul id="slider">
+              <li th:each="item : ${fileList}">
+                <img th:alt="${item.fileName}" th:src="${item.imgSrc}">
+              </li>
             </ul>
+
+            <!--controls-->
+            <div class="btns" id="next"><i class="fa fa-arrow-right"></i></div>
+            <div class="btns" id="previous"><i class="fa fa-arrow-left"></i></div>
+            <div id="counter"></div>
+            <div id="pagination-wrap">
+              <ul>
+              </ul>
+            </div>
           </div>
-          <!--controls-->  
-                 
-      </div>
-  
-   </div>
+          <!-- end of controls-->
+
+        </div>
       </div>
       <div class="boardContent">
         <div class="boardAuthor">
-		<form name="form" id="form" role="form" method="" action="">    
-        <input type="hidden" name="bno" id="bno" th:value="${bbs.bno}">
-        <input type="hidden" name="loginId" id="loginId" th:value="${#authentication.name}"/>
-			<div class="detailIdPwd">
-				<img th:src="${bbs.userImg}" class="profilePic" height="50px;" width="50px"/>&nbsp;&nbsp;
-		         <div th:text="${bbs.userNickname}" class="authorId"> </div>
-		         <div th:text="${bbs.title}" class="authorTitle"></div>
-			</div>
-		</form>
+          <form name="form" id="form" role="form" method="" action="">
+            <input type="hidden" name="bno" id="bno" th:value="${bbs.bno}">
+            <input type="hidden" name="loginId" id="loginId" th:value="${#authentication.name}" />
+            <div class="detailIdPwd">
+              <img th:src="${bbs.userImg}" class="profilePic" height="50px;" width="50px" />&nbsp;&nbsp;
+              <div th:text="${bbs.userNickname}" class="authorId"> </div>
+              <div th:text="${bbs.title}" class="authorTitle"></div>
+            </div>
+          </form>
           <div class="detailBtns">
-          	<!-- 스프링 인증객체와 게시판 작성자를 비교하여 수정 삭제 버튼을 제어한다. -->
-         	<th:block th:if="${#authentication.name == bbs.writer}">
-          		<button sec:authorize="isAuthenticated()" type="button" class="btn btn-sm btn-primary detailBtn" id="bbsModBtn">수정</button>
-	          	<button sec:authorize="isAuthenticated()" type="button" class="btn btn-sm btn-primary detailBtn" id="delBtn">삭제</button>
-         	</th:block>
-          	<button type="button" class="btn btn-sm btn-primary detailBtn"  onclick="javascript:location.href='/review';">목록</button>
+            <!-- 스프링 인증객체와 게시판 작성자를 비교하여 수정 삭제 버튼을 제어한다. -->
+            <th:block th:if="${#authentication.name == bbs.writer}">
+              <button sec:authorize="isAuthenticated()" type="button" class="btn btn-sm btn-primary detailBtn"
+                id="bbsModBtn">수정</button>
+              <button sec:authorize="isAuthenticated()" type="button" class="btn btn-sm btn-primary detailBtn"
+                id="delBtn">삭제</button>
+            </th:block>
+            <button type="button" class="btn btn-sm btn-primary detailBtn"
+              onclick="javascript:location.href='/review';">목록</button>
           </div>
         </div>
         <div class="boardCommentMain">
@@ -71,31 +79,32 @@
           <div class="comment">
             <div class="commentText">
             </div>
-            
+
             <div id="commentList"></div>
-			<div id="replyForm" style="display: none">
-			    <input type="text" name="replyComment">
-			    <button id="wrtRepBtn" class="delBtn" type="button">등록</button>
-			    <button id="cancelRepBtn" class="delBtn" type="button">취소</button>
-			</div>
-          </div>        
+            <div id="replyForm" style="display: none">
+              <input type="text" name="replyComment">
+              <button id="wrtRepBtn" class="delBtn" type="button">등록</button>
+              <button id="cancelRepBtn" class="delBtn" type="button">취소</button>
+            </div>
+          </div>
         </div>
-        <div class="boardContentInfo">		  
-		<div class="count" name="writer" id="writer"th:text="${bbs.level}"></div>
-		  <div th:text="${bbs.content}" class="authorContent"></div>
+        <div class="boardContentInfo">
+          <div class="count" name="writer" id="writer" th:text="${bbs.level}"></div>
+          <div th:text="${bbs.content}" class="authorContent"></div>
           <div th:text="${#dates.format(bbs.regDate, 'yyyy-MM-dd')}" class="day"></div>
         </div>
         <div class="boardWrite">
           <input type="text" class="boardWriteComment" id="commentDiv" name="comment" placeholder="댓글달기">
           <div class="modClass">
-          	<input sec:authorize="isAuthenticated()" type="button" id="sendBtn" class="sendMod" value="게시">
-          	<input sec:authorize="isAuthenticated()" type="button" id="modBtn" class="sendMod" value="수정">
-          	<input sec:authorize="isAuthenticated()" type="button" id="cancelModBtn" class="sendMod" value="취소">
+            <input sec:authorize="isAuthenticated()" type="button" id="sendBtn" class="sendMod" value="게시">
+            <input sec:authorize="isAuthenticated()" type="button" id="modBtn" class="sendMod" value="수정">
+            <input sec:authorize="isAuthenticated()" type="button" id="cancelModBtn" class="sendMod" value="취소">
           </div>
         </div>
       </div>
-    </div> 
-    </article>
+    </div>
+  </article>
 </body>
-	<script type="text/javascript" src="/js/bbs_detail.js"></script>
-  </html>
+<script type="text/javascript" src="/js/bbs_detail.js"></script>
+
+</html>

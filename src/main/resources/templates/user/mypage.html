@@ -1,123 +1,139 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
-<title>마이페이지 | 골라</title>
 
-	<!-- CSS -->
-    <link rel="stylesheet" href="/css/styles.css" />
-  	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
+  <title>마이페이지 | 골라</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    <!-- fontawesome -->
-    <script src="https://kit.fontawesome.com/c21d7630fc.js" crossorigin="anonymous"></script>
-    <!-- JavaScript -->
-    <script type="text/javascript" src="/js/chatbot.js"></script>
-    <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="/js/click_disable.js"></script>
-    <script type="text/javascript" src="/js/developer_tools.js"></script>
-  
+  <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <!-- fontawesome -->
+  <script src="https://kit.fontawesome.com/c21d7630fc.js" crossorigin="anonymous"></script>
+  <!-- JavaScript -->
+  <script type="text/javascript" src="/js/chatbot.js"></script>
+  <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+  <!-- <script type="text/javascript" src="/js/click_disable.js"></script>
+  <script type="text/javascript" src="/js/developer_tools.js"></script> -->
 </head>
-<body class="mypageBody" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
-    <header class="mypageHeader shadow p-3 mb-5 bg-body rounded">
-      <div class="goIndex">
-        <h3><a th:href="@{/}" id="homebutton"><img src="/images/golalogo.png" alt="GOLA Home"></a></h3>	<!-- 나중에 Gola Home 지우고 image로 대체 -->
+
+<body class="mypageBody">
+  <header class="mypageHeader shadow p-3 mb-5 bg-body rounded">
+    <div class="goIndex">
+      <h3><a th:href="@{/}" id="homebutton"><img src="/images/golalogo.png" alt="GOLA Home"></a></h3>
+    </div>
+
+    <!-- 왼쪽 Navigation Bar-->
+    <div class="InfoContents">
+      <div class="userInfo">
+        <div class="userpicedit">
+          <img class="userPic" th:src="${imgSrc}" />
+          <button data-bs-toggle="modal" class="picModalBtn" data-bs-target="#picChange">
+            <i class="fa-solid fa-camera"></i>
+          </button>
+        </div>
+
+        <div class="userinfoIdEmail">
+          <h2 th:text="${dto.getUserId() }" class="userName"></h2>
+          <h1 th:text="${dto.getUserEmail() }" class="userEmail"></h1>
+        </div>
+        <div class="infoFunction">
+          <ul class="infologoutmenu">
+            <li class="infoLogout"><a class="infoLogout btn btn-light" th:href="@{/logout}"> <i
+                  class="fa-solid fa-arrow-right-from-bracket"></i> 로그아웃</a></li>
+            <li class="infoLogout"><a class="infoLogout btn btn-light" th:href="@{/mypage/leave}"><i
+                  class="fa-solid fa-person-hiking"></i> 회원탈퇴</a></li>
+          </ul>
+        </div>
       </div>
-      <!-- 왼쪽 Navigation Bar-->
-      <div class="InfoContents">
-        <div class="userInfo">
-      	  <div class="userpicedit">
-            <img class="userPic" th:src="${imgSrc}" />
-            <button data-bs-toggle="modal" class="picModalBtn" data-bs-target="#picChange">
-		      <i class="fa-solid fa-camera"></i>
-		    </button>
-		  </div>
-		 
-		  <div class="userinfoIdEmail">
-            <h2 th:text="${dto.getUserId() }" class="userName"></h2>
-            <h1 th:text="${dto.getUserEmail() }" class="userEmail"></h1>
-          </div>
-          <div class="infoFunction">
-            <ul class="infologoutmenu">
-              <li class="infoLogout"><a class="infoLogout btn btn-light" th:href="@{/logout}"> <i class="fa-solid fa-arrow-right-from-bracket"></i>  로그아웃</a></li>
-              <li class="infoLogout"><a class="infoLogout btn btn-light" th:href="@{/mypage/leave}"><i class="fa-solid fa-person-hiking"></i>   회원탈퇴</a></li>
-            </ul>
-          </div>
-         </div>
-      </div>
-    </header>
-	<!-- 오른쪽 main -->
-    <main>
-      <div class="myPageMain">
-        <div class="mainUserInfo">
-          <div class="mainTitle"> 기본정보</div>
-          <div class="mainUserMainInfo">
-            <img class="mainUserMainPic" th:src="${imgSrc}">
-            </div>
-            <div class="mainUseredit">
-            <label>비밀번호</label>
-            <div class="mainUserPwd">*********</div>
-           <!-- 비밀번호 변경 -->
-			<div class="btnedit"><button class="btn btn-dark changeBtn" data-bs-toggle="modal" data-bs-target="#pwdChange"><i class="fa-solid fa-pen"></i></button></div>
-          </div>
-            <div class="mainUseredit">
-              <label>닉네임</label>
-              <div th:text="${dto.getUserNickname() }" class="mainUserNickname"></div>
-              <!-- 닉네임 변경-->
-			  <div class="btnedit"><button class="btn btn-dark changeBtn" data-bs-toggle="modal" data-bs-target="#nickNameChange"><i class="fa-solid fa-pen"></i></button></div>  
-          	  <!-- <div th:text="${dto.getUserEmail() }" class="mainUserMainId"></div> -->
-            </div>
-          <div class="mainUseredit">
+    </div>
+  </header>
+
+  <!-- 오른쪽 main -->
+  <main>
+
+    <!-- 상단 - 내 정보 -->
+    <div class="myPageMain">
+      <div class="mainUserInfo">
+        <div class="mainTitle"> 기본정보</div>
+        <div class="mainUserMainInfo">
+          <img class="mainUserMainPic" th:src="${imgSrc}">
+        </div>
+        <div class="mainUseredit">
+          <label>비밀번호</label>
+          <div class="mainUserPwd">*********</div>
+          <!-- 비밀번호 변경 -->
+          <div class="btnedit"><button class="btn btn-dark changeBtn" data-bs-toggle="modal"
+              data-bs-target="#pwdChange"><i class="fa-solid fa-pen"></i></button></div>
+        </div>
+        <div class="mainUseredit">
+          <label>닉네임</label>
+          <div th:text="${dto.getUserNickname() }" class="mainUserNickname"></div>
+          <!-- 닉네임 변경-->
+          <div class="btnedit"><button class="btn btn-dark changeBtn" data-bs-toggle="modal"
+              data-bs-target="#nickNameChange"><i class="fa-solid fa-pen"></i></button></div>
+          <!-- <div th:text="${dto.getUserEmail() }" class="mainUserMainId"></div> -->
+        </div>
+        <div class="mainUseredit">
           <label>이메일</label>
           <div th:text="${dto.getUserEmail() }" class="mainUserEmail"></div>
           <!-- 이메일 변경 -->
-          <div class="btnedit"><button class="btn btn-dark changeBtn" data-bs-toggle="modal" data-bs-target="#emailChange"><i class="fa-solid fa-pen"></i></button></div>
-			<!-- <div th:text="${dto.getUserEmail() }" class="mainUserMainId"></div> -->
-          </div>
-    	 </div>  
+          <div class="btnedit"><button class="btn btn-dark changeBtn" data-bs-toggle="modal"
+              data-bs-target="#emailChange"><i class="fa-solid fa-pen"></i></button></div>
+          <!-- <div th:text="${dto.getUserEmail() }" class="mainUserMainId"></div> -->
+        </div>
       </div>
-      <div class="myPageMain">
-        <div class="mainUserInfo">
-          <div class="mainTitle RecipeTitle"> 마이레시피 </div>        
-          <ul class="myRecipes">
-            <li class="myRecipe" th:each="item : ${list}">
-            	<a th:href="@{/review/detail(bno = ${item.bno})}">
-            		<img th:src="${item.imgSrc}">
-					<span id="itemtitle" th:text="${item.title}"></span>
-				</a>
-            </li>
-          </ul>
-        </div>    
-      </div>    
-    </main>  
-    
+    </div>
 
-    
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-	<!-- Option 2: Separate Popper and Bootstrap JS -->
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <!-- 하단 - 마이레시피 -->
+    <div class="myPageMain">
+      <div class="mainUserInfo">
+        <div class="mainTitle RecipeTitle"> 마이레시피 </div>
+        <ul class="myRecipes">
+          <li class="myRecipe" th:each="item : ${list}">
+            <a th:href="@{/review/detail(bno = ${item.bno})}">
+              <img th:src="${item.imgSrc}">
+              <span id="itemtitle" th:text="${item.title}"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
 
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
 
-    <!-- modal -->
-    <div class="picmodal" th:insert="layout/picModal :: fr_picModal"></div>
-    <div th:insert="layout/nickNameModal :: fr_NickNameModal"></div>
-    <div th:insert="layout/pwModal :: fr_PwModal"></div>
-    <div th:insert="layout/emailModal :: fr_EmailModal"></div>
-    
-    
+  <!-- modal -->
+  <div class="picmodal" th:insert="layout/picModal :: fr_picModal"></div>
+  <div th:insert="layout/nickNameModal :: fr_NickNameModal"></div>
+  <div th:insert="layout/pwModal :: fr_PwModal"></div>
+  <div th:insert="layout/emailModal :: fr_EmailModal"></div>
+
 </body>
 <script type="text/javascript">
-$("#itemtitle").each(function() {
-	const length = 10;
-	$(this).each(function() {
-		if($(this).text().length >= length) {
-			$(this).text($(this).text().substr(0, length)+"...")
-		}
-	});
-});
+  $("#itemtitle").each(function () {
+    const length = 10;
+    $(this).each(function () {
+      if ($(this).text().length >= length) {
+        $(this).text($(this).text().substr(0, length) + "...")
+      }
+    });
+  });
 </script>
+
 </html>

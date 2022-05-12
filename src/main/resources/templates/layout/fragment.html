@@ -1,69 +1,53 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-	<!-- Featherlight.js -->
-	<script src="/src/main/resources/static/js/featherlight.js"></script>
-	<link rel="stylesheet" href="/src/main/resources/static/css/featherlight.css">
+<!-- Featherlight.js -->
+<script src="/src/main/resources/static/js/featherlight.js"></script>
+<link rel="stylesheet" href="/src/main/resources/static/css/featherlight.css">
+
 <body>
 
-	<header th:fragment="fr_header">
+  <header th:fragment="fr_header">
 
-		  <!-- 상단 header 고정값 -->
-		
-		   <!-- 로고 -->
-           <div class=" golalogo">
-		        <h3><a th:href="@{/}" id="homebutton"><img src="/images/golalogo.png" alt="GOLA Home"></a></h3>	<!-- 나중에 Gola Home 지우고 image로 대체 -->
-		   </div>
-		   <!-- 로그인 -->
-		   <div sec:authorize="isAuthenticated()" class="indexloginlogout">
-					<form th:action="@{/logout}" method="post">
-				        <button id="indexbutton" class="logjoinbutton">로그아웃</button>
-				    </form>
-		  </div>
-		   <div sec:authorize="isAnonymous()" class="indexlogin" >  
-		     <button id="indexbutton" class="logjoinbutton" data-bs-toggle="modal" data-bs-target="#loginModal">
-				로그인
-			</button>
-		   </div>
-		   <!-- 회원가입 -->
-		   <div sec:authorize="isAnonymous()"  class="indexjoin">
-		   	<button id="indexbutton" class="logjoinbutton" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-						회원가입
-			</button>
-		   </div>
-		   
-	   		<div sec:authorize="isAuthenticated()" class="indexloginmypage" >
-				<form th:action="@{/mypage}" method="get">
-					<button id="indexbutton" class="logjoinbutton" >마이페이지</button>
-				</form>
-			</div>
-			<div sec:authorize="hasAuthority('ADMIN')" class="indexloginallusers">
-				<form th:action="@{/admin/list}" method="get">
-					<button id="indexbutton" class="logjoinbuttonallusers">전체 회원목록</button>
-				</form>
-			</div>
-			<div sec:authorize="hasAuthority('ADMIN')" class="indexloginallreview">
-				<form th:action="@{/review/list}" method="get">
-					<button id="indexbutton" class="logjoinbuttonallusers">전체 리뷰목록</button>
-				</form>
-			</div>
-	   		
-		   <!-- trigger -->
-		   <div class="indextrigger">
-		     <span></span>
-		     <span></span>
-		     <span></span>
-		   </div>
-		   <!-- trigger 메뉴 -->
-		   <div class="navmodal-gnb">
-		     <div class="modalgnb">
-		       <a th:href="@{/recipe}">RECIPE</a>
-		       <a th:href="@{/review}">REVIEW</a>
-		     </div>
-		   </div>
-	 <!-- end of 상단 header 고정값 -->
+    <!-- 로고 -->
+    <div class=" golalogo">
+      <h3><a th:href="@{/}" id="homebutton"><img src="/images/golalogo.png" alt="GOLA Home"></a></h3>
+      <!-- 나중에 Gola Home 지우고 image로 대체 -->
+    </div>
+    <!-- 로그인 -->
+    <div sec:authorize="isAuthenticated()" class="indexloginlogout">
+      <form th:action="@{/logout}" method="post">
+        <button id="indexbutton" class="logjoinbutton">로그아웃</button>
+      </form>
+    </div>
+    <div sec:authorize="isAnonymous()" class="indexlogin">
+      <button id="indexbutton" class="logjoinbutton" data-bs-toggle="modal" data-bs-target="#loginModal">
+        로그인
+      </button>
+    </div>
+    <!-- 회원가입 -->
+    <div sec:authorize="isAnonymous()" class="indexjoin">
+      <button id="indexbutton" class="logjoinbutton" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        회원가입
+      </button>
+    </div>
 
-<<<<<<< Updated upstream
-=======
+
+    <div sec:authorize="isAuthenticated()" class="indexloginmypage">
+      <form th:action="@{/mypage}" method="get">
+        <button id="indexbutton" class="logjoinbutton">마이페이지</button>
+      </form>
+    </div>
+    <div sec:authorize="hasAuthority('ADMIN')" class="indexloginallusers">
+      <form th:action="@{/admin/list}" method="get">
+        <button id="indexbutton" class="logjoinbuttonallusers">전체 회원목록</button>
+      </form>
+    </div>
+    <div sec:authorize="hasAuthority('ADMIN')" class="indexloginallreview">
+      <form th:action="@{/review/list}" method="get">
+        <button id="indexbutton" class="logjoinbuttonallusers">전체 리뷰목록</button>
+      </form>
+    </div>
+
     <!-- trigger -->
     <div class="indextrigger">
       <span></span>
@@ -76,48 +60,41 @@
         <a th:href="@{/recipe}">RECIPE</a>
         <a th:href="@{/review}">REVIEW</a>
         <a th:href="@{/shop}">SHOP</a>
-<<<<<<< Updated upstream
-        <a th:href="@{/cal}">Diet</a>
-=======
         <a th:href="@{/cal}">DIET</a>
->>>>>>> Stashed changes
       </div>
     </div>
     <!-- end of 상단 header 고정값 -->
->>>>>>> Stashed changes
 
-	<!-- 	modal -->
-	<div th:insert="layout/loginModal :: fr_loginModal"></div>
-	<div th:insert="layout/joinModal :: fr_joinModal"></div>
-	
-	<!-- trigger -->
-  <script>
-    $('.indextrigger').click(function () {
-      $(this).toggleClass('popup')
-      $('.navmodal-gnb').fadeToggle();
-    })
-  </script>
-		
-	</header>
-	
-	<footer th:fragment="fr_footer">
-		 <div class="footermain">
-		    <div class="footernavdiv">
-		      <ul class="footernav">
-		        <li><a th:href="@{/}">HOME</a></li>
-		        <li><a th:href="@{/about}">ABOUT</a></li>
-		        <li><a  th:href="@{https://github.com/teamwabang/Gola}" target="_blank">GitHub</a></li>
-		      </ul>
-		    </div>
-		    <div class="footerinfo">
-		      <span class="footername">@2022 DESIGN BY WABANG </span>
-		      <span id="footertopbutton"><a href="javascript:window.scrollTo(0,0);"><i class="fa-solid fa-circle-chevron-up"></i></a></span>
-		    </div>
-		  </div>
-	</footer>
-	
+    <!-- 	modal -->
+    <div th:insert="layout/loginModal :: fr_loginModal"></div>
+    <div th:insert="layout/joinModal :: fr_joinModal"></div>
 
-  
+    <!-- trigger -->
+    <script>
+      $('.indextrigger').click(function () {
+        $(this).toggleClass('popup')
+        $('.navmodal-gnb').fadeToggle();
+      })
+    </script>
+  </header>
+
+  <footer th:fragment="fr_footer">
+    <div class="footermain">
+      <div class="footernavdiv">
+        <ul class="footernav">
+          <li><a th:href="@{/}">HOME</a></li>
+          <li><a th:href="@{/about}">ABOUT</a></li>
+          <li><a th:href="@{https://github.com/teamwabang/Gola}" target="_blank">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="footerinfo">
+        <span class="footername">@2022 DESIGN BY WABANG </span>
+        <span id="footertopbutton"><a href="javascript:window.scrollTo(0,0);"><i
+              class="fa-solid fa-circle-chevron-up"></i></a></span>
+      </div>
+    </div>
+  </footer>
 
 </body>
+
 </html>

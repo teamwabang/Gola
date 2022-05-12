@@ -2,100 +2,92 @@
 <html xmlns:th="http://www.thymeleaf.org" class="indexhtml">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
-    <meta property="og:title" content="우리들의 모든 레시피 | 골라">
-    <!-- <meta property="og:image" content=""> -->
-    <meta property="og:description" content="우리들의 모든 레시피, 골라">
-    <meta property="og:type" content="website">
-    <title>우리들의 모든 레시피 | 골라</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
+  <meta property="og:title" content="우리들의 모든 레시피 | 골라">
+  <!-- <meta property="og:image" content=""> -->
+  <meta property="og:description" content="우리들의 모든 레시피, 골라">
+  <meta property="og:type" content="website">
+  <!-- title -->
+  <title>우리들의 모든 레시피 | 골라</title>
 
-    <!-- fontawesome -->
-    <script src="https://kit.fontawesome.com/c21d7630fc.js" crossorigin="anonymous"></script>
-    <!-- JavaScript -->
- 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <script type="text/javascript" src="/js/chatbot.js"></script>
-    <script type="text/javascript" src="/js/click_disable.js"></script>
-    <script type="text/javascript" src="/js/developer_tools.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css">
- 
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="/css/styles.css" />
-  	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+  <!-- fontawesome -->
+  <script src="https://kit.fontawesome.com/c21d7630fc.js" crossorigin="anonymous"></script>
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/js/chatbot.js"></script>
+  <!-- <script type="text/javascript" src="/js/click_disable.js"></script> -->
+  <!-- <script type="text/javascript" src="/js/developer_tools.js"></script> -->
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    
+  <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css">
 
-    
 </head>
 
 
-<body class="indexbody" oncontextmenu="return false" onselectstart="return false" ondragstart="return false" >
+<body class="indexbody">
+  <div id="fullpage">
+    <div class="section">
 
-<div id ="fullpage">
-	<div class="section">
-	
-	
-	  <!-- import header -->
-    <header th:replace="layout/fragment :: fr_header"></header>
-    <!-- end of import header -->
-  	
-		<!--1 section -->
-		<div class="slide">
-	
-		  <div id="videogradient">
-		  
-		  </div>
-          <!-- 비디오  -->
-          <video id="indexvideo" loop muted data-autoplay playsinline>
-	           <source src="/images/cookingvideo.mp4" type="video/mp4">
-		  </video>
-          
-          
-          <!-- 오른쪽 하단 문구 - 소개글(레시피게시판 연결) -->
-          <div class="videoheading">
-            <h1>
-              <span>오늘 뭐 먹지?</span>식사시간만 되면 찾아오는 고민
-            </h1>
-            <p>
-              아직 오늘의 메뉴를 정하지 못하셨나요? <br>
-              그렇다면, '골라'에서 다양한 레시피를 만나보세요.<br>
-            </p>
-            <a class="btn-seemore" th:href="@{/recipe}">see more <i class="fa-solid fa-angle-right"></i><i class="fa-solid fa-angle-right"></i></a>
-          </div>
-		</div>
-		<!-- end of 1 section -->
-		
-		<!--2 section -->
-		<div class="slide">
-		 <!-- 비디오  -->
-         <div class="video-frame2">
-           <video id="indexvideo2" loop muted data-autoplay playsinline>
-	           <source src="/images/reviewvideorenew.mp4" type="video/mp4">
-		  </video>
+      <!-- import header -->
+      <header th:replace="layout/fragment :: fr_header"></header>
+      <!-- end of import header -->
+
+      <div class="slide">
+        <div id="videogradient"></div>
+        <!-- 비디오 링크  -->
+        <video id="indexvideo" loop muted data-autoplay playsinline>
+          <source src="/images/cookingvideo.mp4" type="video/mp4">
+        </video>
+
+        <!-- 오른쪽 하단 문구 - 소개글(레시피게시판 연결) -->
+        <div class="videoheading">
+          <h1>
+            <span>오늘 뭐 먹지?</span>식사시간만 되면 찾아오는 고민
+          </h1>
+          <p>
+            아직 오늘의 메뉴를 정하지 못하셨나요? <br>
+            그렇다면, '골라'에서 다양한 레시피를 만나보세요.<br>
+          </p>
+          <a class="btn-seemore" th:href="@{/recipe}">see more <i class="fa-solid fa-angle-right"></i><i
+              class="fa-solid fa-angle-right"></i></a>
         </div>
-  
-       <!-- 중앙 하단 문구 - 소개글(리뷰게시판 연결) -->
+      </div>
+      <!-- end of 1 section -->
+
+      <!--2 section -->
+      <div class="slide">
+        <!-- 비디오  -->
+        <div class="video-frame2">
+          <video id="indexvideo2" loop muted data-autoplay playsinline>
+            <source src="/images/reviewvideorenew.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <!-- 중앙 하단 문구 - 소개글(리뷰게시판 연결) -->
         <div class="videoheading2">
           <h1>
             <span>함께하는 순간</span>
           </h1>
           <p>
-            '골라'와 함께 내가 만든 요리를 
+            '골라'와 함께 내가 만든 요리를
             더 많은 사람과 즐겨보세요
           </p>
-          <a class="btn-seemore" th:href="@{/review}">see more <i class="fa-solid fa-angle-right"></i><i class="fa-solid fa-angle-right"></i></a>
+          <a class="btn-seemore" th:href="@{/review}">see more <i class="fa-solid fa-angle-right"></i><i
+              class="fa-solid fa-angle-right"></i></a>
         </div>
-		</div>
-		<!--end of 2 section -->
-		
-		<!--3 section -->
-		<div class="slide">
-			<div class="section2background">
+      </div>
+      <!--end of 2 section -->
+
+      <!--3 section -->
+      <div class="slide">
+        <div class="section2background">
         </div>
         <div class="aboutus">
           <h1>저희를<span> 소개합니다</span></h1>
@@ -103,9 +95,10 @@
         </div>
         <div class="aboutbody">
           <ul class="aboutgallery">
+            <!-- 김율리아 ************************ -->
             <li>
               <div class="gallerycontent">
-                <h2 >김율리아<span>(Kim Yulia)</span></h2>
+                <h2>김율리아<span>(Kim Yulia)</span></h2>
                 <hr class="contenthr">
                 <h5>
                   <h4>페이지 레이아웃 및 디자인 구현</h4><br> -[index, about, 메인, 리뷰]<br>
@@ -119,6 +112,7 @@
                 </div>
               </div>
             </li>
+            <!-- 박병권 ************************ -->
             <li>
               <div class="gallerycontent">
                 <h2>박병권<span>(Park Byeng Kwon)</span></h2>
@@ -126,122 +120,129 @@
                 <h5>
                   <h4>게시판</h4> - [레시피 상세 페이지 레이아웃]<br>
                   <br>
-				  <h4>DB</h4> - [레시피]
+                  <h4>DB</h4> - [레시피]
                 </h5>
                 <div class="galleryicon">
                   <!-- 깃허브 -->
-                  <a href="https://github.com/martin1341" target="_blank"><i class="fa-brands fa-github"></i></a>
+                  <a href="https://github.com/martin1341"><i class="fa-brands fa-github"></i></a>
                 </div>
               </div>
             </li>
+            <!-- 엄지혜 ************************ -->
             <li>
               <div class="gallerycontent">
                 <h2>엄지혜<span>(Eom Ji Hye)</span></h2>
                 <hr class="contenthr">
-                <h5>           
-	                <h4>리뷰게시판</h4> - [글 댓글 CRUD, 대댓글, <br> 사진 업로드, 조회수 상위 게시물]<br>
-	                <h4>마이페이지</h4> - [프로필 사진 업로드, <br> 마이레시피]<br>
-	                <h4>DB</h4> - [게시판, 댓글, 파일]<br>
-					<h4>그 외</h4> - [레시피 레이아웃, 게시판 검색]
+                <h5>
+                  <h4>리뷰게시판</h4> - [글 댓글 CRUD, 대댓글, <br> 사진 업로드, 조회수 상위 게시물]<br>
+                  <h4>마이페이지</h4> - [프로필 사진 업로드, <br> 마이레시피]<br>
+                  <h4>DB</h4> - [게시판, 댓글, 파일]<br>
+                  <h4>그 외</h4> - [레시피 레이아웃, 게시판 검색]
                 </h5>
                 <div class="galleryicon">
                   <!-- 블로그 -->
-                  <a href="https://wisecodinglife.tistory.com/" target="_blank"><i class="fa-solid fa-b"></i></a>
+                  <a href="https://wisecodinglife.tistory.com/"><i class="fa-solid fa-b"></i></a>
                   <!-- 깃허브 -->
-                  <a href="https://github.com/jihye-12" target="_blank"><i class="fa-brands fa-github"></i></a>
+                  <a href="https://github.com/jihye-12"><i class="fa-brands fa-github"></i></a>
                 </div>
               </div>
             </li>
+            <!-- 정재홍 ************************ -->
             <li>
               <div class="gallerycontent">
                 <h2>정재홍<span>(Jeong Jae Hong)</span></h2>
-                  <hr class="contenthr">
+                <hr class="contenthr">
                 <h5>
-					<h4>회원관리</h4> - [회원가입, 로그인, 마이페이지 전반적 화면구성, 유효성 검사 구현]<br>
-					
-					<h4>리뷰게시판</h4> - [게시판, detail 전반적 화면 구성,이미지 페이징, 댓글 & 대댓글 CRUD, <br> 상호적인 기능구현] <br>
-					<h4>그 외</h4> - [타이머] 
+                  <h4>회원관리</h4> - [회원가입, 로그인, 마이페이지 전반적 화면구성, 유효성 검사 구현]<br>
+
+                  <h4>리뷰게시판</h4> - [게시판, detail 전반적 화면 구성,이미지 페이징, 댓글 & 대댓글 CRUD, <br> 상호적인 기능구현] <br>
+                  <h4>그 외</h4> - [타이머]
 
                 </h5>
                 <div class="galleryicon">
                   <!-- 블로그 -->
-                  <a href="https://bohongu.tistory.com/" target="_blank"><i class="fa-solid fa-b"></i></a>
+                  <a href="https://bohongu.tistory.com/"><i class="fa-solid fa-b"></i></a>
                   <!-- 깃허브 -->
-                  <a href="https://github.com/bohongu" target="_blank"><i class="fa-brands fa-github"></i></a>
+                  <a href="https://github.com/bohongu"><i class="fa-brands fa-github"></i></a>
                 </div>
               </div>
             </li>
+            <!-- 한상민 ************************ -->
             <li>
               <div class="gallerycontent">
                 <h2><i class="fa-solid fa-crown"></i> 한상민<span>(Han sangmin)</span></h2>
-                    <hr class="contenthr">
+                <hr class="contenthr">
                 <h5>
-	                 <h4>Spring Security</h4><br> - [권한, 비밀번호 암호화, 소셜 로그인, remember-me]<br>
-	                 <h4>마이페이지</h4> - [회원정보 수정, 회원탈퇴]<br>
-	                 <h4>DB</h4> - [유저, 레시피] <br>
- 	                 <h4>그 외</h4> - [서버배포, 프로젝트 구조 생성, about.html, recipe.html]   
-               </h5>
+                  <h4>Spring Security</h4><br> - [권한, 비밀번호 암호화, 소셜 로그인, remember-me]<br>
+                  <h4>마이페이지</h4> - [회원정보 수정, 회원탈퇴]<br>
+                  <h4>DB</h4> - [유저, 레시피] <br>
+                  <h4>그 외</h4> - [프로젝트 구조 생성, about.html, recipe.html]
+                </h5>
                 <div class="galleryicon">
                   <!-- 블로그 -->
-                  <a href="https://tkdalsgks.me/" target="_blank"><i class="fa-solid fa-b"></i></a>
+                  <a href="https://tkdalsgks.me/"><i class="fa-solid fa-b"></i></a>
                   <!-- 깃허브 -->
-                  <a href="https://github.com/tkdalsgks" target="_blank"><i class="fa-brands fa-github"></i></a>
+                  <a href="https://github.com/tkdalsgks"><i class="fa-brands fa-github"></i></a>
                 </div>
               </div>
             </li>
           </ul>
         </div>
-           <!-- 왼쪽 하단 문구 - since 2022 -->
-          <div class="indexsince">
-            <em>SINCE</em>
-            <span>2022</span>
-          </div>
-		</div>
-		<!-- end of 3 section -->
-	</div>
-</div>
-<!-- end of fullpage -->
 
-	<script src="http://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    
-    <script type="text/javascript" src="/js/join.js"></script>
-    <script type="text/javascript">
-		$(document).ready(function(){
-		    $('#inputicon2').on('click',function(){
-		        $('#userPwd').toggleClass('active');
-		        if($('#userPwd').hasClass('active')){
-		            $(this).attr('class',"fa fa-eye-slash fa-lg")
-		            $('#userPwd').attr('type','text');
-		        }else{
-		            $(this).attr('class',"fa fa-eye fa-lg")
-		            $('#userPwd').attr('type','password');
-		        }
-		    });
-		});
-	</script>
-    <script type="text/javascript" src="/js/logineye.js"></script>
-    
-    <script language="javascript">
-		if(document.readyState=="loading"){
-		location.href="javascript:window.scrollTo(0,0);";
-		}
-	</script>
+        <!-- 왼쪽 하단 문구 - since 2022 -->
+        <div class="indexsince">
+          <em>SINCE</em>
+          <span>2022</span>
+        </div>
+      </div>
+      <!-- end of index-3 -->
+    </div>
+    <!-- end of section -->
+  </div>
+  <!-- end of fullpage -->
+
+  <script src="http://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="/js/join.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#inputicon2').on('click', function () {
+        $('#userPwd').toggleClass('active');
+        if ($('#userPwd').hasClass('active')) {
+          $(this).attr('class', "fa fa-eye-slash fa-lg")
+          $('#userPwd').attr('type', 'text');
+        } else {
+          $(this).attr('class', "fa fa-eye fa-lg")
+          $('#userPwd').attr('type', 'password');
+        }
+      });
+    });
+  </script>
   <script type="text/javascript" src="/js/logineye.js"></script>
-  
-  <!-- fullscreen -->
-<script>
-$(document).ready(function() {
-    $('#fullpage').fullpage({
+
+  <script language="javascript">
+    if (document.readyState == "loading") {
+      location.href = "javascript:window.scrollTo(0,0);";
+    }
+  </script>
+  <script type="text/javascript" src="/js/logineye.js"></script>
+
+  <!-- fullpage -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('#fullpage').fullpage({
         //options here
         licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
-        keyboardScrolling:true, //키보드로 스크롤 가능 
-        
+        keyboardScrolling: true, //키보드로 스크롤 가능 
+
+      });
     });
-});
-</script>
+  </script>
 
 
 </body>
