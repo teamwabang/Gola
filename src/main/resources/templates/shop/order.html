@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="indexhtml">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
+  <meta property="og:title" content="우리들의 모든 레시피 | 골라">
+  <!-- <meta property="og:image" content=""> -->
+  <meta property="og:description" content="우리들의 모든 레시피, 골라">
+  <meta property="og:type" content="website">
+  <!-- title -->
+  <title>주문서작성 및 결제 | 골라</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <!-- fontawesome -->
+  <script src="https://kit.fontawesome.com/c21d7630fc.js" crossorigin="anonymous"></script>
+  <!-- JavaScript -->
+  <script type="text/javascript" src="/js/chatbot.js"></script>
+  <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+  <!-- <script type="text/javascript" src="/js/click_disable.js"></script>
+  <script type="text/javascript" src="/js/developer_tools.js"></script> -->
+  <!-- Featherlight.js -->
+  <script src="/js/featherlight.js"></script>
+  <link rel="stylesheet" href="/css/featherlight.css">
+
+</head>
+    
+<body class="orderbody">
+
+	<script type="text/javascript">
+		function setOrderMemo(id){
+	        if(id) {
+	            var txt = $("#"+id).text();
+	            $("#orderMemo").val(txt);
+	        }
+	        $("#setOrderMemo").hide();
+	    }
+	
+	    function doOpenAgree(id){
+	        $("#"+id+"Head .D_open").remove();
+	        $("#"+id+"Head").append('<a href="javascript:doCloseAgree(\''+id+'\')" class="D_close">닫기</a>');
+	        $("#"+id+"Body").show();
+	    }
+	
+	    function doCloseAgree(id){
+	        $("#"+id+"Head .D_close").remove();
+	        $("#"+id+"Head").append('<a href="javascript:doOpenAgree(\''+id+'\')" class="D_open">열기</a>');
+	        $("#"+id+"Body").hide();
+	    }
+	
+	    $(function(){
+	        $("#orderMemo").on('click', function() {
+	            $("#setOrderMemo").toggle();
+	        });
+	
+	        $("#orderMemo").on("propertychange change keyup paste input", function() {
+	            $("#setOrderMemo").hide();
+	        });
+	
+	        $("#duplcateBtn").on('click', function() {
+	            $("#orderName").val($("#receiverName").val());
+	            $("#phoneNum").val($("#receiverPhone").val());
+	            $("#mobileNum").val($("#receiverCellPhone").val());
+	        });
+	    });
+	</script>
+
+	<!-- import header -->
+	<header th:replace="layout/fragment :: fr_header"></header>
+	<!-- end of import header -->
+	
+	<!-- center title -->
+	<div>
+		<span class="ordertitle">ORDER</span>
+	</div>
+
+	<div class="order_content">
+		<!-- 주문서작성/결제 타이틀 시작 -->
+	    <div class="order_title">
+	        <h2>주문서작성/결제</h2>
+	        <ul>
+	            <li><span>01</span> 장바구니 <span><img src="/images/shop/icon_step_off.png" alt=""></span></li>
+	            <li class="order_page_on"><span>02</span> 주문서작성/결제 <span><img src="/images/shop/icon_step_on.png" alt=""></span></li>
+	            <li><span>03</span> 주문완료 </li>
+	        </ul>
+	    </div>
+	    <!-- 주문서작성/결제 타이틀 끝 -->
+	    
+	    <div class="order_cont">
+		    <!-- 장바구니에서 담은 상품 목록 시작 -->
+		    <div class="cart_cont_list">
+		    	<div class="order_cart_title">
+		    		<h4>주문상세내역</h4>
+		    	</div>
+		    	<div class="order_table_type">
+		    		<table>
+		    		<!-- ##### 장바구니 정보 가져올 테이블 ##### -->
+		    		</table>
+		    	</div>
+		    </div>
+		    <!-- 장바구니에서 담은 상품 목록 끝 -->
+		    
+		    <!-- 배송정보 시작 -->
+		    <div class="order_view_info">
+		    	<div class="order_zone_title">
+		    		<h4>배송정보</h4>
+		    	</div>
+		    	<!-- 수령인 입력 테이블 시작 -->
+		    	<div class="order_table_type">
+		    		<table class="table_left">
+		    			<colgroup>
+		    				<col style="width: 15%;">
+		    				<col style="width: 85%;">
+		    			</colgroup>
+		    			<tbody>
+		    				<tr>
+		    					<th scope="row">배송지 확인</th>
+		    					<td>
+		    						<div class="form_element">
+		    							<ul>
+		    								<li>
+		    									<input type="radio" name="shipping" id="basic_shipping">
+		    									<label for="basic_shipping">기본 배송지</label>
+		    								</li>
+		    							</ul>
+		    							<span class="gray_list_btn"><a href="" class="gray_small_btn ">배송지관리</a></span>
+		    						</div>
+		    					</td>
+		    				</tr>
+		    				<!-- 받으실분 -->
+		    				<tr>
+		    					<th scope="row"><span class="important">받으실분</span></th>
+		    					<td><input type="text" id="receiverName" name="receiverName" maxlength="20"></td>
+		    				</tr>
+		    				<!-- 받으실 곳 -->
+		    				<tr>
+		    					<th scope="row"><span class="important">받으실 곳</span></th>
+		    					<td class="member_address">
+		    						<div class="address_postcode">
+			    						<input type="text" name="receiverZonecode">
+			    						<input type="hidden" name="receiverZipcode">
+			    						<span id="receiverZipcodeText" class="old_post_code"></span>
+			    						<button type="button" class="btn_post_search" onclick="gd_postcode_search('receiverZonecode', 'receiverAddress', 'receiverZipcode');">우편번호검색</button>
+		    						</div>
+		    						<div class="address_input">
+			    						<input type="text" name="receiverAddress">
+			    						<input type="text" name="receiverAddressSub">
+		    						</div>
+		    					</td>
+		    				</tr>
+		    				<!-- 전화번호 -->
+		    				<tr>
+		    					<th scope="row">전화번호</th>
+		    					<td>
+		    						<input type="text" id="receiverPhone" name="receiverPhone">
+		    					</td>
+		    				</tr>
+		    				<!-- 휴대폰 번호 -->
+		    				<tr>
+		    					<th scope="row"><span class="important">휴대폰 번호</span></th>
+		    					<td>
+		    						<input type="text" id="receiverCellPhone" name="receiverCellPhone">
+		    					</td>
+		    				</tr>
+		    				<!-- 배송 요청사항 -->
+		    				<tr>
+		    					<th scope="row"><span class="important">배송 시 요청사항</span></th>
+		    					<td class="td_last_say">
+			    					<div style="position:relative;">
+				    					<input type="text" id="orderMemo" name="orderMemo" autocomplete="off/">
+				    					<div id="setOrderMemo" class="order_msg" style="display:none;">
+					    					<ul>
+						    					<li id="option1" onclick="setOrderMemo('option1')">배송 전에 미리 연락 부탁드려요.</li>
+						    					<li id="option2" onclick="setOrderMemo('option2')">경비실에 맡겨주세요.</li>
+						    					<li id="option3" onclick="setOrderMemo('option3')">부재시 경비실에 맡겨주세요.</li>
+						    					<li id="option4" onclick="setOrderMemo('option4')">부재시 전화나 문자 부탁드려요.</li>
+					    					 </ul>
+				    					 </div>
+			    					 </div>
+		    					 </td>
+		    				</tr>
+		    			</tbody>
+		    		</table>
+		    	</div>
+		    	<!-- 수령인 입력 테이블 끝 -->
+		    </div>
+		    <!-- 배송정보 끝 -->
+		    
+		    <!-- 주문자 정보 시작 -->
+		    <div class="order_info">
+		    	<div class="order_zone_title">
+		    		<h4>주문자 정보</h4>
+		    	</div>
+		    	<div class="order_table_type">
+		    		<table class="table_left">
+		    			<colgroup>
+		    				<col style="width: 15%;">
+		    				<col style="width: 85%;">
+		    			</colgroup>
+		    			<tbody>
+		    				<!-- 주문하시는 분 -->
+		    				<tr>
+		    					<th scope="row"><span class="important">주문하시는 분</span></th>
+		    					<td>
+		    						<input type="text" name="orderName" id="orderName" value="" maxlength="20">
+		    					</td>
+		    				</tr>
+		    				<!-- 전화번호 -->
+		    				<tr>
+			    				<th scope="row">전화번호</th>
+			    				<td>
+			    					<input type="text" id="phoneNum" name="orderPhone" value="" maxlength="20">
+			    				</td>
+		    				</tr>
+		    				<!-- 휴대폰 번호 -->
+		    				<tr>
+			    				<th scope="row"><span class="important">휴대폰 번호</span></th>
+			    				<td>
+			    					<input type="text" id="mobileNum" name="orderCellPhone" value="" maxlength="20">
+			    				</td>
+		    				</tr>
+		    				<!-- 이메일 -->
+		    				<tr>
+			    				<th scope="row"><span class="important">이메일</span></th>
+			    				<td class="member_email">
+				    				<input type="text" name="orderEmail" value="">
+		    					</td>
+		    				</tr>
+		    			</tbody>
+		    		</table>
+		    	</div>
+		    </div>
+		    <!-- 주문자 정보 끝 -->
+		    
+		    <!-- 결제정보 시작 -->
+		    <div class="payment_info">
+		    	<div class="order_zone_title">
+		    		<h4>결제정보</h4>
+		    	</div>
+		    	<div class="order_table_type">
+		    		<table class="table_left">
+			    		<colgroup>
+			    				<col style="width: 15%;">
+			    				<col style="width: 85%;">
+			    		</colgroup>
+			    		<tbody>
+			    			<!-- 상품 합계 금액 -->
+			    			<tr>
+			    				<th scope="row">상품 합계 금액</th>
+			    				<td>
+			    					<strong id="totalGoodsPrice" class="order_payment_sum">7,900</strong>원
+			    				</td>
+			    			</tr>
+			    			<!-- 배송비 -->
+			    			<tr>
+			    				<th scope="row">배송비</th>
+			    				<td>
+				    				<span id="totalDeliveryCharge">3,000</span>원
+				    				<span class="multi_shipping_text"></span>
+			    				</td>
+			    			</tr>
+			    			<!-- 적립금 사용 -->
+			    			<tr>
+			    				<th scope="row">적립금 사용</th>
+			    				<td>
+				    				<div class="order_money_use">
+				    					<b><input type="text" name="useMileage" onblur="gd_mileage_use_check('y', 'y', 'y', 'y');"> 원</b>
+				    					<div class="form_element">
+					    					<input type="checkbox" id="useMileageAll" onclick="gd_mileage_use_all();" disabled="disabled">
+					    					<span class="money_use_sum">(보유 적립금 : 0 원)</span>
+				    					</div>
+				    					<em class="money_use_txt js-mileageInfoArea"></em>
+				    				</div>
+				    			</td>
+			    			</tr>
+			    			<!-- 예상 적립금 -->
+			    			<tr style="position: relative; z-index: 1;">
+			    				<th scope="row">예상 적립금<a class="mileageInfo" style="display:inline-block; vertical-align:1px; padding:5px; cursor: pointer;">
+			    				<img src="/images/shop/icon_info2.png" width="18"></a>
+			    				<!--적립금제도란?-->
+			    				<div class="point_my_sub" style="display: none;">
+				    				<a class="point_my_sub_btn" style="cursor: pointer"></a>
+				    				<div class="point_my_sub_t">모든 회원 구매액의 <span>0.5%</span> 적립</div>
+					    				<ul class="point_my_sub_c">
+						    				<li>배송비를 제외한 <span>실 결제금액의 0.5%가 배송완료 시 적립</span>됩니다.</li>
+						    				<li>주문취소/반품/환불의 경우, 사용된 적립금은 다시 환원됩니다.</li>
+						    				<li>회원탈퇴/최종 적립일로부터 <span>1년 미사용 시</span>에는 적립금은 자동 소멸됩니다.</li>
+						    				<li>적립금은 <span>만개의레시피 회원에 한해 적립</span>되며, 가입 이전 구매한 금액에 대해서는 적립금을 소급하지 않습니다.</li>
+						    				<li>적립금은 탈퇴 후 <span>복원 및 타 계정 양도가 불가</span>합니다.</li>
+						    				<li>일부 행사 상품의 경우 적립금 지급에서 제외될 수 있습니다.</li>
+						    				<li>적립금 정책은 골라 운영 정책에 따라 변경될 수 있습니다.</li>
+					    				</ul>
+                                    </div>
+                                </th>
+                                <td>
+                                	<span id="">50원</span>
+                                </td>
+                            </tr>
+                            <!-- 최종 결제 금액 -->
+                            <tr>
+                            	<th scope="row">최종 결제 금액</th>
+                            	<td>
+	                            	<input type="hidden" name="settlePrice" value="">
+	                            	<input type="hidden" name="overseasSettlePrice" value="0">
+	                            	<input type="hidden" name="overseasSettleCurrency" value="KRW">
+	                            	<strong id="totalSettlePrice" class="order_payment_sum">10,900</strong>원
+                            	</td>
+                            </tr>
+			    		</tbody>
+			    	</table>
+		    	</div>
+		    </div>
+		    <!-- 결제정보 끝 -->
+		    
+		    <!-- 결제수단 선택/결제 시작 -->
+		    <div class="payment_progress">
+		   		<div class="order_zone_title">
+			   		<h4>결제수단 선택 / 결제</h4>
+			   		<p class="js_pay_content">※ 고객님은 안전거래를 위해 현금으로 결제시 저희 쇼핑몰에서 가입한 구매안전서비스인 KG 이니시스의 구매안전(에스크로)서비스를 이용하실 수 있습니다.</p>
+		   		</div>
+		   		<div class="js_pay_content">
+		   			<dl>
+		   				<dt></dt>
+		   				<dd>
+		   					<div class="form_element">
+		   						<ul class="order_zone_btn">
+		   							<li>
+		   								<div class="ezhldSettleDiv" id="ezhld_settle_pc" onclick="ezhld_settlekind_toggle_check('pc')">
+		   									<img src="/images/shop/btn_pay1_off.png" id="ezhld_img_settle_pc_check">
+		   								</div>
+		   							</li>
+		   							<li>
+		   								<div class="ezhldSettleDiv" id="ezhld_settle_pv" onclick="ezhld_settlekind_toggle_check('pv')">
+			   								<img src="/images/shop/btn_pay4_off.png" id="ezhld_img_settle_pv_check">
+			   							</div>
+		   							</li>
+		   							<li>
+			   							<div class="ezhldSettleDiv" id="ezhld_settle_pk" onclick="ezhld_settlekind_toggle_check('pk')">
+			   								<img src="/images/shop/btn_pay3_off.png" id="ezhld_img_settle_pk_check">
+			   							</div>
+		   							 </li>
+		   							 <li>
+			   							 <div class="ezhldSettleDiv" id="ezhld_settle_fc" onclick="ezhld_settlekind_toggle_check('fc')">
+			   								<img src="/images/shop/btn_pay2_off.png" id="ezhld_img_settle_fc_check">
+			   							 </div>
+		   							 </li>
+		   						</ul>
+		   					</div>
+		   				</dd>
+		   			</dl>
+		   		</div>
+		    </div>
+		    <!-- 결제수단 선택/결제 끝 -->
+		    
+		    <!-- 결제 필수사항 동의 시작 -->
+		    <div class="order_agree">
+		    	<!-- <div class="form_element">
+			    	<input type="checkbox" name="allAgreeLogin" id="allAgreeLogin" class="require">
+			    	<label for="allAgreeLogin" class="check_s">결제 필수사항 동의</label>
+			    </div> -->
+			    <div class="order_zone_title">
+			    	<h5>상품 공급사 개인정보 제공 동의에 대한 내용을 확인 하였으며 이에 동의합니다.</h5>
+			    </div>
+			    <div class="order_agree_cont" style="padding-bottom:3px;">
+				    <div class="join_agreement_box">
+				    	<input type="hidden" id="termAgreePrivateProvider" name="termAgreePrivateProvider" class="require">
+				    	<div class="agreement_box">
+					    	- 제공받는 자 : 골라 / 상품공급사<br>
+					    	- 이용목적 : 판매자와 구매자의 거래의 원활한 진행, 본인의사의확인, 고객 상담 및 불만처리, 상품과 경품 배송을 위한 배송지 확인 등<br>
+					    	- 제공항목 : 구매자 이름, 전화번호, ID, 휴대폰번호, 이메일주소, 상품 구매정보, 상품 수취인 정보(이름, 주소, 전화번호)<br>
+					    	- 보유/이용기간 : 배송완료 후 한달
+				    	</div>
+				    </div>
+			    </div>
+			    <div class="order_zone_title">
+			    	<input type="hidden" id="termAgree_orderCheck" class="require">
+			    	<h5>구매하실 상품의 결제정보를 확인하였으며, 구매진행에 동의합니다.</h5>
+			    </div>
+			</div>
+			<!-- 결제 필수사항 동의 끝 -->
+			
+			<!-- 결제하기 버튼 시작 -->
+			<div class="btn_center_box">
+				<button class="btn_order_buy order-buy"><em>결제하기</em></button>
+			</div>
+			<!-- 결제하기 버튼 끝 -->
+		</div>
+    </div>
+   	
+   	<!-- import footer -->
+   	<footer th:replace="layout/fragment :: fr_footer"></footer>
+   	<!-- end of import footer -->
+   	
+   	<script type="text/javascript">
+   		/* 예상 적립금 설명 form */
+	   	$(document).ready(function() {
+	   		$(".mileageInfo").on('click',function (e){
+	   			$(".point_my_sub").css('display','block');
+	   		});
+	   		$(".point_my_sub_btn").on('click',function (e){
+	   			$(".point_my_sub").css('display','none');
+	   		});
+	   	});
+	   	
+	   	/* 결제수단 선택 스크립트 */
+	   	function ezhld_settlekind_toggle_check(settle){
+	   		$('.form_element label').removeClass('on');
+
+	        $("[id^='ezhld_img_settle_']").each(function(){
+	            $(this).attr("src",$(this).attr("src").replace("_on", "_off"));
+	        });
+	        $("#ezhld_img_settle_"+settle+"_check").attr("src",$("#ezhld_img_settle_"+settle+"_check").attr("src").replace("_off", "_on"));
+
+	        var channelFl = 'shop';
+	        if(settle == 'fc'){
+	            channelFl = 'payco';
+	            $('#settleKind_payco_fc').prop('checked', true);
+	        }else {
+	            $("#settleKind_"+settle).prop('checked', true);
+	        }
+	        $('[name="orderChannelFl"]').val(channelFl);
+	        /* ezhld_set_last_settlekind(settle); */
+	    }
+	   	
+	   	
+   	</script>
+	
+	<!-- Bootstrap -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+	crossorigin="anonymous"></script>
+	<script src="http://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script type="text/javascript" src="/js/join.js"></script>
+	<script type="text/javascript" src="/js/logineye.js"></script>
+
+</body>
+
+</html>
