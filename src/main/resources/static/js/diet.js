@@ -4,6 +4,12 @@ const lunchKcal = document.getElementById("lunchKcal");
 const dinnerKcal = document.getElementById("dinnerKcal");
 const totalKcal = document.querySelector(".totalKcal");
 
+/*날짜*/
+let today = new Date();   
+let year = today.getFullYear(); //년
+let month = ('0' + (today.getMonth() + 1));  //월
+let date = today.getDate(); //일
+
 /*페이지 새로고침*/
 function reload() {
   window.location.reload();
@@ -104,7 +110,7 @@ function screenshot(e) {
     } else {
       var el = document.getElementById("target");
       el.href = canvas.toDataURL("image/jpeg");
-      el.download = "오늘의 추천 식단.jpg";
+      el.download = "오늘의 추천 식단 " + year+month+date +".jpg" ;
       el.click();
     }
   }
