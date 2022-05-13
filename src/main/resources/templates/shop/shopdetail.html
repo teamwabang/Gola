@@ -88,8 +88,12 @@
         </div>
 
         <div class="btn_go_box">
-          <button type="button" id="cartBtn" class="btn_go_cart">장바구니</button>
-          <button type="button" class="btn_go_order"> 바로구매</button>
+	      <form th:action="@{/shop/cart}">
+	        <button type="submit" id="cartBtn" class="btn_go_cart">장바구니</button>
+	      </form>
+	      <form th:action="@{/shop/order}">
+            <button type="submit" class="btn_go_order"> 바로구매</button>
+          </form>
         </div>
       </div>
     </div>
