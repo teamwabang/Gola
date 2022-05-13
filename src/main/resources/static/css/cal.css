@@ -11,20 +11,29 @@
   align-items: center;
   justify-content: space-evenly;
   height: 100vh;
-  margin: 0px 25%;
+  margin: 0px 20%;
   background-color: white;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .calMainTitle {
-  font-size: 23px;
   margin-bottom: 20px;
+}
+
+.calMainTitle img {
+	height:45px;
+	width:45px;
+	cursor: pointer;
+}
+
+#genderSection label {
+	margin-right:10px;
 }
 
 .calbtns {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border: none;
-  background-color: #46AE4F;
+  background-color: white;
   color: black;
 }
 
@@ -33,7 +42,7 @@
 .resultbtn:active {
   color: white !important;
   font-weight: bold !important;
-  background-color: #77b347 !important;
+  background-color: #0FBAD8 !important;
 }
 
 .btn-check:active + .btn-secondary,
@@ -42,8 +51,8 @@
 .btn-secondary:active,
 .show > .btn-secondary.dropdown-toggle {
   color: #fff;
-  background-color: #77b347;
-  border-color: #77b347;
+  background-color: #0FBAD8;
+  border-color: #0FBAD8;
 }
 
 #male,
@@ -64,6 +73,19 @@
   margin-bottom: 5%;
 }
 
+#genderSection,
+#ageSection,
+#heightSection,
+#weightSection,
+#levelSection {
+	width:560px;
+}
+
+.levelInnerSection {
+	display: flex;
+	justify-content: space-between;
+}
+
 .labels,
 .genderTitle,
 .levelTitle {
@@ -82,13 +104,13 @@
 }
 
 .resultbtn {
-  border-radius: 50%;
+  border-radius: 10px;
   height: 35px;
-  width: 35px;
+  width: 100px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   border: none;
-  background: #77b347;
+  background: white;
   color: black;
   display: flex;
   justify-content: center;
@@ -97,14 +119,15 @@
 
 .resultbtn:hover,
 .recommendbtn:hover {
-  background-color: #46AE4F;
-  color: black;
+  background-color: #0FBAD8;
+  color: white;
   box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
     rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
 }
 
 .recommendbtn {
-  background-color:#77b347;
+  background-color:white;
+  border-radius: 10px;
   border: none;
   color: black;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
@@ -124,13 +147,13 @@ table.type06 {
   margin: 0px 10px;
 }
 table.type06 th {
-  width: 180px;
+  width: 170px;
   padding: 10px;
   font-weight: bold;
   vertical-align: top;
 }
 table.type06 td {
-  width: 400px;
+  width: 390px;
   padding: 10px;
   vertical-align: top;
 }
