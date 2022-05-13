@@ -157,6 +157,8 @@ table.type06 td {
   padding: 10px;
   vertical-align: top;
 }
-table.type06 .even {
+
+#lowTb,
+#highTb {
   background: #efefef;
 }
