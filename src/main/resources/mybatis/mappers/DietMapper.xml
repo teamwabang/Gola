@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.recipe.gola.mapper.DietMapper">
+
+	<!-- 메뉴추천 리스트 출력 -->
+	<select id="list" resultType="RecipeDTO" parameterType="string">
+	
+		SELECT/*com.recipe.gola.mapper.DietMapper.list*/
+			*
+		FROM
+		(
+		<choose>
+			<when test='mealType == "D" '>	<!-- 저 -->
+				( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, 'A' as 'grp' FROM recipe r WHERE kind = '밥' ORDER BY RAND() LIMIT 1 ) 
+				UNION ALL     
+			    ( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, 'A' as 'grp' FROM recipe r WHERE kind = '국/찌개' ORDER BY RAND() LIMIT 1 )  
+				UNION ALL
+				( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, 'A' as 'grp' FROM recipe r WHERE kind = '반찬' ORDER BY RAND() LIMIT 1 ) 
+				UNION ALL 
+			    ( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, 'A' as 'grp' FROM recipe r WHERE kind = '후식' ORDER BY RAND() LIMIT 1 ) 
+				UNION ALL 
+				( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, 'A' as 'grp' FROM recipe r WHERE kind = '일품' ORDER BY RAND() LIMIT 1 ) 
+		 	</when>
+			<when test='mealType == "L" '>	<!-- 점심 -->
+				( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, 'A' as 'grp' FROM recipe r WHERE kind = '밥' ORDER BY RAND() LIMIT 1 ) 
+				UNION ALL     
+			    ( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, 'A' as 'grp' FROM recipe r WHERE kind = '국/찌개' ORDER BY RAND() LIMIT 1 )  
+				UNION ALL
+				( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, 'A' as 'grp' FROM recipe r WHERE kind = '반찬' ORDER BY RAND() LIMIT 1 ) 
+				UNION ALL 
+			    ( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, 'A' as 'grp' FROM recipe r WHERE kind = '후식' ORDER BY RAND() LIMIT 1 ) 
+		 	</when>
+	        <otherwise>	<!-- 아침 -->
+				( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, 'A' as 'grp' FROM recipe r WHERE kind = '밥' ORDER BY RAND() LIMIT 1 ) 
+				UNION ALL     
+			    ( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, 'A' as 'grp' FROM recipe r WHERE kind = '국/찌개' ORDER BY RAND() LIMIT 1 )  
+				UNION ALL
+				( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, 'A' as 'grp' FROM recipe r WHERE kind = '반찬' ORDER BY RAND() LIMIT 1 ) 
+	        </otherwise>
+        </choose>
+		)a
+	</select>
+</mapper>
