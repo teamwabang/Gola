@@ -2,20 +2,6 @@ let height = document.getElementById("height");
 let weight = document.getElementById("weight");
 let ageValue = document.getElementById("age");
 
-const recommendBtn = document.getElementById("recommendBtn");
-
-const noneTb = document.getElementById("noneTb");
-const lowTb = document.getElementById("lowTb");
-const mediumTb = document.getElementById("mediumTb");
-const highTb = document.getElementById("highTb");
-
-const noneTh = document.getElementById("noneTh");
-const lowTh = document.getElementById("lowTh");
-const mediumTh = document.getElementById("mediumTh");
-const highTh = document.getElementById("highTh");
-
-const SHADOW = "0 0 5px #0fbad8,0 0 5px #0fbad8,0 0 5px #fff,0 0 5px #0fbad8,0 0 5px #0fbad8,0 0 5px #0fbad8,0 0 5px #0fbad8,0 0 5px #fff";
-
 let calResult = document.getElementById("calResult");
 
 function getResult() {
@@ -60,15 +46,18 @@ function getResult() {
     document.querySelector("input[name='gender']:checked").value &&
     document.querySelector("input[name='level']:checked").value
   ) {
-    calResult.innerHTML = `🥑 당신의 하루 권장 칼로리는 ${Math.round(
+	kcal = Math.round(
       (10 * weight.value +
         6.25 * height.value -
         5.0 * ageValue.options[ageValue.selectedIndex].value +
         Number(document.querySelector("input[name='gender']:checked").value)) *
         document.querySelector("input[name='level']:checked").value
-    )}Kcal 입니다.`;
+    );
+    calResult.innerHTML = `🥑 당신의 하루 권장 칼로리는 ${kcal}Kcal 입니다.`;
   }
 }
+
+var kcal;
 
 function getDiet() {
   if (calResult.textContent == "") {
@@ -78,32 +67,7 @@ function getDiet() {
       button: "확인",
     });
   } else {
-    window.location.href = 'diet';
-  }
-}
-
-/* 활동 레벨 버튼 클릭시 TABLE 포커스 */
-function focusTable(event) {
-  if (event.target.outerText == noneTh.outerText) {
-    (noneTb.style.textShadow = SHADOW) &&
-      (lowTb.style.textShadow = "none") &&
-      (mediumTb.style.textShadow = "none") &&
-      (highTb.style.textShadow = "none");
-  } else if (event.target.outerText == lowTh.outerText) {
-    (lowTb.style.textShadow = SHADOW) &&
-      (noneTb.style.textShadow = "none") &&
-      (mediumTb.style.textShadow = "none") &&
-      (highTb.style.textShadow = "none");
-  } else if (event.target.outerText == mediumTh.outerText) {
-    (mediumTb.style.textShadow = SHADOW) &&
-      (noneTb.style.textShadow = "none") &&
-      (lowTb.style.textShadow = "none") &&
-      (highTb.style.textShadow = "none");
-  } else if (event.target.outerText == highTh.outerText) {
-    (highTb.style.textShadow = SHADOW) &&
-      (noneTb.style.textShadow = "none") &&
-      (mediumTb.style.textShadow = "none") &&
-      (lowTb.style.textShadow = "none");
+    location.href = '/diet?kcal='+kcal;
   }
 }
 

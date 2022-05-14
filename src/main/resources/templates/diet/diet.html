@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -32,93 +32,29 @@
 		<div class="dietMainGrid">
 			<div class="dietMain">
 				<div class="breakfast">
-					<div class="meal">BREAKFAST</div>
+					<div class="meal" id="breakfast">BREAKFAST</div>
+<!-- 					
 					<div class="mealSelect">
 						<div class="mealPic breakfastPic">
 							<img src="#" />
 						</div>
 						<div class="mealTitle">밥</div>
 					</div>
-					<div class="mealSelect">
-						<div class="mealPic breakfastPic">
-							<img src="#" />
-						</div>
-						<div class="mealTitle">반찬</div>
-					</div>
-					<div class="mealSelect">
-						<div class="mealPic breakfastPic">
-							<img src="#" />
-						</div>
-						<div class="mealTitle">국/찌개</div>
-					</div>
-					<div id="breakfastKcal" class="kcal">500</div>
+ -->
+					<div id="breakfastKcal" class="kcal" ></div>
 				</div>
 				<div class="lunch">
-					<div class="meal">LUNCH</div>
-					<div class="mealSelect">
-						<div class="mealPic lunchPic">
-							<img src="#" />
-						</div>
-						<div class="mealTitle">밥</div>
-					</div>
-					<div class="mealSelect">
-						<div class="mealPic lunchPic">
-							<img src="#" />
-						</div>
-						<div class="mealTitle">반찬</div>
-					</div>
-					<div class="mealSelect">
-						<div class="mealPic lunchPic">
-							<img src="#" />
-						</div>
-						<div class="mealTitle">국/찌개</div>
-					</div>
-					<div class="mealSelect">
-						<div class="mealPic lunchPic">
-							<img src="#" />
-						</div>
-						<div class="mealTitle">후식</div>
-					</div>
-					<div id="lunchKcal" class="kcal">800</div>
+					<div class="meal" id="lunch">LUNCH</div>
+					<div id="lunchKcal" class="kcal"></div>
 				</div>
 				<div class="dinner">
-					<div class="meal">DINNER</div>
-					<div class="mealSelect">
-						<div class="mealPic dinnerPic">
-							<img src="#" />
-						</div>
-						<div class="mealTitle">밥</div>
-					</div>
-					<div class="mealSelect">
-						<div class="mealPic dinnerPic">
-							<img src="#" />
-						</div>
-						<div class="mealTitle">반찬</div>
-					</div>
-					<div class="mealSelect">
-						<div class="mealPic dinnerPic">
-							<img src="#" />
-						</div>
-						<div class="mealTitle">국/찌개</div>
-					</div>
-					<div class="mealSelect">
-						<div class="mealPic dinnerPic">
-							<img src="#" />
-						</div>
-						<div class="mealTitle">일품</div>
-					</div>
-					<div class="mealSelect">
-						<div class="mealPic dinnerPic">
-							<img src="#" />
-						</div>
-						<div class="mealTitle">후식</div>
-					</div>
-					<div id="dinnerKcal" class="kcal">900</div>
+					<div class="meal" id="dinner">DINNER</div>
+					<div id="dinnerKcal" class="kcal"></div>
 				</div>
 			</div>
 			<div class="dietFooter">
 				<div class="blank">빈공간입니다길이맞추기용!!</div>
-				<div class="totalKcal">총 칼로리 : 2000Kcal</div>
+				<div class="totalKcal"></div>
 				<div>
 					<input id="captureBtn" class="footerBtns" type="button"
 						value="📸 CAPTURE" /><input id="refreshBtn"
@@ -134,6 +70,43 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
-</body>
+ 	<script th:inline="javascript">
+ 	
+	    let breakfastList = [[${ breakfastList }]];
+   	 	let lunchList = [[${ lunchList }]];
+   	 	let dinnerList = [[${ dinnerList }]];
+   	 	
+   	 	$(document).ready(function(){
+   	 		fnCreateHtml(breakfastList,'#breakfast','#breakfastKcal',157.76,101.65);
+   	 		fnCreateHtml(lunchList,'#lunch','#lunchKcal',161.8,71.15);
+   	 		fnCreateHtml(dinnerList,'#dinner','#dinnerKcal',142.27,48.78);
+   	 	});
+
+   	 	/* 
+   	 	* 메뉴 div를 생성한다.
+   	 	* @param list : 끼니별 리스트
+   	 	* @param div_id : 그려진 메뉴 태그가 그려질 id영역
+   	 	* @param totKcal_id : 총 칼로리가 들어갈 id
+   	 	* @param imgWIdth : 이미지 가로크기 
+   	 	* @param imgHeight : 이미지 세로크기
+   	 	*/
+   	 	function fnCreateHtml(list,div_id,totKcal_id,imgWIdth,imgHeight){
+   	 		let html = "";
+   	 		let totKcal = 0;
+   	 		list.forEach(function(v,i){
+	   	 		html += "<div class='mealSelect'>";
+	   	 		html += "	<div class='mealPic breakfastPic'>";
+	   	 		html += "		<img src='"+v.menuImg+"'  width='"+imgWIdth+"' height='"+imgHeight+"' />";
+	   			html += "	</div>";
+	   			html += "	<div class='mealTitle'>"+v.kind+"</div>";
+	   			html += "</div>";
+	   			totKcal += Number(v.kcal);
+	   	 	});
+	   	 	$(div_id).after(html);
+	   	 	$(totKcal_id).text(totKcal.toFixed());   	 		
+   	 	}
+   	 	
+    </script>
+</body> 
 </html>
 
