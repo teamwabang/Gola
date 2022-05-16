@@ -97,11 +97,12 @@
    	 		list.forEach(function(v,i){
 	   	 		html += "<div class='mealSelect'>";
 	   	 		html += "		<div class='mealPic'>";
-	   	 		html += "				<img src='"+v.menuImg+"'  width='"+imgWIdth+"' height='"+imgHeight+"' />";
-	   	 		html += "		<div class='hovers'>";
-	   	 		html += "<div class='recipeTitle'>"+v.menu+"</div>";
-	   	 		html += "<div class='recipeKcal'>"+v.kcal+"Kcal</div>";
-	   	 		html += "		</div>";
+	   	 		html += "				<img class='recipePic' src='"+v.menuImg+"'  width='"+imgWIdth+"' height='"+imgHeight+"' />";
+	   	 		html += "			<div class='hovers'>";
+	   	 		html += "				<div class='recipeTitle'>"+v.menu+"</div>";
+	   	 		html += "				<div class='recipeEmpty'></div>";
+	   	 		html += "				<div class='recipeKcal'>"+v.kcal+"Kcal</div>";
+	   	 		html += "			</div>";
 	   			html += "		</div>";
 	   			html += "	<div class='mealTitle'>"+v.kind+"</div>";
 	   			html += "</div>";

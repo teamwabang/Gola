@@ -70,11 +70,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  position: relative;
 }
 
 .mealPic {
-	display:flex;
-	align-items:center;
+  display:flex;
+  align-items:center;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   width: 78%;
   height: 75%;
@@ -83,9 +84,17 @@
 
 .hovers {
 	display: flex;
-	flex-direction: column;
-	align-items: center;
+	flex-direction:column;
+	align-items:center;
 	visibility: hidden;
+	position: absolute;
+	font-weight: bold;
+	font-size: 16px;
+	width: 296.39px;
+}
+
+.recipeEmpty {
+	height: 20px;
 }
 
 .mealPic img {
@@ -94,6 +103,11 @@
 
 .mealPic:hover .hovers {
 	visibility: visible;
+	color: black;
+}
+
+.mealPic:hover .recipePic {
+	opacity: 0.4;
 }
 
 .mealPic:hover {
