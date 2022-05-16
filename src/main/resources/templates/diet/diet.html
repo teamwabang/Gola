@@ -35,7 +35,7 @@
 					<div class="meal" id="breakfast">BREAKFAST</div>
 <!-- 					
 					<div class="mealSelect">
-						<div class="mealPic breakfastPic">
+						<div class="mealPic">
 							<img src="#" />
 						</div>
 						<div class="mealTitle">밥</div>
@@ -71,15 +71,16 @@
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
  	<script th:inline="javascript">
- 	
+ 		
+ 		
 	    let breakfastList = [[${ breakfastList }]];
    	 	let lunchList = [[${ lunchList }]];
    	 	let dinnerList = [[${ dinnerList }]];
    	 	
    	 	$(document).ready(function(){
-   	 		fnCreateHtml(breakfastList,'#breakfast','#breakfastKcal',157.76,101.65);
-   	 		fnCreateHtml(lunchList,'#lunch','#lunchKcal',161.8,71.15);
-   	 		fnCreateHtml(dinnerList,'#dinner','#dinnerKcal',142.27,48.78);
+   	 		fnCreateHtml(breakfastList,'#breakfast','#breakfastKcal',296.391,112.719);
+   	 		fnCreateHtml(lunchList,'#lunch','#lunchKcal',296.391,85.797);
+   	 		fnCreateHtml(dinnerList,'#dinner','#dinnerKcal',297.172,65.641);
    	 	});
 
    	 	/* 
@@ -95,16 +96,21 @@
    	 		let totKcal = 0;
    	 		list.forEach(function(v,i){
 	   	 		html += "<div class='mealSelect'>";
-	   	 		html += "	<div class='mealPic breakfastPic'>";
-	   	 		html += "		<img src='"+v.menuImg+"'  width='"+imgWIdth+"' height='"+imgHeight+"' />";
-	   			html += "	</div>";
+	   	 		html += "		<div class='mealPic'>";
+	   	 		html += "				<img src='"+v.menuImg+"'  width='"+imgWIdth+"' height='"+imgHeight+"' />";
+	   	 		html += "		<div class='hovers'>";
+	   	 		html += "<div class='recipeTitle'>"+v.menu+"</div>";
+	   	 		html += "<div class='recipeKcal'>"+v.kcal+"Kcal</div>";
+	   	 		html += "		</div>";
+	   			html += "		</div>";
 	   			html += "	<div class='mealTitle'>"+v.kind+"</div>";
 	   			html += "</div>";
 	   			totKcal += Number(v.kcal);
 	   	 	});
 	   	 	$(div_id).after(html);
-	   	 	$(totKcal_id).text(totKcal.toFixed());   	 		
+	   	 	$(totKcal_id).text(totKcal.toFixed()); 
    	 	}
+   	 	
    	 	
     </script>
 </body> 
