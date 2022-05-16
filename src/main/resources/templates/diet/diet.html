@@ -96,7 +96,8 @@
    	 		let totKcal = 0;
    	 		list.forEach(function(v,i){
 	   	 		html += "<div class='mealSelect'>";
-	   	 		html += "		<div class='mealPic'>";
+	   	 		html += "		<a href='/recipe/detail?no="+v.no+"'>"
+	   	 		html += "			<div class='mealPic'>";
 	   	 		html += "				<img class='recipePic' src='"+v.menuImg+"'  width='"+imgWIdth+"' height='"+imgHeight+"' />";
 	   	 		html += "			<div class='hovers'>";
 	   	 		html += "				<div class='recipeTitle'>"+v.menu+"</div>";
@@ -104,6 +105,7 @@
 	   	 		html += "				<div class='recipeKcal'>"+v.kcal+"Kcal</div>";
 	   	 		html += "			</div>";
 	   			html += "		</div>";
+	   	 		html += "		</a>"
 	   			html += "	<div class='mealTitle'>"+v.kind+"</div>";
 	   			html += "</div>";
 	   			totKcal += Number(v.kcal);
@@ -111,6 +113,10 @@
 	   	 	$(div_id).after(html);
 	   	 	$(totKcal_id).text(totKcal.toFixed()); 
    	 	}
+   	 	
+   	 	$(document).on('click', ".mealSelect > ", function () {
+   	 		location.href="/recipe/detail?no=" +$(this).data("no");
+   	 	});
    	 	
    	 	
     </script>
