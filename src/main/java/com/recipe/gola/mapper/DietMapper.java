@@ -9,6 +9,6 @@ import com.recipe.gola.dto.RecipeDTO;
 @Mapper
 public interface DietMapper {
 
-	public List<RecipeDTO> list(String mealType, String schTxt);
+	public List<RecipeDTO> list(String mealType);
 
 }
