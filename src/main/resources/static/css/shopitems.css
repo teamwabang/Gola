@@ -5,12 +5,11 @@
   margin : 0 20%;
   margin-top:200px;
   justify-content:center;
-  border-radius: 10px;
   overflow: hidden;
   position: relative;
   width: 280px;
   height: 280px;
-  border : 1px solid red;
+  border : 1px solid none;
 	display: grid;
     grid-template-columns: repeat(5, 1fr);
     column-gap: 40px;
@@ -18,7 +17,7 @@
 
 .shopItemimg {
   transition: 0.3s;
-  border : 1px solid blue;
+  border : 1px solid #f5f5f5;
   position: absolute;
   top:0;
   left:0;
@@ -31,7 +30,7 @@
 }
 
 .shopItemDetailWrap {
-  background-color: #fff;
+  background-color: #ffffffbf;
   position: absolute;
   width: 100%;
   bottom: -65px;
@@ -40,12 +39,13 @@
   transition: 0.3s;
   padding: 0 10px;
   box-sizing: border-box;
-  border : 1px solid green;
+  border : 1px solid #f5f5f5;
 
 }
 
 .shopItem:hover .shopItemDetailWrap {
   bottom: 0;
+  background-color: #fff;
 }
 .shopItem:hover .shopItemimg {
   filter: blur(3px);
@@ -53,7 +53,8 @@
 
 .shopItemsDetail {
   font-size: 14px;
-  padding-top: 10px;
+  padding-top: 20px;
+  font-weight:bold;
 }
 
 .shopItemsprice {
