@@ -1,0 +1,59 @@
+.adminbody {
+  /* background-image: url(/images/mypagebackground.png); */
+  background-repeat: repeat;
+  background-size: auto;
+}
+
+.admintitle {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-style: italic;
+  font-size: 70px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto;
+  width: 300px;
+  height: 200px;
+  color: #666666;
+  display: block;
+  padding-top: 60px;
+}
+
+/* 관리자 목록 시작 */
+.adminsection {
+	display: flex;
+	justify-content: space-between;
+	width: 1300px;
+	margin: 0 auto;
+}
+
+.adminsection_left {
+	margin: 50px 20px 50px 0;
+	text-align: center;
+	font-size: 24px;
+	font-weight: 400;
+	width: 200px;
+	height: 100%;
+	color: #FFFFFF;
+	background-color: #666666;
+}
+
+.adminsection_left ul {
+	padding-left: 0;
+}
+
+.adminsection_right {
+	margin: 50px 0 50px 0;
+	text-align: center;
+	font-size: 24px;
+	font-weight: 400;
+	width: 1100px;
+}
+
+.adminsection_right ul {
+	padding-left: 0;
+}
+
+.adminsection_right span,
+.adminsection_right h2 {
+	color: black;
+}
