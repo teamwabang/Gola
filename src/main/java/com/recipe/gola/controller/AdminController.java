@@ -27,6 +27,11 @@ public class AdminController {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
+	@GetMapping("admin")
+	public String admin() {
+		return "admin/admin";
+	}
+	
 	// 회원목록
 	@GetMapping("admin/list")
 	public String userlist(Model model) {
