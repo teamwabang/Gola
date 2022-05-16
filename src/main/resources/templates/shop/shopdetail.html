@@ -33,6 +33,7 @@
 
 <body>
 
+<<<<<<< Updated upstream
       <!-- import header -->
       <header th:replace="layout/fragment :: fr_header"></header>
       <!-- end of import header -->
@@ -117,6 +118,111 @@
       <script src="http://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
       <script type="text/javascript" src="/js/join.js"></script>
       <script type="text/javascript" src="/js/logineye.js"></script>
+=======
+	<!-- import header -->
+	<header th:replace="layout/fragment :: fr_header"></header>
+	<!-- end of import header -->
+
+	<div class="shopProd">
+		<!-- 상단 상품 간략정보  -->
+		<div class="shopDetailTop">
+
+			<!-- 상품 이미지 (왼쪽) -->
+			<div class="shopItemImage" th:each="detail : ${shopdetail}">
+				<img th:src="${detail.pImage}">
+			</div>
+
+			<!-- 상세 정보란(오른쪽)  -->
+			<div class="prodInfoWrap">
+				<!-- 상품 타이틀 -->
+				<div class="prodTitleWrap">
+					<div class="MainTitle" th:each="detail : ${shopdetail}">
+						<p th:text="${detail.pName}"></p>
+					</div>
+					<div class="subTitle">후라이팬에 굽굽!!! 에어프라이어에 굽굽!!! 아무렇게나 구워드셔도
+						완전 맛나용!!!!! 하트백만개 나오실겁니다.</div>
+				</div>
+
+				<!-- 상품가격 -->
+				<div class="prodprice">
+					<dl class="priceItem">
+						<dt class="label">판매가</dt>
+						<dd th:each="detail : ${shopdetail}">
+							<span class="price"><em class="privceValue" th:text="${detail.pPrice}"></em> 원
+							</span>
+						</dd>
+					</dl>
+				</div>
+
+				<!-- 구매 정보 -->
+				<div class="prodBuyInfo">
+					<div class="prodDetailWrap">
+						<div class="prodInfoIcon">
+							<i class="fa-solid fa-truck"></i> 배송
+						</div>
+						<div class="prodShipFee">
+							3,000원 <span class="Option">(30,000원 이상 무료배송)</span>
+						</div>
+					</div>
+					<div class="prodDetailWrap">
+						<div class="prodInfoIcon">
+							<i class="fa-solid fa-coins"></i> 적립
+						</div>
+						<div class="prodBenefitFee" th:each="detail : ${shopdetail}">
+							<span th:text="${detail.pPoints}"></span>원<span class="Option"> (모든 회원 구매액의 0.5% 적립)</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- 옵션 선택 -->
+				<div class="prodOption">
+					<select class="selectOption">
+						<option value="">= 옵션 : 가격 : 재고 =</option>
+						<option value="">1</option>
+						<option value="">2</option>
+						<option value="">3</option>
+					</select>
+				</div>
+
+				<div class="btn_go_box">
+					<form th:action="@{/shop/cart/add}">
+						<button type="submit" id="cartBtn" class="btn_go_cart">장바구니</button>
+					</form>
+					<form th:action="@{/shop/order}">
+						<button type="submit" class="btn_go_order">바로구매</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	<div class= "shopdetailsectioncut">
+	  <p>상품 상세</p>
+	</div>
+		<!-- 하단 상품 상세페이지 -->
+		<div class="shopDetailBottom">
+			<div class="prodDedailView" th:each="detail : ${shopdetail}">
+				<img th:src="${detail.pContent}">
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+	<!-- import footer -->
+	<footer th:replace="layout/fragment :: fr_footer"></footer>
+	<!-- end of import footer -->
+
+	<!-- Bootstrap -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+	<script src="http://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script type="text/javascript" src="/js/join.js"></script>
+	<script type="text/javascript" src="/js/logineye.js"></script>
+>>>>>>> Stashed changes
 
 </body>
 
