@@ -30,9 +30,7 @@
 <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
 <!-- <script type="text/javascript" src="/js/click_disable.js"></script>
   <script type="text/javascript" src="/js/developer_tools.js"></script> -->
-<!-- Featherlight.js -->
-<script src="/js/featherlight.js"></script>
-<link rel="stylesheet" href="/css/featherlight.css">
+
 
 </head>
 
@@ -42,18 +40,15 @@
 	<header th:replace="layout/fragment2 :: fr_header"></header>
 	<!-- end of import header -->
 
+	<!-- center title -->
 	<div>
-		<h1>쇼핑몰 메인페이지</h1>
-		<h2>
-			<a th:href="@{/shop/detail}">상세페이지</a>
-		</h2>
+		<span class="carttitle">SHOP</span>
 	</div>
 
 	<!-- shop 조회결과-->
 	<section class="shopsection">
-		<div class="shopMain">
-			<div class="shopResult" id="shopResult"></div>
-		</div>
+		<div class="shopResult" id="shopResult"></div>
+
 	</section>
 
 
@@ -97,19 +92,12 @@
 
       //엘리먼트생성 결과변수
       let shopresult = "";
-      if (shoplist.length > 0) {
-        const splitList = [];
-        //4칸씩 쪼개기
-        for (let i = 0; i < shoplist.length; i += 3) {
-          splitList.push(shoplist.slice(i, i + 3));
-        }
 
-        for (let shoplist of splitList) {
           const outerDiv = document.createElement("div");
           outerDiv.setAttribute("class", "shopItemWrap");
           for (let shopitem of shoplist) {
             const innerDiv = document.createElement("div")
-            outerDiv.setAttribute("class", "shopItem items reviewItems");
+            innerDiv.setAttribute("class", "shopItem");
             
             const innerA = document.createElement("a");
             innerA.setAttribute("href", "/shop/detail?pno=" + shopitem.pno);
@@ -175,12 +163,10 @@
 
           shopresult = outerDiv.outerHTML;
 
-        }
-      } else {
-    	  shopresult += '<div class="noresult">등록된 상품이 없습니다</div>';
-      }
+
       $('.shopResult').append(shopresult);
     }
     
   </script>
+  
 </body>

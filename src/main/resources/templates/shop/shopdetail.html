@@ -58,8 +58,6 @@
 					<div class="MainTitle" th:each="detail : ${shopdetail}">
 						<p th:text="${detail.pName}"></p>
 					</div>
-					<div class="subTitle">후라이팬에 굽굽!!! 에어프라이어에 굽굽!!! 아무렇게나 구워드셔도
-						완전 맛나용!!!!! 하트백만개 나오실겁니다.</div>
 				</div>
 
 				<!-- 상품가격 -->
@@ -67,7 +65,7 @@
 					<dl class="priceItem">
 						<dt class="label">판매가</dt>
 						<dd th:each="detail : ${shopdetail}">
-							<span class="price"><em class="privceValue" th:text="${detail.pPrice}"></em> 원
+							<span class="price"><em class="privceValue" id="privceValue" th:text="${detail.pPrice}"></em> 원
 							</span>
 						</dd>
 					</dl>
@@ -141,6 +139,9 @@
 	<script src="http://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script type="text/javascript" src="/js/join.js"></script>
 	<script type="text/javascript" src="/js/logineye.js"></script>
+
+
+
 
 </body>
 
