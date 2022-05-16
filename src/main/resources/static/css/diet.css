@@ -74,12 +74,14 @@
 }
 
 .mealPic {
-  display:flex;
-  align-items:center;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  width: 78%;
-  height: 75%;
-  border-radius: 5px;
+    display: flex;
+    align-items: center;
+    box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+    width: 250px;
+    height: 100px;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
 }
 
 .hovers {
@@ -90,7 +92,7 @@
 	position: absolute;
 	font-weight: bold;
 	font-size: 16px;
-	width: 296.39px;
+	width: 250px;
 }
 
 .recipeEmpty {
@@ -98,7 +100,9 @@
 }
 
 .mealPic img {
-	width: 100%;
+	margin-left: -10%;
+    margin-top: -20%;
+    height: 300px;
 }
 
 .mealPic:hover .hovers {
