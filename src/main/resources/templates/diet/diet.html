@@ -1,135 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DIET</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="/css/styles.css" />
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-  </head>
-    <body class="dietBackground">
-    <div class="dietMainGrid">
-      <div class="dietHeader">이것은 제목</div>
-      <div class="dietMain">
-        <div class="breakfast">
-          <div class="meal">BREAKFAST</div>
-          <div class="mealSelect">
-            <div class="mealPic breakfastPic">
-              <img src="#" />
-            </div>
-            <div class="mealTitle">밥</div>
-          </div>
-          <div class="mealSelect">
-            <div class="mealPic breakfastPic">
-              <img src="#" />
-            </div>
-            <div class="mealTitle">반찬</div>
-          </div>
-          <div class="mealSelect">
-            <div class="mealPic breakfastPic">
-              <img src="#" />
-            </div>
-            <div class="mealTitle">국/찌개</div>
-          </div>
-          <div id="breakfastKcal" class="kcal">400</div>
-        </div>
-        <div class="lunch">
-          <div class="meal">LUNCH</div>
-          <div class="mealSelect">
-            <div class="mealPic lunchPic">
-              <img src="#" />
-            </div>
-            <div class="mealTitle">밥</div>
-          </div>
-          <div class="mealSelect">
-            <div class="mealPic lunchPic">
-              <img src="#" />
-            </div>
-            <div class="mealTitle">반찬</div>
-          </div>
-          <div class="mealSelect">
-            <div class="mealPic lunchPic">
-              <img src="#" />
-            </div>
-            <div class="mealTitle">국/찌개</div>
-          </div>
-          <div class="mealSelect">
-            <div class="mealPic lunchPic">
-              <img src="#" />
-            </div>
-            <div class="mealTitle">후식</div>
-          </div>
-          <div id="lunchKcal" class="kcal">800</div>
-        </div>
-        <div class="dinner">
-          <div class="meal">DINNER</div>
-          <div class="mealSelect">
-            <div class="mealPic dinnerPic">
-              <img src="#" />
-            </div>
-            <div class="mealTitle">밥</div>
-          </div>
-          <div class="mealSelect">
-            <div class="mealPic dinnerPic">
-              <img src="#" />
-            </div>
-            <div class="mealTitle">반찬</div>
-          </div>
-          <div class="mealSelect">
-            <div class="mealPic dinnerPic">
-              <img src="#" />
-            </div>
-            <div class="mealTitle">국/찌개</div>
-          </div>
-          <div class="mealSelect">
-            <div class="mealPic dinnerPic">
-              <img src="#" />
-            </div>
-            <div class="mealTitle">일품</div>
-          </div>
-          <div class="mealSelect">
-            <div class="mealPic dinnerPic">
-              <img src="#" />
-            </div>
-            <div class="mealTitle">후식</div>
-          </div>
-          <div id="dinnerKcal" class="kcal">900</div>
-        </div>
-      </div>
-      <div class="dietFooter">
-        <div class="blank">BLANK</div>
-        <div class="blank"></div>
-        <div class="totalKcal">총 칼로리 : 2000Kcal</div>
-        <div>
-          <input
-            id="captureBtn"
-            class="footerBtns"
-            type="button"
-            value="📸 CAPTURE"
-          /><input
-            id="refreshBtn"
-            class="footerBtns"
-            type="submit"
-            value="🔁 REFRESH"
-            onclick="reload()"
-          />
-        </div>
-      </div>
-    </div>
-    <a id="target" style="display: none"></a>
-    <script src="/js/diet.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DIET</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous" />
+<link rel="stylesheet" href="/css/styles.css" />
+<!-- JavaScrip -->
+<!-- fontawesome -->
+<script src="https://kit.fontawesome.com/c21d7630fc.js"
+	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="/js/chatbot.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body class="bbsbody">
+	<div class="dietBackground">
+		<!-- import header -->
+		<header th:replace="layout/fragment :: fr_header"></header>
+		<!-- end of import header -->
+		<!-- center title -->
+		<div>
+			<span class="bbstitle">DIET</span>
+		</div>
+
+		<div class="dietMainGrid">
+			<div class="dietMain">
+				<div class="breakfast">
+					<div class="meal" id="breakfast">BREAKFAST</div>
+<!-- 					
+					<div class="mealSelect">
+						<div class="mealPic">
+							<img src="#" />
+						</div>
+						<div class="mealTitle">밥</div>
+					</div>
+ -->
+					<div id="breakfastKcal" class="kcal" ></div>
+				</div>
+				<div class="lunch">
+					<div class="meal" id="lunch">LUNCH</div>
+					<div id="lunchKcal" class="kcal"></div>
+				</div>
+				<div class="dinner">
+					<div class="meal" id="dinner">DINNER</div>
+					<div id="dinnerKcal" class="kcal"></div>
+				</div>
+			</div>
+			<div class="dietFooter">
+				<div class="blank">빈공간입니다길이맞추기용!!</div>
+				<div class="totalKcal"></div>
+				<div>
+					<input id="captureBtn" class="footerBtns" type="button"
+						value="📸 CAPTURE" /><input id="refreshBtn"
+						class="footerBtns" type="submit" value="🔁 REFRESH"
+						onclick="reload()" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<a id="target" style="display: none"></a>
+	<script src="/js/diet.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+ 	<script th:inline="javascript">
+ 		
+ 		
+	    let breakfastList = [[${ breakfastList }]];
+   	 	let lunchList = [[${ lunchList }]];
+   	 	let dinnerList = [[${ dinnerList }]];
+   	 	
+   	 	$(document).ready(function(){
+   	 		fnCreateHtml(breakfastList,'#breakfast','#breakfastKcal',296.391,112.719);
+   	 		fnCreateHtml(lunchList,'#lunch','#lunchKcal',296.391,85.797);
+   	 		fnCreateHtml(dinnerList,'#dinner','#dinnerKcal',297.172,65.641);
+   	 	});
+
+   	 	/* 
+   	 	* 메뉴 div를 생성한다.
+   	 	* @param list : 끼니별 리스트
+   	 	* @param div_id : 그려진 메뉴 태그가 그려질 id영역
+   	 	* @param totKcal_id : 총 칼로리가 들어갈 id
+   	 	* @param imgWIdth : 이미지 가로크기 
+   	 	* @param imgHeight : 이미지 세로크기
+   	 	*/
+   	 	function fnCreateHtml(list,div_id,totKcal_id,imgWIdth,imgHeight){
+   	 		let html = "";
+   	 		let totKcal = 0;
+   	 		list.forEach(function(v,i){
+	   	 		html += "<div class='mealSelect'>";
+	   	 		html += "		<a href='/recipe/detail?no="+v.no+"'>"
+	   	 		html += "			<div class='mealPic'>";
+	   	 		html += "				<img class='recipePic' src='"+v.menuImg+"'  width='"+imgWIdth+"' height='"+imgHeight+"' />";
+	   	 		html += "			<div class='hovers'>";
+	   	 		html += "				<div class='recipeTitle'>"+v.menu+"</div>";
+	   	 		html += "				<div class='recipeEmpty'></div>";
+	   	 		html += "				<div class='recipeKcal'>"+v.kcal+"Kcal</div>";
+	   	 		html += "			</div>";
+	   			html += "		</div>";
+	   	 		html += "		</a>"
+	   			html += "	<div class='mealTitle'>"+v.kind+"</div>";
+	   			html += "</div>";
+	   			totKcal += Number(v.kcal);
+	   	 	});
+	   	 	$(div_id).after(html);
+	   	 	$(totKcal_id).text(totKcal.toFixed()); 
+   	 	}
+   	 	
+   	 	$(document).on('click', ".mealSelect >", function () {
+   	 		location.href="/recipe/detail?no=" +$(this).data("no");
+   	 	});
+   	 	
+   	 	
+    </script>
+</body> 
 </html>
 

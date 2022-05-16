@@ -17,5 +17,14 @@
         limit 3;
 	</select>
 	
+	<!-- 쇼핑몰 재료 리스트 상세페이지 출력 -->
+	<select id="shopdetail" resultType="ProductDTO" parameterType="int">
+	<![CDATA[
+		SELECT *
+		FROM product
+		WHERE pno=${pno};
+	]]>
+	</select>
+	
 	
 </mapper>

@@ -6,9 +6,11 @@
 	
 	<!-- 각 레시피 링크 출력 -->
 	<select id="detailLink" resultType="RecipeLinkDTO" parameterType="int">
+	<![CDATA[
 		SELECT *
 		FROM recipe_link
 		WHERE no=${no}
+	]]>
 	</select>
 	
 </mapper>
