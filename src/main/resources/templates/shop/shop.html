@@ -45,7 +45,7 @@
 	<div>
 		<h1>쇼핑몰 메인페이지</h1>
 		<h2>
-			<a th:href="@{/shopdetail}">상세페이지</a>
+			<a th:href="@{/shop/detail}">상세페이지</a>
 		</h2>
 	</div>
 
@@ -53,6 +53,7 @@
 	<section class="shopsection">
 		<div class="shopMain">
 			<div class="shopResult" id="shopResult"></div>
+		</div>
 	</section>
 
 
@@ -88,7 +89,7 @@
 
 
     $(document).on("click", ".shopItem > div > button ", function () {
-      location.href = "/shop/detail?pNo=" + $(this).data("pNo");
+      location.href = "/shop/detail?pno=" + $(this).data("pno");
     });
 
 
@@ -112,7 +113,7 @@
             outerDiv.setAttribute("class", "shopItem");
             
             const innerA = document.createElement("a");
-            innerA.setAttribute("href", "/shop/shopdetail?pNo=" + shopitem.pno);
+            innerA.setAttribute("href", "/shop/detail?pno=" + shopitem.pno);
            
             const innerImg = document.createElement("img");
             innerImg.setAttribute("class", "shopItemimg");

@@ -11,5 +11,5 @@ public interface ShopMapper {
 
 	public List<ProductDTO> shoplist(ProductDTO dto);
 
-	public ProductDTO detail(ProductDTO dto);
+	public ProductDTO shopdetail(ProductDTO dto);
 }

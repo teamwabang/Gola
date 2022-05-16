@@ -2,125 +2,142 @@
 <html xmlns:th="http://www.thymeleaf.org" class="indexhtml">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
-  <meta property="og:title" content="우리들의 모든 레시피 | 골라">
-  <!-- <meta property="og:image" content=""> -->
-  <meta property="og:description" content="우리들의 모든 레시피, 골라">
-  <meta property="og:type" content="website">
-  <!-- title -->
-  <title>우리들의 모든 레시피 | 골라</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
+<meta property="og:title" content="우리들의 모든 레시피 | 골라">
+<!-- <meta property="og:image" content=""> -->
+<meta property="og:description" content="우리들의 모든 레시피, 골라">
+<meta property="og:type" content="website">
+<!-- title -->
+<title>우리들의 모든 레시피 | 골라</title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/css/styles.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-  <!-- fontawesome -->
-  <script src="https://kit.fontawesome.com/c21d7630fc.js" crossorigin="anonymous"></script>
-  <!-- JavaScript -->
-  <script type="text/javascript" src="/js/chatbot.js"></script>
-  <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
-  <!-- <script type="text/javascript" src="/js/click_disable.js"></script>
+<!-- CSS -->
+<link rel="stylesheet" href="/css/styles.css" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+<link
+	rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<!-- fontawesome -->
+<script src="https://kit.fontawesome.com/c21d7630fc.js"
+	crossorigin="anonymous"></script>
+<!-- JavaScript -->
+<script type="text/javascript" src="/js/chatbot.js"></script>
+<script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+<!-- <script type="text/javascript" src="/js/click_disable.js"></script>
   <script type="text/javascript" src="/js/developer_tools.js"></script> -->
-  <!-- Featherlight.js -->
-  <script src="/js/featherlight.js"></script>
-  <link rel="stylesheet" href="/css/featherlight.css">
+<!-- Featherlight.js -->
+<script src="/js/featherlight.js"></script>
+<link rel="stylesheet" href="/css/featherlight.css">
 
 </head>
 
 <body>
 
-      <!-- import header -->
-      <header th:replace="layout/fragment :: fr_header"></header>
-      <!-- end of import header -->
-      
-  <div class="shopProd">
-    <!-- 상단 상품 간략정보  -->
-    <div class="shopDetailTop">
+	<!-- import header -->
+	<header th:replace="layout/fragment :: fr_header"></header>
+	<!-- end of import header -->
 
-      <!-- 상품 이미지 (오른쪽) -->
-      <div class="shopItemImage"></div>
+	<div class="shopProd">
+		<!-- 상단 상품 간략정보  -->
+		<div class="shopDetailTop">
 
-      <!-- 상세 정보란(왼쪽)  -->
-      <div class="prodInfoWrap">
-        <!-- 상품 타이틀 -->
-        <div class="prodTitleWrap">
-          <div class="MainTitle"> [만개특가] 30년전통 대구맛집 명장 꼬치 6종 모음 (닭,파닭,닭발,염통,똥집,새우삼겹) </div>
-          <div class="subTitle"> 후라이팬에 굽굽!!! 에어프라이어에 굽굽!!! 아무렇게나 구워드셔도 완전 맛나용!!!!! 하트백만개 나오실겁니다. </div>
-        </div>
+			<!-- 상품 이미지 (왼쪽) -->
+			<div class="shopItemImage" th:each="detail : ${shopdetail}">
+				<img th:src="${detail.pImage}">
+			</div>
 
-        <!-- 상품가격 -->
-        <div class="prodprice">
-          <dl class="priceItem">
-            <dt class="label">판매가</dt>
-            <dd>
-              <span class="price">
-                <em class="privceValue">4,900</em>
-                원
-              </span>
-            </dd>
-          </dl>
-        </div>
+			<!-- 상세 정보란(오른쪽)  -->
+			<div class="prodInfoWrap">
+				<!-- 상품 타이틀 -->
+				<div class="prodTitleWrap">
+					<div class="MainTitle" th:each="detail : ${shopdetail}">
+						<p th:text="${detail.pName}"></p>
+					</div>
+					<div class="subTitle">후라이팬에 굽굽!!! 에어프라이어에 굽굽!!! 아무렇게나 구워드셔도
+						완전 맛나용!!!!! 하트백만개 나오실겁니다.</div>
+				</div>
 
-        <!-- 구매 정보 -->
-        <div class="prodBuyInfo">
-          <div class="prodDetailWrap">
-            <div class="prodInfoIcon"> <i class="fa-solid fa-truck"></i> 배송 </div>
-            <div class="prodShipFee"> 3,000원 <span class="Option">(30,000원 이상 무료배송)</span></div>
-          </div>
-          <div class="prodDetailWrap">
-            <div class="prodInfoIcon"> <i class="fa-solid fa-coins"></i> 적립 </div>
-            <div class="prodBenefitFee"> 25원 <span class="Option"> (모든 회원 구매액의 0.5% 적립)</span></div>
-          </div>
-        </div>
+				<!-- 상품가격 -->
+				<div class="prodprice">
+					<dl class="priceItem">
+						<dt class="label">판매가</dt>
+						<dd th:each="detail : ${shopdetail}">
+							<span class="price"><em class="privceValue" th:text="${detail.pPrice}"></em> 원
+							</span>
+						</dd>
+					</dl>
+				</div>
 
-        <!-- 옵션 선택 -->
-        <div class="prodOption">
-          <select class="selectOption">
-            <option value=""> = 옵션 : 가격 : 재고 =</option>
-            <option value="">1</option>
-            <option value="">2</option>
-            <option value="">3</option>
-          </select>
-        </div>
+				<!-- 구매 정보 -->
+				<div class="prodBuyInfo">
+					<div class="prodDetailWrap">
+						<div class="prodInfoIcon">
+							<i class="fa-solid fa-truck"></i> 배송
+						</div>
+						<div class="prodShipFee">
+							3,000원 <span class="Option">(30,000원 이상 무료배송)</span>
+						</div>
+					</div>
+					<div class="prodDetailWrap">
+						<div class="prodInfoIcon">
+							<i class="fa-solid fa-coins"></i> 적립
+						</div>
+						<div class="prodBenefitFee" th:each="detail : ${shopdetail}">
+							<span th:text="${detail.pPoints}"></span>원<span class="Option"> (모든 회원 구매액의 0.5% 적립)</span>
+						</div>
+					</div>
+				</div>
 
-        <div class="btn_go_box">
-	      <form th:action="@{/shop/cart}">
-	        <button type="submit" id="cartBtn" class="btn_go_cart">장바구니</button>
-	      </form>
-	      <form th:action="@{/shop/order}">
-            <button type="submit" class="btn_go_order"> 바로구매</button>
-          </form>
-        </div>
-      </div>
-    </div>
+				<!-- 옵션 선택 -->
+				<div class="prodOption">
+					<select class="selectOption">
+						<option value="">= 옵션 : 가격 : 재고 =</option>
+						<option value="">1</option>
+						<option value="">2</option>
+						<option value="">3</option>
+					</select>
+				</div>
 
-    <!-- 하단 상품 상세페이지 -->
-    <div class="shopDetailBottom">
+				<div class="btn_go_box">
+					<form th:action="@{/shop/cart/add}">
+						<button type="submit" id="cartBtn" class="btn_go_cart">장바구니</button>
+					</form>
+					<form th:action="@{/shop/order}">
+						<button type="submit" class="btn_go_order">바로구매</button>
+					</form>
+				</div>
+			</div>
+		</div>
 
-      <div class="prodDedailView"></div>
+		<!-- 하단 상품 상세페이지 -->
+		<div class="shopDetailBottom">
+			<div class="prodDedailView" th:each="detail : ${shopdetail}">
+				<img th:src="${detail.pContent}">
+			</div>
 
-    </div>
+		</div>
 
-  </div>
-
-
+	</div>
 
 
-      <!-- import footer -->
-      <footer th:replace="layout/fragment :: fr_footer"></footer>
-      <!-- end of import footer -->
-      
-      <!-- Bootstrap -->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"></script>
-      <script src="http://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-      <script type="text/javascript" src="/js/join.js"></script>
-      <script type="text/javascript" src="/js/logineye.js"></script>
+
+	<!-- import footer -->
+	<footer th:replace="layout/fragment :: fr_footer"></footer>
+	<!-- end of import footer -->
+
+	<!-- Bootstrap -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+	<script src="http://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script type="text/javascript" src="/js/join.js"></script>
+	<script type="text/javascript" src="/js/logineye.js"></script>
 
 </body>
 

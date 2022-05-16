@@ -19,13 +19,13 @@ public class ShopService {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
-	private final ShopMapper ShopMapper;
+	private final ShopMapper shopMapper;
 
 	public List<ProductDTO> shoplist(ProductDTO dto) {
-		return ShopMapper.shoplist(dto);
+		return shopMapper.shoplist(dto);
 	}
 	
-	public ProductDTO detail(ProductDTO dto) {
-		return ShopMapper.detail(dto);
+	public ProductDTO shopdetail(ProductDTO dto) {
+		return shopMapper.shopdetail(dto);
 	}
 }
