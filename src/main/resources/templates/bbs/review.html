@@ -109,7 +109,7 @@
       });
 
       //2라인만 보이게 셋팅하기..
-      $('.reviewItems').hide().slice(0, 2).show();
+      $('.reviewItems').hide().slice(0, 1).show();
 
       //숨겨진 라인이 없으면 더보기 버튼 안보이게하기
       if ($(".reviewItems:hidden").length == 0) {
@@ -139,8 +139,8 @@
       if (list.length > 0) {
         const splitList = [];
         //4칸씩 쪼개기
-        for (let i = 0; i < list.length; i += 4) {
-          splitList.push(list.slice(i, i + 4));
+        for (let i = 0; i < list.length; i += 3) {
+          splitList.push(list.slice(i, i + 3));
         }
         /* 
                   <div>
