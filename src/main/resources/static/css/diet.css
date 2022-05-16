@@ -73,10 +73,27 @@
 }
 
 .mealPic {
+	display:flex;
+	align-items:center;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   width: 78%;
   height: 75%;
   border-radius: 5px;
+}
+
+.hovers {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	visibility: hidden;
+}
+
+.mealPic img {
+	width: 100%;
+}
+
+.mealPic:hover .hovers {
+	visibility: visible;
 }
 
 .mealPic:hover {
