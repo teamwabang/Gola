@@ -14,43 +14,43 @@
 				<a th:href="@{/}" id="homebutton"><img src="/images/golalogo.png" alt="GOLA Home"></a>
 			</h3>
 		</div>
-		<!-- 로그인 -->
+		<!-- 로그인/로그아웃 -->
 		<div sec:authorize="isAuthenticated()" class="indexloginlogout">
 			<form th:action="@{/logout}" method="post">
-				<button id="indexbutton" class="logjoinbutton">로그아웃</button>
+				<button id="indexbutton" class="logjoinbutton2">로그아웃</button>
 			</form>
 		</div>
 		<div sec:authorize="isAnonymous()" class="indexlogin">
-			<button id="indexbutton" class="logjoinbutton" data-bs-toggle="modal"
-				data-bs-target="#loginModal">로그인</button>
+			<button id="indexbutton" class="logjoinbutton2"
+				data-bs-toggle="modal" data-bs-target="#loginModal">로그인</button>
 		</div>
 		<!-- 회원가입 -->
 		<div sec:authorize="isAnonymous()" class="indexjoin">
-			<button id="indexbutton" class="logjoinbutton" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+			<button id="indexbutton" class="logjoinbutton2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
 				회원가입
 			</button>
 		</div>
-		<!-- 쇼핑몰 -->
-		<div sec:authorize="isAuthenticated()" class="indexloginshop">
-			<form th:action="@{/shop}" method="get">
-				<button id="indexbutton" class="logjoinbutton">쇼핑몰</button>
+		<!-- 레시피 바로가기 -->
+		<div sec:authorize="isAuthenticated()">
+			<form th:action="@{/recipe}" method="get" class="indexloginrecipe">
+				<button id="indexbutton" class="logjoinbutton2">레시피</button>
 			</form>
 		</div>
 		<!-- 마이페이지 -->
 		<div sec:authorize="isAuthenticated()" class="indexloginmypage">
 			<form th:action="@{/mypage}" method="get">
-				<button id="indexbutton" class="logjoinbutton">마이페이지</button>
+				<button id="indexbutton" class="logjoinbutton2">마이페이지</button>
 			</form>
 		</div>
 		<!-- 관리자 -->
 		<div sec:authorize="hasAuthority('ADMIN')" class="indexloginallusers">
 			<form th:action="@{/admin}" method="get">
-				<button id="indexbutton" class="logjoinbuttonallusers">관리자</button>
+				<button id="indexbutton" class="logjoinbuttonallusers2">관리자</button>
 			</form>
 		</div>
 
 		<!-- trigger -->
-		<div class="indextrigger">
+		<div class="indextrigger trigger_black">
 			<span></span> <span></span> <span></span>
 		</div>
 		<!-- trigger 메뉴 -->
@@ -79,14 +79,14 @@
 	<footer th:fragment="fr_footer">
 		<div class="footermain">
 			<div class="footernavdiv">
-				<ul class="footernav">
+				<ul class="footernav2">
 					<li><a th:href="@{/}">HOME</a></li>
 					<li><a th:href="@{/about}">ABOUT</a></li>
 					<li><a th:href="@{https://github.com/teamwabang/Gola}"
 						target="_blank">GitHub</a></li>
 				</ul>
 			</div>
-			<div class="footerinfo">
+			<div class="footerinfo2">
 				<span class="footername">@2022 DESIGN BY WABANG </span> <span
 					id="footertopbutton"><a
 					href="javascript:window.scrollTo(0,0);"><i
