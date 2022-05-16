@@ -83,8 +83,7 @@
       callShopList();
 
       //2라인만 보이게 셋팅하기..
-      $('.shopResult').hide().slice(0, 2).show();
-
+      $('.shopItemWrap').show();
     });
 
 
@@ -101,8 +100,8 @@
       if (shoplist.length > 0) {
         const splitList = [];
         //4칸씩 쪼개기
-        for (let i = 0; i < shoplist.length; i += 2) {
-          splitList.push(shoplist.slice(i, i + 2));
+        for (let i = 0; i < shoplist.length; i += 3) {
+          splitList.push(shoplist.slice(i, i + 3));
         }
 
         for (let shoplist of splitList) {
@@ -110,7 +109,7 @@
           outerDiv.setAttribute("class", "shopItemWrap");
           for (let shopitem of shoplist) {
             const innerDiv = document.createElement("div")
-            outerDiv.setAttribute("class", "shopItem");
+            outerDiv.setAttribute("class", "shopItem items reviewItems");
             
             const innerA = document.createElement("a");
             innerA.setAttribute("href", "/shop/detail?pno=" + shopitem.pno);
@@ -130,20 +129,44 @@
             
             const innerPrice = document.createElement("p")
             innerPrice.setAttribute("class", "shopItemsprice");
-            innerPrice.textContent = shopitem.pprice;
+            
+            //천단위 콤마 
+            innerPrice.textContent = shopitem.pprice.toString()
+            .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
             innerDetailWrap.appendChild(innerPrice);
+            
+            const innerPricewon = document.createElement("span")
+            innerPricewon.setAttribute("class", "shopItemspricewon");
+            innerPricewon.textContent = " 원";
+            innerPrice.appendChild(innerPricewon);
+            
             
             const innerBuyButton = document.createElement("div")
             innerBuyButton.setAttribute("class", "shopItemsbuybutton");
             innerDetailWrap.appendChild(innerBuyButton);
             
-            const innerBuyButtonleft = document.createElement("button")
+            
+            const innerBuyButtonleft = document.createElement("div")
             innerBuyButtonleft.setAttribute("class", "buyIconLeft");
             innerBuyButton.appendChild(innerBuyButtonleft);
+            
+            const innerBuyButtonleftLink = document.createElement("a")
+            innerBuyButtonleftLink.setAttribute("class", "buyIconLeft");
+            innerBuyButtonleftLink.setAttribute("href", "/shop/shopdetail?pNo=" + shopitem.pno);
+            innerBuyButtonleftLink.textContent = "상세보기";
+            innerBuyButtonleft.appendChild(innerBuyButtonleftLink);
+
            
-            const innerBuyButtonRight = document.createElement("button")
+            const innerBuyButtonRight = document.createElement("div")
             innerBuyButtonRight.setAttribute("class", "buyIconRight");
             innerBuyButton.appendChild(innerBuyButtonRight);
+            
+            const innerBuyButtonRightLink = document.createElement("a")
+            innerBuyButtonRightLink.setAttribute("class", "buyIconRight");
+            innerBuyButtonRightLink.setAttribute("href", "/shop/shopdetail?pNo=" + shopitem.pno);
+            innerBuyButtonRightLink.textContent = "구매하기";
+            innerBuyButtonRight.appendChild(innerBuyButtonRightLink);
+
             
             innerDiv.appendChild(innerImg);
             innerDiv.appendChild(innerDetailWrap);
