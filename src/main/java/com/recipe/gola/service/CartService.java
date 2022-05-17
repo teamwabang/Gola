@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.recipe.gola.dto.CartDTO;
-import com.recipe.gola.dto.ProductDTO;
 import com.recipe.gola.mapper.CartMapper;
 
 import lombok.Data;
@@ -22,8 +21,9 @@ public class CartService {
 	@Autowired
 	private final CartMapper cartMapper;
 	
-	public List<CartDTO> list(CartDTO dto){
-		return cartMapper.list(dto);
+	// 장바구니 리스트
+	public List<CartDTO> list(String userId){
+		return cartMapper.list(userId);
 	}
 	
 	// 장바구니에 물건 담기
