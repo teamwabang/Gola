@@ -4,42 +4,159 @@
 
 <mapper namespace="com.recipe.gola.mapper.DietMapper">
 
-	<!-- 메뉴추천 리스트 출력 -->
-	<select id="list" resultType="RecipeDTO" parameterType="string">
-	
-		SELECT/*com.recipe.gola.mapper.DietMapper.list*/
-			*
-		FROM
-		(
-		<choose>
-			<when test='mealType == "D" '>	<!-- 저 -->
-				( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no, 'A' as 'grp' FROM recipe r WHERE kind = '밥' ORDER BY RAND() LIMIT 1 ) 
-				UNION ALL     
-			    ( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no, 'A' as 'grp' FROM recipe r WHERE kind = '국/찌개' ORDER BY RAND() LIMIT 1 )  
-				UNION ALL
-				( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no, 'A' as 'grp' FROM recipe r WHERE kind = '반찬' ORDER BY RAND() LIMIT 1 ) 
-				UNION ALL 
-			    ( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no, 'A' as 'grp' FROM recipe r WHERE kind = '후식' ORDER BY RAND() LIMIT 1 ) 
-				UNION ALL 
-				( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no, 'A' as 'grp' FROM recipe r WHERE kind = '일품' ORDER BY RAND() LIMIT 1 ) 
-		 	</when>
-			<when test='mealType == "L" '>	<!-- 점심 -->
-				( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no, 'A' as 'grp' FROM recipe r WHERE kind = '밥' ORDER BY RAND() LIMIT 1 ) 
-				UNION ALL     
-			    ( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no, 'A' as 'grp' FROM recipe r WHERE kind = '국/찌개' ORDER BY RAND() LIMIT 1 )  
-				UNION ALL
-				( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no, 'A' as 'grp' FROM recipe r WHERE kind = '반찬' ORDER BY RAND() LIMIT 1 ) 
-				UNION ALL 
-			    ( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no, 'A' as 'grp' FROM recipe r WHERE kind = '후식' ORDER BY RAND() LIMIT 1 ) 
-		 	</when>
-	        <otherwise>	<!-- 아침 -->
-				( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no, 'A' as 'grp' FROM recipe r WHERE kind = '밥' ORDER BY RAND() LIMIT 1 ) 
-				UNION ALL     
-			    ( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no, 'A' as 'grp' FROM recipe r WHERE kind = '국/찌개' ORDER BY RAND() LIMIT 1 )  
-				UNION ALL
-				( SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no, 'A' as 'grp' FROM recipe r WHERE kind = '반찬' ORDER BY RAND() LIMIT 1 ) 
-	        </otherwise>
+   <!-- 메뉴추천 리스트 출력 -->
+   <select id="list" resultType="RecipeDTO" parameterType="string">
+      SELECT/*com.recipe.gola.mapper.DietMapper.list*/
+         *
+      FROM
+      (
+      <choose>
+         <when test='mealType == "D" '>   <!-- 저녁 -->
+            ( 
+               SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no
+               FROM recipe r 
+               WHERE
+               <include refid="kind1"/>
+               ORDER BY RAND() LIMIT 1 
+            ) 
+            UNION ALL     
+             ( 
+                SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no
+                FROM recipe r 
+               WHERE
+               <include refid="kind2"/>
+                ORDER BY RAND() LIMIT 1 
+             )  
+            UNION ALL
+            ( 
+               SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no 
+               FROM recipe r 
+               WHERE
+               <include refid="kind3"/>
+               ORDER BY RAND() LIMIT 1 
+            ) 
+            UNION ALL 
+             ( 
+                SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no 
+                FROM recipe r 
+               WHERE
+               <include refid="kind4"/>
+                ORDER BY RAND() LIMIT 1 
+             ) 
+            UNION ALL 
+            ( 
+               SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no 
+               FROM recipe r 
+               WHERE
+               <include refid="kind5"/>
+               ORDER BY RAND() LIMIT 1 
+            ) 
+          </when>
+         <when test='mealType == "L" '>   <!-- 점심 -->
+            ( 
+               SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no 
+               FROM recipe r 
+               WHERE
+               <include refid="kind1"/>
+               ORDER BY RAND() LIMIT 1 
+            ) 
+            UNION ALL     
+             ( 
+                SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no 
+                FROM recipe r 
+               WHERE
+               <include refid="kind2"/>
+                ORDER BY RAND() LIMIT 1 
+             )  
+            UNION ALL
+            (    
+               SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no 
+               FROM recipe r 
+               WHERE
+               <include refid="kind3"/>
+               ORDER BY RAND() LIMIT 1 
+            ) 
+            UNION ALL 
+             ( 
+                SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no 
+                FROM recipe r 
+               WHERE
+               <include refid="kind4"/>
+                ORDER BY RAND() LIMIT 1 
+             ) 
+          </when>
+           <otherwise>   <!-- 아침 -->
+            ( 
+               SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no 
+               FROM recipe r 
+               WHERE
+               <include refid="kind1"/>
+               ORDER BY RAND() LIMIT 1 
+            ) 
+            UNION ALL     
+             ( 
+                SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no 
+                FROM recipe r 
+               WHERE
+               <include refid="kind2"/>
+                ORDER BY RAND() LIMIT 1 
+             )  
+            UNION ALL
+            ( 
+               SELECT (select menuImg from recipe_link rl where r.no = rl.no) as menuImg, menu, kind, kcal, no 
+               FROM recipe r 
+               WHERE
+               <include refid="kind3"/>
+               ORDER BY RAND() LIMIT 1 
+            ) 
+           </otherwise>
         </choose>
-		)a
-	</select>
+      )a
+   </select>
+
+   <sql id="kind1">
+      (
+         CASE WHEN
+         ( SELECT COUNT(*) FROM recipe WHERE kind = '밥' AND material LIKE CONCAT('%',#{keyword},'%') ) > 0 
+         THEN  kind = '밥' AND material LIKE CONCAT('%',#{keyword},'%')
+         ELSE kind = '밥' 
+         END
+      )
+   </sql>
+   <sql id="kind2">
+      (
+         CASE WHEN
+         ( SELECT COUNT(*) FROM recipe WHERE kind = '국/찌개' AND material LIKE CONCAT('%',#{keyword},'%') ) > 0 
+         THEN  kind = '국/찌개' AND material LIKE CONCAT('%',#{keyword},'%')
+         ELSE kind = '국/찌개' 
+         END
+      )
+   </sql>
+   <sql id="kind3">
+      (
+         CASE WHEN
+         ( SELECT COUNT(*) FROM recipe WHERE kind = '반찬' AND material LIKE CONCAT('%',#{keyword},'%') ) > 0 
+         THEN  kind = '반찬' AND material LIKE CONCAT('%',#{keyword},'%')
+         ELSE kind = '반찬' 
+         END
+      )
+   </sql>
+   <sql id="kind4">
+      (
+         CASE WHEN
+         ( SELECT COUNT(*) FROM recipe WHERE kind = '후식' AND material LIKE CONCAT('%',#{keyword},'%') ) > 0 
+         THEN  kind = '후식' AND material LIKE CONCAT('%',#{keyword},'%')
+         ELSE kind = '후식' 
+         END
+      )
+   </sql>
+   <sql id="kind5">
+      (
+         CASE WHEN
+         ( SELECT COUNT(*) FROM recipe WHERE kind = '일품' AND material LIKE CONCAT('%',#{keyword},'%') ) > 0 
+         THEN  kind = '일품' AND material LIKE CONCAT('%',#{keyword},'%')
+         ELSE kind = '일품' 
+         END
+      )
+   </sql>
 </mapper>

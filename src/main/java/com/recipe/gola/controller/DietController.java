@@ -1,5 +1,7 @@
 package com.recipe.gola.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,17 +37,27 @@ public class DietController {
 
 	// 식단 추천 페이지 
 	@GetMapping("diet")
-	public String recmnd_menu(Model m, @RequestParam String kcal, @RequestParam(value = "schTxt" , required = false) String schTxt) throws Exception {
+	public String recmnd_menu(Model m, @RequestParam String kcal, HttpSession session) throws Exception {
 		
 		logger.info("-----> 식단 추천페이지 입니다.");
 		logger.info("페이지에서 넘어온 칼로리 ? >>>>>>>>> "+kcal);
 
+		String keyword = "";
+		
+		
+		if(null != session) {
+			if(session.getAttribute("keyword") != null){
+				keyword = session.getAttribute("keyword").toString();
+			}			
+		}
+		
+		
 		//아침식단
-		m.addAttribute("breakfastList",dietService.list(kcal,"B", schTxt));
+		m.addAttribute("breakfastList",dietService.list(kcal,"B", keyword));
 		//점심식단
-		m.addAttribute("lunchList",dietService.list(kcal,"L", schTxt));
+		m.addAttribute("lunchList",dietService.list(kcal,"L", keyword));
 		//저녁식단
-		m.addAttribute("dinnerList",dietService.list(kcal,"D", schTxt));
+		m.addAttribute("dinnerList",dietService.list(kcal,"D", keyword));
 		
 		return "diet/diet";
 	}	
