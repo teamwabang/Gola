@@ -42,110 +42,112 @@
 		<span class="carttitle">CART</span>
 	</div>
 
-	<div class="cart_content">
-		<!-- 장바구니 타이틀 시작 -->
-	    <div class="cart_title">
-	        <h2>장바구니</h2>
-	        <ul>
-	            <li class="cart_page_on"><span>01</span> 장바구니 <span><img src="/images/shop/icon_step_on.png" alt=""></span></li>
-	            <li><span>02</span> 주문서작성/결제 <span><img src="/images/shop/icon_step_off.png" alt=""></span></li>
-	            <li><span>03</span> 주문완료 </li>
-	        </ul>
-	    </div>
-	    <!-- 장바구니 타이틀 끝 -->
-	    
-	    <div class="cart_cont">
-		    <!-- 상품 목록 시작 -->
-		    <div class="cart_product_on">
-			    <table style="width: 100%;">
-			    	<colgroup>
-			    		<col style="width: 3%;">
-	    				<col style="width: 41%;">
-	    				<col style="width: 11%;">
-	    				<col style="width: 11%;">
-	    				<col style="width: 11%;">
-	    				<col style="width: 11%;">
-	    				<col style="width: 11%;">
-	    			</colgroup>
-	    			<thead>
-		                <tr>
-		                	<th>
-		                		<input type="checkbox" id="cb1">
-	    						<label for="cb1"></label>
-		                	</th>
-		                    <th>상품/옵션 정보</th>
-		                    <th>수량</th>
-		                    <th>상품금액</th>
-		                    <th>할인/적립</th>
-		                    <th>합계금액</th>
-		                    <th>배송비</th>
-		                </tr>
-		            </thead>
-		            <tbody>
-		            	<tr>
-		            		<td>
-		                		<input type="checkbox" id="cb2">
-	    						<label for="cb2"></label>
-		                	</td>
-			            	<td>
-			            		<div>
-			            			<span>
-			            				<img src="/images/shop/thumnail/Thum_001.jpg" style="width:250px;height:250px;">
-			            			</span>
-			            			<span>
-			            				감자
-			            			</span>
-			            		</div>
-			            	</td>
-			            	<td>1개</td>
-			            	<td>5,990원</td>
-			            	<td>30원</td>
-			            	<td>5,990원</td>
-			            	<td>3,000원</td>
-		            	</tr>
-		        	</tbody>
-			    </table>
-			</div>
-		    <div class="cart_product_off">
-		    	<form>
-		    		
-		    		
-		    		<p class="no_data">장바구니에 담겨있는 상품이 없습니다.</p>
-		    	</form>
+	<div>
+		<div class="cart_content">
+			<!-- 장바구니 타이틀 시작 -->
+		    <div class="cart_title">
+		        <h2>장바구니</h2>
+		        <ul>
+		            <li class="cart_page_on"><span>01</span> 장바구니 <span><img src="/images/shop/icon_step_on.png" alt=""></span></li>
+		            <li><span>02</span> 주문서작성/결제 <span><img src="/images/shop/icon_step_off.png" alt=""></span></li>
+		            <li><span>03</span> 주문완료 </li>
+		        </ul>
 		    </div>
-		    <!-- 상품 목록 끝 -->
+		    <!-- 장바구니 타이틀 끝 -->
 		    
-		    <!-- 이전으로 돌아가기 버튼 시작 -->
-		   	<div class="cart_previous_btn">
-		   		<a href="javascript:history.back();" class="cart_previous_link">쇼핑 계속하기</a>
+		    <div class="cart_cont">
+			    <!-- 상품 목록 시작 -->
+			    <div class="cart_product_on">
+				    <table style="width: 100%;">
+				    	<colgroup>
+				    		<col style="width: 3%;">
+		    				<col style="width: 41%;">
+		    				<col style="width: 11%;">
+		    				<col style="width: 11%;">
+		    				<col style="width: 11%;">
+		    				<col style="width: 11%;">
+		    				<col style="width: 11%;">
+		    			</colgroup>
+		    			<thead>
+			                <tr>
+			                	<th>
+			                		<input type="checkbox" id="cb1">
+		    						<label for="cb1"></label>
+			                	</th>
+			                    <th>상품/옵션 정보</th>
+			                    <th>수량</th>
+			                    <th>상품금액</th>
+			                    <th>할인/적립</th>
+			                    <th>합계금액</th>
+			                    <th>배송비</th>
+			                </tr>
+			            </thead>
+			            <tbody>
+			            	<tr>
+			            		<td>
+			                		<input type="checkbox" id="cb2">
+		    						<label for="cb2"></label>
+			                	</td>
+				            	<td>
+				            		<div>
+				            			<span>
+				            				<img src="/images/shop/thumnail/Thum_001.jpg" style="width:250px;height:250px;">
+				            			</span>
+				            			<span>
+				            				감자
+				            			</span>
+				            		</div>
+				            	</td>
+				            	<td>1개</td>
+				            	<td>5,990원</td>
+				            	<td>30원</td>
+				            	<td>5,990원</td>
+				            	<td>3,000원</td>
+			            	</tr>
+			        	</tbody>
+				    </table>
+				</div>
+			    <div class="cart_product_off">
+			    	<form>
+			    		
+			    		
+			    		<p class="no_data">장바구니에 담겨있는 상품이 없습니다.</p>
+			    	</form>
+			    </div>
+			    <!-- 상품 목록 끝 -->
+			    
+			    <!-- 이전으로 돌아가기 버튼 시작 -->
+			   	<div class="cart_previous_btn">
+			   		<a href="javascript:history.back();" class="cart_previous_link">쇼핑 계속하기</a>
+			   	</div>
+			   	<!-- 이전으로 돌아가기 버튼 끝 -->
+			   	
+			   	<!-- 상품 결제금액 시작 -->
+			   	<div class="cart_price">
+			        <ul class="final_payment">
+						<li>
+							<p class="final_payment_ti">상품 금액</p>
+							<p class="final_payment_price">
+								<input type="hidden" class="cart_normal_price" value="0">
+								<span class="cart_normal_add_opt_price">0</span>원
+							</p>
+						</li>
+						<li><img src="/images/shop/order_price_plus.png" alt="더하기"></li>
+						<li>
+							<p class="final_payment_ti">배송비</p>
+							<input type="hidden" class="cart_total_save" value="0">
+							<p class="final_payment_price"><span class="cart_total_add_opt_save">0</span>원</p>
+						</li>
+						<li><img src="/images/shop/order_price_total.png" alt="합계"></li>
+						<li>
+							<p class="final_payment_ti">최종 결제 금액</p>
+							<p class="final_payment_price"><span id="pay_amt">0</span>원</p>
+						</li>
+					</ul>
+			    </div>
+			   	<!-- 상품 결제금액 끝 -->
 		   	</div>
-		   	<!-- 이전으로 돌아가기 버튼 끝 -->
-		   	
-		   	<!-- 상품 결제금액 시작 -->
-		   	<div class="cart_price">
-		        <ul class="final_payment">
-					<li>
-						<p class="final_payment_ti">상품 금액</p>
-						<p class="final_payment_price">
-							<input type="hidden" class="cart_normal_price" value="0">
-							<span class="cart_normal_add_opt_price">0</span>원
-						</p>
-					</li>
-					<li><img src="/images/shop/order_price_plus.png" alt="더하기"></li>
-					<li>
-						<p class="final_payment_ti">배송비</p>
-						<input type="hidden" class="cart_total_save" value="0">
-						<p class="final_payment_price"><span class="cart_total_add_opt_save">0</span>원</p>
-					</li>
-					<li><img src="/images/shop/order_price_total.png" alt="합계"></li>
-					<li>
-						<p class="final_payment_ti">최종 결제 금액</p>
-						<p class="final_payment_price"><span id="pay_amt">0</span>원</p>
-					</li>
-				</ul>
-		    </div>
-		   	<!-- 상품 결제금액 끝 -->
-	   	</div>
+	    </div>
     </div>
    	
    	<!-- import footer -->

@@ -9,7 +9,8 @@ import com.recipe.gola.dto.CartDTO;
 @Mapper
 public interface CartMapper {
 	
-	public List<CartDTO> list(CartDTO dto);
+	// 내가 장바구니에 담은 리스트 조회
+	public List<CartDTO> list(String userId);
 
 	// 장바구니에 물건 담기
 	public void insert(CartDTO cartdto);

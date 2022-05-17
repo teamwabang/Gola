@@ -165,11 +165,12 @@
 }
 
 .shopdetailsectioncut{
- width: 100%;
+  width: 1300px;
   height: 60px;
   background-color: #f9f9f9;
   border-bottom: 1px solid #a3a1a1;
   border-top: 2px solid #000000;
+  margin: 0 auto;
   margin-bottom: 40px;
 }
 
