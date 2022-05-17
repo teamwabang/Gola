@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class ProductDTO {
 
-	private int pno;	// 상품번호
+	private String pno;	// 상품번호
 	private String pName;	// 상품명
 	private String pKind;	// 상품종류
 	private int pPrice;	// 상품가격
