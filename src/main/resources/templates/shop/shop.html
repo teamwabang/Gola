@@ -2,58 +2,171 @@
 <html xmlns:th="http://www.thymeleaf.org" class="indexhtml">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
-  <meta property="og:title" content="우리들의 모든 레시피 | 골라">
-  <!-- <meta property="og:image" content=""> -->
-  <meta property="og:description" content="우리들의 모든 레시피, 골라">
-  <meta property="og:type" content="website">
-  <!-- title -->
-  <title>우리들의 모든 레시피 | 골라</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
+<meta property="og:title" content="우리들의 모든 레시피 | 골라">
+<!-- <meta property="og:image" content=""> -->
+<meta property="og:description" content="우리들의 모든 레시피, 골라">
+<meta property="og:type" content="website">
+<!-- title -->
+<title>우리들의 모든 레시피 | 골라</title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/css/styles.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-  <!-- fontawesome -->
-  <script src="https://kit.fontawesome.com/c21d7630fc.js" crossorigin="anonymous"></script>
-  <!-- JavaScript -->
-  <script type="text/javascript" src="/js/chatbot.js"></script>
-  <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
-  <!-- <script type="text/javascript" src="/js/click_disable.js"></script>
+<!-- CSS -->
+<link rel="stylesheet" href="/css/styles.css" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+<link
+	rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<!-- fontawesome -->
+<script src="https://kit.fontawesome.com/c21d7630fc.js"
+	crossorigin="anonymous"></script>
+<!-- JavaScript -->
+<script type="text/javascript" src="/js/chatbot.js"></script>
+<script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+<!-- <script type="text/javascript" src="/js/click_disable.js"></script>
   <script type="text/javascript" src="/js/developer_tools.js"></script> -->
-  <!-- Featherlight.js -->
-  <script src="/js/featherlight.js"></script>
-  <link rel="stylesheet" href="/css/featherlight.css">
+
 
 </head>
 
 <body>
 
-      <!-- import header -->
-      <header th:replace="layout/fragment :: fr_header"></header>
-      <!-- end of import header -->
-      
-      <div>
-      	<h1>쇼핑몰 메인페이지</h1>
-      	<h2> <a th:href="@{/shopdetail}">상세페이지</a></h2>
-      </div>
-      
-      <!-- import footer -->
-      <footer th:replace="layout/fragment :: fr_footer"></footer>
-      <!-- end of import footer -->
-      
-      <!-- Bootstrap -->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"></script>
-      <script src="http://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-      <script type="text/javascript" src="/js/join.js"></script>
-      <script type="text/javascript" src="/js/logineye.js"></script>
+	<!-- import header -->
+	<header th:replace="layout/fragment2 :: fr_header"></header>
+	<!-- end of import header -->
 
+	<!-- center title -->
+	<div>
+		<span class="carttitle">SHOP</span>
+	</div>
+
+	<!-- shop 조회결과-->
+	<section class="shopsection">
+		<div class="shopResult" id="shopResult"></div>
+
+	</section>
+
+
+	<!-- import footer -->
+	<footer th:replace="layout/fragment2 :: fr_footer"></footer>
+	<!-- end of import footer -->
+
+	<!-- Bootstrap -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+	<script src="http://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script type="text/javascript" src="/js/join.js"></script>
+	<script type="text/javascript" src="/js/logineye.js"></script>
+	<script th:inline="javascript">
+
+    //컨트롤러에서 받은 타임리프 값을 javascript 변수에 넣는다.
+	//타임리프 버그로 오류표시
+    let shoplist = [[${ shoplist }]];
+
+
+
+    $(document).ready(function () {
+    	
+      //create div
+      callShopList();
+
+      //2라인만 보이게 셋팅하기..
+      $('.shopItemWrap').show();
+    });
+
+
+    $(document).on("click", ".shopItem > div > button ", function () {
+      location.href = "/shop/detail?pno=" + $(this).data("pno");
+    });
+
+
+    //search function
+    let callShopList = () => {
+
+      //엘리먼트생성 결과변수
+      let shopresult = "";
+
+          const outerDiv = document.createElement("div");
+          outerDiv.setAttribute("class", "shopItemWrap");
+          for (let shopitem of shoplist) {
+            const innerDiv = document.createElement("div")
+            innerDiv.setAttribute("class", "shopItem");
+            
+            const innerA = document.createElement("a");
+            innerA.setAttribute("href", "/shop/detail?pno=" + shopitem.pno);
+           
+            const innerImg = document.createElement("img");
+            innerImg.setAttribute("class", "shopItemimg");
+            innerImg.setAttribute("src", shopitem.pimage);
+            innerA.appendChild(innerImg);
+           
+            const innerDetailWrap = document.createElement("div")
+            innerDetailWrap.setAttribute("class", "shopItemDetailWrap");
+            
+            const innerDetail = document.createElement("div")
+            innerDetail.setAttribute("class", "shopItemsDetail");
+            innerDetail.textContent = shopitem.pname;
+            innerDetailWrap.appendChild(innerDetail);
+            
+            const innerPrice = document.createElement("p")
+            innerPrice.setAttribute("class", "shopItemsprice");
+            
+            //천단위 콤마 
+            innerPrice.textContent = shopitem.pprice.toString()
+            .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+            innerDetailWrap.appendChild(innerPrice);
+            
+            const innerPricewon = document.createElement("span")
+            innerPricewon.setAttribute("class", "shopItemspricewon");
+            innerPricewon.textContent = " 원";
+            innerPrice.appendChild(innerPricewon);
+            
+            
+            const innerBuyButton = document.createElement("div")
+            innerBuyButton.setAttribute("class", "shopItemsbuybutton");
+            innerDetailWrap.appendChild(innerBuyButton);
+            
+            
+            const innerBuyButtonleft = document.createElement("div")
+            innerBuyButtonleft.setAttribute("class", "buyIconLeft");
+            innerBuyButton.appendChild(innerBuyButtonleft);
+            
+            const innerBuyButtonleftLink = document.createElement("a")
+            innerBuyButtonleftLink.setAttribute("class", "buyIconLeft");
+            innerBuyButtonleftLink.setAttribute("href", "shop/detail?pno=" + shopitem.pno);
+            innerBuyButtonleftLink.textContent = "상세보기";
+            innerBuyButtonleft.appendChild(innerBuyButtonleftLink);
+
+           
+            const innerBuyButtonRight = document.createElement("div")
+            innerBuyButtonRight.setAttribute("class", "buyIconRight");
+            innerBuyButton.appendChild(innerBuyButtonRight);
+            
+            const innerBuyButtonRightLink = document.createElement("a")
+            innerBuyButtonRightLink.setAttribute("class", "buyIconRight");
+            innerBuyButtonRightLink.setAttribute("href",  "shop/detail?pno=" + shopitem.pno);
+            innerBuyButtonRightLink.textContent = "구매하기";
+            innerBuyButtonRight.appendChild(innerBuyButtonRightLink);
+
+            
+            innerDiv.appendChild(innerImg);
+            innerDiv.appendChild(innerDetailWrap);
+            outerDiv.appendChild(innerDiv);
+          }
+
+          shopresult = outerDiv.outerHTML;
+
+
+      $('.shopResult').append(shopresult);
+    }
+    
+  </script>
+  
 </body>
-
-</html>

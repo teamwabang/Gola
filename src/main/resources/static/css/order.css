@@ -251,6 +251,24 @@ th > .important {
     display: block !important;
 }
 
+/* 카카오 우편번호검색 API 시작 */
+.order_kakao_postalcode {
+	display: none;
+	border: 1px solid;
+	width: 500px;
+	height: 300px;
+	margin: 5px 0;
+	position:relative;
+}
+
+.order_kakao_postalcode img {
+	cursor: pointer;
+	position: absolute;
+	right: 0px;
+	top: -1px;
+	z-index: 1;	
+}
+
 /* 주문자 정보 시작 */
 .order_info h4 {
     margin: 50px 0 5px 0;

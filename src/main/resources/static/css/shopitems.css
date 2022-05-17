@@ -1,77 +1,121 @@
+.shopItemWrap{
+  display:flex;
+  margin : 40px 20%;
+  column-gap:20px;
+  justify-content: center;
+}
 .shopItem {
-  border-radius: 10px;
+  justify-content:center;
   overflow: hidden;
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: 280px;
+  height: 300px;
+  border : 1px solid none;
 }
 
-.shopItem img {
+.shopItemimg {
   transition: 0.3s;
+  border : 1px solid #f5f5f5;
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
 }
 
-.shopItem:hover img {
-  filter: blur(3px)
+.shopItemimg:hover  {
+  filter: blur(3px);
 }
 
 .shopItemDetailWrap {
-  background-color: #fff;
+  background-color: #ffffffbf;
   position: absolute;
   width: 100%;
   bottom: -70px;
   left: 0;
-  height: 50%;
+  height: 55%;
   transition: 0.3s;
-  padding: 0 20px;
+  padding: 0 10px;
   box-sizing: border-box;
+  border : 1px solid #f5f5f5;
 
 }
 
 .shopItem:hover .shopItemDetailWrap {
   bottom: 0;
+  background-color: #fff;
+}
+.shopItem:hover .shopItemimg {
+  filter: blur(3px);
 }
 
 .shopItemsDetail {
-  font-size: 18px;
-  font-weight: bold;
-  padding-top: 10px;
+  font-size: 14px;
+  padding-top: 20px;
+  font-weight:bold;
+  width: 100%;
 }
 
 .shopItemsprice {
-  font-size: 16px;
-  text-align: right;
-  padding-top: 20px;
+  font-size: 24px;
+  text-align: left;
   font-weight: bold;
-  color: black;
+  color: #77b347;
+  width: 100%;
 }
+
+.shopItemspricewon {
+  font-size: 12px;
+  text-align: left;
+  padding-top: 5px;
+  font-weight: bold;
+  color:#bfbbbb;
+}
+
 
 .shopItemspricetitle {
   color: red;
 }
 
 .shopItemsbuybutton {
-  padding-top: 40px;
+  padding-top: 5px;
   text-align: center;
-
+  display : flex;
+  justify-content: center;
+  width: 100%;
+}
+.buyIconLeft{
+  margin-right: 20px;
 }
 
-.buyIconLeft,
-.buyIconRight {
-  width: 130px;
+.buyIconLeft, .buyIconRight {
+  border: 1px solid #77b347;
+  border-radius: 6px;
+  background-color: #fff;
+  font-weight: bold;
+  width: 100px;
   height: 40px;
-  margin-right: 20px;
+
   cursor: pointer;
 }
 
-.buyIconLeft {
-  border: 1px solid #77b347;
-  border-radius: 6px;
-  background-color: #fff;
-  color: #77b347;
-  font-weight: bold;
+.buyIconLeft a, .buyIconRight a {
+  color: #77b347 !important;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding-top: 7px;
 }
 
-.buyIconRight {
+.buyIconLeft a:hover, .buyIconRight a:hover {
+  color: #fff !important;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding-top: 7px;
+}
+
+.buyIconLeft:hover, .buyIconRight:hover {
   border: 1px solid #77b347;
   border-radius: 6px;
   background-color: #77b347;
@@ -80,18 +124,3 @@
 }
 
 
-.buyIconLeft:hover {
-  border: 1px solid #77b347;
-  border-radius: 6px;
-  background-color: #77b347;
-  color: #fff;
-  font-weight: bold;
-}
-
-.buyIconRight:hover {
-  border: 1px solid #77b347;
-  border-radius: 6px;
-  background-color: #fff;
-  color: #77b347;
-  font-weight: bold;
-}

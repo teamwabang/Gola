@@ -34,7 +34,7 @@
 <body class="cartbody">
 
 	<!-- import header -->
-	<header th:replace="layout/fragment :: fr_header"></header>
+	<header th:replace="layout/fragment2 :: fr_header"></header>
 	<!-- end of import header -->
 	
 	<!-- center title -->
@@ -56,7 +56,57 @@
 	    
 	    <div class="cart_cont">
 		    <!-- 상품 목록 시작 -->
-		    <div>
+		    <div class="cart_product_on">
+			    <table style="width: 100%;">
+			    	<colgroup>
+			    		<col style="width: 3%;">
+	    				<col style="width: 41%;">
+	    				<col style="width: 11%;">
+	    				<col style="width: 11%;">
+	    				<col style="width: 11%;">
+	    				<col style="width: 11%;">
+	    				<col style="width: 11%;">
+	    			</colgroup>
+	    			<thead>
+		                <tr>
+		                	<th>
+		                		<input type="checkbox" id="cb1">
+	    						<label for="cb1"></label>
+		                	</th>
+		                    <th>상품/옵션 정보</th>
+		                    <th>수량</th>
+		                    <th>상품금액</th>
+		                    <th>할인/적립</th>
+		                    <th>합계금액</th>
+		                    <th>배송비</th>
+		                </tr>
+		            </thead>
+		            <tbody>
+		            	<tr>
+		            		<td>
+		                		<input type="checkbox" id="cb2">
+	    						<label for="cb2"></label>
+		                	</td>
+			            	<td>
+			            		<div>
+			            			<span>
+			            				<img src="/images/shop/thumnail/Thum_001.jpg" style="width:250px;height:250px;">
+			            			</span>
+			            			<span>
+			            				감자
+			            			</span>
+			            		</div>
+			            	</td>
+			            	<td>1개</td>
+			            	<td>5,990원</td>
+			            	<td>30원</td>
+			            	<td>5,990원</td>
+			            	<td>3,000원</td>
+		            	</tr>
+		        	</tbody>
+			    </table>
+			</div>
+		    <div class="cart_product_off">
 		    	<form>
 		    		
 		    		
@@ -99,7 +149,7 @@
     </div>
    	
    	<!-- import footer -->
-   	<footer th:replace="layout/fragment :: fr_footer"></footer>
+   	<footer th:replace="layout/fragment2 :: fr_footer"></footer>
    	<!-- end of import footer -->
 	
 	<!-- Bootstrap -->

@@ -24,9 +24,11 @@
 	
 	<!-- 각 레시피 상세페이지 출력 -->
 	<select id="detail" resultType="RecipeDTO" parameterType="int">
+	<![CDATA[
 		SELECT *
 		FROM recipe
 		WHERE no=${no};
+	]]>
 	</select>
 	
 </mapper>

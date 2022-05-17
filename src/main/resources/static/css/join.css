@@ -39,6 +39,13 @@ input[type=password] {
   font-family: 'ROKAFSlabSerifBold' !important;
 }
 
+.important {
+    margin: 0 0 0 -3px;
+    padding: 0 0 0 12px;
+    background: url(/images/shop/icon_point.png) no-repeat 0 center;
+    background-size: 7px;
+}
+
 .joinInput {
   display: flex;
   flex-direction: column;
@@ -52,6 +59,31 @@ input[type=password] {
 
 .joininput {
   width: 100%;
+}
+
+.joininput_zipcode {
+	width: 40%;
+}
+
+.joininput_addr1 {
+	width: 100%;
+}
+
+.joininput_addr2 {
+	width: 100%;
+}
+
+.join_post_search {
+    padding: 7px 10px 7px 10px;
+    border: 1px solid #dbdbdb;
+    background: #efefef;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1;
+    height: 48px;
+    width: 130px;
+    margin-left: 10px;
+    box-sizing: border-box;
 }
 
 .idCheck {
@@ -112,8 +144,27 @@ input[type=password] {
 #userPwdCheck,
 #userPwdConfirmNo,
 #userPwdConfirmYes,
+#userPhoneCheck,
 #userNicknameCheck,
 #userEmailCheck {
   font-family: 'LeferiPoint-WhiteObliqueA';
   font-weight: bold;
+}
+
+/* 카카오 우편번호검색 API 시작 */
+.join_kakao_postalcode {
+	display: none;
+	border: 1px solid;
+	width: 450px;
+	height: 300px;
+	margin: 5px 0;
+	position:relative;
+}
+
+.join_kakao_postalcode img {
+	cursor: pointer;
+	position: absolute;
+	right: 0px;
+	top: -1px;
+	z-index: 1;	
 }

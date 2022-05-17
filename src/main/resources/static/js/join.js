@@ -100,8 +100,24 @@ $('#userNickname').on('keyup' ,function() {
 	}
 });
 
-//이메일 유효성 검사
+// 휴대폰 번호 유효성 검사
+$('#userPhone').on('keyup' ,function() {
+  if (!/^(?=.*[0-9]).{10,11}$/g.test($('#userPhone').val())) {
+    $('#userPhoneCheck').css({
+      "color" : "red"
+    });
+    $('#userPhoneCheck').html("휴대폰 번호는 - 기호를 제외한 숫자로만 입력해주세요.");
+    $('#userPhoneCheck').show();
+  } else {
+    $('#userPhoneCheck').css({
+      "color" : "blue"
+    });
+      $('#userPhoneCheck').html("사용 가능한 휴대폰 번호 입니다.");
+      $('#userPhoneCheck').show();
+  }
+});
 
+//이메일 유효성 검사
 $('#userEmail').on('keyup' ,function() {
 	const email = document.getElementById('userEmail').value;
 	const checkResult = document.getElementById('userEmailCheck');
@@ -136,8 +152,8 @@ $('#userEmail').on('keyup' ,function() {
 	
 
 //회원가입 버튼 비활성화 -> 활성화
-  $("#userIdJoin, #userPwdJoin, #confirm,  #userNickname, #userEmail").change(function() {
-    if( $("#userIdJoin").val() != "" && $("#userPwdJoin").val() != "" && $('#confirm').val() != "" && $('#userEmail').val() != "" && $('#userNickname').val() != "") {
+  $("#userIdJoin, #userPwdJoin, #confirm, #userNickname, #userEmail").change(function() {
+    if( $("#userIdJoin").val() != "" && $("#userPwdJoin").val() != "" && $('#confirm').val() != "" && $('userPhone').val() != "" && $('#userEmail').val() != "" && $('#userNickname').val() != "") {
       $('#joinSubmit').prop('disabled', false);
     } else {
       $('#joinSubmit').prop('disabeld', true);      
@@ -244,7 +260,6 @@ $('#joinSubmit').on('click', function(event) {
 		
 	};
 });
-
 
 /* 이메일 입력확인 swal */
 $('#joinSubmit').on('click', function(event) {
