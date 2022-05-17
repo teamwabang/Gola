@@ -62,6 +62,35 @@
 }
 
 /* 상품목록 시작 */
+input[id="cb1"] + label,
+input[id="cb2"] + label {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	border: 2px solid #bcbcbc;
+	cursor: pointer;
+	margin: 8px 0 0 8px;
+}
+
+input[id="cb1"]:checked + label,
+input[id="cb2"]:checked + label {
+	background-color: #666666;
+}
+
+input[id="cb1"],
+input[id="cb2"] {
+	display: none;
+}
+
+.cart_product_on th {
+	padding-bottom: 10px;
+}
+
+.cart_product_on th,
+.cart_product_on td {
+	text-align: center;
+}
+		
 .no_data {
 	padding: 60px 0;
     margin: 0 0 20px 0;
