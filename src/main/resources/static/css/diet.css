@@ -71,6 +71,7 @@
   align-items: center;
   justify-content: space-evenly;
   position: relative;
+  margin-bottom: 3px;
 }
 
 .mealPic {
@@ -84,6 +85,10 @@
     position: relative;
 }
 
+#breakfast a .mealSelect .mealPic {
+	height:200px;
+}
+
 .hovers {
 	display: flex;
 	flex-direction:column;
@@ -91,8 +96,13 @@
 	visibility: hidden;
 	position: absolute;
 	font-weight: bold;
-	font-size: 16px;
+	font-size: 20px;
 	width: 250px;
+}
+
+.recipeTitle {
+	font-size:1px;
+	visibility: hidden;
 }
 
 .recipeEmpty {
@@ -130,14 +140,14 @@
 }
 
 .mealTitle {
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
-  color: rgba(0, 0, 204, 0.5);
+  color: rgba(0, 0, 204, 0.7);
 }
 
 .kcal,
 .totalKcal {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   color: rgba(149, 157, 165, 1);
 }
