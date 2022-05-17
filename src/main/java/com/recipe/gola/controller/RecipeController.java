@@ -2,6 +2,8 @@ package com.recipe.gola.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +32,14 @@ public class RecipeController {
 	
 	// 메뉴 전체리스트
 	@GetMapping("recipe")
-	public String list(Model model, RecipeDTO dto) {
+	public String list(Model model, RecipeDTO dto, HttpSession session) {
+		
+		
+		String keyword = dto.getSearch();		
+				
+		session.setAttribute("keyword", keyword);		
+		
+		
 		logger.info("-----> 전체 레시피 리스트를 출력합니다.");
 		List<RecipeDTO> list = recipeService.list(dto);
 		model.addAttribute("list", list);
