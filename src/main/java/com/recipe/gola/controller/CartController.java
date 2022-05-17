@@ -70,7 +70,7 @@ public class CartController {
     	
     	String userId = principaldetail.getUsername();
     	cartdto.setUserId(userId);
-    	String pno = productdto.getPno();
+    	int pno = productdto.getPno();
     	cartdto.setPno(pno);
     	
     	if(userId == null) {
