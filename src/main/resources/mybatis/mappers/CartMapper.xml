@@ -45,7 +45,7 @@
     <!-- 장바구니 전체 금액 -->
     <select id="sumMoney" resultType="int">
     <![CDATA[
-    	SELECT SUM(pPrice * cQuantity)
+    	SELECT IFNULL(SUM(pPrice * cQuantity), 0)
     	FROM product p, cart c
     	WHERE c.pno = p.pno AND c.userId = #{userId}
     ]]>

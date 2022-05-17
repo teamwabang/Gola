@@ -59,7 +59,7 @@
 			    
 			    <div class="cart_cont">
 				    <!-- 상품 목록 시작 -->
-				    <div class="cart_product_on" th:if="${map.list != null}">
+				    <div class="cart_product_on" th:if="${map.count != 0}">
 					    <table style="width: 100%;">
 					    	<colgroup>
 					    		<col style="width: 3%;">
@@ -112,7 +112,7 @@
 				        	
 					    </table>
 					</div>
-				    <div class="cart_product_off" th:unless="${map.list != null}">
+				    <div class="cart_product_off" th:unless="${map.count != 0}">
 				    		<p class="no_data">장바구니에 담겨있는 상품이 없습니다.</p>
 				    </div>
 				    <!-- 상품 목록 끝 -->
