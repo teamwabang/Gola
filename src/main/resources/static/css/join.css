@@ -66,11 +66,11 @@ input[type=password] {
 }
 
 .joininput_addr1 {
-	width: 70%;
+	width: 100%;
 }
 
 .joininput_addr2 {
-	width: 29%;
+	width: 100%;
 }
 
 .join_post_search {
@@ -81,7 +81,7 @@ input[type=password] {
     font-weight: bold;
     line-height: 1;
     height: 48px;
-    width: 100px;
+    width: 130px;
     margin-left: 10px;
     box-sizing: border-box;
 }
