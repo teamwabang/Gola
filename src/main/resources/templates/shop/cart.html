@@ -101,12 +101,17 @@
 					            	<td>
 					            		<span th:text="${list.ProductDTO.pPrice}"></span>원
 					            	</td>
-					            	<td>30원</td>
+					            	<td>
+					            		<img src="/images/shop/icon_mileage.gif">
+					            		<span th:style="@{font-size:14px;}">적립
+					            			<span th:text="${list.ProductDTO.pPoints * list.camount}" th:style="@{font-size:16px;}"></span>원
+					            		</span>
+					            	</td>
 					            	<td>
 					            		<span th:text="${list.ProductDTO.pPrice * list.camount}"></span>원
 					            	</td>
 					            	<td>
-					            		<span>3,000원</span><br>
+					            		<span th:text="${fee}"></span>원<br>
 					            		<span th:style="@{color:gray;font-size:14px;}">30,000원 이상 무료배송</span>
 					            	</td>
 				            	</tr>
