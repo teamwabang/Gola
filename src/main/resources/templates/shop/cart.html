@@ -59,7 +59,8 @@
 			    
 			    <div class="cart_cont">
 				    <!-- 상품 목록 시작 -->
-				    <div class="cart_product_on" th:if="${list != null}">
+				    <!-- 장바구니에 상품이 하나이상 담겼을때 출력 시작 -->
+				    <div class="cart_product_on" th:if="${count != 0}">
 					    <table style="width: 100%;">
 					    	<colgroup>
 					    		<col style="width: 3%;">
@@ -112,9 +113,12 @@
 				        	</tbody>
 					    </table>
 					</div>
-				    <div class="cart_product_off" th:unless="${list != null}">
-				    	<p class="no_data">장바구니에 담겨있는 상품이 없습니다.</p>
+					<!-- 장바구니에 상품이 하나이상 담겼을때 출력 끝 -->
+					<!-- 장바구니에 담긴 상품이 없을때 출력 시작 -->
+				    <div class="cart_product_off" th:unless="${count != 0}">
+				    	<p class="cart_no_data">장바구니에 담겨있는 상품이 없습니다.</p>
 				    </div>
+				    <!-- 장바구니에 담긴 상품이 없을때 출력 끝 -->
 				    <!-- 상품 목록 끝 -->
 				    
 				    <!-- 이전으로 돌아가기 버튼 시작 -->
