@@ -1,9 +1,7 @@
 package com.recipe.gola.controller;
 
 import java.io.PrintWriter;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -54,23 +52,23 @@ public class CartController {
 	
 	// 장바구니
 	@GetMapping("cart")
-	public ModelAndView shop_cart(@AuthenticationPrincipal PrincipalDetails principaldetail, ModelAndView mv) {
+	public String shop_cart(@AuthenticationPrincipal PrincipalDetails principaldetail, Model model) {
 		logger.info("-----> 장바구니 페이지로 이동합니다.");
     	
 		String userId = principaldetail.getUsername();
 		
-		Map<String, Object> map = new HashMap<String, Object>();
 		List<CartDTO> list = cartService.list(userId);
+		
 		int sumMoney = cartService.sumMoney(userId);
 		int fee = sumMoney >= 30000 ? 0 : 3000;
-		map.put("list", list);	// 장바구니 정보를 map에 저장
-		map.put("count", list.size());	// 장바구니 상품 유무
-		map.put("sumMoney", sumMoney);	// 장바구니 전체 금액
-		map.put("fee", fee);	// 배송료
-		map.put("allSum", sumMoney + fee);	// 주문 상품 전체 금액 (상품 + 배송료)
-		mv.setViewName("shop/cart");
-		mv.addObject("map", map);
-		return mv;
+		
+		model.addAttribute("list", list);
+		model.addAttribute("count", list.size());	// 장바구니 상품 유무
+//		model.addAttribute("money", );	// 장바구니 개별 합계 금액
+		model.addAttribute("sumMoney", sumMoney);	// 장바구니 전체 금액
+		model.addAttribute("fee", fee);	// 배송료
+		model.addAttribute("allSum", sumMoney + fee);	// 주문 상품 전체 금액 (상품 + 배송료)
+		return "shop/cart";
 	}
 	
 	// 장바구니에 물건 담기
