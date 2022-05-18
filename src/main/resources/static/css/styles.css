@@ -24,6 +24,7 @@
 @import "order.css";
 @import "shop.css";
 @import "admin.css";
+@import "cartbanner.css";
 
 /* scroll style */
 *::-webkit-scrollbar {
