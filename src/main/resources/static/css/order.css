@@ -77,6 +77,14 @@
     font-size: 16px;
 }
 
+.order_product_on th,
+.order_product_on td {
+	height: 35px;
+	text-align: center;
+	vertical-align: middle;
+	padding-bottom: 0;
+}
+
 /* 배송정보 시작 */
 .order_view_info h4 {
     margin: 50px 0 5px 0;
@@ -284,11 +292,9 @@ th > .important {
 .order_table_type td {
     height: 31px;
     padding: 15px 10px 14px 10px;
-    color: #777777;
     border-bottom: 1px solid #dbdbdb;
     /* border-left: 1px dotted #ededed; */
     background: #ffffff;
-    font-size: 14px;
     vertical-align: middle;
 }
 

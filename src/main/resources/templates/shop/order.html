@@ -173,9 +173,58 @@
 		    		<h4>주문상세내역</h4>
 		    	</div>
 		    	<div class="order_table_type">
-		    		<table>
-		    		<!-- ##### 장바구니 정보 가져올 테이블 ##### -->
-		    		</table>
+		    	
+		    	
+		    		<div class="order_product_on" th:if="${count != 0}">
+					    <table style="width: 100%;">
+					    	<colgroup>
+			    				<col style="width: 39%;">
+			    				<col style="width: 12%;">
+			    				<col style="width: 12%;">
+			    				<col style="width: 12%;">
+			    				<col style="width: 12%;">
+			    				<col style="width: 12%;">
+			    			</colgroup>
+			    			<thead>
+				                <tr>
+				                    <th>상품/옵션 정보</th>
+				                    <th>수량</th>
+				                    <th>상품금액</th>
+				                    <th>할인/적립</th>
+				                    <th>합계금액</th>
+				                    <th>배송비</th>
+				                </tr>
+				            </thead>
+				            <tbody th:each="list : ${list}">
+				            	<tr>
+					            	<td>
+					            		<img th:src="${list.ProductDTO.pImage}" style="width:250px;height:250px">
+				            			<span th:text="${list.ProductDTO.pName}"></span>
+					            	</td>
+					            	<td>
+					            		<span th:text="${list.camount}"></span>개
+					            	</td>
+					            	<td>
+					            		<span th:text="${list.ProductDTO.pPrice}"></span>원
+					            	</td>
+					            	<td>
+					            		<img src="/images/shop/icon_mileage.gif">
+					            		<span th:style="@{font-size:14px;}">적립
+					            			<span th:text="${list.ProductDTO.pPoints * list.camount}" th:style="@{font-size:16px;}"></span>원
+					            		</span>
+					            	</td>
+					            	<td>
+					            		<span th:text="${list.ProductDTO.pPrice * list.camount}"></span>원
+					            	</td>
+					            	<td>
+					            		<span th:text="${fee}"></span>원<br>
+					            		<span></span>
+					            		<span th:style="@{color:gray;font-size:14px;}">30,000원 이상<br>무료배송</span>
+					            	</td>
+				            	</tr>
+				        	</tbody>
+					    </table>
+					</div>
 		    	</div>
 		    </div>
 		    <!-- 장바구니에서 담은 상품 목록 끝 -->
@@ -217,13 +266,13 @@
 		    					<th scope="row"><span class="important">받으실 곳</span></th>
 		    					<td class="member_address">
 		    						<div class="address_postcode">
-			    						<input type="text" name="receiverZonecode" id="oZipcode" placeholder="우편번호">
+			    						<input type="text" name="receiverZonecode" id="oZipcode" placeholder="우편번호" readonly>
 			    						<input type="hidden" name="receiverZipcode">
 			    						<span id="receiverZipcodeText" class="old_post_code"></span>
 			    						<button type="button" class="btn_post_search" onclick="execDaumPostcode()">우편번호검색</button>
 		    						</div>
 		    						<div class="address_input">
-			    						<input type="text" name="receiverAddress" id="oAddr1" placeholder="주소">
+			    						<input type="text" name="receiverAddress" id="oAddr1" placeholder="주소" readonly>
 			    						<input type="text" name="receiverAddressSub" id="oAddr2" placeholder="상세주소">
 		    						</div>
 		    						<div id="wrap" class="order_kakao_postalcode">
@@ -409,14 +458,14 @@
 			    			<tr>
 			    				<th scope="row">상품 합계 금액</th>
 			    				<td>
-			    					<strong id="totalGoodsPrice" class="order_payment_sum">7,900</strong>원
+			    					<strong id="totalGoodsPrice" class="order_payment_sum" th:text="${sumMoney}"></strong>원
 			    				</td>
 			    			</tr>
 			    			<!-- 배송비 -->
 			    			<tr>
 			    				<th scope="row">배송비</th>
 			    				<td>
-				    				<span id="totalDeliveryCharge">3,000</span>원
+				    				<span id="totalDeliveryCharge" th:text="${fee}"></span>원
 				    				<span class="multi_shipping_text"></span>
 			    				</td>
 			    			</tr>
@@ -454,7 +503,7 @@
                                     </div>
                                 </th>
                                 <td>
-                                	<span id="">50원</span>
+                                	<span th:text="${#numbers.formatInteger(sumMoney * 0.005 + 1, 0)}"></span>원
                                 </td>
                             </tr>
                             <!-- 최종 결제 금액 -->
@@ -464,7 +513,7 @@
 	                            	<input type="hidden" name="settlePrice" value="">
 	                            	<input type="hidden" name="overseasSettlePrice" value="0">
 	                            	<input type="hidden" name="overseasSettleCurrency" value="KRW">
-	                            	<strong id="totalSettlePrice" class="order_payment_sum">10,900</strong>원
+	                            	<strong id="totalSettlePrice" class="order_payment_sum" th:text="${allSum}"></strong>원
                             	</td>
                             </tr>
 			    		</tbody>
