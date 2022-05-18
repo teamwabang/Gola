@@ -105,9 +105,9 @@
 						<div class="prodOption">
 							<select class="selectOption">
 								<option value="">= 옵션 : 가격 : 재고 =</option>
-								<option value="1" id="cQuantity">1개</option>
-								<option value="2" id="cQuantity">2개</option>
-								<option value="3" id="cQuantity">3개</option>
+								<option value="1" id="camount">1개</option>
+								<option value="2" id="camount">2개</option>
+								<option value="3" id="camount">3개</option>
 							</select>
 						</div>
 
@@ -118,11 +118,11 @@
 							<script type="text/javascript">
 								$("#cart_add_btn").click(function() {
 									var pno = $("#pno").val();
-									var cQuantity = $(".selectOption option:selected").val();
+									var camount = $(".selectOption option:selected").val();
 
 									var data = {
 										pno : pno,
-										cQuantity : cQuantity
+										camount : camount
 									};
 
 									$.ajax({

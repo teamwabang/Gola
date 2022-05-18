@@ -59,7 +59,7 @@
 			    
 			    <div class="cart_cont">
 				    <!-- 상품 목록 시작 -->
-				    <div class="cart_product_on" th:if="${map.count != 0}">
+				    <div class="cart_product_on" th:if="${list != null}">
 					    <table style="width: 100%;">
 					    	<colgroup>
 					    		<col style="width: 3%;">
@@ -84,36 +84,36 @@
 				                    <th>배송비</th>
 				                </tr>
 				            </thead>
-				            <tbody>
+				            <tbody th:each="list : ${list}">
 				            	<tr>
 				            		<td>
 				                		<input type="checkbox" id="cb2">
 			    						<label for="cb2"></label>
 				                	</td>
-					            	<td th:each="map : ${map.list}">
-				            			<span>
-				            				
-				            			</span>
-				            			<span th:text="${map.pno}"></span>
+					            	<td>
+					            		<img th:src="${list.ProductDTO.pImage}" style="width:250px;height:250px">
+				            			<span th:text="${list.ProductDTO.pName}"></span>
 					            	</td>
-					            	<td th:each="map : ${map.list}">
-					            		<span th:text="${map.cQuantity}"></span>개
+					            	<td>
+					            		<span th:text="${list.camount}"></span>개
 					            	</td>
-					            	<td>4,990원</td>
+					            	<td>
+					            		<span th:text="${list.ProductDTO.pPrice}"></span>원
+					            	</td>
 					            	<td>30원</td>
-					            	<td th:each="map : ${map.sumMoney}">
-					            		<span th:text="${map}"></span>원
+					            	<td>
+					            		<span></span>원
 					            	</td>
-					            	<td>3,000원</td>
+					            	<td>
+					            		<span>3,000원</span><br>
+					            		<span th:style="@{color:gray;font-size:14px;}">30,000원 이상 무료배송</span>
+					            	</td>
 				            	</tr>
 				        	</tbody>
-				        	
-				        	
-				        	
 					    </table>
 					</div>
-				    <div class="cart_product_off" th:unless="${map.count != 0}">
-				    		<p class="no_data">장바구니에 담겨있는 상품이 없습니다.</p>
+				    <div class="cart_product_off" th:unless="${list != null}">
+				    	<p class="no_data">장바구니에 담겨있는 상품이 없습니다.</p>
 				    </div>
 				    <!-- 상품 목록 끝 -->
 				    
@@ -126,23 +126,23 @@
 				   	<!-- 상품 결제금액 시작 -->
 				   	<div class="cart_price">
 				        <ul class="final_payment">
-							<li th:each="map : ${map.sumMoney}">
+							<li>
 								<p class="final_payment_ti">총 상품 금액</p>
 								<p class="final_payment_price">
 									<input type="hidden" class="cart_normal_price" value="0">
-									<span class="cart_normal_add_opt_price" th:text="${map}"></span>원
+									<span class="cart_normal_add_opt_price" th:text="${sumMoney}"></span>원
 								</p>
 							</li>
 							<li><img src="/images/shop/order_price_plus.png" alt="더하기"></li>
-							<li th:each="map : ${map.fee}">
+							<li>
 								<p class="final_payment_ti">배송비</p>
 								<input type="hidden" class="cart_total_save" value="0">
-								<p class="final_payment_price"><span class="cart_total_add_opt_save" th:text="${map}"></span>원</p>
+								<p class="final_payment_price"><span class="cart_total_add_opt_save" th:text="${fee}"></span>원</p>
 							</li>
 							<li><img src="/images/shop/order_price_total.png" alt="합계"></li>
-							<li th:each="map : ${map.allSum}">
+							<li>
 								<p class="final_payment_ti">최종 결제 금액</p>
-								<p class="final_payment_price"><span id="pay_amt" th:text="${map}"></span>원</p>
+								<p class="final_payment_price"><span id="pay_amt" th:text="${allSum}"></span>원</p>
 							</li>
 						</ul>
 				    </div>
