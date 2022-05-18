@@ -89,6 +89,8 @@ input[id="cb2"] {
 .cart_product_on th,
 .cart_product_on td {
 	text-align: center;
+	vertical-align: middle;
+	padding-bottom: 0;
 }
 		
 .cart_no_data {
