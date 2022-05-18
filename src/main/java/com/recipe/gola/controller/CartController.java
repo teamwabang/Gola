@@ -60,7 +60,7 @@ public class CartController {
 		List<CartDTO> list = cartService.list(userId);
 		
 		int sumMoney = cartService.sumMoney(userId);
-		int fee = sumMoney >= 30000 ? 0 : 3000;
+		int fee = sumMoney >= 30000 || list.size() == 0 ? 0 : 3000;
 		
 		model.addAttribute("list", list);
 		model.addAttribute("count", list.size());	// 장바구니 상품 유무
