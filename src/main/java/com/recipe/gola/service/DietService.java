@@ -35,6 +35,10 @@ public class DietService {
       Double targetKcal = 0.0;
       
       List<RecipeDTO> list = null;
+      RecipeDTO recipeDTO = new RecipeDTO();
+      recipeDTO.setKeyword(keyword);
+      recipeDTO.setMealType(mealType);
+      
       
       //   mealType = B 아침 L 점심 D 저녁
       if("B".equals(mealType)) {
@@ -53,7 +57,7 @@ public class DietService {
       
       while(true) {
          
-         list = dietMapper.list(mealType);
+         list = dietMapper.list(recipeDTO);
          
          double sumDbKcal = 0;
 

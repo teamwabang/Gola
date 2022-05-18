@@ -57,9 +57,10 @@
 			    </div>
 			    <!-- 장바구니 타이틀 끝 -->
 			    
-			    <div class="cart_cont">
+			   <div class="cart_cont">
 				    <!-- 상품 목록 시작 -->
-				    <div class="cart_product_on" th:if="${list != null}">
+				    <!-- 장바구니에 상품이 하나이상 담겼을때 출력 시작 -->
+				    <div class="cart_product_on" th:if="${count != 0}">
 					    <table style="width: 100%;">
 					    	<colgroup>
 					    		<col style="width: 3%;">
@@ -85,7 +86,7 @@
 				                </tr>
 				            </thead>
 				            <tbody th:each="list : ${list}">
-				            	<tr>
+				            		<tr>
 				            		<td>
 				                		<input type="checkbox" id="cb2">
 			    						<label for="cb2"></label>
@@ -98,23 +99,33 @@
 					            		<span th:text="${list.camount}"></span>개
 					            	</td>
 					            	<td>
-					            		<span th:text="${list.ProductDTO.pPrice}" id="itemcomma" ></span>원
-					            	</td>
-					            	<td>30원</td>
-					            	<td>
-					            		<span th:text="${list.ProductDTO.pPrice * list.camount}" ></span>원
+					            		<span th:text="${list.ProductDTO.pPrice}" id="itemcomma"></span>원
 					            	</td>
 					            	<td>
-					            		<span>3,000원</span><br>
-					            		<span th:style="@{color:gray;font-size:14px;}">30,000원 이상 무료배송</span>
+					            		<img src="/images/shop/icon_mileage.gif">
+					            		<span th:style="@{font-size:14px;}">적립
+					            			<span th:text="${list.ProductDTO.pPoints * list.camount}" th:style="@{font-size:16px;}"></span>원
+					            		</span>
+					            	</td>
+					            	<td>
+					            		<span th:text="${list.ProductDTO.pPrice * list.camount}"></span>원
+					            	</td>
+					            	<td>
+					            		<span th:text="${fee}"></span>원<br>
+					            		<span></span>
+					            		<span th:style="@{color:gray;font-size:14px;}">30,000원 이상<br>무료배송</span>
 					            	</td>
 				            	</tr>
 				        	</tbody>
 					    </table>
 					</div>
-				    <div class="cart_product_off" th:unless="${list != null}">
-				    	<p class="no_data">장바구니에 담겨있는 상품이 없습니다.</p>
+
+				  <!-- 장바구니에 상품이 하나이상 담겼을때 출력 끝 -->
+					<!-- 장바구니에 담긴 상품이 없을때 출력 시작 -->
+				    <div class="cart_product_off" th:unless="${count != 0}">
+				    	<p class="cart_no_data">장바구니에 담겨있는 상품이 없습니다.</p>
 				    </div>
+				    <!-- 장바구니에 담긴 상품이 없을때 출력 끝 -->
 				    <!-- 상품 목록 끝 -->
 				    
 				    <!-- 이전으로 돌아가기 버튼 시작 -->

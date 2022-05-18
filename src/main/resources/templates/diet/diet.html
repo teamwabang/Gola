@@ -100,13 +100,12 @@
 	   	 		html += "			<div class='mealPic'>";
 	   	 		html += "				<img class='recipePic' src='"+v.menuImg+"'  width='"+imgWIdth+"' height='"+imgHeight+"' />";
 	   	 		html += "			<div class='hovers'>";
-	   	 		html += "				<div class='recipeTitle'>"+v.menu+"</div>";
-	   	 		html += "				<div class='recipeEmpty'></div>";
+	   	 		html += "				<div class='recipeTitle'>"+v.kind+"</div>";
 	   	 		html += "				<div class='recipeKcal'>"+v.kcal+"Kcal</div>";
 	   	 		html += "			</div>";
 	   			html += "		</div>";
 	   	 		html += "		</a>"
-	   			html += "	<div class='mealTitle'>"+v.kind+"</div>";
+	   			html += "	<div class='mealTitle'>"+v.menu+"</div>";
 	   			html += "</div>";
 	   			totKcal += Number(v.kcal);
 	   	 	});
@@ -114,7 +113,7 @@
 	   	 	$(totKcal_id).text(totKcal.toFixed()); 
    	 	}
    	 	
-   	 	$(document).on('click', ".mealSelect >", function () {
+   	 	$(document).on('click', ".mealSelect", function () {
    	 		location.href="/recipe/detail?no=" +$(this).data("no");
    	 	});
    	 	
