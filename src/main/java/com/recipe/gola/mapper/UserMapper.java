@@ -15,9 +15,6 @@ public interface UserMapper {
 	// 회원가입
 	public int insertuser(UserDTO dto);
 	
-	// 회원가입 이메일 인증시 권한 업데이트
-	public void updateAuth(UserDTO dto);
-	
 	// 아이디 중복확인
 	public int idCheck(String userId);
 	
