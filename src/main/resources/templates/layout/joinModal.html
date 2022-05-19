@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <body class="joinBody">
@@ -57,7 +57,12 @@
                 <div class="joinInput">
                   <input class="joininput_email" type="text" name="userEmail" id="userEmail" maxlength="50" placeholder="예) GOLA###@gmail.com">
 	              <button type="button" id="sendMail" class="join_sendmail">인증번호 전송</button>
-	              <input class="joininput_emailcheck" type="text" name="authCode" id="authCode" maxlength="10" placeholder="인증코드를 입력해주세요.">
+
+	              <div class="checktime">
+	                <div id="check_time">남은시간</div>
+	                <input class="joininput_emailcheck" type="text" name="authCode" id="authCode" maxlength="10" placeholder="인증코드를 입력해주세요.">
+              	  </div>  	
+
                 </div>
                 <span id="userEmailCheck"></span>
               </div>
@@ -163,6 +168,8 @@
 				$(function() {
 					var isCertification = false;
 					var key = "";
+					var timer = null;
+					var isRunning = false;
 					const emailCheckResult = document.getElementById('userEmailCheck');
 					
 					$("#sendMail").click(function() {
@@ -180,18 +187,53 @@
 								dataType: 'json',
 								contentType: "application/json; charset=utf-8",
 								data: { email : userEmail },
-								
+
 								success : function(data) {
 									console.log(data.key);
 									key = data.key;
 								}
 							});
-							console.log(">>>>>>>>>>>>"+key);
-							alert("인증번호가 전송되었습니다.");
-							emailCheckResult.innerHTML = '이메일 인증을 완료해주세요';
-							emailCheckResult.style.color = 'red';
+							alert("인증번호가 전송되었습니다.")
+							isCertification = true;
+							console.log(">>>>>>>"+key);
+							
+							var display = $("#check_time");
+						    var leftSec = 180;
+
+						    $("#authCode").attr("disabled", false);
+						    // 남은 시간
+						    // 이미 타이머가 작동중이면 중지
+						    if (isRunning) {
+						      clearInterval(timer);
+						      display.html("");
+						      startTimer(leftSec, display);
+						    } else {
+						      startTimer(leftSec, display);
+						    }
 						}
-					})
+					});
+					
+					function startTimer(count, display) {
+						  var minutes, seconds;
+						  timer = setInterval(function () {
+						    minutes = parseInt(count / 60, 10);
+						    seconds = parseInt(count % 60, 10);
+
+						    minutes = minutes < 10 ? "0" + minutes : minutes;
+						    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+						    display.html(minutes + ":" + seconds);
+
+						    // 타이머 끝
+						    if (--count < 0) {
+						      clearInterval(timer);
+						      display.html("시간초과");
+						      $("#authCode").attr("disabled", "disabled");
+						      isRunning = false;
+						    }
+						  }, 1000);
+						  isRunning = true;
+						}
 					
 					$("#authCode").on("propertychange change keyup paste input", function() {
 							if ($("#authCode").val() == key) {

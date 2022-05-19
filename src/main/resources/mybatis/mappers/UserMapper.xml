@@ -17,7 +17,7 @@
 	<insert id="insertuser">
 	<![CDATA[
 		INSERT INTO user (userId, userPwd, userNickname, userEmail, userAuth, regdate)
-		VALUES(#{userId}, #{userPwd}, #{userNickname}, #{userEmail}, "USER", now())
+		VALUES(#{userId}, #{userPwd}, #{userNickname}, #{userEmail}, "GUEST", now())
 	]]>
 	</insert>
 	
