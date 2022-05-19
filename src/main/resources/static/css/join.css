@@ -156,6 +156,7 @@ input[type=password] {
   font-weight: bold;
 }
 
+
 /* 카카오 우편번호검색 API 시작 */
 .join_kakao_postalcode {
 	display: none;
@@ -172,4 +173,15 @@ input[type=password] {
 	right: 0px;
 	top: -1px;
 	z-index: 1;	
+}
+
+.checktime{
+	position : relative;
+}
+
+#check_time{
+	position: absolute;
+    right: 10px;
+    top: 10px;
+    color: rgba(0, 0, 0, 0.5);
 }

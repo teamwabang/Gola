@@ -57,8 +57,12 @@
                 <div class="joinInput">
                   <input class="joininput_email" type="text" name="userEmail" id="userEmail" maxlength="50" placeholder="예) GOLA###@gmail.com">
 	              <button type="button" id="sendMail" class="join_sendmail">인증번호 전송</button>
-	              <div id="check_time">여기시간</div>
-	              <input class="joininput_emailcheck" type="text" name="authCode" id="authCode" maxlength="10" placeholder="인증코드를 입력해주세요.">
+
+	              <div class="checktime">
+	                <div id="check_time">남은시간</div>
+	                <input class="joininput_emailcheck" type="text" name="authCode" id="authCode" maxlength="10" placeholder="인증코드를 입력해주세요.">
+              	  </div>  	
+
                 </div>
                 <span id="userEmailCheck"></span>
               </div>
@@ -191,8 +195,11 @@
 							});
 							alert("인증번호가 전송되었습니다.")
 							isCertification = true;
+							console.log(">>>>>>>"+key);
+							
 							var display = $("#check_time");
-						    var leftSec = 5;
+						    var leftSec = 180;
+
 						    $("#authCode").attr("disabled", false);
 						    // 남은 시간
 						    // 이미 타이머가 작동중이면 중지
