@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <body class="joinBody">
@@ -160,62 +160,51 @@
 				
 				<!-- 이메일인증 전송 시작 -->
 				<script type="text/javascript">
+				$(function() {
+					var isCertification = false;
+					var key = "";
+					const emailCheckResult = document.getElementById('userEmailCheck');
+					
 					$("#sendMail").click(function() {
-						$(function() {
-							var isCertification = false;
-							var key = "";
-							const emailCheckResult = document.getElementById('userEmailCheck');
+						var userEmail = $("#userEmail").val();
+						
+						if(userEmail == "") {
+							alert("이메일을 입력해주세요.");
+						} else {
+							userEmail = userEmail;
 							
-							$("#sendMail").click(function() {
-								var userEmail = $("#userEmail").val();
-								
-								if(userEmail == "") {
-									alert("이메일을 입력해주세요.");
-								} else {
-									userEmail = userEmail;
-									
-									$.ajax({
-										type: 'get',
-										url: '/mail',
-										accept: "application/json",
-										dataType: 'json',
-										contentType: "application/json; charset=utf-8",
-										data: { email : userEmail },
-										
-										success : function(data) {
-											console.log(data.key);
-											key = data.key;
-										}
-									});
-									alert("인증번호가 전송되었습니다.");
-									emailCheckResult.innerHTML = '이메일 인증을 완료해주세요.';
-									emailCheckResult.style.color = 'red';
+							$.ajax({
+								type: 'get',
+								url: '/mail',
+								accept: "application/json",
+								dataType: 'json',
+								contentType: "application/json; charset=utf-8",
+								data: { email : userEmail },
+
+								success : function(data) {
+									console.log(data.key);
+									key = data.key;
 								}
-							})
-							
-							$("#sendMail_success").click(function() {
-								var authCode = $("#authCode").val();
-								
-								if(authCode == "") {
-									alert("인증코드가 일치하지 않습니다.");
-								} else {
-									alert("인증코드가 일치하여 정상인증 되었습니다.");
-								} 
-							})
-		          
-							$("#authCode").on("propertychange change keyup paste input", function() {
-									if ($("#authCode").val() == key) {
-										emailCheckResult.innerHTML= '이메일 인증에 성공했습니다！';
-										emailCheckResult.style.color = 'blue';
-										 isCertification = true;
-									} else {
-										emailCheckResult.innerHTML = '이메일 인증 번호를 확인해주세요.';
-										emailCheckResult.style.color = 'red';
-										 isCertification = false;
-									}
 							});
-						});
+							alert("인증번호가 전송되었습니다.")
+							isCertification = true;
+							emailCheckResult.innerHTML = '이메일 인증을 완료해주세요';
+							emailCheckResult.style.color = 'red';
+						}
 					})
+					
+					$("#authCode").on("propertychange change keyup paste input", function() {
+							if ($("#authCode").val() == key) {
+								emailCheckResult.innerHTML= '이메일 인증에 성공했습니다！';
+								emailCheckResult.style.color = 'blue';
+								 isCertification = true;
+							} else {
+								emailCheckResult.innerHTML = '이메일 인증 번호를 확인해주세요';
+								emailCheckResult.style.color = 'red';
+								 isCertification = false;
+							}
+						});
+				});	
 				</script>
 				<!-- 이메일인증 전송 끝 -->
               
