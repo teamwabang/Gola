@@ -56,9 +56,8 @@
                 <h2 class="joinTitle"><span class="important">이메일</span></h2>
                 <div class="joinInput">
                   <input class="joininput_email" type="text" name="userEmail" id="userEmail" maxlength="50" placeholder="예) GOLA###@gmail.com">
-	              <button type="button" id="sendMail" class="join_sendmail">이메일전송</button>
-	              <input class="joininput_email" type="text" name="authCode" id="authCode" maxlength="10" placeholder="인증코드를 입력해주세요.">
-	              <button type="button" id="sendMail_success" class="join_sendmail">인증하기</button>
+	              <button type="button" id="sendMail" class="join_sendmail">인증번호 전송</button>
+	              <input class="joininput_emailcheck" type="text" name="authCode" id="authCode" maxlength="10" placeholder="인증코드를 입력해주세요.">
                 </div>
                 <span id="userEmailCheck"></span>
               </div>
@@ -161,6 +160,11 @@
 				
 				<!-- 이메일인증 전송 시작 -->
 				<script type="text/javascript">
+				$(function() {
+					var isCertification = false;
+					var key = "";
+					const emailCheckResult = document.getElementById('userEmailCheck');
+					
 					$("#sendMail").click(function() {
 						var userEmail = $("#userEmail").val();
 						
@@ -173,24 +177,34 @@
 								type: 'get',
 								url: '/mail',
 								accept: "application/json",
+								dataType: 'json',
 								contentType: "application/json; charset=utf-8",
 								data: { email : userEmail },
-								dataType: 'json'
+								
+								success : function(data) {
+									console.log(data.key);
+									key = data.key;
+								}
 							});
-							alert("인증번호가 전송되었습니다.")
-							isCertification = true;
+							console.log(">>>>>>>>>>>>"+key);
+							alert("인증번호가 전송되었습니다.");
+							emailCheckResult.innerHTML = '이메일 인증을 완료해주세요';
+							emailCheckResult.style.color = 'red';
 						}
 					})
 					
-					$("#sendMail_success").click(function() {
-						var authCode = $("#authCode").val();
-						
-						if(authCode == "") {
-							alert("인증코드가 일치하지 않습니다.");
-						} else {
-							alert("인증코드가 일치하여 정상인증 되었습니다.");
-						} 
-					})
+					$("#authCode").on("propertychange change keyup paste input", function() {
+							if ($("#authCode").val() == key) {
+								emailCheckResult.innerHTML= '이메일 인증에 성공했습니다！';
+								emailCheckResult.style.color = 'blue';
+								 isCertification = true;
+							} else {
+								emailCheckResult.innerHTML = '이메일 인증 번호를 확인해주세요';
+								emailCheckResult.style.color = 'red';
+								 isCertification = false;
+							}
+						});
+				});	
 				</script>
 				<!-- 이메일인증 전송 끝 -->
               

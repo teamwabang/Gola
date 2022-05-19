@@ -142,7 +142,7 @@ $('#userEmail').on('keyup' ,function() {
     			  checkResult.style.color = 'red';
 		        } else if(data == 0) {
 		          $("#emailCheck").attr("value", "Y");
-		          checkResult.innerHTML = '사용가능한 이메일입니다'
+		          checkResult.innerHTML = '사용가능한 이메일입니다. [인증번호 전송]을 눌러주세요'
     		 	  checkResult.style.color = 'blue';
 	        }
 	    }
