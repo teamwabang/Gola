@@ -11,6 +11,10 @@ input[type=password] {
   cursor: text;
 }
 
+#authCode{
+  display: block;
+  width: 100%
+}
 .joinForm {
   width: 450px;
 }

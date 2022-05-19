@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpSession;
+
 
 
 import org.slf4j.Logger;
@@ -73,8 +75,8 @@ public class MailController {
 	@GetMapping("mail")
 	public String mail(String email, Model model) throws MessagingException, IOException {
 		logger.info("-----> 회원가입 이메일 인증코드를 발송하였습니다.");
-		
-		MailDTO maildto = new MailDTO();
+		Map<String, Object> map = new HashMap<>();
+
 		Random random = new Random();
 		String key = "";
 		
@@ -85,6 +87,8 @@ public class MailController {
 		int numIndex = random.nextInt(9999) + 1000;
 		key += numIndex;
 		
+		MailDTO maildto = new MailDTO();
+
 		maildto.setAddress(email);
 		maildto.setTitle("골라, 회원가입 인증 메일입니다.");
 		
