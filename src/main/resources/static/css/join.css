@@ -47,10 +47,8 @@ input[type=password] {
 }
 
 .joinInput {
-  display: flex;
   flex-direction: column;
 }
-
 
 .joinIdInput {
   display: flex;
@@ -61,19 +59,22 @@ input[type=password] {
   width: 100%;
 }
 
+.joininput_email {
+	width: 67.4%;
+}
+
 .joininput_zipcode {
 	width: 40%;
 }
 
-.joininput_addr1 {
-	width: 100%;
-}
-
+.joininput_password,
+.joininput_addr1,
 .joininput_addr2 {
 	width: 100%;
 }
 
-.join_post_search {
+.join_post_search,
+.join_sendmail {
     padding: 7px 10px 7px 10px;
     border: 1px solid #dbdbdb;
     background: #efefef;
