@@ -21,16 +21,6 @@
 	]]>
 	</insert>
 	
-	<!-- 회원가입 이메일 인증시 권한 업데이트 -->
-	<update id="updateAuth" parameterType="UserDTO">
-	<![CDATA[
-		UPDATE user
-		SET
-		userAuth = "USER", modifiedDate = now()
-		WHERE userEmail=#{userEmail}
-	]]>
-	</update>
-	
 	<!-- 아이디 중복확인 -->
     <select id="idCheck" resultType="int">
     <![CDATA[
