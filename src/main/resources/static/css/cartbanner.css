@@ -1,14 +1,34 @@
 .sideBanner {
-	position: absolute;
-    width: 150px;
+position: absolute;
+    width: 130px;
     height: 50px;
     top: 300px;
     right: 30px;
-    padding: 10px;
-    border: 4px solid #77b347;
+    background-color: #9bcf71;
+    border: 1px solid #9bcf71;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 .leftbannerlink{
-	color :#426327!important;
-	font-weight : bold;
+    background-color: #9bcf71;
+    border: 1px solid #9bcf71;
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 13px 15px;
+    color:white !important;
 }
+
+.sideBanner:hover{
+	background-color: #77b347;
+    border: 1px solid #77b347;
+} 
+
+.leftbannerlink:hover{
+	background-color: #77b347;
+    border: 1px solid #77b347;
+} 
+	
