@@ -31,6 +31,11 @@ public class UserService {
 		return userMapper.insertuser(dto);
 	}
 	
+	// 회원가입 이메일 인증시 권한 업데이트
+	public void updateAuth(UserDTO dto) {
+		userMapper.updateAuth(dto);
+	}
+	
 	// 아이디 중복확인
 	public int idCheck(String userId) {
 		int result = userMapper.idCheck(userId);

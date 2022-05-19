@@ -160,6 +160,7 @@
 				
 				<!-- 이메일인증 전송 시작 -->
 				<script type="text/javascript">
+					/* $("#sendMail").click(function() {
 				$(function() {
 					var isCertification = false;
 					var key = "";
@@ -193,6 +194,16 @@
 						}
 					})
 					
+					$("#sendMail_success").click(function() {
+						var authCode = $("#authCode").val();
+						
+						if(authCode == "") {
+							alert("인증코드가 일치하지 않습니다.");
+						} else {
+							alert("인증코드가 일치하여 정상인증 되었습니다.");
+						} 
+					}) */
+          
 					$("#authCode").on("propertychange change keyup paste input", function() {
 							if ($("#authCode").val() == key) {
 								emailCheckResult.innerHTML= '이메일 인증에 성공했습니다！';
@@ -215,6 +226,30 @@
                 <button type="reset" class="btn btn-secondary">초기화</button>
               </div>
             </form>
+            
+            <script type="text/javascript">
+              	$("#joinSubmit").click(function() {
+					var userEmail = $("#userEmail").val();
+					
+					if(userEmail == "") {
+						alert("이메일을 입력해주세요.");
+					} else {
+						userEmail = userEmail;
+						
+						$.ajax({
+							type: 'get',
+							url: '/mail',
+							accept: "application/json",
+							contentType: "application/json; charset=utf-8",
+							data: { email : userEmail },
+							dataType: 'json'
+						});
+						alert("인증번호가 전송되었습니다.")
+						isCertification = true;
+					}
+				})
+			</script>
+			
           </div>
         </div>
       </div>
