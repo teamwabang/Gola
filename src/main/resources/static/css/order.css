@@ -62,8 +62,8 @@
 }
 
 /* 장바구니에서 담은 상품 목록 시작 */
-.no_data {
-	padding: 60px 0;
+.order_no_data {
+	padding: 100px 0;
     margin: 0 0 20px 0;
     margin-bottom: 0;
     text-align: center;
@@ -75,6 +75,14 @@
     margin: 0px 0 5px 0;
     padding: 0 0 10px 0;
     font-size: 16px;
+}
+
+.order_product_on th,
+.order_product_on td {
+	height: 35px;
+	text-align: center;
+	vertical-align: middle;
+	padding-bottom: 0;
 }
 
 /* 배송정보 시작 */
@@ -284,11 +292,9 @@ th > .important {
 .order_table_type td {
     height: 31px;
     padding: 15px 10px 14px 10px;
-    color: #777777;
     border-bottom: 1px solid #dbdbdb;
     /* border-left: 1px dotted #ededed; */
     background: #ffffff;
-    font-size: 14px;
     vertical-align: middle;
 }
 

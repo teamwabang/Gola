@@ -21,6 +21,7 @@ public interface CartMapper {
 	// 장바구니에 동일한 상품이 존재하면 수정
 	public void update(CartDTO cartdto);
 
+	// 장바구니 전체 금액
 	public int sumMoney(String userId);
 	
 }
