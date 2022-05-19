@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <body class="joinBody">
@@ -180,14 +180,14 @@
 								dataType: 'json',
 								contentType: "application/json; charset=utf-8",
 								data: { email : userEmail },
-								
+
 								success : function(data) {
 									console.log(data.key);
 									key = data.key;
 								}
 							});
-							console.log(">>>>>>>>>>>>"+key);
-							alert("인증번호가 전송되었습니다.");
+							alert("인증번호가 전송되었습니다.")
+							isCertification = true;
 							emailCheckResult.innerHTML = '이메일 인증을 완료해주세요';
 							emailCheckResult.style.color = 'red';
 						}
