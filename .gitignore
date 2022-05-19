@@ -6,7 +6,6 @@ target/
 mvnw
 mvnw.cmd
 LOG_PATH*/
-application-profile.properties
 
 ### STS ###
 .apt_generated
