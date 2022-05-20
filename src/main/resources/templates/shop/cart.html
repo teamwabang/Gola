@@ -4,11 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
   <meta property="og:title" content="우리들의 모든 레시피 | 골라">
+  <!-- <meta property="og:image" content=""> -->
   <meta property="og:description" content="우리들의 모든 레시피, 골라">
   <meta property="og:type" content="website">
-  <link rel="icon" href="/images/favicon.ico" type="image/x-icon" sizes="16x16">
   <!-- title -->
   <title>장바구니 | 골라</title>
 
@@ -24,9 +25,6 @@
   <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
   <!-- <script type="text/javascript" src="/js/click_disable.js"></script>
   <script type="text/javascript" src="/js/developer_tools.js"></script> -->
-  <!-- Featherlight.js -->
-  <script src="/js/featherlight.js"></script>
-  <link rel="stylesheet" href="/css/featherlight.css">
 
 </head>
 
@@ -73,8 +71,8 @@
 			    			<thead>
 				                <tr>
 				                	<th>
-				                		<input type="checkbox" id="cb1">
-			    						<label for="cb1"></label>
+				                		<input type="checkbox" id="cb0">
+			    						<label for="cb0"></label>
 				                	</th>
 				                    <th>상품/옵션 정보</th>
 				                    <th>수량</th>
@@ -84,23 +82,24 @@
 				                    <th>배송비</th>
 				                </tr>
 				            </thead>
-				            <tbody th:each="list : ${list}">
+				            <tbody th:each="list,stat : ${list}" >
 				            		<tr>
 				            		<td>
-				                		<input type="checkbox" id="cb2">
-			    						<label for="cb2"></label>
-			    						<input type="hidden" th:value="${list.pno}" id="pno">
+				                		<input type="checkbox" th:id="|cb${stat.count}|" name="chckBox">
+			    						<label th:for="|cb${stat.count}|" th:class="|label${stat.count}|"></label>
+			    						<input type="hidden" th:value="${list.pno}">
 				                	</td>
 					            	<td>
 					            		<img th:src="${list.ProductDTO.pImage}" style="width:250px;height:250px">
 				            			<span th:text="${list.ProductDTO.pName}"></span>
 					            	</td>
 					            	<td>
-					            		<input type="text" th:value="${list.camount}" class="camount_input" id="camount"><br>
+					            		<input type="text" th:value="${list.camount}" class="camount_input" ><br>
 					            		<button type="button" class="camount_change" id="camount_change">변경</button>
+
 					            	</td>
 					            	<td>
-					            		<span th:text="${list.ProductDTO.pPrice}" id="itemcomma"></span>원
+					            		<span th:text="${list.ProductDTO.pPrice}" th:class="|itemprice${stat.count}|"></span>원
 					            	</td>
 					            	<td>
 					            		<img src="/images/shop/icon_mileage.gif">
@@ -109,10 +108,10 @@
 					            		</span>
 					            	</td>
 					            	<td>
-					            		<span th:text="${list.ProductDTO.pPrice * list.camount}" id="itemcomma2"></span>원
+					            		<span th:text="${list.ProductDTO.pPrice * list.camount}" th:class="|itemsum${stat.count}|"></span>원
 					            	</td>
 					            	<td>
-					            		<span th:text="${fee}"></span>원<br>
+					            		<span th:text="${fee}" th:class="|itemdelivery${stat.count}|"></span>원<br>
 					            		<span></span>
 					            		<span th:style="@{color:gray;font-size:14px;}">30,000원 이상<br>무료배송</span>
 					            	</td>
@@ -142,14 +141,14 @@
 								<p class="final_payment_ti">총 상품 금액</p>
 								<p class="final_payment_price">
 									<input type="hidden" class="cart_normal_price" value="0">
-									<span class="cart_normal_add_opt_price" th:text="${sumMoney}" id="itemcomma3"></span>원
+									<span class="cart_normal_add_opt_price" th:text="${sumMoney}"></span>원
 								</p>
 							</li>
 							<li><img src="/images/shop/order_price_plus.png" alt="더하기"></li>
 							<li>
 								<p class="final_payment_ti">배송비</p>
 								<input type="hidden" class="cart_total_save" value="0">
-								<p class="final_payment_price"><span class="cart_total_add_opt_save" th:text="${fee}" id="itemcomma4"></span>원</p>
+								<p class="final_payment_price"><span class="cart_total_add_opt_save" th:text="${fee}"></span>원</p>
 							</li>
 							<li><img src="/images/shop/order_price_total.png" alt="합계"></li>
 							<li>
@@ -176,53 +175,102 @@
 	<script type="text/javascript" src="/js/join.js"></script>
 	<script type="text/javascript" src="/js/logineye.js"></script>
 
-	<script type="text/javascript">
-		var money = $('#itemcomma').text();
-		var moneycomma = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		$('#itemcomma').text(moneycomma);
-		
-		var money2 = $('#itemcomma2').text();
-		var moneycomma2 = money2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		$('#itemcomma2').text(moneycomma2);
-		
-		var money3 = $('#itemcomma3').text();
-		var moneycomma3 = money3.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		$('#itemcomma3').text(moneycomma3);
-		
-		var money4 = $('#itemcomma4').text();
-		var moneycomma4 = money4.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		$('#itemcomma4').text(moneycomma4);
-		
-		var money5 = $('#pay_amt').text();
-		var moneycomma5 = money5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		$('#pay_amt').text(moneycomma5);
-	</script>
+<script type="text/javascript">
+
+//stat 가 count이므로 1부터 시작
+for (let i = 1; i < 1000; i++){ 
+
+$(function() {
+	//input css 변경
+    $("#cb"+i).css({
+    	  "display": "none"
+    });
+
+	//label css 변경
+    $(".label"+i).css({
+        "display": "inline-block",
+    	"width": "18px",
+    	"height": "18px",
+    	"border": "2px solid #bcbcbc",
+    	"cursor": "pointer",
+    	"margin": "8px 0 0 8px"
+        });
+});
+
+//체크박스 선택시 css 변경
+$("#cb"+i).change(function() {
+	//value
+    var value = $(this).val();       
+    //checked 상태 (true, false)
+    var checked = $(this).prop('checked');  
+    //label 선택
+    var $label = $(this).next();            
+ 
+    // checked ? $label.css('background-color', value) : $label.css('background-color', 'white');
+    if(checked)
+        $label.css('background-color', '#666666');      // label의 배경색을 바꾼다.
+    else
+        $label.css('background-color', 'white');    // label의 배경색을 초기화 한다.
+});
+
+
+//상품금액 천단위 콤마
+var money = $('.itemprice'+i).text();
+console.log(money);
+var moneycomma = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+$('.itemprice'+i).text(moneycomma);
+
+//합계금액 천단위 콤마
+var money = $('.itemsum'+i).text();
+console.log(money);
+var moneycomma = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+$('.itemsum'+i).text(moneycomma);
+
+//배송비 천단위 콤마
+var money = $('.itemdelivery'+i).text();
+console.log(money);
+var moneycomma = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+$('.itemdelivery'+i).text(moneycomma);
+
+}
+//for문 끝
+
+//체크박스 전체선택/전체해제 - !!제대로 작동안됨!! 
+$("#cb0").click(function() {
+    if($("#cb0").is(":checked")){
+        $("input[name=chckBox]").prop("checked", true);
+    }
+    else{
+        $("input[name=chckBox]").prop("checked", false);
+    }
+});
+
+//개별 체크박스를 모두 선택 시 최상단 체크박스가 선택됨
+$("input[name=chckBox]").click(function() {
+	var total = $("input[name=chckBox]").length;
+	var checked = $("input[name=chckBox]:checked").length;
 	
-	<script type="text/javascript">
-		$("#camount_change").click(function() {
-			var pno = $("#pno").val();
-			var camount = $("#camount").val();
-			
-			var data = {
-					pno : pno,
-					camount : camount
-				};
-			
-			$.ajax({
-				url : "/shop/cart/modify",
-				type : "post",
-				data : data,
-				success : function(result) {
-					alert("수량변경 성공");
-					location.href = location.href;
-				},
-				error : function() {
-					alert("수량변경 실패");
-					location.href = location.href;
-				}
-			});
-		})
-	</script>
+	if(total != checked) $("#cb0").prop("checked", false);
+	else $("#cb0").prop("checked", true); 
+});
+
+
+//총 상품 금액 천단위 콤마
+var money5 = $('.cart_normal_add_opt_price').text();
+var moneycomma5 = money5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+$('.cart_normal_add_opt_price').text(moneycomma5);
+
+//배송비 천단위 콤마
+var money5 = $('.cart_total_add_opt_save').text();
+var moneycomma5 = money5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+$('.cart_total_add_opt_save').text(moneycomma5);
+
+//최종 결제 금액 천단위 콤마
+var money5 = $('#pay_amt').text();
+var moneycomma5 = money5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+$('#pay_amt').text(moneycomma5);
+
+</script>
 
 </body>
 
