@@ -4,12 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover" />
   <meta property="og:title" content="우리들의 모든 레시피 | 골라">
-  <!-- <meta property="og:image" content=""> -->
   <meta property="og:description" content="우리들의 모든 레시피, 골라">
   <meta property="og:type" content="website">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon" sizes="16x16">
   <!-- title -->
   <title>장바구니 | 골라</title>
 
@@ -96,7 +95,8 @@
 				            			<span th:text="${list.ProductDTO.pName}"></span>
 					            	</td>
 					            	<td>
-					            		<span th:text="${list.camount}"></span>개
+					            		<input type="text" th:value="${list.camount}" class="camount_input" id="camount">
+					            		<button type="button" id="camount_change">변경</button>
 					            	</td>
 					            	<td>
 					            		<span th:text="${list.ProductDTO.pPrice}" id="itemcomma"></span>원
@@ -175,29 +175,46 @@
 	<script type="text/javascript" src="/js/join.js"></script>
 	<script type="text/javascript" src="/js/logineye.js"></script>
 
-<script type="text/javascript">
-
-var money = $('#itemcomma').text();
-var moneycomma = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-$('#itemcomma').text(moneycomma);
-
-var money2 = $('#itemcomma2').text();
-var moneycomma2 = money2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-$('#itemcomma2').text(moneycomma2);
-
-var money3 = $('#itemcomma3').text();
-var moneycomma3 = money3.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-$('#itemcomma3').text(moneycomma3);
-
-var money4 = $('#itemcomma4').text();
-var moneycomma4 = money4.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-$('#itemcomma4').text(moneycomma4);
-
-var money5 = $('#pay_amt').text();
-var moneycomma5 = money5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-$('#pay_amt').text(moneycomma5);
-
-</script>
+	<script type="text/javascript">
+		var money = $('#itemcomma').text();
+		var moneycomma = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		$('#itemcomma').text(moneycomma);
+		
+		var money2 = $('#itemcomma2').text();
+		var moneycomma2 = money2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		$('#itemcomma2').text(moneycomma2);
+		
+		var money3 = $('#itemcomma3').text();
+		var moneycomma3 = money3.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		$('#itemcomma3').text(moneycomma3);
+		
+		var money4 = $('#itemcomma4').text();
+		var moneycomma4 = money4.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		$('#itemcomma4').text(moneycomma4);
+		
+		var money5 = $('#pay_amt').text();
+		var moneycomma5 = money5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		$('#pay_amt').text(moneycomma5);
+	</script>
+	
+	<script type="text/javascript">
+		$("#camount_change").click(function() {
+			var camount = $("#camount").val();
+			var data = { camount : camount };
+			
+			$.ajax({
+				url : "/shop/cart/modify",
+				type : "post",
+				data : data,
+				success : function(result) {
+					alert("수량변경 성공");
+				},
+				error : function() {
+					alert("수량변경 실패");
+				}
+			});
+		})
+	</script>
 
 </body>
 
