@@ -34,8 +34,9 @@
 }
 
 .shopItemImage {
-  width: 600px;
+  width: 570px;
   height: 520px;
+  border: 1px solid #dbdbdb;
 }
 
 .shopItemImage img {

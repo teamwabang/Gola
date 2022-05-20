@@ -111,48 +111,15 @@
 	<header th:replace="layout/fragment2 :: fr_header"></header>
 	<!-- end of import header -->
 	
+	<!-- import leftbanner -->
+	<nav th:replace="layout/cartbanner :: fr_leftbanner2"></nav>
+	<!-- end of import leftbanner -->
+	
 	<!-- center title -->
 	<div>
 		<span class="ordertitle">ORDER</span>
 	</div>
 	
-	<!-- <div>
-		<form id="frmOrder" name="frmOrder" th:action="@{/order/result}" method="get" target="ifrmProcess">
-	        <input type="hidden" name="csrfToken" value="MTY1MjMyOTYwNDAzOTg4NTgwMTg1NjYwNzc1MTE3NzM1MzE5NDMyNDYy" />
-	        <input type="hidden" name="orderChannelFl" value="shop" />
-	        <input type="hidden" name="orderCountryCode" value="" />
-	        <input type="hidden" name="orderZipcode" value="" />
-	        <input type="hidden" name="orderZonecode" value="" />
-	        <input type="hidden" name="orderState" value="" />
-	        <input type="hidden" name="orderCity" value="" />
-	        <input type="hidden" name="orderAddress" value="" />
-	        <input type="hidden" name="orderAddressSub" value="" />
-	        <input type="hidden" name="orderPhonePrefixCode" value="kr" />
-	        <input type="hidden" name="orderPhonePrefix" value="82" />
-	        <input type="hidden" name="orderCellPhonePrefixCode" value="kr" />
-	        <input type="hidden" name="orderCellPhonePrefix" value="82" />
-	        <input type="hidden" name="receiverCountryCode" value="kr" />
-	        <input type="hidden" name="receiverPhonePrefixCode" value="kr" />
-	        <input type="hidden" name="receiverPhonePrefix" value="82" />
-	        <input type="hidden" name="receiverCellPhonePrefixCode" value="kr" />
-	        <input type="hidden" name="receiverCellPhonePrefix" value="82" />
-	        <input type="hidden" name="receiverState" value="" />
-	        <input type="hidden" name="receiverCity" value="" />
-	        <input type="hidden" name="chooseMileageCoupon" value="n" />
-	        <input type="hidden" name="chooseCouponMemberUseType" value="all" />
-	        <input type="hidden" name="totalCouponGoodsDcPrice" value="0" />
-	        <input type="hidden" name="totalCouponGoodsMileage" value="0" />
-	        <input type="hidden" name="totalMemberDcPrice" value="0" />
-	        <input type="hidden" name="totalMemberBankDcPrice" value="0" />
-	        <input type="hidden" name="totalMemberOverlapDcPrice" value="0" />
-	        <input type="hidden" name="deliveryFree" value="n" />
-	        <input type="hidden" name="totalDeliveryFreePrice" value="" />
-	        <input type="hidden" name="cartGoodsCnt" value="1" />
-	        <input type="hidden" name="cartAddGoodsCnt" value="0" />
-	        <input type="hidden" name="productCouponChangeLimitType" value="n" />
-	        <input type="hidden" name="resetMemberBankDcPrice" value="" />
-	        <input type="hidden" name="deliveryVisit" value="n" />
-	        <input type="hidden" name="returnUrl" th:value="@{/order}" /> -->
 	<div class="order_content">
 		<!-- 주문서작성/결제 타이틀 시작 -->
 	    <div class="order_title">
@@ -194,11 +161,11 @@
 				                    <th>배송비</th>
 				                </tr>
 				            </thead>
-				            <tbody th:each="list : ${list}">
-				            	<tr>
+				            <tbody>
+				            	<tr th:each="list,stat : ${list}">
 					            	<td>
-					            		<img th:src="${list.ProductDTO.pImage}" style="width:250px;height:250px">
-				            			<span th:text="${list.ProductDTO.pName}"></span>
+					            		<span class="order_product_on_pimage"><img th:src="${list.ProductDTO.pImage}"></span>
+				            			<span th:text="${list.ProductDTO.pName}" class="order_product_on_pname"></span>
 					            	</td>
 					            	<td>
 					            		<span th:text="${list.camount}"></span>개
@@ -215,8 +182,8 @@
 					            	<td>
 					            		<span th:text="${list.ProductDTO.pPrice * list.camount}"></span>원
 					            	</td>
-					            	<td>
-					            		<span th:text="${fee}"></span>원<br>
+					            	<td th:rowspan="${count}" th:id="|free${stat.count}|">
+					            		<span th:text="${fee}" th:class="|itemdelivery${stat.count}|"></span>원<br>
 					            		<span></span>
 					            		<span th:style="@{color:gray;font-size:14px;}">30,000원 이상<br>무료배송</span>
 					            	</td>
@@ -631,7 +598,42 @@
 	        /* ezhld_set_last_settlekind(settle); */
 	    }
 	   	
-	   	
+	 	// rowspan 2이상일 경우 display none
+	 	for (let i = 1; i <= 1000; i++) {
+			$(function() {
+				if(i >= 2) {
+					$("#free2").css('display', 'none');
+					$("#free3").css('display', 'none');
+					$("#free4").css('display', 'none');
+					$("#free5").css('display', 'none');
+					$("#free6").css('display', 'none');
+					$("#free7").css('display', 'none');
+					$("#free8").css('display', 'none');
+					$("#free9").css('display', 'none');
+					$("#free10").css('display', 'none');
+					$("#free11").css('display', 'none');
+					$("#free12").css('display', 'none');
+					$("#free13").css('display', 'none');
+					$("#free14").css('display', 'none');
+					$("#free15").css('display', 'none');
+					$("#free16").css('display', 'none');
+					$("#free17").css('display', 'none');
+					$("#free18").css('display', 'none');
+					$("#free19").css('display', 'none');
+					$("#free20").css('display', 'none');
+					$("#free21").css('display', 'none');
+					$("#free22").css('display', 'none');
+					$("#free23").css('display', 'none');
+					$("#free24").css('display', 'none');
+					$("#free25").css('display', 'none');
+					$("#free26").css('display', 'none');
+					$("#free27").css('display', 'none');
+					$("#free28").css('display', 'none');
+					$("#free29").css('display', 'none');
+					$("#free30").css('display', 'none');
+				}
+			})
+	 	}
    	</script>
 	
 	<!-- Bootstrap -->
