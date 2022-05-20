@@ -62,8 +62,7 @@
 }
 
 /* 상품목록 시작 */
-input[id="cb1"] + label,
-input[id="cb2"] + label {
+input[id="cb0"] + label {
 	display: inline-block;
 	width: 18px;
 	height: 18px;
@@ -72,13 +71,11 @@ input[id="cb2"] + label {
 	margin: 8px 0 0 8px;
 }
 
-input[id="cb1"]:checked + label,
-input[id="cb2"]:checked + label {
+input[id="cb0"]:checked + label {
 	background-color: #666666;
 }
 
-input[id="cb1"],
-input[id="cb2"] {
+input[id="cb0"] {
 	display: none;
 }
 
