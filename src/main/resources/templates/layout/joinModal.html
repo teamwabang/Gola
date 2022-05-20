@@ -197,6 +197,8 @@
 							alert("인증번호가 전송되었습니다.")
 							isCertification = true;
 							console.log(">>>>>>>"+key);
+							emailCheckResult.innerHTML = '이메일 인증을 완료해주세요';
+							emailCheckResult.style.color = 'red';
 							
 							var display = $("#check_time");
 						    var leftSec = 180;
