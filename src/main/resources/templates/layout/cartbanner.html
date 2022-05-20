@@ -8,36 +8,56 @@
 
 <body>
 
-<nav th:fragment="fr_leftbanner">
+	<nav th:fragment="fr_leftbanner1">
+		<div class="sideBanner">
+			<a th:href="@{/shop/cart}" class="leftbannerlink"> 장바구니로 가기 </a>
+		</div>
+		
+		<script type="text/javascript">
+		//기본 위치(top)값
+		var floatPosition = parseInt($(".sideBanner").css('top'))
 
-   <div class="sideBanner">
-    <a th:href="@{/shop/cart}" class="leftbannerlink">
-      장바구니로 가기 
-    </a>
-  </div>
+		// scroll 인식
+		$(window).scroll(function() {
 
-<script type="text/javascript">
+			// 현재 스크롤 위치
+			var currentTop = $(window).scrollTop();
+			var bannerTop = currentTop + floatPosition + "px";
 
-//기본 위치(top)값
-var floatPosition = parseInt($(".sideBanner").css('top'))
+			//이동 애니메이션
+			$(".sideBanner").stop().animate({
+				"top" : bannerTop
+			}, 500);
 
-// scroll 인식
-$(window).scroll(function() {
-  
-    // 현재 스크롤 위치
-    var currentTop = $(window).scrollTop();
-    var bannerTop = currentTop + floatPosition + "px";
+		}).scroll();
+	</script>
+	
+	</nav>
+	
+	<nav th:fragment="fr_leftbanner2">
+		<div class="sideBanner2">
+			<a th:href="@{/shop/cart}" class="leftbannerlink2"> 주문목록 가기 </a>
+		</div>
+		
+		<script type="text/javascript">
+		//기본 위치(top)값
+		var floatPosition2 = parseInt($(".sideBanner2").css('top'))
 
-    //이동 애니메이션
-    $(".sideBanner").stop().animate({
-      "top" : bannerTop
-    }, 500);
+		// scroll 인식
+		$(window).scroll(function() {
 
-}).scroll();
+			// 현재 스크롤 위치
+			var currentTop = $(window).scrollTop();
+			var bannerTop2 = currentTop + floatPosition2 + "px";
 
-</script>
-</nav>
+			//이동 애니메이션
+			$(".sideBanner2").stop().animate({
+				"top" : bannerTop2
+			}, 500);
 
+		}).scroll();
+	</script>
+	</nav>
 
 </body>
 

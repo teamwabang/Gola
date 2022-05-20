@@ -34,6 +34,10 @@
 	<header th:replace="layout/fragment2 :: fr_header"></header>
 	<!-- end of import header -->
 	
+	<!-- import leftbanner -->
+	<nav th:replace="layout/cartbanner :: fr_leftbanner2"></nav>
+	<!-- end of import leftbanner -->
+	
 	<!-- center title -->
 	<div>
 		<span class="carttitle">CART</span>
@@ -61,7 +65,7 @@
 					    <table style="width: 100%;">
 					    	<colgroup>
 					    		<col style="width: 3%;">
-			    				<col style="width: 38%;">
+			    				<col style="width: 41%;">
 			    				<col style="width: 11%;">
 			    				<col style="width: 11%;">
 			    				<col style="width: 11%;">
@@ -84,16 +88,16 @@
 				                    <th></th>
 				                </tr>
 				            </thead>
-				            <tbody th:each="list,stat : ${list}" >
-				            		<tr>
+				            <tbody>
+				            	<tr th:each="list,stat : ${list}">
 				            		<td>
 				                		<input type="checkbox" th:id="|cb${stat.count}|" name="chckBox">
 			    						<label th:for="|cb${stat.count}|" th:class="|label${stat.count}|"></label>
 			    						<input type="hidden" th:value="${list.pno}" th:id="|pno${stat.count}|">
 				                	</td>
 					            	<td>
-					            		<img th:src="${list.ProductDTO.pImage}" style="width:250px;height:250px">
-				            			<span th:text="${list.ProductDTO.pName}"></span>
+					            		<span class="cart_product_on_pimage"><img th:src="${list.ProductDTO.pImage}"></span>
+				            			<span th:text="${list.ProductDTO.pName}" class="cart_product_on_pname"></span>
 					            	</td>
 					            	<td>
 					            		<input type="text" th:value="${list.camount}" class="camount_input" th:id="|camount${stat.count}|"><br>
@@ -112,7 +116,7 @@
 					            	<td>
 					            		<span th:text="${list.ProductDTO.pPrice * list.camount}" th:class="|itemsum${stat.count}|"></span>원
 					            	</td>
-					            	<td>
+					            	<td th:rowspan="${count}" th:id="|free${stat.count}|">
 					            		<span th:text="${fee}" th:class="|itemdelivery${stat.count}|"></span>원<br>
 					            		<span></span>
 					            		<span th:style="@{color:gray;font-size:14px;}">30,000원 이상<br>무료배송</span>
@@ -246,7 +250,7 @@
 			var moneycomma = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 			$('.itemdelivery'+i).text(moneycomma);
 			
-			// 장바구니 수량 수정
+			// 장바구니 상품 수량 수정
 			$("#camount_change" + i).click(function() {
 				var pno = $("#pno" + i).val();
 				var camount = $("#camount" + i).val();
@@ -266,20 +270,56 @@
 				});
 			})
 			
+			// 장바구니 상품 삭제
 			$("#cart_order_delete" + i).click(function() {
-			var pno = $("#pno" + i).val();
+				var pno = $("#pno" + i).val();
+				
+				var data = { pno : pno };
+				
+				$.ajax({
+					url : "/shop/cart/delete",
+					type : "post",
+					data : data,
+					success : function(result) {
+						location.href=location.href;
+					}	
+				});
+			})
 			
-			var data = { pno : pno };
-			
-			$.ajax({
-				url : "/shop/cart/delete",
-				type : "post",
-				data : data,
-				success : function(result) {
-					location.href=location.href;
-				}	
-			});
-		})
+			// rowspan 2이상일 경우 display none
+			$(function() {
+				if(i >= 2) {
+					$("#free2").css('display', 'none');
+					$("#free3").css('display', 'none');
+					$("#free4").css('display', 'none');
+					$("#free5").css('display', 'none');
+					$("#free6").css('display', 'none');
+					$("#free7").css('display', 'none');
+					$("#free8").css('display', 'none');
+					$("#free9").css('display', 'none');
+					$("#free10").css('display', 'none');
+					$("#free11").css('display', 'none');
+					$("#free12").css('display', 'none');
+					$("#free13").css('display', 'none');
+					$("#free14").css('display', 'none');
+					$("#free15").css('display', 'none');
+					$("#free16").css('display', 'none');
+					$("#free17").css('display', 'none');
+					$("#free18").css('display', 'none');
+					$("#free19").css('display', 'none');
+					$("#free20").css('display', 'none');
+					$("#free21").css('display', 'none');
+					$("#free22").css('display', 'none');
+					$("#free23").css('display', 'none');
+					$("#free24").css('display', 'none');
+					$("#free25").css('display', 'none');
+					$("#free26").css('display', 'none');
+					$("#free27").css('display', 'none');
+					$("#free28").css('display', 'none');
+					$("#free29").css('display', 'none');
+					$("#free30").css('display', 'none');
+				}
+			})
 		}
 		//for문 끝
 		

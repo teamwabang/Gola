@@ -41,7 +41,8 @@
 	
 	
 	<!-- import leftbanner -->
-	<nav th:replace="layout/cartbanner :: fr_leftbanner"></nav>
+	<nav th:replace="layout/cartbanner :: fr_leftbanner1"></nav>
+	<nav th:replace="layout/cartbanner :: fr_leftbanner2"></nav>
 	<!-- end of import leftbanner -->
 	
 
@@ -145,7 +146,7 @@
             
             const innerBuyButtonleftLink = document.createElement("a")
             innerBuyButtonleftLink.setAttribute("class", "buyIconLeft");
-            innerBuyButtonleftLink.setAttribute("href", "shop/detail?pno=" + shopitem.pno);
+            innerBuyButtonleftLink.setAttribute("href", "/shop/detail?pno=" + shopitem.pno);
             innerBuyButtonleftLink.textContent = "상세보기";
             innerBuyButtonleft.appendChild(innerBuyButtonleftLink);
 
@@ -156,7 +157,7 @@
             
             const innerBuyButtonRightLink = document.createElement("a")
             innerBuyButtonRightLink.setAttribute("class", "buyIconRight");
-            innerBuyButtonRightLink.setAttribute("href",  "shop/detail?pno=" + shopitem.pno);
+            innerBuyButtonRightLink.setAttribute("href",  "/shop/detail?pno=" + shopitem.pno);
             innerBuyButtonRightLink.textContent = "구매하기";
             innerBuyButtonRight.appendChild(innerBuyButtonRightLink);
 
