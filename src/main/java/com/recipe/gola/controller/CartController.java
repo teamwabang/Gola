@@ -103,5 +103,15 @@ public class CartController {
 		
 		return "redirect:/shop/cart";
 	}
+	
+	// 장바구니 상품 삭제
+	@PostMapping("cart/delete")
+	public String delete(@AuthenticationPrincipal PrincipalDetails principaldetail, CartDTO cartdto) {
+		String userId = principaldetail.getUsername();
+		cartdto.setUserId(userId);
+		cartService.delete(cartdto);
+		
+		return "redirect:/shop/cart";
+	}
 
 }

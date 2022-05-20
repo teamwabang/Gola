@@ -61,12 +61,13 @@
 					    <table style="width: 100%;">
 					    	<colgroup>
 					    		<col style="width: 3%;">
-			    				<col style="width: 41%;">
+			    				<col style="width: 38%;">
 			    				<col style="width: 11%;">
 			    				<col style="width: 11%;">
 			    				<col style="width: 11%;">
 			    				<col style="width: 11%;">
 			    				<col style="width: 11%;">
+			    				<col style="width: 3%;">
 			    			</colgroup>
 			    			<thead>
 				                <tr>
@@ -80,6 +81,7 @@
 				                    <th>할인/적립</th>
 				                    <th>합계금액</th>
 				                    <th>배송비</th>
+				                    <th></th>
 				                </tr>
 				            </thead>
 				            <tbody th:each="list,stat : ${list}" >
@@ -87,15 +89,15 @@
 				            		<td>
 				                		<input type="checkbox" th:id="|cb${stat.count}|" name="chckBox">
 			    						<label th:for="|cb${stat.count}|" th:class="|label${stat.count}|"></label>
-			    						<input type="hidden" th:value="${list.pno}">
+			    						<input type="hidden" th:value="${list.pno}" th:id="|pno${stat.count}|">
 				                	</td>
 					            	<td>
 					            		<img th:src="${list.ProductDTO.pImage}" style="width:250px;height:250px">
 				            			<span th:text="${list.ProductDTO.pName}"></span>
 					            	</td>
 					            	<td>
-					            		<input type="text" th:value="${list.camount}" class="camount_input" ><br>
-					            		<button type="button" class="camount_change" id="camount_change">변경</button>
+					            		<input type="text" th:value="${list.camount}" class="camount_input" th:id="|camount${stat.count}|"><br>
+					            		<button type="button" class="camount_change" th:id="|camount_change${stat.count}|">변경</button>
 
 					            	</td>
 					            	<td>
@@ -114,6 +116,11 @@
 					            		<span th:text="${fee}" th:class="|itemdelivery${stat.count}|"></span>원<br>
 					            		<span></span>
 					            		<span th:style="@{color:gray;font-size:14px;}">30,000원 이상<br>무료배송</span>
+					            	</td>
+					            	<td>
+					            		<button type="button" th:id="|cart_order_delete${stat.count}|" class="cart_order_delete">
+					            			<img src="/images/shop/icon_delete.png" th:id="|pno${stat.count}|" style="width:24px">
+					            		</button>
 					            	</td>
 				            	</tr>
 				        	</tbody>
@@ -158,6 +165,17 @@
 						</ul>
 				    </div>
 				   	<!-- 상품 결제금액 끝 -->
+				   	<!-- 상품 삭제 및 결제 시작 -->
+				   	<div class="cart_order_box">
+					   	<span class="cart_order_left">
+		                    <button type="button" class="btn_order_choice_del" id="cart_order_delete">선택 상품 삭제</button>
+	               		</span>
+	               		<span class="cart_order_right">
+		                    <button type="button" class="btn_order_choice_buy" id="cart_order_select">선택 상품 주문</button>
+		                    <button type="button" class="btn_order_whole_buy" id="cart_order_all_select">전체 상품 주문</button>
+		                </span>
+               		</div>
+               		<!-- 상품 삭제 및 결제 끝 -->
 			   	</div>
 		    </div>
 		</form>
@@ -175,102 +193,147 @@
 	<script type="text/javascript" src="/js/join.js"></script>
 	<script type="text/javascript" src="/js/logineye.js"></script>
 
-<script type="text/javascript">
-
-//stat 가 count이므로 1부터 시작
-for (let i = 1; i < 1000; i++){ 
-
-$(function() {
-	//input css 변경
-    $("#cb"+i).css({
-    	  "display": "none"
-    });
-
-	//label css 변경
-    $(".label"+i).css({
-        "display": "inline-block",
-    	"width": "18px",
-    	"height": "18px",
-    	"border": "2px solid #bcbcbc",
-    	"cursor": "pointer",
-    	"margin": "8px 0 0 8px"
-        });
-});
-
-//체크박스 선택시 css 변경
-$("#cb"+i).change(function() {
-	//value
-    var value = $(this).val();       
-    //checked 상태 (true, false)
-    var checked = $(this).prop('checked');  
-    //label 선택
-    var $label = $(this).next();            
- 
-    // checked ? $label.css('background-color', value) : $label.css('background-color', 'white');
-    if(checked)
-        $label.css('background-color', '#666666');      // label의 배경색을 바꾼다.
-    else
-        $label.css('background-color', 'white');    // label의 배경색을 초기화 한다.
-});
-
-
-//상품금액 천단위 콤마
-var money = $('.itemprice'+i).text();
-console.log(money);
-var moneycomma = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-$('.itemprice'+i).text(moneycomma);
-
-//합계금액 천단위 콤마
-var money = $('.itemsum'+i).text();
-console.log(money);
-var moneycomma = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-$('.itemsum'+i).text(moneycomma);
-
-//배송비 천단위 콤마
-var money = $('.itemdelivery'+i).text();
-console.log(money);
-var moneycomma = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-$('.itemdelivery'+i).text(moneycomma);
-
-}
-//for문 끝
-
-//체크박스 전체선택/전체해제 - !!제대로 작동안됨!! 
-$("#cb0").click(function() {
-    if($("#cb0").is(":checked")){
-        $("input[name=chckBox]").prop("checked", true);
-    }
-    else{
-        $("input[name=chckBox]").prop("checked", false);
-    }
-});
-
-//개별 체크박스를 모두 선택 시 최상단 체크박스가 선택됨
-$("input[name=chckBox]").click(function() {
-	var total = $("input[name=chckBox]").length;
-	var checked = $("input[name=chckBox]:checked").length;
+	<script type="text/javascript">
 	
-	if(total != checked) $("#cb0").prop("checked", false);
-	else $("#cb0").prop("checked", true); 
-});
-
-
-//총 상품 금액 천단위 콤마
-var money5 = $('.cart_normal_add_opt_price').text();
-var moneycomma5 = money5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-$('.cart_normal_add_opt_price').text(moneycomma5);
-
-//배송비 천단위 콤마
-var money5 = $('.cart_total_add_opt_save').text();
-var moneycomma5 = money5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-$('.cart_total_add_opt_save').text(moneycomma5);
-
-//최종 결제 금액 천단위 콤마
-var money5 = $('#pay_amt').text();
-var moneycomma5 = money5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-$('#pay_amt').text(moneycomma5);
-
-</script>
+		//stat 가 count이므로 1부터 시작
+		for (let i = 1; i <= 1000; i++) {
+			$(function() {
+				//input css 변경
+			    $("#cb"+i).css({
+			    	  "display": "none"
+			    });
+			
+				//label css 변경
+			    $(".label"+i).css({
+			        "display": "inline-block",
+			    	"width": "18px",
+			    	"height": "18px",
+			    	"border": "2px solid #bcbcbc",
+			    	"cursor": "pointer",
+			    	"margin": "8px 0 0 8px"
+			        });
+			});
+			
+			//체크박스 선택시 css 변경
+			$("#cb"+i).change(function() {
+				//value
+			    var value = $(this).val();       
+			    //checked 상태 (true, false)
+			    var checked = $(this).prop('checked');  
+			    //label 선택
+			    var $label = $(this).next();            
+			 
+			    // checked ? $label.css('background-color', value) : $label.css('background-color', 'white');
+			    if(checked)
+			        $label.css('background-color', '#666666');      // label의 배경색을 바꾼다.
+			    else
+			        $label.css('background-color', 'white');    // label의 배경색을 초기화 한다.
+			});
+			
+			
+			//상품금액 천단위 콤마
+			var money = $('.itemprice'+i).text();
+			var moneycomma = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			$('.itemprice'+i).text(moneycomma);
+			
+			//합계금액 천단위 콤마
+			var money = $('.itemsum'+i).text();
+			var moneycomma = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			$('.itemsum'+i).text(moneycomma);
+			
+			//배송비 천단위 콤마
+			var money = $('.itemdelivery'+i).text();
+			var moneycomma = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			$('.itemdelivery'+i).text(moneycomma);
+			
+			// 장바구니 수량 수정
+			$("#camount_change" + i).click(function() {
+				var pno = $("#pno" + i).val();
+				var camount = $("#camount" + i).val();
+				
+				var data = {
+						pno : pno,
+						camount : camount
+					};
+				
+				$.ajax({
+					url : "/shop/cart/modify",
+					type : "post",
+					data : data,
+					success : function(result) {
+						location.href=location.href;
+					}
+				});
+			})
+			
+			$("#cart_order_delete" + i).click(function() {
+			var pno = $("#pno" + i).val();
+			
+			var data = { pno : pno };
+			
+			$.ajax({
+				url : "/shop/cart/delete",
+				type : "post",
+				data : data,
+				success : function(result) {
+					location.href=location.href;
+				}	
+			});
+		})
+		}
+		//for문 끝
+		
+		//체크박스 전체선택/전체해제 - !!제대로 작동안됨!! 
+		$("#cb0").click(function() {
+		    if($("#cb0").is(":checked")){
+		        $("input[name=chckBox]").prop("checked", true);
+		    }
+		    else{
+		        $("input[name=chckBox]").prop("checked", false);
+		    }
+		});
+		
+		//개별 체크박스를 모두 선택 시 최상단 체크박스가 선택됨
+		$("input[name=chckBox]").click(function() {
+			var total = $("input[name=chckBox]").length;
+			var checked = $("input[name=chckBox]:checked").length;
+			
+			if(total != checked) $("#cb0").prop("checked", false);
+			else $("#cb0").prop("checked", true); 
+		});
+		
+		
+		//총 상품 금액 천단위 콤마
+		var money5 = $('.cart_normal_add_opt_price').text();
+		var moneycomma5 = money5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		$('.cart_normal_add_opt_price').text(moneycomma5);
+		
+		//배송비 천단위 콤마
+		var money5 = $('.cart_total_add_opt_save').text();
+		var moneycomma5 = money5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		$('.cart_total_add_opt_save').text(moneycomma5);
+		
+		//최종 결제 금액 천단위 콤마
+		var money5 = $('#pay_amt').text();
+		var moneycomma5 = money5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		$('#pay_amt').text(moneycomma5);
+		
+		// 장바구니 상품 삭제
+		/* $("#cart_order_delete").click(function() {
+			var cb = $('input:checkbox[name="cb[]"]:checked').length;
+			
+			var data = { cb : cb };
+			
+			$.ajax({
+				url : "/shop/cart/delete",
+				type : "post",
+				data : data,
+				success : function(result) {
+					location.href=location.href;
+				}
+			});
+		}) */
+	</script>
 
 </body>
 
