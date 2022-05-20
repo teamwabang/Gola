@@ -26,5 +26,8 @@ public interface CartMapper {
 
 	// 장바구니 수량 수정
 	public int modifyCount(CartDTO cartdto);
+
+	// 장바구니 상품 삭제
+	public int delete(CartDTO cartdto);
 	
 }

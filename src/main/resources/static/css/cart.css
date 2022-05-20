@@ -175,3 +175,62 @@ input[id="cb0"] {
 input {
 	vertical-align: middle;
 }
+
+/* 상품 삭제 및 결제 시작 */
+.cart_order_box {
+	overflow: hidden;
+    padding: 30px 0 0 0;
+    text-align: righ
+}
+
+.cart_order_box .cart_order_left {
+	float: left;
+}
+
+.cart_order_box .cart_order_right {
+    float: right;
+}
+
+.cart_order_left {
+	text-align: left;
+}
+
+.btn_order_choice_del {
+	display: inline-block;
+    min-width: 120px;
+    height: 30px;
+    padding: 0 15px 0 15px;
+    color: #626262;
+    border: 1px solid #a3a3a3;
+    text-align: center;
+    line-height: 28px;
+}
+
+.btn_order_choice_buy {
+	min-width: 190px;
+    height: 55px;
+    padding: 0 20px 0 20px;
+    color: #3e3d3c;
+    font-weight: bold;
+    font-size: 14px;
+    border: 1px solid #cccccc;
+    background: #fff;
+    cursor: pointer;
+}
+
+.btn_order_whole_buy {
+	min-width: 190px;
+    height: 55px;
+    padding: 0 20px 0 20px;
+    color: #ffffff;
+    font-size: 14px;
+    border: 1px solid #46AE4F;
+    background: #46AE4F;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.cart_order_delete {
+	border: none;
+	background: none;
+}

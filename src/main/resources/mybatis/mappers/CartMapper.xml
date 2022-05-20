@@ -94,11 +94,21 @@
     <!-- 장바구니 수량 수정 -->
     <update id="modifyCount">
     <![CDATA[
-    	update cart
+    	UPDATE cart
     	SET camount = #{camount}
     	WHERE userId = #{userId}
     	AND pno = #{pno}
     ]]>
     </update>
+    
+    <!-- 장바구니 상품 삭제 -->
+    <delete id="delete" parameterType="CartDTO">
+    <![CDATA[
+    	DELETE
+    	FROM cart
+    	WHERE userId = #{userId}
+    	AND pno = #{pno}
+    ]]>
+    </delete>
   
 </mapper>
