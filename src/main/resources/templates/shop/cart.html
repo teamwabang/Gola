@@ -235,6 +235,7 @@ $('.itemdelivery'+i).text(moneycomma);
 }
 //for문 끝
 
+//체크박스 전체선택/전체해제 - !!제대로 작동안됨!! 
 $("#cb0").click(function() {
     if($("#cb0").is(":checked")){
         $("input[name=chckBox]").prop("checked", true);
@@ -252,7 +253,6 @@ $("input[name=chckBox]").click(function() {
 	if(total != checked) $("#cb0").prop("checked", false);
 	else $("#cb0").prop("checked", true); 
 });
-
 
 
 //총 상품 금액 천단위 콤마

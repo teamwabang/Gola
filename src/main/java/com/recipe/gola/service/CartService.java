@@ -57,4 +57,9 @@ public class CartService {
 		return cartMapper.sumMoney(userId);
 	}
 	
+	// 장바구니 수량 수정
+	public int modifyCount(CartDTO cartdto) {
+		return cartMapper.modifyCount(cartdto);
+	}
+	
 }

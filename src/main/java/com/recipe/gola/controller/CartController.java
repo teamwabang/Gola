@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.recipe.gola.config.auth.PrincipalDetails;
 import com.recipe.gola.dto.CartDTO;
@@ -93,6 +92,16 @@ public class CartController {
     		cartService.update(cartdto);
     	}
     	return "redirect:/shop";
+	}
+	
+	// 장바구니 수량 수정
+	@PostMapping("cart/modify")
+	public String modifyCount(@AuthenticationPrincipal PrincipalDetails principaldetail, CartDTO cartdto) {
+		String userId = principaldetail.getUsername();
+		cartdto.setUserId(userId);
+		cartService.modifyCount(cartdto);
+		
+		return "redirect:/shop/cart";
 	}
 
 }
