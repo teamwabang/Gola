@@ -23,5 +23,8 @@ public interface CartMapper {
 
 	// 장바구니 전체 금액
 	public int sumMoney(String userId);
+
+	// 장바구니 수량 수정
+	public int modifyCount(CartDTO cartdto);
 	
 }

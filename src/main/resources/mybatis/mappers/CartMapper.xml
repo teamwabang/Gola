@@ -90,5 +90,15 @@
     	WHERE c.pno = p.pno AND c.userId = #{userId}
     ]]>
     </select>
+    
+    <!-- 장바구니 수량 수정 -->
+    <update id="modifyCount">
+    <![CDATA[
+    	update cart
+    	SET camount = #{camount}
+    	WHERE userId = #{userId}
+    	AND pno = #{pno}
+    ]]>
+    </update>
   
 </mapper>
