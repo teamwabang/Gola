@@ -171,6 +171,7 @@
 					var timer = null;
 					var isRunning = false;
 					const emailCheckResult = document.getElementById('userEmailCheck');
+					const changecolor = document.getElementById('check_time');
 					
 					$("#sendMail").click(function() {
 						var userEmail = $("#userEmail").val();
@@ -196,11 +197,15 @@
 							alert("인증번호가 전송되었습니다.")
 							isCertification = true;
 							console.log(">>>>>>>"+key);
+							emailCheckResult.innerHTML = '이메일 인증을 완료해주세요';
+							emailCheckResult.style.color = 'red';
 							
 							var display = $("#check_time");
 						    var leftSec = 180;
+						   
 
 						    $("#authCode").attr("disabled", false);
+						    changecolor.style.color = 'red';
 						    // 남은 시간
 						    // 이미 타이머가 작동중이면 중지
 						    if (isRunning) {
@@ -236,6 +241,7 @@
 						}
 					
 					$("#authCode").on("propertychange change keyup paste input", function() {
+					
 							if ($("#authCode").val() == key) {
 								emailCheckResult.innerHTML= '이메일 인증에 성공했습니다！';
 								emailCheckResult.style.color = 'blue';
