@@ -8,7 +8,7 @@
 
 <body>
 
-	<nav th:fragment="fr_leftbanner1">
+	<nav th:fragment="fr_leftbanner1" sec:authorize="isAuthenticated()">
 		<div class="sideBanner">
 			<a th:href="@{/shop/cart}" class="leftbannerlink"> 장바구니로 가기 </a>
 		</div>
@@ -34,9 +34,9 @@
 	
 	</nav>
 	
-	<nav th:fragment="fr_leftbanner2">
+	<nav th:fragment="fr_leftbanner2" sec:authorize="isAuthenticated()">
 		<div class="sideBanner2">
-			<a th:href="@{/shop/cart}" class="leftbannerlink2"> 주문목록 가기 </a>
+			<a th:href="@{#}" class="leftbannerlink2"> 주문목록 가기 </a>
 		</div>
 		
 		<script type="text/javascript">
