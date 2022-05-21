@@ -75,26 +75,29 @@
         <div class="mainUseredit">
           <label>닉네임</label>
           <div th:text="${dto.getUserNickname() }" class="mainUserNickname"></div>
-          <!-- 닉네임 변경-->
+          <!-- 닉네임 변경 -->
           <div class="btnedit"><button class="btn btn-dark changeBtn" data-bs-toggle="modal"
               data-bs-target="#nickNameChange"><i class="fa-solid fa-pen"></i></button>
           </div>
         </div>
         <div class="mainUseredit">
           <label>휴대폰 번호</label>
-          <div th:text="${dto.getUserPhone() }" class="mainUserEmail"></div>
+          <div th:text="${dto.getUserPhone() }" class="mainUserPhone"></div>
+          <!-- 휴대폰 번호 변경 -->
+          <div></div>
         </div>
         <div class="mainUseredit">
           <label>이메일</label>
           <div th:text="${dto.getUserEmail() }" class="mainUserEmail"></div>
           <!-- 이메일 변경 -->
-          <div class="btnedit"><button class="btn btn-dark changeBtn" data-bs-toggle="modal"
-              data-bs-target="#emailChange"><i class="fa-solid fa-pen"></i></button>
+          <div class="btnedit"><button class="btn btn-dark changeBtn"><i class="fa-solid fa-pen"></i></button>
           </div>
         </div>
         <div class="mainUseredit">
           <label>주소</label>
-          <div th:text="${dto.getUserAddr1() }" class="mainUserEmail"></div>
+          <div th:text="${dto.getUserAddr1() }" class="mainUserAddr"></div>
+          <!-- 주소 변경 -->
+          <div></div>
         </div>
       </div>
     </div>

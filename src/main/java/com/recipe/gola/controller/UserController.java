@@ -171,7 +171,6 @@ public class UserController {
 		String fileName = "";
 		
 		if(bbsService.selectListFiles(writer).size() > 0) {
-			logger.info("no User");
 			imgSrc = bbsService.selectListFiles(writer).get(0).getImgSrc();
 			fno =  bbsService.selectListFiles(writer).get(0).getFno();
 			fileName = bbsService.selectListFiles(writer).get(0).getFileName();
