@@ -238,7 +238,9 @@ main {
 
 .mainUserPwd,
 .mainUserNickname,
-.mainUserEmail {
+.mainUserPhone,
+.mainUserEmail,
+.mainUserAddr {
   font-family: 'LeferiPoint-WhiteObliqueA';
 }
 

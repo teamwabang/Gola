@@ -51,6 +51,7 @@ public class OrderController {
 		int sumMoney = cartService.sumMoney(userId);
 		int fee = sumMoney >= 30000 || list.size() == 0 ? 0 : 3000;
 		
+		model.addAttribute("dto", principaldetail.getDto());
 		model.addAttribute("list", list);
 		model.addAttribute("count", list.size());	// 장바구니 상품 유무
 //		model.addAttribute("money", );	// 장바구니 개별 합계 금액

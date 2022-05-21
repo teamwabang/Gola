@@ -379,7 +379,7 @@
 		    				<tr>
 		    					<th scope="row"><span class="important">주문하시는 분</span></th>
 		    					<td>
-		    						<input type="text" name="orderName" id="orderName" value="" maxlength="20">
+		    						<input type="text" name="orderName" id="orderName" th:value="${dto.getUserNickname()}" maxlength="20">
 		    					</td>
 		    				</tr>
 		    				<!-- 전화번호 -->
@@ -393,14 +393,14 @@
 		    				<tr>
 			    				<th scope="row"><span class="important">휴대폰 번호</span></th>
 			    				<td>
-			    					<input type="text" id="mobileNum" name="orderCellPhone" value="" maxlength="20">
+			    					<input type="text" id="mobileNum" name="orderCellPhone" th:value="${dto.getUserPhone()}" maxlength="20">
 			    				</td>
 		    				</tr>
 		    				<!-- 이메일 -->
 		    				<tr>
 			    				<th scope="row"><span class="important">이메일</span></th>
 			    				<td class="member_email">
-				    				<input type="text" name="orderEmail" value="">
+				    				<input type="text" name="orderEmail" th:value="${dto.getUserEmail()}">
 		    					</td>
 		    				</tr>
 		    			</tbody>
