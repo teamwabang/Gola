@@ -1,58 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&family=Yeon+Sung&display=swap');
-
-.gola_header {
-  text-align: center;
-  font-family: 'Gowun Batang', serif;
-}
-
-.gola_hr {
-  width: 100vh;
-  margin: 0 auto;
-}
-
-.gola_github {
-  width: 30vh;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 20px;
-  font-weight: 400;
-  cursor: pointer;
-}
-
-.gola_function {
-  width: 30vh;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 26px;
-  font-weight: 400;
-  cursor: pointer;
-  font-family: 'Yeon Sung', cursive;
-}
-
-.gola_function_content {
-  width: 50vh;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 26px;
-  cursor: pointer;
-  font-family: 'Yeon Sung', cursive;
-}
-
-.github_img {
-  width: 45px;
-  height: 45px;
-}
-
-.github_img2 {
-  width: 30px;
-  height: 30px;
-}
-
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&family=Yeon+Sung&display=swap');
 
+.aboutbody {
+  background-image: url(/images/mypagebackground.png);
+  background-repeat: repeat;
+  background-size: auto;
+}
+
+.abouttitle {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-style: italic;
+  font-size: 70px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto;
+  width: 300px;
+  height: 200px;
+  color: #cc4d00;
+  display: block;
+  padding-top: 60px;
+}
+
 .gola_header {
   text-align: center;
   font-family: 'Gowun Batang', serif;
+  color: #ffffff;
 }
 
 .gola_hr {
@@ -77,6 +49,7 @@
   font-weight: 400;
   cursor: pointer;
   font-family: 'Yeon Sung', cursive;
+  color: #ffffff;
 }
 
 .gola_function_content {
@@ -86,6 +59,7 @@
   font-size: 26px;
   cursor: pointer;
   font-family: 'Yeon Sung', cursive;
+  color: #ffffff;
 }
 
 .github_img {
@@ -133,11 +107,23 @@
   font-size: 26px;
   font-weight: 600;
   text-align: center;
+  color: #ffffff;
 }
 
 .gola_table2 {
   font-size: 26px;
   font-weight: 600;
+  color: #ffffff;
+}
+
+.gola_table2 a {
+  font-size: 26px;
+  font-weight: 600;
+  color: #ffffff !important;
+}
+
+.gola_table2 a:hover {
+  color: skyblue !important;
 }
 
 .table_p {
@@ -152,6 +138,7 @@
   font-weight: 400;
   cursor: pointer;
   font-family: 'Yeon Sung', cursive;
+  color: #ffffff;
 }
 
 .gola_function :hover,
