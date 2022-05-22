@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.recipe.gola.dto.CartDTO;
+import com.recipe.gola.dto.ProductDTO;
 
 @Mapper
 public interface CartMapper {
@@ -12,6 +13,9 @@ public interface CartMapper {
 	// 내가 담은 장바구니 목록 조회
 	public List<CartDTO> list(String userId);
 
+	//내가선택한 장바구니목록
+	public List<CartDTO> list2(ProductDTO productDTO);
+	
 	// 장바구니에 물건 담기
 	public void insert(CartDTO cartdto);
 
@@ -24,6 +28,9 @@ public interface CartMapper {
 	// 장바구니 전체 금액
 	public int sumMoney(String userId);
 
+	// 장바구니 전체 금액
+	public int sumMoney2(ProductDTO productDTO);
+	
 	// 장바구니 수량 수정
 	public int modifyCount(CartDTO cartdto);
 
