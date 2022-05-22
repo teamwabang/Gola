@@ -41,23 +41,18 @@
 	
 	<!-- center title -->
 	<div>
-		<span class="carttitle">CART</span>
+		<span class="carttitle">ORDER INQUIRY</span>
 	</div>
 
 	<div>
 		<form>
 			
 			<div class="cart_content">
-				<!-- 장바구니 타이틀 시작 -->
+				<!-- 주문조회 타이틀 시작 -->
 			    <div class="cart_title">
-			        <h2>장바구니</h2>
-			        <ul>
-			            <li class="cart_page_on"><span>01</span> 장바구니 <span><img src="/images/shop/icon_step_on.png" alt=""></span></li>
-			            <li><span>02</span> 주문서작성/결제 <span><img src="/images/shop/icon_step_off.png" alt=""></span></li>
-			            <li><span>03</span> 주문완료 </li>
-			        </ul>
+			        <h2>주문조회</h2>
 			    </div>
-			    <!-- 장바구니 타이틀 끝 -->
+			    <!-- 주문조회 타이틀 끝 -->
 			    
 			   <div class="cart_cont">
 				    <!-- 상품 목록 시작 -->
@@ -77,7 +72,7 @@
 			    			<thead>
 				                <tr>
 				                	<th>
-				                		<input type="checkbox" id="cb0" name="cb0">
+				                		<input type="checkbox" id="cb0">
 			    						<label for="cb0"></label>
 				                	</th>
 				                    <th>상품/옵션 정보</th>
@@ -92,7 +87,7 @@
 				            <tbody>
 				            	<tr th:each="list,stat : ${list}">
 				            		<td>
-				                		<input type="checkbox" th:id="|cb${stat.count}|" name="chckBox" th:data-idx="${stat.count}" th:value=${list.pno}>
+				                		<input type="checkbox" th:id="|cb${stat.count}|" name="chckBox">
 			    						<label th:for="|cb${stat.count}|" th:class="|label${stat.count}|"></label>
 			    						<input type="hidden" th:value="${list.pno}" th:id="|pno${stat.count}|">
 				                	</td>
@@ -172,7 +167,9 @@
 				   	<!-- 상품 결제금액 끝 -->
 				   	<!-- 상품 삭제 및 결제 시작 -->
 				   	<div class="cart_order_box">
-
+					   	<span class="cart_order_left">
+		                    <button type="button" class="btn_order_choice_del" id="cart_order_delete">선택 상품 삭제</button>
+	               		</span>
 	               		<span class="cart_order_right">
 		                    <button type="button" class="btn_order_choice_buy" id="cart_order_select">선택 상품 주문</button>
 		                    <button type="button" class="btn_order_whole_buy" id="cart_order_all_select">전체 상품 주문</button>
@@ -183,6 +180,7 @@
 		    </div>
 		</form>
     </div>
+   	
    	<!-- import footer -->
    	<footer th:replace="layout/fragment2 :: fr_footer"></footer>
    	<!-- end of import footer -->
@@ -197,13 +195,9 @@
 
 	<script type="text/javascript">
 	
-		$(document).ready(function(){
-			
-			//화면진입시 체크박스 전체선택으로 만들기
-			checkReset();
-			
-			//stat 가 count이므로 1부터 시작
-			for (let i = 1; i <= 1000; i++) {
+		//stat 가 count이므로 1부터 시작
+		for (let i = 1; i <= 1000; i++) {
+			$(function() {
 				//input css 변경
 			    $("#cb"+i).css({
 			    	  "display": "none"
@@ -217,77 +211,79 @@
 			    	"border": "2px solid #bcbcbc",
 			    	"cursor": "pointer",
 			    	"margin": "8px 0 0 8px"
-		        });
+			        });
+			});
+			
+			//체크박스 선택시 css 변경
+			$("#cb"+i).change(function() {
+				//value
+			    var value = $(this).val();       
+			    //checked 상태 (true, false)
+			    var checked = $(this).prop('checked');  
+			    //label 선택
+			    var $label = $(this).next();            
+			 
+			    // checked ? $label.css('background-color', value) : $label.css('background-color', 'white');
+			    if(checked)
+			        $label.css('background-color', '#666666');      // label의 배경색을 바꾼다.
+			    else
+			        $label.css('background-color', 'white');    // label의 배경색을 초기화 한다.
+			});
+			
+			
+			//상품금액 천단위 콤마
+			var money = $('.itemprice'+i).text();
+			var moneycomma = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			$('.itemprice'+i).text(moneycomma);
+			
+			//합계금액 천단위 콤마
+			var money = $('.itemsum'+i).text();
+			var moneycomma = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			$('.itemsum'+i).text(moneycomma);
+			
+			//배송비 천단위 콤마
+			var money = $('.itemdelivery'+i).text();
+			var moneycomma = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			$('.itemdelivery'+i).text(moneycomma);
+			
+			// 장바구니 상품 수량 수정
+			$("#camount_change" + i).click(function() {
+				var pno = $("#pno" + i).val();
+				var camount = $("#camount" + i).val();
 				
-				//체크박스 선택시 css 변경
-				$("#cb"+i).change(function() {
-					//value
-				    var value = $(this).val();       
-				    //checked 상태 (true, false)
-				    var checked = $(this).prop('checked');  
-				    //label 선택
-				    var $label = $(this).next();            
-				 
-				    // checked ? $label.css('background-color', value) : $label.css('background-color', 'white');
-				    if(checked)
-				        $label.css('background-color', '#666666');      // label의 배경색을 바꾼다.
-				    else
-				        $label.css('background-color', 'white');    // label의 배경색을 초기화 한다.
+				var data = {
+						pno : pno,
+						camount : camount
+					};
+				
+				$.ajax({
+					url : "/shop/cart/modify",
+					type : "post",
+					data : data,
+					success : function(result) {
+						location.href=location.href;
+					}
 				});
+			})
+			
+			// 장바구니 상품 삭제
+			$("#cart_order_delete" + i).click(function() {
+				var pno = $("#pno" + i).val();
 				
+				var data = { pno : pno };
 				
-				//상품금액 천단위 콤마
-				var money = $('.itemprice'+i).text();
-				var moneycomma = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-				$('.itemprice'+i).text(moneycomma);
-				
-				//합계금액 천단위 콤마
-				var money = $('.itemsum'+i).text();
-				var moneycomma = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-				$('.itemsum'+i).text(moneycomma);
-				
-				//배송비 천단위 콤마
-				var money = $('.itemdelivery'+i).text();
-				var moneycomma = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-				$('.itemdelivery'+i).text(moneycomma);
-				
-				// 장바구니 상품 수량 수정
-				$("#camount_change" + i).click(function() {
-					var pno = $("#pno" + i).val();
-					var camount = $("#camount" + i).val();
-					
-					var data = {
-							pno : pno,
-							camount : camount
-						};
-					
-					$.ajax({
-						url : "/shop/cart/modify",
-						type : "post",
-						data : data,
-						success : function(result) {
-							location.href=location.href;
-						}
-					});
-				})
-				
-				// 장바구니 상품 삭제
-				$("#cart_order_delete" + i).click(function() {
-					var pno = $("#pno" + i).val();
-					
-					var data = { pno : pno };
-					
-					$.ajax({
-						url : "/shop/cart/delete",
-						type : "post",
-						data : data,
-						success : function(result) {
-							location.href=location.href;
-						}	
-					});
-				})
-				
-				// rowspan 2이상일 경우 display none
+				$.ajax({
+					url : "/shop/cart/delete",
+					type : "post",
+					data : data,
+					success : function(result) {
+						location.href=location.href;
+					}	
+				});
+			})
+			
+			// rowspan 2이상일 경우 display none
+			$(function() {
 				if(i >= 2) {
 					$("#free2").css('display', 'none');
 					$("#free3").css('display', 'none');
@@ -319,218 +315,30 @@
 					$("#free29").css('display', 'none');
 					$("#free30").css('display', 'none');
 				}
-			}
-			//for문 끝
-
-			//체크박스 전체선택/전체해제 , 
-			//※ 자식들 체크박스가 안된이유는 label 태그의 백그라운드색을 바꿔줘야함 선택=white 해제 =rgb(102, 102, 102)
-			
-			$("#cb0").click(function(){ 
-				
-				//만약 전체 선택 체크박스가 체크된상태일경우 
-				if($("#cb0").prop("checked")) { 
-					//해당화면에 전체 checkbox들을 체크해준다 
-					$("input[name=chckBox]").prop("checked",true);
-					//label로 시작하는 class명을 검색한다.
-					$("[class^='label']").css("background-color","rgb(102, 102, 102)");
-					
-					//최종금액 초기화
-					var _totAmt = 0;
-
-					$("input[name=chckBox]").each(function(index,element){
-						//1부터시작
-						var _index = index+1;
-						//단가
-						var _price = $('.itemprice'+_index).text().replace(/,/g, "");
-						//수량
-						var _cnt = $('#camount'+_index).val();
-						//단가 * 수량
-						_totAmt += _price * _cnt;
-					});	
-				
-					//상품금액이 3만원 이상이면 배송비 없음
-					if(_totAmt >= 30000){
-
-						_totAmt = _totAmt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-						//총 상품금액
-						$('.cart_normal_add_opt_price').text(_totAmt);
-						//최종 결제 금액
-						$('#pay_amt').text(_totAmt);	
-						$('.cart_total_add_opt_save').text("0");
-						
-					//3만원 미만이면 배송비 붙음	
-					}else{
-
-						//총 상품금액
-						$('.cart_normal_add_opt_price').text(_totAmt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-						_totAmt = _totAmt+3000;
-						_totAmt = _totAmt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-						//최종 결제 금액
-						$('#pay_amt').text(_totAmt);
-						
-					}
-					// 전체선택 체크박스가 해제된 경우 
-				} else { 
-					//해당화면에 모든 checkbox들의 체크를해제시킨다. 
-					$("input[name=chckBox]").prop("checked",false);
-					//label로 시작하는 class명을 검색한다.
-					$("[class^='label']").css("background-color","white");
-					$('.cart_normal_add_opt_price').text("0");
-					$('.cart_total_add_opt_save').text("3,000");
-					$('#pay_amt').text("3,000")
-				} 
-			});
-
-			
-			
-			//개별 체크박스를 모두 선택 시 최상단 체크박스가 선택됨
-			$("input[name=chckBox]").click(function() {
-
-				var _index = $(this).data("idx");
-				//단가
-				var _price = Number($('.itemprice'+_index).text().replace(/,/g, ""));
-				//수량
-				var _cnt = Number($('#camount'+_index).val());
-				//상품금액
-				var _amt = Number(_price) * Number(_cnt);
-				//총 상품 금액
-				var _totAmt = Number($('.cart_normal_add_opt_price').text().replace(/,/g, ""));
-				//최종 결제 금액
-				var _totPayAmt = Number($('#pay_amt').text().replace(/,/g, ""));
-				
-				//선택됨
-				if($(this).prop("checked")) { 
-
-					//총 상품 금액
-					//cart_normal_add_opt_price
-					//배송비
-					//cart_total_add_opt_save
-					//최종결제금액
-					//pay_amt
-					
-					_totAmt += _amt;
-					_totPayAmt = _totAmt;				
-					
-					if(_totAmt >= 30000){
-						$('.cart_total_add_opt_save').text("0");
-					}else{
-						_totPayAmt = _totPayAmt + 3000;
-						$('.cart_total_add_opt_save').text("3,000");						
-					}
-					
-					$('.cart_normal_add_opt_price').text(_totAmt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));	
-					$('#pay_amt').text(_totPayAmt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));	
-					
-				}else{
-
-					_totAmt -= _amt;
-					_totPayAmt = _totAmt;				
-					
-					if(_totAmt >= 30000){
-						$('.cart_total_add_opt_save').text("0");
-					}else{
-						_totPayAmt = _totPayAmt + 3000;
-						$('.cart_total_add_opt_save').text("3,000");		
-					}
-					
-					$('.cart_normal_add_opt_price').text(_totAmt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));	
-					$('#pay_amt').text(_totPayAmt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));	
-											
-					
-				}
-			
-				var total = $("input[name=chckBox]").length;
-				var checked = $("input[name=chckBox]:checked").length;
-				
-				if(total != checked){
-					$("#cb0").prop("checked", false);
-				}else{ 
-					$("#cb0").prop("checked", true); 
-				}
-			});			
-
-			
-			//총 상품 금액 천단위 콤마
-			var money5 = $('.cart_normal_add_opt_price').text();
-			var moneycomma5 = money5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-			$('.cart_normal_add_opt_price').text(moneycomma5);
-			
-			//배송비 천단위 콤마
-			var money5 = $('.cart_total_add_opt_save').text();
-			var moneycomma5 = money5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-			$('.cart_total_add_opt_save').text(moneycomma5);
-			
-			//최종 결제 금액 천단위 콤마
-			var money5 = $('#pay_amt').text();
-			var moneycomma5 = money5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-			$('#pay_amt').text(moneycomma5);
-			
-			//내가 체크한 것 만주문 페이지로 간다.
-			$('#cart_order_select').click(function(){
-				
-				var param;
-			    var chkArray = new Array();
-				$("input:checkbox[name='chckBox']:checked").each(function(){
-			      var tmpVal = $(this).val(); 
-			      chkArray.push(tmpVal);
-				});
-				
-				console.log(chkArray);
-
-				if($("input[name=chckBox]:checked").length == 0){
-					alert("선택된 상품이 없습니다.");
-					return false;
-				}else{
-					param = $.param({'pnos':chkArray});
-					param = param.replace(/%5B%5D/g, "");
-					location.href = "/shop/order?"+param;		
-					
-				}
-				
-			});
-			
-			//전체 상품 주문, 체크의 유무 상관없이 모두 주문페이지로 조회함 
-			$('#cart_order_all_select').click(function(){
-
-				var param;
-			    var chkArray = new Array();
-				$("input:checkbox[name='chckBox']").each(function(){
-			      var tmpVal = $(this).val(); 
-			      chkArray.push(tmpVal);
-				});
-				console.log(chkArray);
-				param = $.param({'pnos':chkArray});
-				param = param.replace(/%5B%5D/g, "");
-				location.href = "/shop/order?"+param;		
-
-			});
-			
+			})
+		}
+		//for문 끝
+		
+		//체크박스 전체선택/전체해제 - !!제대로 작동안됨!! 
+		$("#cb0").click(function() {
+		    if($("#cb0").is(":checked")){
+		        $("input[name=chckBox]").prop("checked", true);
+		    }
+		    else{
+		        $("input[name=chckBox]").prop("checked", false);
+		    }
 		});
 		
-		/* @desc : 체크박스 전체선택하기  
-		*
-		**/
-		var checkReset = () => {
-			//기본 값은 상품 전체 선택
-			$("input[name=chckBox]").prop("checked", true); 
-			$("#cb0").prop("checked", true); 			
-			$("[class^='label']").css("background-color","rgb(102, 102, 102)");	
-		}
-	
-		// 장바구니 상품 삭제
-		/* $("#cart_order_delete").click(function() {
-			var cb = $('input:checkbox[name="cb[]"]:checked').length;
-			var data = { cb : cb };
-			$.ajax({
-				url : "/shop/cart/delete",
-				type : "post",
-				data : data,
-				success : function(result) {
-					location.href=location.href;
-				}
-			});
-		}) */
+		//개별 체크박스를 모두 선택 시 최상단 체크박스가 선택됨
+		$("input[name=chckBox]").click(function() {
+			var total = $("input[name=chckBox]").length;
+			var checked = $("input[name=chckBox]:checked").length;
+			
+			if(total != checked) $("#cb0").prop("checked", false);
+			else $("#cb0").prop("checked", true); 
+		});
+		
+		
 	</script>
 
 </body>

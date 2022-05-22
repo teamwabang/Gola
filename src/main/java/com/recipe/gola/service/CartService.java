@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.recipe.gola.dto.CartDTO;
+import com.recipe.gola.dto.ProductDTO;
 import com.recipe.gola.mapper.CartMapper;
 
 import lombok.Data;
@@ -32,6 +33,11 @@ public class CartService {
 	// 내가 담은 장바구니 목록 조회
 	public List<CartDTO> list(String userId){
 		return cartMapper.list(userId);
+	}
+
+	// 내가 담은 장바구니 목록 조회
+	public List<CartDTO> list2(ProductDTO productDTO){
+		return cartMapper.list2(productDTO);
 	}
 	
 	// 장바구니에 물건 담기
@@ -55,6 +61,12 @@ public class CartService {
 	// 장바구니 전체 금액
 	public int sumMoney(String userId) {
 		return cartMapper.sumMoney(userId);
+	}
+	
+
+	// 장바구니 전체 금액
+	public int sumMoney2(ProductDTO productDTO) {
+		return cartMapper.sumMoney2(productDTO);
 	}
 	
 	// 장바구니 수량 수정
