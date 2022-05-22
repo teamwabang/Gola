@@ -9,7 +9,11 @@ import com.recipe.gola.dto.ProductDTO;
 @Mapper
 public interface ShopMapper {
 
-	public List<ProductDTO> shoplist(ProductDTO dto);
+	// 쇼핑몰 전체 상품 리스트 출력
+	public List<ProductDTO> shopalllist(ProductDTO dto);
+	
+	//	쇼핑몰 특가 상품 리스트 출력
+	public List<ProductDTO> shopdiscountlist(ProductDTO dto);
 
 	public ProductDTO shopdetail(ProductDTO dto);
 }

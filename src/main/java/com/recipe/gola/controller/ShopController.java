@@ -32,8 +32,10 @@ public class ShopController {
 	@GetMapping("shop")
 	public String shoplist(Model model, ProductDTO dto) {
 		logger.info("-----> 쇼핑몰 페이지로 이동하여 전체 리스트를 출력합니다.");
-		List<ProductDTO> shoplist = shopService.shoplist(dto);
-		model.addAttribute("shoplist", shoplist);
+		List<ProductDTO> shopalllist = shopService.shopalllist(dto);
+		List<ProductDTO> shopdiscountlist = shopService.shopdiscountlist(dto);
+		model.addAttribute("shopalllist", shopalllist);
+		model.addAttribute("shopdiscountlist", shopdiscountlist);
 		return "shop/shop";
 	}
 
