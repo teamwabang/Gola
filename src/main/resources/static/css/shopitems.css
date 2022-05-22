@@ -1,3 +1,20 @@
+/* shop */
+.shop_all_item,
+.shop_discount_item {
+  font-size: 30px;
+  color: #000;
+  letter-spacing: -0.02em;
+  font-weight: normal;
+  display: block;
+  text-align: center;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  font-weight: 500;
+  margin: 50px 0 20px 0;
+}
+
+
+
 .shopItemWrap{
   display:flex;
   margin : 40px 20%;

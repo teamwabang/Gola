@@ -4,17 +4,34 @@
 
 <mapper namespace="com.recipe.gola.mapper.ShopMapper">
 
-	<!-- 쇼핑몰 리스트 출력 -->
-	<select id="shoplist" resultType="ProductDTO" parameterType="ProductDTO">
+	<!-- 쇼핑몰 전체 상품 리스트 출력 -->
+	<select id="shopalllist" resultType="ProductDTO" parameterType="ProductDTO">
+	<![CDATA[
 		SELECT 
 			prod.pNo
 			, prod.pName
 			, prod.pPrice
 			, prod.pImage
 		FROM product prod
-		where 1=1         
+		WHERE pName NOT LIKE '[골라특가]%'
         ORDER BY RAND()
-        limit 3;
+        LIMIT 4;
+    ]]>
+	</select>
+	
+	<!-- 쇼핑몰 특가 상품 리스트 출력 -->
+	<select id="shopdiscountlist" resultType="ProductDTO" parameterType="ProductDTO">
+	<![CDATA[
+		SELECT 
+			prod.pNo
+			, prod.pName
+			, prod.pPrice
+			, prod.pImage
+		FROM product prod
+		WHERE pName LIKE '[골라특가]%'      
+        ORDER BY RAND()
+        LIMIT 4;
+    ]]>
 	</select>
 	
 	<!-- 쇼핑몰 재료 리스트 상세페이지 출력 -->
