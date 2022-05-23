@@ -104,28 +104,6 @@ input[id="cb0"] {
     margin: 50px 0 10px 0;
 }
 
-.camount_input {
-	width: 35px;
-	height: 30px !important;
-	text-align: center;
-	padding: 0 !important;
-	border: 0.5px solid #dbdbdb;
-}
-
-.camount_change {
-	padding: 7px 10px 7px 10px;
-    border: 1px solid #dbdbdb;
-    background: #efefef;
-    font-size: 14px;
-    font-weight: bold;
-    line-height: 1;
-    height: 35px;
-    width: 55px;
-    margin-left: 10px;
-    box-sizing: border-box;
-    margin-left: 0;
-}
-
 /* 이전으로 되돌아가기 버튼 시작 */
 .cart_previous_btn {
 	text-align: left;
