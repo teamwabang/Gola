@@ -43,6 +43,10 @@
 	<nav th:replace="layout/cartbanner :: fr_leftbanner"></nav>
 	<!-- end of import leftbanner -->
 	
+	<!-- center title -->
+	<div>
+		<span class="shoptitle"><a th:href="@{/shop}">SHOP</a></span>
+	</div>
 
 	<div>
 		<form th:each="detail : ${shopdetail}">

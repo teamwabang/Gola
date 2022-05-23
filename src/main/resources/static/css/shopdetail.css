@@ -13,6 +13,26 @@
   margin: 0 auto;
   width: 300px;
   height: 200px;
+  color: #77b347 !important;
+  display: block;
+  padding-top: 60px;
+}
+
+
+.shoptitle a {
+  color: #77b347 !important;
+  display: block;
+}
+
+.shopdetailtitle {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-style: italic;
+  font-size: 70px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto;
+  width: 300px;
+  height: 70px;
   color: #77b347;
   display: block;
   padding-top: 60px;
