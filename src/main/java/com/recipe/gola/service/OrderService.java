@@ -34,7 +34,7 @@ public class OrderService {
 	}
 	
     //게시글번호 생성
-    public String selectOno() throws Exception{
+    public int selectOno() throws Exception{
     	return orderMapper.selectOno();
     }
 	
