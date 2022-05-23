@@ -152,8 +152,8 @@ $('#userEmail').on('keyup' ,function() {
 	
 
 //회원가입 버튼 비활성화 -> 활성화
-  $("#userIdJoin, #userPwdJoin, #confirm, #userNickname, #userEmail").change(function() {
-    if( $("#userIdJoin").val() != "" && $("#userPwdJoin").val() != "" && $('#confirm').val() != "" && $('userPhone').val() != "" && $('#userEmail').val() != "" && $('#userNickname').val() != "") {
+  $("#userIdJoin, #userPwdJoin, #confirm, #userNickname, #userEmail", "#authCode").change(function() {
+    if( $("#userIdJoin").val() != "" && $("#userPwdJoin").val() != "" && $('#confirm').val() != "" && $('#userEmail').val() != "" && $('#userNickname').val() != "") {
       $('#joinSubmit').prop('disabled', false);
     } else {
       $('#joinSubmit').prop('disabeld', true);      
