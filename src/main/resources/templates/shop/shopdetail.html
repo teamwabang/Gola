@@ -134,7 +134,7 @@
 							            </div>
 							
 							            <div class="optionSum">
-							            <p id="optionSumprice" th:text="${detail.pPrice}"></p><p id="optionwon"> 원</p>
+							            <p  th:each="detail : ${shopdetail}"></p>
 
 							
 							            </div>
@@ -150,7 +150,7 @@
 							<script type="text/javascript">
 								$("#cart_add_btn").click(function() {
 									var pno = $("#pno").val();
-									var camount = $("#numberUpDown").val();
+									var camount = $(".selectOption option:selected").val();
 
 									var data = {
 										pno : pno,
@@ -224,57 +224,39 @@
 	
 	<script>
 	$(function() {
-		 // 수량 감소
 		  $('#decreaseQuantity').click(function(e) {
 		    e.preventDefault();
-		    //천단위 콤마 제거 
-			var price = $('#privceValue').text().replace(",", "");;
 		    var stat = $('#numberUpDown').val();
 		    var num = parseInt(stat, 10);
 		    num--;
-		    var sumprice = num * price;
-		    //천단위 콤마 생성
-		    var sumcooma = sumprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		    $('#optionSumprice').text(sumcooma);
 		    if (num <= 0) {
 		      alert('1개 이상의 수량을 선택해 주세요.');
 		      num = 1;
 		    }
 		    $('#numberUpDown').val(num);
 		  });
-		 
-		 //수량 증가  
 		  $('#increaseQuantity').click(function(e) {
 		    e.preventDefault();
-		    //천단위 콤마 제거 
-			var price = $('#privceValue').text().replace(",", "");;
 		    var stat = $('#numberUpDown').val();
 		    var num = parseInt(stat, 10);
 		    num++;
-		    var sumprice = num * price;
-		    //천단위 콤마 생성
-		    var sumcooma = sumprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		    $('#optionSumprice').text(sumcooma);
-		    if (num >= 11) {
+
+		    if (num >= 25) {
 		      alert('해당 상품의 재고가 부족합니다');
-		      num = 10;
+		      num = 25;
 		    }
 		    $('#numberUpDown').val(num);
 		  });
 		});
-	
-	
-	//판매가 천단위 콤마 표기 
-	var money = $('#privceValue').text();
-	var moneycomma5 = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	$('#privceValue').text(moneycomma5);
-	
-	//누적 합계 천단위 콤마 표기
-	var money2 = $('#optionSumprice').text();
-	var moneycomma5 = money2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	$('#optionSumprice').text(moneycomma5);
 	</script>
-
+	
+	<script>
+	
+	var num=$('#numberUpDown').val();
+	const element = document.getElementById('privceValue').innerText;
+	var sum = num * element;
+	document.getElementById("optionSum").innerHTML = sum;
+	</script>
 
 
 </body>
