@@ -269,11 +269,9 @@ th > .important {
 .order_msg {
     position: absolute;
     left: 15px;
-    top: 43px;
     background: #fff;
     border: 1px solid #ddd;
     z-index: 100;
-    width: 400px;
 }
 
 .order_msg ul {
