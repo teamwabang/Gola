@@ -15,5 +15,5 @@ public interface OrderMapper {
 
 	public int insertOrder(OrderDTO dto);
 	
-	public String selectOno();
+	public int selectOno();
 }

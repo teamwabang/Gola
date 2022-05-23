@@ -13,9 +13,10 @@
   <title>주문서작성 및 결제 | 골라</title>
 
   <!-- CSS -->
-  <th:block th:replace="style :: style_bootstrap" />
   <th:block th:replace="style :: style_styles" />
   <th:block th:replace="style :: style_shop" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   <!-- fontawesome -->
   <script src="https://kit.fontawesome.com/c21d7630fc.js" crossorigin="anonymous"></script>
@@ -74,15 +75,6 @@
 	</script>
 	
 	<script type="text/javascript">
-		$(document).ready(function() {
-
-			$("#order_result_payment").click(function() {
-				if(confirm("결제 후 취소가 불가능 합니다. \n결제 하시겠습니까?")){
-					
-				}
-				//payment();
-			})
-		})
 		
 		function payment(data) {
 			var now = new Date();
@@ -123,7 +115,8 @@
 	<div>
 		<span class="ordertitle">ORDER</span>
 	</div>
-	<form name="form" id="form" role="form" method="post" action="/order/insertOrder" >		
+	<form name="form" id="form"  method="post" action="/shop/order/insertOrder" >	
+		<input type="hidden" id="cnt" name="cnt" th:value="${count}"/>	
 	<div class="order_content">
 		<!-- 주문서작성/결제 타이틀 시작 -->
 	    <div class="order_title">
@@ -146,7 +139,7 @@
 		    	
 		    	
 		    		<div class="order_product_on" th:if="${count != 0}">
-					    <table style="width: 100%;">
+					    <table style="width: 100%;" id="itemTable">
 					    	<colgroup>
 			    				<col style="width: 39%;">
 			    				<col style="width: 12%;">
@@ -170,6 +163,7 @@
 					            	<td>
 					            		<span class="order_product_on_pimage"><img th:src="${list.ProductDTO.pImage}"></span>
 				            			<span th:text="${list.ProductDTO.pName}" class="order_product_on_pname"></span>
+				            			<input type="hidden" name="pnos" th:value="${list.pno}"/>
 					            	</td>
 					            	<td>
 					            		<span th:text="${list.camount}"></span>개
@@ -229,7 +223,7 @@
 			    				<!-- 받으실분 -->
 			    				<tr>
 			    					<th scope="row"><span class="important">받으실분</span></th>
-			    					<td><input type="text" id="oName" name="oName" maxlength="20"></td>
+			    					<td><input type="text" id="oNm" name="oNm" maxlength="20"></td>
 			    				</tr>
 			    				<!-- 받으실 곳 -->
 			    				<tr>
@@ -382,7 +376,7 @@
 		    				<tr>
 		    					<th scope="row"><span class="important">주문하시는 분</span></th>
 		    					<td>
-		    						<input type="text" name="orderName" id="orderName" th:value="${dto.getUserNickname()}" maxlength="20">
+		    						<input type="text" name="oName" id="oName" th:value="${dto.getUserNickname()}" maxlength="20">
 		    					</td>
 		    				</tr>
 		    				<!-- 전화번호 -->
@@ -435,7 +429,7 @@
 			    			<tr>
 			    				<th scope="row">배송비</th>
 			    				<td>
-				    				<span id="totalDeliveryCharge" th:text="${fee}"></span>원
+				    				<span id="totalDeliveryCharge" th:text="${#numbers.formatInteger(fee, 0, 'COMMA')}"></span>원
 				    				<span class="multi_shipping_text"></span>
 			    				</td>
 			    			</tr>
@@ -483,6 +477,8 @@
 	                            	<input type="hidden" name="settlePrice" value="">
 	                            	<input type="hidden" name="overseasSettlePrice" value="0">
 	                            	<input type="hidden" name="overseasSettleCurrency" value="KRW">
+	                            	<input type="hidden" name="oAllSumPrice" th:value="${#numbers.formatInteger(allSum, 0, 'COMMA')}">
+	                            	<input type="hidden" name="oProductMemo" id="oProductMemo"/>
 	                            	<strong id="totalSettlePrice" class="order_payment_sum" th:text="${#numbers.formatInteger(allSum, 0, 'COMMA')}"></strong>원
                             	</td>
                             </tr>
@@ -575,12 +571,59 @@
    	<script type="text/javascript">
    		/* 예상 적립금 설명 form */
 	   	$(document).ready(function() {
+	   		
 	   		$(".mileageInfo").on('click',function (e){
 	   			$(".point_my_sub").css('display','block');
 	   		});
 	   		$(".point_my_sub_btn").on('click',function (e){
 	   			$(".point_my_sub").css('display','none');
 	   		});
+
+			$(document).ready(function() {
+			    
+				$("#order_result_payment").click(function() {
+					/* 수정모드일시 값 셋팅 */
+				    if ($.trim($('#oName').val()) == "") {
+				    	alert("이름을 입력해주세요.");
+				    	$('#oName').focus();
+				    	return false;
+				    }
+				    if ($.trim($('#oPhone').val()) == "") {
+				    	alert("전화번호를 입력해주세요.");
+				    	$('#oPhone').focus();
+				    	return false;
+				    }
+				    if ($.trim($('#oZipcode').val()) == "") {
+				    	alert("우편번호를 입력해주세요.");
+				    	$('#oZipcode').focus();
+				    	return false;
+				    }
+				    if ($.trim($('#oAddr1').val()) == "") {
+				    	alert("주소를 입력해주세요.");
+				    	$('#oAddr1').focus();
+				    	return false;
+				    }
+				    if ($.trim($('#oAddr2').val()) == "") {
+				    	alert("상세주소를 입력해주세요.");
+				    	$('#oAddr2').focus();
+				    	return false;				    	
+				    }
+				    
+				    var cnt = $('#cnt').val();
+				    var mainPrd;
+				    if(cnt > 1){
+				    	mainPrd = $.trim($('#itemTable tr td:eq(0)').text())+" 외 "+(cnt-1)+"개";
+				    }else{
+				    	mainPrd = $.trim($('#itemTable tr td:eq(0)').text());
+				    }
+				    $('#oProductMemo').val(mainPrd);
+			   		
+					if(confirm("결제 후 취소가 불가능 합니다. \n결제 하시겠습니까?")){
+						$("#form").submit();
+					}
+					//payment();
+				})
+			})
 	   	});
 	   	
 	   	/* 결제수단 선택 스크립트 */

@@ -4,24 +4,37 @@
   
   <mapper namespace="com.recipe.gola.mapper.OrderMapper">
   
-	  <!-- 주문자정보 출력 -->
-	  <select id="list" resultType="OrderDTO">
-	  		SELECT *
-	  		FROM order
-	  		WHERE oNo = ${oNo}
+	  <!-- 주문내역 출력 -->
+	  <select id="list" resultType="OrderDTO" parameterType="OrderDTO">
+	  		SELECT
+				oNo	 		/*주문처리 번호 */
+				, orderNo	 	/*주문번호 */
+				, oUserId	 	/*회원 아이디 */
+				, oName	 	/*수령자 이름 */
+				, oPhone	 	/*수령자 전화번호 */
+				, oZipcode	 /*수령자 우편번호 */
+				, oAddr1	 	/*수령자 주소 */
+				, oAddr2	 	/*수령자 상세주소 */
+				, oRequest		/*배송 시 요청사항 */
+				, oRegdate		/*결제일*/
+				, oAllSumPrice 		/*주문 총금액*/
+				, oProductMemo 	/*주문 대표상품*/
+	  		FROM orders
+	  		WHERE oUserId = #{oUserId}
+	  		ORDER BY oNo DESC
 	  </select>
 	
-	<select id="selectOno" resultType="string">
+	<select id="selectOno" resultType="int">
    		SELECT 
       		IFNULL(MAX(oNo) + 1, 1) as oNo	/*프라이머리키 1씩 증가시키기*/
-       	FROM order
+       	FROM orders
 	</select>	
 	
 	<!-- 주문 저장 -->
     <insert id="insertOrder" parameterType="OrderDTO">
     	/*com.recipe.gola.mapper.OrderMapper.OrderDTO*/
 
-		INSERT INTO order
+		INSERT INTO orders
         (
 			oNo	 		/*주문처리 번호 */
 			, orderNo	 	/*주문번호 */
@@ -31,8 +44,10 @@
 			, oZipcode	 /*수령자 우편번호 */
 			, oAddr1	 	/*수령자 주소 */
 			, oAddr2	 	/*수령자 상세주소 */
-			, oReques		/*배송 시 요청사항 */
+			, oRequest		/*배송 시 요청사항 */
 			, oRegdate		/*결제일*/
+			, oAllSumPrice 		/*주문 총금액*/
+			, oProductMemo 	/*주문 대표상품*/
         )
         VALUES
       	(
@@ -44,9 +59,10 @@
 			, #{oZipcode}	 	/*수령자 우편번호 */
 			, #{oAddr1}	 		/*수령자 주소 */
 			, #{oAddr2}	 		/*수령자 상세주소 */
-			, #{oReques}		/*배송 시 요청사항 */
+			, #{oRequest}		/*배송 시 요청사항 */
 			, now()				/*결제일*/
+			, #{oAllSumPrice} 		/*주문 총금액*/
+			, #{oProductMemo} 	/*주문 대표상품*/
       	)
     </insert>
-  
   </mapper>
