@@ -13,9 +13,12 @@
 	<title>우리들의 모든 레시피 | 골라</title>
 
 	<!-- CSS -->
-	<th:block th:replace="style :: style_bootstrap" />
-	<th:block th:replace="style :: style_styles" />
-	<th:block th:replace="style :: style_shop" />
+	<link rel="stylesheet" href="/css/styles.css" />
+	<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
 	<link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	<!-- fontawesome -->
 	<script src="https://kit.fontawesome.com/c21d7630fc.js" crossorigin="anonymous"></script>
@@ -37,13 +40,12 @@
 	<!-- end of import header -->
 
 	<!-- import leftbanner -->
-	<nav th:replace="layout/cartbanner :: fr_leftbanner1"></nav>
-	<nav th:replace="layout/cartbanner :: fr_leftbanner2"></nav>
+	<nav th:replace="layout/cartbanner :: fr_leftbanner"></nav>
 	<!-- end of import leftbanner -->
 	
 	<!-- center title -->
 	<div>
-		<span class="shopdetailtitle">SHOP</span>
+		<span class="shoptitle"><a th:href="@{/shop}">SHOP</a></span>
 	</div>
 
 	<div>
@@ -108,14 +110,38 @@
 						</div>
 
 						<!-- 옵션 선택 -->
-						<div class="prodOption">
-							<select class="selectOption">
-								<option value="">= 옵션 : 가격 : 재고 =</option>
-								<option value="1" id="camount">1개</option>
-								<option value="2" id="camount">2개</option>
-								<option value="3" id="camount">3개</option>
+						<div class="prodOption" id="prodOption">
+							<select class="selectOption" onChange="jsselect(this.value)">
+								<option value="0">= 옵션 : 가격 : 재고 =</option>
+								<option value="1" id="camount"><p th:text="${detail.pName}"></p></option>
+								
 							</select>
-						</div>
+							
+						    <div class="optionSelect" id="optionSelect">			
+							        <div class="optionSelectTop">
+							           <p th:text="${detail.pName}"></p>
+							        </div>
+							        
+							        <div class="optionSelectBottom">
+							            <div class="optionAmount">						           
+							            	<form>
+							            		<input type=button value="-" id="decreaseQuantity">
+							            		<input type=text id="numberUpDown" value=1>	
+							   		         	<input type=button value="+" id="increaseQuantity">
+												
+											</form>
+
+							            </div>
+							
+							            <div class="optionSum">
+							            <p id="optionSumprice" th:text="${detail.pPrice}"></p><p id="optionwon"> 원</p>
+
+							
+							            </div>
+							        </div>
+							
+							    </div>
+							</div>
 
 						<div class="btn_go_box">
 							<button type="button" id="cart_add_btn" class="btn_go_cart">장바구니 담기</button>
@@ -124,7 +150,7 @@
 							<script type="text/javascript">
 								$("#cart_add_btn").click(function() {
 									var pno = $("#pno").val();
-									var camount = $(".selectOption option:selected").val();
+									var camount = $("#numberUpDown").val();
 
 									var data = {
 										pno : pno,
@@ -136,10 +162,10 @@
 										type : "post",
 										data : data,
 										success : function(result) {
-											alert("장바구니에 상품을 정상적으로 담았습니다.");
+											alert("장바구니에 정상적으로 담았습니다.");
 										},
 										error : function() {
-											alert("장바구니에 상품을 담지 못하였습니다.");
+											alert("장바구니에 담는것을 실패하였습니다.");
 										}
 									});
 								});
@@ -163,6 +189,12 @@
 
 	</div>
 
+	<div class="optionselect">
+		
+		
+	</div>
+
+
 
 
 	<!-- import footer -->
@@ -178,6 +210,70 @@
 	<script type="text/javascript" src="/js/join.js"></script>
 	<script type="text/javascript" src="/js/logineye.js"></script>
 
+	<script type="text/javascript">
+	
+		 function jsselect(value){
+	        if(value=="1"){            
+	            document.getElementById("optionSelect").style.display = "block";
+	        }else{
+	            document.getElementById("optionSelect").style.display = "none";
+	        }
+	    }
+					  
+	</script>
+	
+	<script>
+	$(function() {
+		 // 수량 감소
+		  $('#decreaseQuantity').click(function(e) {
+		    e.preventDefault();
+		    //천단위 콤마 제거 
+			var price = $('#privceValue').text().replace(",", "");;
+		    var stat = $('#numberUpDown').val();
+		    var num = parseInt(stat, 10);
+		    num--;
+		    var sumprice = num * price;
+		    //천단위 콤마 생성
+		    var sumcooma = sumprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		    $('#optionSumprice').text(sumcooma);
+		    if (num <= 0) {
+		      alert('1개 이상의 수량을 선택해 주세요.');
+		      num = 1;
+		    }
+		    $('#numberUpDown').val(num);
+		  });
+		 
+		 //수량 증가  
+		  $('#increaseQuantity').click(function(e) {
+		    e.preventDefault();
+		    //천단위 콤마 제거 
+			var price = $('#privceValue').text().replace(",", "");;
+		    var stat = $('#numberUpDown').val();
+		    var num = parseInt(stat, 10);
+		    num++;
+		    var sumprice = num * price;
+		    //천단위 콤마 생성
+		    var sumcooma = sumprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		    $('#optionSumprice').text(sumcooma);
+		    if (num >= 11) {
+		      alert('해당 상품의 재고가 부족합니다');
+		      num = 10;
+		    }
+		    $('#numberUpDown').val(num);
+		  });
+		});
+	
+	
+	//판매가 천단위 콤마 표기 
+	var money = $('#privceValue').text();
+	var moneycomma5 = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	$('#privceValue').text(moneycomma5);
+	
+	//누적 합계 천단위 콤마 표기
+	var money2 = $('#optionSumprice').text();
+	var moneycomma5 = money2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	$('#optionSumprice').text(moneycomma5);
+	</script>
 
 
 

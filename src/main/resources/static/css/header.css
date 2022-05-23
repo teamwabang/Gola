@@ -118,7 +118,7 @@
   font-weight: bold;
 }
 
-#indexbutton {
+.indexbutton {
   background-color: transparent !important;
   border-color: transparent !important;
 }

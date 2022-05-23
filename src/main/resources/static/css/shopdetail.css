@@ -1,3 +1,4 @@
+
 .shopbody {
   /* background-image: url(/images/mypagebackground.png); */
   background-repeat: repeat;
@@ -13,9 +14,15 @@
   margin: 0 auto;
   width: 300px;
   height: 200px;
-  color: #77b347;
+  color: #77b347 !important;
   display: block;
   padding-top: 60px;
+}
+
+
+.shoptitle a {
+  color: #77b347 !important;
+  display: block;
 }
 
 .shopdetailtitle {
@@ -48,9 +55,8 @@
 }
 
 .shopItemImage {
-  width: 570px;
+  width: 600px;
   height: 520px;
-  border: 1px solid #dbdbdb;
 }
 
 .shopItemImage img {
@@ -194,4 +200,64 @@
   font-weight: bold;
   text-align: center;
   padding-top: 20px;
+}
+
+.optionSelect{
+    display: flex;
+    flex-direction: column;
+    width: 480px;
+    height :160px;
+    border-top: 3px solid #000;
+    border-bottom: 3px solid #000;
+    padding:20px;
+    display:none;
+    margin-top:40px;
+	background-color : #f5f5f5;
+}
+
+.optionSelectTop{
+    margin-bottom: 20px;
+    font-size:15px;
+    font-weight: bold;
+    color:#77b347;
+    
+}
+.optionSelectBottom{
+    display: flex;
+}
+
+.optionAmount{
+    margin-right: 50px;
+    border-radius: 8px;
+    background-color:white;
+}
+
+#numberUpDown{
+	width: 80px;
+    border: none;
+    text-align: center;
+    background-color:white;
+    margin: 0px !important;
+    font-size: 20px;
+}
+
+#decreaseQuantity, #increaseQuantity{
+	border: none;
+    font-size: 40px;
+    background-color:white;
+}
+.optionSum{
+	display :flex;
+}
+#optionSumprice{
+    width: 200px;
+    text-align: right;
+    margin-right: 5px;
+    font-size: 30px;
+    color:#77b347;
+}
+
+#optionwon{
+    top: 20px;
+    position: relative;
 }
