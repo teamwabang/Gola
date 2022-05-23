@@ -306,16 +306,18 @@ video::-webkit-media-controls {
 
 .gallerycontent h4 {
   font-weight: bold;
+  font-size: 20px;
   display: inline-block !important;
   text-align: left
 }
 
 .gallerycontent h5 {
   text-align: left;
+  font-size: 16px;
 }
 
 .galleryicon {
-  margin-top: 30px;
+  margin-top: 5px;
 }
 
 .galleryicon a {
@@ -333,7 +335,7 @@ video::-webkit-media-controls {
 .contenthr {
   width: 80% !important;
   text-align: center;
-  margin: 30px auto;
+  margin: 20px auto;
 }
 
 .aboutgallery li:hover .gallerycontent {
