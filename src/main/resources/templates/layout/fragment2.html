@@ -21,31 +21,51 @@
 			</form>
 		</div>
 		<div sec:authorize="isAnonymous()" class="indexlogin">
+<<<<<<< Updated upstream
 			<button class=" indexbutton logjoinbutton2"
+=======
+			<button class="indexbutton logjoinbutton2"
+>>>>>>> Stashed changes
 				data-bs-toggle="modal" data-bs-target="#loginModal">로그인</button>
 		</div>
 		<!-- 회원가입 -->
 		<div sec:authorize="isAnonymous()" class="indexjoin">
+<<<<<<< Updated upstream
 			<button class=" indexbutton logjoinbutton2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+=======
+			<button class="indexbutton logjoinbutton2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+>>>>>>> Stashed changes
 				회원가입
 			</button>
 		</div>
 		<!-- 레시피 바로가기 -->
 		<div sec:authorize="isAuthenticated()">
 			<form th:action="@{/recipe}" method="get" class="indexloginrecipe">
+<<<<<<< Updated upstream
 				<button class=" indexbutton logjoinbutton2">레시피</button>
+=======
+				<button class="indexbutton logjoinbutton2">레시피</button>
+>>>>>>> Stashed changes
 			</form>
 		</div>
 		<!-- 마이페이지 -->
 		<div sec:authorize="isAuthenticated()" class="indexloginmypage">
 			<form th:action="@{/mypage}" method="get">
+<<<<<<< Updated upstream
 				<button class=" indexbutton logjoinbutton2">마이페이지</button>
+=======
+				<button class="indexbutton logjoinbutton2">마이페이지</button>
+>>>>>>> Stashed changes
 			</form>
 		</div>
 		<!-- 관리자 -->
 		<div sec:authorize="hasAuthority('ADMIN')" class="indexloginallusers">
 			<form th:action="@{/admin}" method="get">
+<<<<<<< Updated upstream
 				<button class=" indexbutton logjoinbuttonallusers2">관리자</button>
+=======
+				<button class="indexbutton logjoinbuttonallusers2">관리자</button>
+>>>>>>> Stashed changes
 			</form>
 		</div>
 
