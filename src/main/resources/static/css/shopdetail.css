@@ -216,7 +216,7 @@
 
 .optionSelectTop{
     margin-bottom: 20px;
-    font-size:25px;
+    font-size:15px;
     font-weight: bold;
     color:#77b347;
     
@@ -227,7 +227,6 @@
 
 .optionAmount{
     margin-right: 50px;
-    border: 1px solid black;
     border-radius: 8px;
     background-color:white;
 }
@@ -245,4 +244,19 @@
 	border: none;
     font-size: 40px;
     background-color:white;
+}
+.optionSum{
+	display :flex;
+}
+#optionSumprice{
+    width: 200px;
+    text-align: right;
+    margin-right: 5px;
+    font-size: 30px;
+    color:#77b347;
+}
+
+#optionwon{
+    top: 20px;
+    position: relative;
 }
