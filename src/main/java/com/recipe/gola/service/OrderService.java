@@ -24,10 +24,19 @@ public class OrderService {
 	public List<OrderDTO> list(OrderDTO dto){
 		return orderMapper.list(dto);
 	}
+
+	public int insertOrder(OrderDTO dto) {
+		return orderMapper.insertOrder(dto);
+	}
 	
 	public OrderDTO request(OrderDTO dto) {
 		return orderMapper.request(dto);
 	}
+	
+    //게시글번호 생성
+    public int selectOno() throws Exception{
+    	return orderMapper.selectOno();
+    }
 	
 	
 }

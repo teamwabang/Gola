@@ -1,15 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Monoton&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Serif+KR:wght@900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+@font-face {
+  font-family: 'ROKAFSlabSerifBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSlabSerifBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'LeferiPoint-WhiteObliqueA';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-WhiteObliqueA.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Logo */
 .golalogo {
   position: absolute;
-  top: 30px;
-  left: 30px;
+  top: 50px;
+  left: 70px;
   width: 10px;
   height: 10px;
   z-index: 99;
 }
 
 
-/* login&join*/
+/* login&join */
 .indexlogin {
   width: 100px;
   height: 20px;
@@ -137,7 +156,7 @@
   z-index: 100;
 }
 
-/* TRIGGER*/
+/* TRIGGER - recipe */
 .indextrigger {
   width: 40px;
   height: 20px;
@@ -153,14 +172,6 @@
   width: 100%;
   height: 3px;
   background-color: #fff;
-  transition: 0.3s;
-}
-
-.trigger_black span {
-  position: absolute;
-  width: 100%;
-  height: 3px;
-  background-color: #000000;
   transition: 0.3s;
 }
 
@@ -194,8 +205,64 @@
   transform: rotate(-45deg);
 }
 
+/* TRIGGER - shop */
+.indextrigger2 {
+  width: 40px;
+  height: 20px;
+  position: absolute;
+  right: 70px;
+  top: 70px;
+  cursor: pointer;
+  z-index: 100;
+}
 
-/* Nav Modal*/
+.indextrigger2 span {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  transition: 0.3s;
+}
+
+.trigger_black span {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: #000000;
+  transition: 0.3s;
+}
+
+.indextrigger2 span:nth-child(1) {
+  top: 0;
+}
+
+.indextrigger2 span:nth-child(2) {
+  top: 50%;
+}
+
+.indextrigger2 span:nth-child(3) {
+  top: 100%;
+}
+
+.indextrigger2.popup span {
+  background-color: #fff;
+}
+
+.indextrigger2.popup span:nth-child(1) {
+  top: 50%;
+  transform: rotate(45deg);
+}
+
+.indextrigger2.popup span:nth-child(2) {
+  opacity: 0;
+}
+
+.indextrigger2.popup span:nth-child(3) {
+  top: 50%;
+  transform: rotate(-45deg);
+}
+
+/* Nav Modal - recipe */
 .navmodal-gnb {
   background-color: rgba(0, 0, 0, 0.85);
   height: 100vh;
@@ -215,7 +282,7 @@
   line-height: 170px;
   text-align: center;
   font-size: 50px;
-  color: #fff;
+  color: #fff !important;
 }
 
 .modalgnb a {
@@ -239,17 +306,110 @@
 }
 
 .modalgnb a:nth-child(1) {
-  animation-delay: 0.3s;
+  animation-delay: 0.1s;
 }
 
 .modalgnb a:nth-child(2) {
-  animation-delay: 0.5s;
+  animation-delay: 0.2s;
 }
 
 .modalgnb a:nth-child(3) {
-  animation-delay: 0.7s;
+  animation-delay: 0.4s;
 }
 
 .modalgnb a:nth-child(4) {
-  animation-delay: 0.9s;
+  animation-delay: 0.6s;
+}
+
+/* Nav Modal - shop */
+.navmodal-gnb2 {
+  background-color: rgba(0, 0, 0, 0.85);
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: none;
+  z-index: 98;
+}
+
+.modalgnb2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 170px;
+  text-align: center;
+  font-size: 50px;
+  color: #fff !important;
+}
+
+.modalgnb2 a {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-style: italic;
+  font-weight: 500;
+  color: #fff !important;
+  font-size: 60px;
+  font-weight: bold;
+  display: block;
+  padding: 10px;
+  transition: 0.3s;
+  animation: navgnb 0.3s linear;
+  animation-fill-mode: both;
+  opacity: 0;
+  z-index: 999;
+}
+
+.modalgnb2 a:hover {
+  color: #ed4912 !important;
+}
+
+.modalgnb2 a:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.modalgnb2 a:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.modalgnb2 a:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.modalgnb2 a:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+/* keyframes */
+@keyframes navgnb {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes videolettershowing1 {
+  0% {
+    opacity: 0;
+    margin-left: -100px;
+  }
+  100% {
+    opacity: 1;
+    margin-left: 0;
+  }
+}
+
+@keyframes videolettershowing2 {
+  0% {
+    opacity: 0;
+    bottom: -20px;
+  }
+  100% {
+    opacity: 1;
+    margin-left: 0;
+  }
 }

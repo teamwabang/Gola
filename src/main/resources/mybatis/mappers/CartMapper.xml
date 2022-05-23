@@ -43,6 +43,31 @@
 		WHERE userId = #{userId}
 	]]>
 	</select>
+
+<!-- 내가 선택한 장바구니 목록 조회 -->
+	<select id="list2" parameterType="ProductDTO" resultType="CartDTO" resultMap="cartlist">
+		SELECT
+			c.cno,
+			c.userId,
+			c.camount,
+			p.pno,
+			p.pName,
+			p.pKind,
+			p.pPrice,
+			p.pPoints,
+			p.pContent,
+			p.pImage,
+			p.pRegdate
+		FROM cart c
+			INNER JOIN product p
+			ON c.pno = p.pno
+		WHERE userId = #{userId}
+		AND p.pno IN
+		<!-- 장바구니에서 내가 선택한 상품만 주문페이지에서 조회한다.  -->
+		<foreach collection="pnos" item="array" open="(" close=")" separator=",">
+			#{array}
+		</foreach>
+	</select>
 	
 	<!-- 내가 담은 장바구니 목록 조회 -->
 	<select id="cartlist" parameterType="String" resultType="CartDTO">
@@ -90,5 +115,39 @@
     	WHERE c.pno = p.pno AND c.userId = #{userId}
     ]]>
     </select>
+
+    <!-- 장바구니 전체 금액 -->
+    <select id="sumMoney2" resultType="int"  parameterType="ProductDTO"  >
+ 
+    	SELECT IFNULL(SUM(pPrice * camount), 0) AS sumMoney
+    	FROM product p, cart c
+    	WHERE c.pno = p.pno AND c.userId = #{userId}
+		AND p.pno IN
+		<!-- 장바구니에서 내가 선택한 상품만 주문페이지에서 조회한다.  -->
+		<foreach collection="pnos" item="array" open="(" close=")" separator=",">
+			#{array}
+		</foreach>
+ 
+    </select>
+    
+    <!-- 장바구니 수량 수정 -->
+    <update id="modifyCount">
+    <![CDATA[
+    	UPDATE cart
+    	SET camount = #{camount}
+    	WHERE userId = #{userId}
+    	AND pno = #{pno}
+    ]]>
+    </update>
+    
+    <!-- 장바구니 상품 삭제 -->
+    <delete id="delete" parameterType="CartDTO">
+    <![CDATA[
+    	DELETE
+    	FROM cart
+    	WHERE userId = #{userId}
+    	AND pno = #{pno}
+    ]]>
+    </delete>
   
 </mapper>

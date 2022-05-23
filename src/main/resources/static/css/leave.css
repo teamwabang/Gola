@@ -1,3 +1,9 @@
+.leavebody {
+  margin: 0px 20%;
+  background-image: url(/images/mypagebackground.png);
+  background-size: cover;
+}
+
 .leavemain{
   margin: 300px auto;
   font-family: 'ROKAFSlabSerifBold' !important;

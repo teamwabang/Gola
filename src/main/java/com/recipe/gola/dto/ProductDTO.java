@@ -9,6 +9,8 @@ import lombok.Data;
 public class ProductDTO {
 
 	private int pno;	// 상품번호
+	private int[] pnos;
+	private String userId;
 	private String pName;	// 상품명
 	private String pKind;	// 상품종류
 	private int pPrice;	// 상품가격

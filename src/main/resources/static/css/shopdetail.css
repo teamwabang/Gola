@@ -38,6 +38,20 @@
   padding-top: 60px;
 }
 
+.shopdetailtitle {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-style: italic;
+  font-size: 70px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto;
+  width: 300px;
+  height: 70px;
+  color: #77b347;
+  display: block;
+  padding-top: 60px;
+}
+
 .shopProd {
   margin: 50px 20%;
   margin-top:180px;
@@ -54,8 +68,9 @@
 }
 
 .shopItemImage {
-  width: 600px;
+  width: 570px;
   height: 520px;
+  border: 1px solid #dbdbdb;
 }
 
 .shopItemImage img {

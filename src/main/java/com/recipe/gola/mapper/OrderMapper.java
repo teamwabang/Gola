@@ -12,4 +12,8 @@ public interface OrderMapper {
 	public List<OrderDTO> list(OrderDTO dto);
 	
 	public OrderDTO request(OrderDTO dto);
+
+	public int insertOrder(OrderDTO dto);
+	
+	public int selectOno();
 }

@@ -13,7 +13,7 @@
 }
 
 .container {
-  width: 700px;
+  width: 700px !important;
   height: auto;
   justify-content: center;
   margin-top: 5px;
@@ -24,6 +24,7 @@
   font-family: 'ROKAFSlabSerifBold' !important;
   font-weight: 700 !important;
   color: #cf6f03;
+  text-align: center;
 
 }
 
@@ -64,7 +65,7 @@
   margin-right: 20px;
   margin-left: 20px;
   font-family: 'ROKAFSlabSerifBold' !important;
-  font-weight: bold
+  font-weight: bold;
 }
 
 

@@ -62,8 +62,10 @@
 
 .userName {
   margin-bottom: 10px;
+  color: rgba(0, 0, 0, 0.4);
   font-size: 20px;
   font-weight: 600;
+  text-align: center;
 }
 
 .userEmail {
@@ -236,7 +238,9 @@ main {
 
 .mainUserPwd,
 .mainUserNickname,
-.mainUserEmail {
+.mainUserPhone,
+.mainUserEmail,
+.mainUserAddr {
   font-family: 'LeferiPoint-WhiteObliqueA';
 }
 

@@ -8,9 +8,6 @@
 
 <body>
 
-<nav th:fragment="fr_leftbanner">
-
-	<!--장바구니로 가기 -->
 	<nav th:fragment="fr_leftbanner1" sec:authorize="isAuthenticated()">
 		<div class="sideBanner">
 			<a th:href="@{/shop/cart}" class="leftbannerlink"> 장바구니로 가기 </a>
@@ -20,63 +17,6 @@
 		//기본 위치(top)값
 		var floatPosition = parseInt($(".sideBanner").css('top'))
 
-   <div class="sideBanner">
-    <a th:href="@{/shop/cart}" class="leftbannerlink">
-      장바구니로 가기 
-    </a>
-  </div>
-
-<script type="text/javascript">
-
-//기본 위치(top)값
-var floatPosition = parseInt($(".sideBanner").css('top'))
-
-// scroll 인식
-$(window).scroll(function() {
-  
-    // 현재 스크롤 위치
-    var currentTop = $(window).scrollTop();
-    var bannerTop = currentTop + floatPosition + "px";
-
-		}).scroll();
-	</script>
-	
-	</nav>
-	
-	<!--주문목록 가기 -->
-	<nav th:fragment="fr_leftbanner2" sec:authorize="isAuthenticated()">
-		<div class="sideBanner2">
-			<a th:href="@{#}" class="leftbannerlink2"> 주문목록 가기 </a>
-		</div>
-		
-		<script type="text/javascript">
-		//기본 위치(top)값
-		var floatPosition2 = parseInt($(".sideBanner2").css('top'))
-
-    //이동 애니메이션
-    $(".sideBanner").stop().animate({
-      "top" : bannerTop
-    }, 500);
-
-}).scroll();
-
-</script>
-</nav>
-
-		}).scroll();
-	</script>
-	</nav>
-	
-	<!--쇼핑몰로 가기 -->
-	<nav th:fragment="fr_leftbanner3" sec:authorize="isAuthenticated()">
-		<div class="sideBanner3">
-			<a th:href="@{/shop}" class="leftbannerlink3"> 쇼핑몰 메인으로 </a>
-		</div>
-		
-		<script type="text/javascript">
-		//기본 위치(top)값
-		var floatPosition = parseInt($(".sideBanner3").css('top'))
-
 		// scroll 인식
 		$(window).scroll(function() {
 
@@ -85,13 +25,38 @@ $(window).scroll(function() {
 			var bannerTop = currentTop + floatPosition + "px";
 
 			//이동 애니메이션
-			$(".sideBanner3").stop().animate({
+			$(".sideBanner").stop().animate({
 				"top" : bannerTop
 			}, 500);
 
 		}).scroll();
 	</script>
 	
+	</nav>
+	
+	<nav th:fragment="fr_leftbanner2" sec:authorize="isAuthenticated()">
+		<div class="sideBanner2">
+			<a th:href="@{/shop/order/check}" class="leftbannerlink2"> 주문목록 가기 </a>
+		</div>
+		
+		<script type="text/javascript">
+		//기본 위치(top)값
+		var floatPosition2 = parseInt($(".sideBanner2").css('top'))
+
+		// scroll 인식
+		$(window).scroll(function() {
+
+			// 현재 스크롤 위치
+			var currentTop = $(window).scrollTop();
+			var bannerTop2 = currentTop + floatPosition2 + "px";
+
+			//이동 애니메이션
+			$(".sideBanner2").stop().animate({
+				"top" : bannerTop2
+			}, 500);
+
+		}).scroll();
+	</script>
 	</nav>
 
 </body>

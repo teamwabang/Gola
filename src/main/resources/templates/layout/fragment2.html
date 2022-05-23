@@ -50,12 +50,12 @@
 		</div>
 
 		<!-- trigger -->
-		<div class="indextrigger trigger_black">
+		<div class="indextrigger2 trigger_black">
 			<span></span> <span></span> <span></span>
 		</div>
 		<!-- trigger 메뉴 -->
-		<div class="navmodal-gnb">
-			<div class="modalgnb">
+		<div class="navmodal-gnb2">
+			<div class="modalgnb2">
 				<a th:href="@{/recipe}">RECIPE</a> <a th:href="@{/review}">REVIEW</a>
 				<a th:href="@{/shop}">SHOP</a> <a th:href="@{/cal}">DIET</a>
 			</div>
@@ -69,9 +69,9 @@
 
 		<!-- trigger -->
 		<script>
-			$('.indextrigger').click(function() {
+			$('.indextrigger2').click(function() {
 				$(this).toggleClass('popup')
-				$('.navmodal-gnb').fadeToggle();
+				$('.navmodal-gnb2').fadeToggle();
 			})
 		</script>
 	</header>

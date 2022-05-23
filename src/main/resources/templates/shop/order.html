@@ -14,7 +14,8 @@
   <title>주문서작성 및 결제 | 골라</title>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="/css/styles.css" />
+  <th:block th:replace="style :: style_styles" />
+  <th:block th:replace="style :: style_shop" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -75,11 +76,6 @@
 	</script>
 	
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#order_result_payment").click(function() {
-				payment();
-			})
-		})
 		
 		function payment(data) {
 			var now = new Date();
@@ -112,48 +108,16 @@
 	<header th:replace="layout/fragment2 :: fr_header"></header>
 	<!-- end of import header -->
 	
+	<!-- import leftbanner -->
+	<nav th:replace="layout/cartbanner :: fr_leftbanner2"></nav>
+	<!-- end of import leftbanner -->
+	
 	<!-- center title -->
 	<div>
 		<span class="ordertitle">ORDER</span>
 	</div>
-	
-	<!-- <div>
-		<form id="frmOrder" name="frmOrder" th:action="@{/order/result}" method="get" target="ifrmProcess">
-	        <input type="hidden" name="csrfToken" value="MTY1MjMyOTYwNDAzOTg4NTgwMTg1NjYwNzc1MTE3NzM1MzE5NDMyNDYy" />
-	        <input type="hidden" name="orderChannelFl" value="shop" />
-	        <input type="hidden" name="orderCountryCode" value="" />
-	        <input type="hidden" name="orderZipcode" value="" />
-	        <input type="hidden" name="orderZonecode" value="" />
-	        <input type="hidden" name="orderState" value="" />
-	        <input type="hidden" name="orderCity" value="" />
-	        <input type="hidden" name="orderAddress" value="" />
-	        <input type="hidden" name="orderAddressSub" value="" />
-	        <input type="hidden" name="orderPhonePrefixCode" value="kr" />
-	        <input type="hidden" name="orderPhonePrefix" value="82" />
-	        <input type="hidden" name="orderCellPhonePrefixCode" value="kr" />
-	        <input type="hidden" name="orderCellPhonePrefix" value="82" />
-	        <input type="hidden" name="receiverCountryCode" value="kr" />
-	        <input type="hidden" name="receiverPhonePrefixCode" value="kr" />
-	        <input type="hidden" name="receiverPhonePrefix" value="82" />
-	        <input type="hidden" name="receiverCellPhonePrefixCode" value="kr" />
-	        <input type="hidden" name="receiverCellPhonePrefix" value="82" />
-	        <input type="hidden" name="receiverState" value="" />
-	        <input type="hidden" name="receiverCity" value="" />
-	        <input type="hidden" name="chooseMileageCoupon" value="n" />
-	        <input type="hidden" name="chooseCouponMemberUseType" value="all" />
-	        <input type="hidden" name="totalCouponGoodsDcPrice" value="0" />
-	        <input type="hidden" name="totalCouponGoodsMileage" value="0" />
-	        <input type="hidden" name="totalMemberDcPrice" value="0" />
-	        <input type="hidden" name="totalMemberBankDcPrice" value="0" />
-	        <input type="hidden" name="totalMemberOverlapDcPrice" value="0" />
-	        <input type="hidden" name="deliveryFree" value="n" />
-	        <input type="hidden" name="totalDeliveryFreePrice" value="" />
-	        <input type="hidden" name="cartGoodsCnt" value="1" />
-	        <input type="hidden" name="cartAddGoodsCnt" value="0" />
-	        <input type="hidden" name="productCouponChangeLimitType" value="n" />
-	        <input type="hidden" name="resetMemberBankDcPrice" value="" />
-	        <input type="hidden" name="deliveryVisit" value="n" />
-	        <input type="hidden" name="returnUrl" th:value="@{/order}" /> -->
+	<form name="form" id="form"  method="post" action="/shop/order/insertOrder" >	
+		<input type="hidden" id="cnt" name="cnt" th:value="${count}"/>	
 	<div class="order_content">
 		<!-- 주문서작성/결제 타이틀 시작 -->
 	    <div class="order_title">
@@ -176,7 +140,7 @@
 		    	
 		    	
 		    		<div class="order_product_on" th:if="${count != 0}">
-					    <table style="width: 100%;">
+					    <table style="width: 100%;" id="itemTable">
 					    	<colgroup>
 			    				<col style="width: 39%;">
 			    				<col style="width: 12%;">
@@ -195,29 +159,30 @@
 				                    <th>배송비</th>
 				                </tr>
 				            </thead>
-				            <tbody th:each="list : ${list}">
-				            	<tr>
+				            <tbody>
+				            	<tr th:each="list,stat : ${list}">
 					            	<td>
-					            		<img th:src="${list.ProductDTO.pImage}" style="width:250px;height:250px">
-				            			<span th:text="${list.ProductDTO.pName}"></span>
+					            		<span class="order_product_on_pimage"><img th:src="${list.ProductDTO.pImage}"></span>
+				            			<span th:text="${list.ProductDTO.pName}" class="order_product_on_pname"></span>
+				            			<input type="hidden" name="pnos" th:value="${list.pno}"/>
 					            	</td>
 					            	<td>
 					            		<span th:text="${list.camount}"></span>개
 					            	</td>
-					            	<td>
-					            		<span th:text="${list.ProductDTO.pPrice}"></span>원
+					            	<td>					
+					            		<span th:text="${#numbers.formatInteger(list.ProductDTO.pPrice, 0, 'COMMA')}"></span>원
 					            	</td>
 					            	<td>
 					            		<img src="/images/shop/icon_mileage.gif">
 					            		<span th:style="@{font-size:14px;}">적립
-					            			<span th:text="${list.ProductDTO.pPoints * list.camount}" th:style="@{font-size:16px;}"></span>원
+					            			<span th:text="${#numbers.formatInteger((list.ProductDTO.pPoints * list.camount), 0, 'COMMA')}" th:style="@{font-size:16px;}"></span>원
 					            		</span>
 					            	</td>
 					            	<td>
-					            		<span th:text="${list.ProductDTO.pPrice * list.camount}"></span>원
+					            		<span th:text="${#numbers.formatInteger(list.ProductDTO.pPrice * list.camount, 0, 'COMMA')}"></span>원
 					            	</td>
-					            	<td>
-					            		<span th:text="${fee}"></span>원<br>
+					            	<td th:rowspan="${count}" th:id="|free${stat.count}|">
+					            		<span th:text="${#numbers.formatInteger(fee, 0, 'COMMA')}" th:class="|itemdelivery${stat.count}|"></span>원<br>
 					            		<span></span>
 					            		<span th:style="@{color:gray;font-size:14px;}">30,000원 이상<br>무료배송</span>
 					            	</td>
@@ -234,86 +199,86 @@
 		    	<div class="order_zone_title">
 		    		<h4>배송정보</h4>
 		    	</div>
-		    	<!-- 수령인 입력 테이블 시작 -->
-		    	<div class="order_table_type">
-		    		<table class="table_left">
-		    			<colgroup>
-		    				<col style="width: 15%;">
-		    				<col style="width: 85%;">
-		    			</colgroup>
-		    			<tbody>
-		    				<tr>
-		    					<th scope="row">배송지 확인</th>
-		    					<td>
-		    						<div class="form_element">
-		    							<ul>
-		    								<li>
-		    									<input type="radio" name="shipping" id="basic_shipping">
-		    									<label for="basic_shipping">기본 배송지</label>
-		    								</li>
-		    							</ul>
-		    							<span class="gray_list_btn"><a href="" class="gray_small_btn ">배송지관리</a></span>
-		    						</div>
-		    					</td>
-		    				</tr>
-		    				<!-- 받으실분 -->
-		    				<tr>
-		    					<th scope="row"><span class="important">받으실분</span></th>
-		    					<td><input type="text" id="receiverName" name="receiverName" maxlength="20"></td>
-		    				</tr>
-		    				<!-- 받으실 곳 -->
-		    				<tr>
-		    					<th scope="row"><span class="important">받으실 곳</span></th>
-		    					<td class="member_address">
-		    						<div class="address_postcode">
-			    						<input type="text" name="receiverZonecode" id="oZipcode" placeholder="우편번호" readonly>
-			    						<input type="hidden" name="receiverZipcode">
-			    						<span id="receiverZipcodeText" class="old_post_code"></span>
-			    						<button type="button" class="btn_post_search" onclick="execDaumPostcode()">우편번호검색</button>
-		    						</div>
-		    						<div class="address_input">
-			    						<input type="text" name="receiverAddress" id="oAddr1" placeholder="주소" readonly>
-			    						<input type="text" name="receiverAddressSub" id="oAddr2" placeholder="상세주소">
-		    						</div>
-		    						<div id="wrap" class="order_kakao_postalcode">
-									<img src="/images/shop/kakao_postalcode_close.png" id="btnFoldWrap" onclick="foldDaumPostcode()" alt="close">
-									</div>
-		    					</td>
-		    				</tr>
-		    				<!-- 전화번호 -->
-		    				<tr>
-		    					<th scope="row">전화번호</th>
-		    					<td>
-		    						<input type="text" id="receiverPhone" name="receiverPhone">
-		    					</td>
-		    				</tr>
-		    				<!-- 휴대폰 번호 -->
-		    				<tr>
-		    					<th scope="row"><span class="important">휴대폰 번호</span></th>
-		    					<td>
-		    						<input type="text" id="receiverCellPhone" name="receiverCellPhone">
-		    					</td>
-		    				</tr>
-		    				<!-- 배송 요청사항 -->
-		    				<tr>
-		    					<th scope="row"><span class="important">배송 시 요청사항</span></th>
-		    					<td class="td_last_say">
-			    					<div style="position:relative;">
-				    					<input type="text" id="orderMemo" name="orderMemo" autocomplete="off/">
-				    					<div id="setOrderMemo" class="order_msg" style="display:none;">
-					    					<ul>
-						    					<li id="option1" onclick="setOrderMemo('option1')">배송 전에 미리 연락 부탁드려요.</li>
-						    					<li id="option2" onclick="setOrderMemo('option2')">경비실에 맡겨주세요.</li>
-						    					<li id="option3" onclick="setOrderMemo('option3')">부재시 경비실에 맡겨주세요.</li>
-						    					<li id="option4" onclick="setOrderMemo('option4')">부재시 전화나 문자 부탁드려요.</li>
-					    					 </ul>
+			    	<!-- 수령인 입력 테이블 시작 -->
+			    	<div class="order_table_type">
+			    		<table class="table_left">
+			    			<colgroup>
+			    				<col style="width: 15%;">
+			    				<col style="width: 85%;">
+			    			</colgroup>
+			    			<tbody>
+			    				<tr>
+			    					<th scope="row">배송지 확인</th>
+			    					<td>
+			    						<div class="form_element">
+			    							<ul>
+			    								<li>
+			    									<input type="radio" name="shipping" id="basic_shipping" checked="checked">
+			    									<label for="basic_shipping">기본 배송지</label>
+			    								</li>
+			    							</ul>
+			    							<span class="gray_list_btn"><a href="#" class="gray_small_btn" >배송지관리</a></span>
+			    						</div>
+			    					</td>
+			    				</tr>
+			    				<!-- 받으실분 -->
+			    				<tr>
+			    					<th scope="row"><span class="important">받으실분</span></th>
+			    					<td><input type="text" id="oNm" name="oNm" maxlength="20"></td>
+			    				</tr>
+			    				<!-- 받으실 곳 -->
+			    				<tr>
+			    					<th scope="row"><span class="important">받으실 곳</span></th>
+			    					<td class="member_address">
+			    						<div class="address_postcode">
+				    						<input type="text" name="oZipcode" id="oZipcode" placeholder="우편번호" readonly>
+				    						<input type="hidden" name="receiverZipcode">
+				    						<span id="receiverZipcodeText" class="old_post_code"></span>
+				    						<button type="button" class="btn_post_search" onclick="execDaumPostcode()">우편번호검색</button>
+			    						</div>
+			    						<div class="address_input">
+				    						<input type="text" name="oAddr1" id="oAddr1" placeholder="주소" readonly>
+				    						<input type="text" name="oAddr2" id="oAddr2" placeholder="상세주소">
+			    						</div>
+			    						<div id="wrap" class="order_kakao_postalcode">
+										<img src="/images/shop/kakao_postalcode_close.png" id="btnFoldWrap" onclick="foldDaumPostcode()" alt="close">
+										</div>
+			    					</td>
+			    				</tr>
+			    				<!-- 전화번호 -->
+			    				<tr>
+			    					<th scope="row">전화번호</th>
+			    					<td>
+			    						<input type="text" id="receiverPhone" name="receiverPhone">
+			    					</td>
+			    				</tr>
+			    				<!-- 휴대폰 번호 -->
+			    				<tr>
+			    					<th scope="row"><span class="important">휴대폰 번호</span></th>
+			    					<td>
+			    						<input type="text" id="receiverCellPhone" name="receiverCellPhone">
+			    					</td>
+			    				</tr>
+			    				<!-- 배송 요청사항 -->
+			    				<tr>
+			    					<th scope="row"><span class="important">배송 시 요청사항</span></th>
+			    					<td class="td_last_say">
+				    					<div style="position:relative;">
+					    					<input type="text" id="orderMemo" name="oRequest" autocomplete="off/">
+					    					<div id="setOrderMemo" class="order_msg" style="display:none;">
+						    					<ul>
+							    					<li id="option1" onclick="setOrderMemo('option1')">배송 전에 미리 연락 부탁드려요.</li>
+							    					<li id="option2" onclick="setOrderMemo('option2')">경비실에 맡겨주세요.</li>
+							    					<li id="option3" onclick="setOrderMemo('option3')">부재시 경비실에 맡겨주세요.</li>
+							    					<li id="option4" onclick="setOrderMemo('option4')">부재시 전화나 문자 부탁드려요.</li>
+						    					 </ul>
+					    					 </div>
 				    					 </div>
-			    					 </div>
-		    					 </td>
-		    				</tr>
-		    			</tbody>
-		    		</table>
-		    	</div>
+			    					 </td>
+			    				</tr>
+			    			</tbody>
+			    		</table>
+			    	</div>
 		    	<!-- 수령인 입력 테이블 끝 -->
 		    </div>
 		    <!-- 배송정보 끝 -->
@@ -412,7 +377,7 @@
 		    				<tr>
 		    					<th scope="row"><span class="important">주문하시는 분</span></th>
 		    					<td>
-		    						<input type="text" name="orderName" id="orderName" value="" maxlength="20">
+		    						<input type="text" name="oName" id="oName" th:value="${dto.getUserNickname()}" maxlength="20">
 		    					</td>
 		    				</tr>
 		    				<!-- 전화번호 -->
@@ -426,14 +391,14 @@
 		    				<tr>
 			    				<th scope="row"><span class="important">휴대폰 번호</span></th>
 			    				<td>
-			    					<input type="text" id="mobileNum" name="orderCellPhone" value="" maxlength="20">
+			    					<input type="text" id="oPhone" name="oPhone" th:value="${dto.getUserPhone()}" maxlength="20">
 			    				</td>
 		    				</tr>
 		    				<!-- 이메일 -->
 		    				<tr>
 			    				<th scope="row"><span class="important">이메일</span></th>
 			    				<td class="member_email">
-				    				<input type="text" name="orderEmail" value="">
+				    				<input type="text" name="orderEmail" th:value="${dto.getUserEmail()}">
 		    					</td>
 		    				</tr>
 		    			</tbody>
@@ -458,14 +423,14 @@
 			    			<tr>
 			    				<th scope="row">상품 합계 금액</th>
 			    				<td>
-			    					<strong id="totalGoodsPrice" class="order_payment_sum" th:text="${sumMoney}"></strong>원
+			    					<strong id="totalGoodsPrice" class="order_payment_sum" th:text="${#numbers.formatInteger(sumMoney, 0, 'COMMA')}"></strong>원
 			    				</td>
 			    			</tr>
 			    			<!-- 배송비 -->
 			    			<tr>
 			    				<th scope="row">배송비</th>
 			    				<td>
-				    				<span id="totalDeliveryCharge" th:text="${fee}"></span>원
+				    				<span id="totalDeliveryCharge" th:text="${#numbers.formatInteger(fee, 0, 'COMMA')}"></span>원
 				    				<span class="multi_shipping_text"></span>
 			    				</td>
 			    			</tr>
@@ -513,7 +478,9 @@
 	                            	<input type="hidden" name="settlePrice" value="">
 	                            	<input type="hidden" name="overseasSettlePrice" value="0">
 	                            	<input type="hidden" name="overseasSettleCurrency" value="KRW">
-	                            	<strong id="totalSettlePrice" class="order_payment_sum" th:text="${allSum}"></strong>원
+	                            	<input type="hidden" name="oAllSumPrice" th:value="${#numbers.formatInteger(allSum, 0, 'COMMA')}">
+	                            	<input type="hidden" name="oProductMemo" id="oProductMemo"/>
+	                            	<strong id="totalSettlePrice" class="order_payment_sum" th:text="${#numbers.formatInteger(allSum, 0, 'COMMA')}"></strong>원
                             	</td>
                             </tr>
 			    		</tbody>
@@ -596,6 +563,7 @@
 			<!-- 결제하기 버튼 끝 -->
 		</div>
     </div>
+    </form>
    	
    	<!-- import footer -->
    	<footer th:replace="layout/fragment2 :: fr_footer"></footer>
@@ -604,12 +572,59 @@
    	<script type="text/javascript">
    		/* 예상 적립금 설명 form */
 	   	$(document).ready(function() {
+	   		
 	   		$(".mileageInfo").on('click',function (e){
 	   			$(".point_my_sub").css('display','block');
 	   		});
 	   		$(".point_my_sub_btn").on('click',function (e){
 	   			$(".point_my_sub").css('display','none');
 	   		});
+
+			$(document).ready(function() {
+			    
+				$("#order_result_payment").click(function() {
+					/* 수정모드일시 값 셋팅 */
+				    if ($.trim($('#oName').val()) == "") {
+				    	alert("이름을 입력해주세요.");
+				    	$('#oName').focus();
+				    	return false;
+				    }
+				    if ($.trim($('#oPhone').val()) == "") {
+				    	alert("전화번호를 입력해주세요.");
+				    	$('#oPhone').focus();
+				    	return false;
+				    }
+				    if ($.trim($('#oZipcode').val()) == "") {
+				    	alert("우편번호를 입력해주세요.");
+				    	$('#oZipcode').focus();
+				    	return false;
+				    }
+				    if ($.trim($('#oAddr1').val()) == "") {
+				    	alert("주소를 입력해주세요.");
+				    	$('#oAddr1').focus();
+				    	return false;
+				    }
+				    if ($.trim($('#oAddr2').val()) == "") {
+				    	alert("상세주소를 입력해주세요.");
+				    	$('#oAddr2').focus();
+				    	return false;				    	
+				    }
+				    
+				    var cnt = $('#cnt').val();
+				    var mainPrd;
+				    if(cnt > 1){
+				    	mainPrd = $.trim($('#itemTable tr td:eq(0)').text())+" 외 "+(cnt-1)+"개";
+				    }else{
+				    	mainPrd = $.trim($('#itemTable tr td:eq(0)').text());
+				    }
+				    $('#oProductMemo').val(mainPrd);
+			   		
+					if(confirm("결제 후 취소가 불가능 합니다. \n결제 하시겠습니까?")){
+						$("#form").submit();
+					}
+					//payment();
+				})
+			})
 	   	});
 	   	
 	   	/* 결제수단 선택 스크립트 */
@@ -632,7 +647,42 @@
 	        /* ezhld_set_last_settlekind(settle); */
 	    }
 	   	
-	   	
+	 	// rowspan 2이상일 경우 display none
+	 	for (let i = 1; i <= 1000; i++) {
+			$(function() {
+				if(i >= 2) {
+					$("#free2").css('display', 'none');
+					$("#free3").css('display', 'none');
+					$("#free4").css('display', 'none');
+					$("#free5").css('display', 'none');
+					$("#free6").css('display', 'none');
+					$("#free7").css('display', 'none');
+					$("#free8").css('display', 'none');
+					$("#free9").css('display', 'none');
+					$("#free10").css('display', 'none');
+					$("#free11").css('display', 'none');
+					$("#free12").css('display', 'none');
+					$("#free13").css('display', 'none');
+					$("#free14").css('display', 'none');
+					$("#free15").css('display', 'none');
+					$("#free16").css('display', 'none');
+					$("#free17").css('display', 'none');
+					$("#free18").css('display', 'none');
+					$("#free19").css('display', 'none');
+					$("#free20").css('display', 'none');
+					$("#free21").css('display', 'none');
+					$("#free22").css('display', 'none');
+					$("#free23").css('display', 'none');
+					$("#free24").css('display', 'none');
+					$("#free25").css('display', 'none');
+					$("#free26").css('display', 'none');
+					$("#free27").css('display', 'none');
+					$("#free28").css('display', 'none');
+					$("#free29").css('display', 'none');
+					$("#free30").css('display', 'none');
+				}
+			})
+	 	}
    	</script>
 	
 	<!-- Bootstrap -->

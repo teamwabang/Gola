@@ -246,10 +246,12 @@
 								emailCheckResult.innerHTML= '이메일 인증에 성공했습니다！';
 								emailCheckResult.style.color = 'blue';
 								 isCertification = true;
+								 $('#joinSubmit').prop('disabled', false);
 							} else {
 								emailCheckResult.innerHTML = '이메일 인증 번호를 확인해주세요';
 								emailCheckResult.style.color = 'red';
 								 isCertification = false;
+								 $("#joinSubmit").prop('disabled', true);
 							}
 						});
 				});	
