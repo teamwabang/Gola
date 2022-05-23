@@ -34,6 +34,12 @@
 	<header th:replace="layout/fragment2 :: fr_header"></header>
 	<!-- end of import header -->
 	
+
+	<!-- import leftbanner -->
+	<nav th:replace="layout/cartbanner :: fr_leftbanner2"></nav>
+	<nav th:replace="layout/cartbanner :: fr_leftbanner3"></nav>
+	<!-- end of import leftbanner -->
+
 	<!-- center title -->
 	<div>
 		<span class="carttitle">CART</span>
@@ -176,6 +182,106 @@
 	<script type="text/javascript" src="/js/logineye.js"></script>
 
 <script type="text/javascript">
+
+	
+		$(document).ready(function(){
+			
+			//화면진입시 체크박스 전체선택으로 만들기
+			checkReset();
+			
+			//stat 가 count이므로 1부터 시작
+			for (let i = 1; i <= 1000; i++) {
+				//input css 변경
+			    $("#cb"+i).css({
+			    	  "display": "none"
+			    });
+			
+				//label css 변경
+			    $(".label"+i).css({
+			        "display": "inline-block",
+			    	"width": "18px",
+			    	"height": "18px",
+			    	"border": "2px solid #bcbcbc",
+			    	"cursor": "pointer",
+			    	"margin": "8px 0 0 8px"
+		        });
+				
+				//체크박스 선택시 css 변경
+				$("#cb"+i).change(function() {
+					//value
+				    var value = $(this).val();       
+				    //checked 상태 (true, false)
+				    var checked = $(this).prop('checked');  
+				    //label 선택
+				    var $label = $(this).next();            
+				 
+				    // checked ? $label.css('background-color', value) : $label.css('background-color', 'white');
+				    if(checked)
+				        $label.css('background-color', '#666666');      // label의 배경색을 바꾼다.
+				    else
+				        $label.css('background-color', 'white');    // label의 배경색을 초기화 한다.
+				});
+				
+				
+				//상품금액 천단위 콤마
+				var money = $('.itemprice'+i).text();
+				var moneycomma = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				$('.itemprice'+i).text(moneycomma);
+				
+				//합계금액 천단위 콤마
+				var money = $('.itemsum'+i).text();
+				var moneycomma = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				$('.itemsum'+i).text(moneycomma);
+				
+				//배송비 천단위 콤마
+				var money = $('.itemdelivery'+i).text();
+				var moneycomma = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				$('.itemdelivery'+i).text(moneycomma);
+				
+				// 장바구니 상품 수량 수정
+				$("#camount_change" + i).click(function() {
+					var pno = $("#pno" + i).val();
+					var camount = $("#camount" + i).val();
+					
+					var data = {
+							pno : pno,
+							camount : camount
+						};
+					
+					$.ajax({
+						url : "/shop/cart/modify",
+						type : "post",
+						data : data,
+						success : function(result) {
+							location.href=location.href;
+						}
+					});
+				})
+				
+				// 장바구니 상품 삭제
+				$("#cart_order_delete" + i).click(function() {
+					var pno = $("#pno" + i).val();
+					
+					var data = { pno : pno };
+					
+					$.ajax({
+						url : "/shop/cart/delete",
+						type : "post",
+						data : data,
+						success : function(result) {
+							location.href=location.href;
+						}	
+					});
+				})
+				
+				// rowspan 2이상일 경우 display none
+				if(i >= 2) {
+					for (let j = 2; j <= 30; j++) {
+					$("#free"+j).css('display', 'none');
+					}
+				}
+			}
+			//for문 끝
 
 //stat 가 count이므로 1부터 시작
 for (let i = 1; i < 1000; i++){ 
